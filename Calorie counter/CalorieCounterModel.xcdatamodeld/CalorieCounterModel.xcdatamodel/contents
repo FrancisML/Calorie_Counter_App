@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="22H313" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="UserProfile" representedClassName=".UserProfile" syncable="YES">
+        <attribute name="activityLevel" attributeType="String"/>
+        <attribute name="age" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="calorieDeficit" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dailyCalorieGoal" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dailyLimit" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="daysLeft" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="gender" attributeType="String"/>
+        <attribute name="goalCalories" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="goalMass" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="goalWeight" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="heightCm" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="heightFt" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="heightIn" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastSavedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="profilePicture" optional="YES" attributeType="Binary"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="startPicture" optional="YES" attributeType="Binary"/>
+        <attribute name="targetDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="useMetric" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="userBMR" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="weight" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+</model>
