@@ -71,42 +71,6 @@ struct DashboardView: View {
                         .padding()
                 }
                 
-                // Buttons
-                HStack(spacing: 20) {
-                    Button(action: {
-                        print("Weigh In tapped")
-                    }) {
-                        HStack {
-                            Image(systemName: "scalemass")
-                            Text("Weigh In")
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                    }
-                    
-                    NavigationLink(destination: {
-                        if let profile = userProfile {
-                            PastLedgerView(userProfile: profile)
-                        } else {
-                            Text("No user profile available.")
-                        }
-                    }) {
-                        HStack {
-                            Image(systemName: "chart.bar.fill")
-                            Text("Progression")
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.green)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                    }
-                }
-                .padding(.horizontal)
-                
                 Spacer()
                 
                 // Simulate Day Button
@@ -121,6 +85,10 @@ struct DashboardView: View {
                             ledger: $ledger
                         ).saveDailyProgressAndReset()
                     }
+                    loadUserData() // Reload dashboard to reflect updated weight
+                    if let profile = userProfile {
+                           print("UserProfile Weight After Reload: \(profile.weight)")
+                       }
                 }) {
                     Text("Simulate Day")
                         .font(.headline)
@@ -135,6 +103,7 @@ struct DashboardView: View {
                 // Reset Button
                 Button(action: {
                     clearUserData()
+                    
                     appState = "setup"
                 }) {
                     Text("Restart Setup")
@@ -199,3 +168,4 @@ struct DashboardView: View {
         }
     }
 }
+
