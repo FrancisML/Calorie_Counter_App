@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="22H313" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="DailyProgress" representedClassName="DailyProgress" syncable="YES">
+        <attribute name="calorieIntake" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dailyLimit" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dailyWeight" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dayNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="passOrFail" optional="YES" attributeType="String"/>
+        <relationship name="ledgerEntries" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LedgerEntry" inverseName="dailyProgress" inverseEntity="LedgerEntry"/>
+        <relationship name="userProfile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserProfile" inverseName="dailyProgress" inverseEntity="UserProfile"/>
+    </entity>
+    <entity name="LedgerEntry" representedClassName="LedgerEntry" syncable="YES">
+        <attribute name="calories" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="dailyProgress" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyProgress" inverseName="ledgerEntries" inverseEntity="DailyProgress"/>
+    </entity>
+    <entity name="ProgressPicture" representedClassName="ProgressPicture" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="weight" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserProfile" inverseName="progressPicture" inverseEntity="UserProfile"/>
+    </entity>
     <entity name="UserProfile" representedClassName=".UserProfile" syncable="YES">
         <attribute name="activityLevel" attributeType="String"/>
         <attribute name="age" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -20,8 +43,11 @@
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="startPicture" optional="YES" attributeType="Binary"/>
         <attribute name="targetDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="tempDayNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="useMetric" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="userBMR" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="weight" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="dailyProgress" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DailyProgress" inverseName="userProfile" inverseEntity="DailyProgress"/>
+        <relationship name="progressPicture" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProgressPicture" inverseName="relationship" inverseEntity="ProgressPicture"/>
     </entity>
 </model>

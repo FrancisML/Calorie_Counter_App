@@ -2,7 +2,7 @@
 //  LedgerEntry+CoreDataProperties.swift
 //  Calorie counter
 //
-//  Created by frank lasalvia on 1/13/25.
+//  Created by frank lasalvia on 1/15/25.
 //
 //
 
@@ -16,9 +16,9 @@ extension LedgerEntry {
         return NSFetchRequest<LedgerEntry>(entityName: "LedgerEntry")
     }
 
-    @NSManaged public var type: String?
-    @NSManaged public var name: String?
     @NSManaged public var calories: Int32
+    @NSManaged public var name: String?
+    @NSManaged public var type: String?
     @NSManaged public var dailyProgress: DailyProgress?
 
 }

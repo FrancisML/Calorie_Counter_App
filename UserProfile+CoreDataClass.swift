@@ -2,7 +2,7 @@
 //  UserProfile+CoreDataClass.swift
 //  Calorie counter
 //
-//  Created by frank lasalvia on 1/13/25.
+//  Created by frank lasalvia on 1/17/25.
 //
 //
 

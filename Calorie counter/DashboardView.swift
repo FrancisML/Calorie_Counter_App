@@ -9,13 +9,20 @@ import SwiftUI
 import CoreData
 
 struct DashboardView: View {
-    @AppStorage("appState") private var appState: String = "dashboard" // Default to dashboard
+    @AppStorage("appState") private var appState: String = "dashboard"
     @State private var profilePicture: UIImage? = nil
     @State private var name: String = ""
     @State private var currentWeight: Int = 0
     @State private var goalWeight: Int = 0
     @State private var goalDate: Date = Date()
-
+    @State private var userProfile: UserProfile?
+    
+    // State properties for bindings
+    @State private var dayNumber: Int = 1
+    @State private var dailyLimit: Int = 2000 // Default value or fetched from profile
+    @State private var calorieIntake: Int = 0
+    @State private var ledger: [(type: String, name: String, calories: Int)] = []
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
@@ -34,7 +41,7 @@ struct DashboardView: View {
                             .frame(width: 120, height: 120)
                             .overlay(Circle().stroke(Color.gray, lineWidth: 2))
                     }
-
+                    
                     VStack(alignment: .leading) {
                         Text(name.isEmpty ? "No Name" : name)
                             .font(.system(size: 30, weight: .bold))
@@ -48,15 +55,25 @@ struct DashboardView: View {
                     Spacer()
                 }
                 .padding()
-
-                // Import and Use `DailyProgressView`
-                DailyProgressView()
+                
+                // Daily Progress View
+                if let profile = userProfile {
+                    DailyProgressView(
+                        userProfile: profile,
+                        dayNumber: $dayNumber,
+                        dailyLimit: $dailyLimit,
+                        calorieIntake: $calorieIntake,
+                        ledger: $ledger
+                    )
                     .padding(.horizontal)
-
+                } else {
+                    ProgressView("Loading user profile...")
+                        .padding()
+                }
+                
                 // Buttons
                 HStack(spacing: 20) {
                     Button(action: {
-                        // Action for "Weigh In" button
                         print("Weigh In tapped")
                     }) {
                         HStack {
@@ -69,8 +86,14 @@ struct DashboardView: View {
                         .foregroundColor(.white)
                         .cornerRadius(10)
                     }
-
-                    NavigationLink(destination: PastLedgerView()) {
+                    
+                    NavigationLink(destination: {
+                        if let profile = userProfile {
+                            PastLedgerView(userProfile: profile)
+                        } else {
+                            Text("No user profile available.")
+                        }
+                    }) {
                         HStack {
                             Image(systemName: "chart.bar.fill")
                             Text("Progression")
@@ -83,13 +106,36 @@ struct DashboardView: View {
                     }
                 }
                 .padding(.horizontal)
-
+                
                 Spacer()
-
+                
+                // Simulate Day Button
+                Button(action: {
+                    if let profile = userProfile {
+                        // Call saveDailyProgressAndReset directly on bindings
+                        DailyProgressView(
+                            userProfile: profile,
+                            dayNumber: $dayNumber,
+                            dailyLimit: $dailyLimit,
+                            calorieIntake: $calorieIntake,
+                            ledger: $ledger
+                        ).saveDailyProgressAndReset()
+                    }
+                }) {
+                    Text("Simulate Day")
+                        .font(.headline)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.orange)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding(.horizontal)
+                
                 // Reset Button
                 Button(action: {
-                    clearUserData() // Clear all stored user data
-                    appState = "setup" // Reset to start from the setup flow
+                    clearUserData()
+                    appState = "setup"
                 }) {
                     Text("Restart Setup")
                         .font(.headline)
@@ -103,45 +149,53 @@ struct DashboardView: View {
             }
             .padding()
             .onAppear {
-                loadUserData() // Fetch user data when view appears
+                loadUserData()
             }
         }
     }
-
+    
     // MARK: - Load User Data
     private func loadUserData() {
         let fetchRequest: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
         do {
-            if let userProfile = try PersistenceController.shared.context.fetch(fetchRequest).first {
-                name = userProfile.name ?? "John Doe"
-                currentWeight = Int(userProfile.weight)
-                goalWeight = Int(userProfile.goalWeight)
-                goalDate = userProfile.targetDate ?? Date()
-                if let profileImageData = userProfile.profilePicture {
+            if let profile = try PersistenceController.shared.context.fetch(fetchRequest).first {
+                userProfile = profile
+                name = profile.name ?? "John Doe"
+                currentWeight = Int(profile.weight)
+                goalWeight = Int(profile.goalWeight)
+                goalDate = profile.targetDate ?? Date()
+                dailyLimit = Int(profile.dailyLimit)
+                dayNumber = Int(profile.tempDayNumber) // Load the persisted day number
+
+                if let profileImageData = profile.profilePicture {
                     profilePicture = UIImage(data: profileImageData)
                 }
             }
         } catch {
-            print("Failed to fetch user profile: \(error)")
+            print("Failed to load user profile: \(error)")
         }
     }
-
+    
     // MARK: - Clear User Data
     private func clearUserData() {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = UserProfile.fetchRequest()
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-
+        let fetchUserProfileRequest: NSFetchRequest<NSFetchRequestResult> = UserProfile.fetchRequest()
+        let fetchDailyProgressRequest: NSFetchRequest<NSFetchRequestResult> = DailyProgress.fetchRequest()
+        
+        let deleteUserProfileRequest = NSBatchDeleteRequest(fetchRequest: fetchUserProfileRequest)
+        let deleteDailyProgressRequest = NSBatchDeleteRequest(fetchRequest: fetchDailyProgressRequest)
+        
         do {
-            try PersistenceController.shared.context.execute(deleteRequest)
+            // Delete all UserProfile entities
+            try PersistenceController.shared.context.execute(deleteUserProfileRequest)
+            
+            // Delete all DailyProgress entities
+            try PersistenceController.shared.context.execute(deleteDailyProgressRequest)
+            
+            // Save the context to apply changes
             try PersistenceController.shared.context.save()
-            print("User data cleared successfully.")
+            print("User data and daily progress cleared successfully.")
         } catch {
-            print("Failed to clear user data: \(error)")
+            print("Failed to clear user data or daily progress: \(error)")
         }
     }
 }
-
-#Preview {
-    DashboardView()
-}
-

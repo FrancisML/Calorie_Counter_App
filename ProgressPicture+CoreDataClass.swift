@@ -1,5 +1,5 @@
 //
-//  DailyProgress+CoreDataClass.swift
+//  ProgressPicture+CoreDataClass.swift
 //  Calorie counter
 //
 //  Created by frank lasalvia on 1/15/25.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(DailyProgress)
-public class DailyProgress: NSManagedObject {
+@objc(ProgressPicture)
+public class ProgressPicture: NSManagedObject {
 
 }

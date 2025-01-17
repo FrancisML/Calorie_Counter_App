@@ -9,20 +9,25 @@ import SwiftUI
 import CoreData
 
 struct DailyProgressView: View {
-    // Core Data Context
-    private let context = DailyProgressPersistenceController.shared.context
+    @ObservedObject var userProfile: UserProfile
+    private let context = PersistenceController.shared.context
 
     // State Properties
-    @State private var dailyLimit: Int = 0
-    @State private var dayNumber: Int = 1
-    @State private var calorieIntake: Int = 0
-    @State private var currentDate: Date = Date()
+    @Binding var dayNumber: Int
+    @Binding var dailyLimit: Int
+    @Binding var calorieIntake: Int
+    @Binding var ledger: [(type: String, name: String, calories: Int)]
+
+    
     @State private var lastSavedDate: Date? = nil
-    @State private var ledger: [(type: String, name: String, calories: Int)] = []
     @State private var showFoodInput = false
     @State private var showWorkoutInput = false
     @State private var inputName = ""
     @State private var inputCalories = ""
+    private var currentDate: Date {
+            guard let startDate = userProfile.startDate else { return Date() }
+            return Calendar.current.date(byAdding: .day, value: dayNumber - 1, to: startDate) ?? Date()
+        }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -52,7 +57,7 @@ struct DailyProgressView: View {
 
             // Remaining Calories or Over Limit Message
             if isOverLimit {
-                Text("You need to burn \(overCalorieAmount) cal to reach your goal today")
+                Text("You need to burn \(overCalorieAmount) cal today")
                     .font(.subheadline)
                     .foregroundColor(.red)
             } else {
@@ -120,32 +125,19 @@ struct DailyProgressView: View {
             // Ledger
             ScrollView {
                 VStack {
-                    ForEach(0..<max(ledger.count, 5), id: \ .self) { index in
-                        if index < ledger.count {
-                            let entry = ledger[index]
-                            HStack {
-                                Text(entry.type)
-                                    .foregroundColor(entry.type == "Workout" ? .red : .green)
-                                    .frame(width: 80, alignment: .leading)
-                                Text(entry.name)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .foregroundColor(entry.type == "Workout" ? .red : .green)
-                                Text("\(entry.calories)")
-                                    .foregroundColor(entry.type == "Workout" ? .red : .green)
-                                    .frame(width: 80, alignment: .trailing)
-                            }
-                            .padding(.vertical, 5)
-                        } else {
-                            HStack {
-                                Text("")
-                                    .frame(width: 80, alignment: .leading)
-                                Text("")
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                Text("")
-                                    .frame(width: 80, alignment: .trailing)
-                            }
-                            .padding(.vertical, 5)
+                    ForEach(ledger.indices, id: \ .self) { index in
+                        HStack {
+                            Text(ledger[index].type)
+                                .foregroundColor(ledger[index].type == "Workout" ? .red : .green)
+                                .frame(width: 80, alignment: .leading)
+                            Text(ledger[index].name)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .foregroundColor(ledger[index].type == "Workout" ? .red : .green)
+                            Text("\(ledger[index].calories)")
+                                .foregroundColor(ledger[index].type == "Workout" ? .red : .green)
+                                .frame(width: 80, alignment: .trailing)
                         }
+                        .padding(.vertical, 5)
                     }
                 }
                 .padding()
@@ -160,85 +152,80 @@ struct DailyProgressView: View {
         .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
         .onAppear {
             loadDailyProgress()
-            loadUserData()
-            checkAndResetForNewDay()
         }
     }
 
     // MARK: - Load Daily Progress
     private func loadDailyProgress() {
-        let fetchRequest: NSFetchRequest<DailyProgress> = DailyProgress.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        guard let dailyProgressSet = userProfile.dailyProgress as? Set<DailyProgress> else { return }
 
-        if let latestProgress = try? DailyProgressPersistenceController.shared.context.fetch(fetchRequest).first {
-            dayNumber = Int(latestProgress.dayNumber)
-            dailyLimit = Int(latestProgress.dailyLimit)
-            calorieIntake = Int(latestProgress.calorieIntake)
-            currentDate = latestProgress.date ?? Date()
-            lastSavedDate = latestProgress.date
+        // Filter progress for the current day
+        if let currentDayProgress = dailyProgressSet.first(where: { $0.dayNumber == Int32(dayNumber) }) {
+            dailyLimit = Int(currentDayProgress.dailyLimit)
+            calorieIntake = Int(currentDayProgress.calorieIntake)
 
-            if let ledgerEntries = latestProgress.ledgerEntries?.allObjects as? [LedgerEntry] {
+            if let ledgerEntries = currentDayProgress.ledgerEntries?.allObjects as? [LedgerEntry] {
                 ledger = ledgerEntries.map { entry in
                     (type: entry.type ?? "Unknown", name: entry.name ?? "Unnamed", calories: Int(entry.calories))
                 }
             }
+        } else {
+            // Start fresh if no progress for the current day exists
+            dailyLimit = Int(userProfile.dailyLimit)
+            resetDailyData()
         }
     }
+    private func resetDailyData() {
+        ledger.removeAll() // Clear the ledger
+        calorieIntake = 0 // Reset calorie intake
 
-    // MARK: - Save and Reset for a New Day
-    private func checkAndResetForNewDay() {
-        let calendar = Calendar.current
-        if let lastSavedDate = lastSavedDate,
-           calendar.isDate(lastSavedDate, inSameDayAs: Date()) {
-            return
-        }
+        // Use tempDayNumber or default to 1 if not set
+        dayNumber = Int(userProfile.tempDayNumber) > 0 ? Int(userProfile.tempDayNumber) : 1
+        dailyLimit = Int(userProfile.dailyLimit)
 
-        saveDailyProgressAndReset()
-    }
-    
-    private func loadUserData() {
-        let fetchRequest: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
+        lastSavedDate = currentDate
+        userProfile.lastSavedDate = lastSavedDate
+
         do {
-            if let userProfile = try PersistenceController.shared.context.fetch(fetchRequest).first {
-                dailyLimit = Int(userProfile.dailyLimit)
-            }
+            try context.save()
         } catch {
-            print("Failed to fetch user profile: \(error)")
+            print("Failed to reset daily data: \(error)")
         }
     }
 
-    private func saveDailyProgressAndReset() {
-        let context = DailyProgressPersistenceController.shared.context
-
-        let dailyProgress = DailyProgress(context: context)
-        dailyProgress.dayNumber = Int32(dayNumber)
-        dailyProgress.date = currentDate
-        dailyProgress.calorieIntake = Int32(calorieIntake)
-        dailyProgress.dailyLimit = Int32(dailyLimit)
-        dailyProgress.passOrFail = calorieIntake <= dailyLimit ? "Pass" : "Fail"
+    // MARK: - Save Daily Progress and Reset
+    func saveDailyProgressAndReset() {
+        // Create a new DailyProgress object for the current day
+        let newProgress = DailyProgress(context: context)
+        newProgress.dayNumber = Int32(dayNumber) // Use dayNumber for DailyProgress
+        newProgress.date = currentDate
+        newProgress.calorieIntake = Int32(calorieIntake)
+        newProgress.dailyLimit = Int32(dailyLimit)
+        newProgress.passOrFail = calorieIntake <= dailyLimit ? "Pass" : "Fail"
+        userProfile.addToDailyProgress(newProgress)
 
         for entry in ledger {
             let ledgerEntry = LedgerEntry(context: context)
             ledgerEntry.type = entry.type
             ledgerEntry.name = entry.name
             ledgerEntry.calories = Int32(entry.calories)
-            ledgerEntry.dailyProgress = dailyProgress
+            ledgerEntry.dailyProgress = newProgress
         }
 
         do {
+            // Increment and save the tempDayNumber in UserProfile
+            dayNumber += 1
+            userProfile.tempDayNumber = Int32(dayNumber)
             try context.save()
             print("Daily progress saved successfully!")
 
+            // Reset for the new day
             ledger.removeAll()
             calorieIntake = 0
-            currentDate = Date()
-            dayNumber += 1
-            lastSavedDate = currentDate
         } catch {
             print("Failed to save daily progress: \(error)")
         }
     }
-
     // MARK: - Computed Properties
     private var progress: CGFloat {
         guard dailyLimit > 0 else { return 0 }
@@ -259,5 +246,8 @@ struct DailyProgressView: View {
         return formatter.string(from: currentDate)
     }
 }
+
+
+
 
 
