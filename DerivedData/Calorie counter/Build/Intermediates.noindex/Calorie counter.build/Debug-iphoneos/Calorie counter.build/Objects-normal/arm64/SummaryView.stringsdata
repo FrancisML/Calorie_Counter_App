@@ -1,0 +1,48 @@
+{
+  "source": "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/SummaryView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Look Good?"
+      },
+      {
+        "comment": "",
+        "key": "Gender: %@"
+      },
+      {
+        "comment": "",
+        "key": "Height: %@"
+      },
+      {
+        "comment": "",
+        "key": "Weight: %lld %@"
+      },
+      {
+        "comment": "",
+        "key": "Age: %lld"
+      },
+      {
+        "comment": "",
+        "key": "Goal Weight: %lld %@"
+      },
+      {
+        "comment": "",
+        "key": "Activity Level: %@"
+      },
+      {
+        "comment": "",
+        "key": "Target Date: %@"
+      },
+      {
+        "comment": "",
+        "key": "Re-enter"
+      },
+      {
+        "comment": "",
+        "key": "Confirm"
+      }
+    ]
+  },
+  "version": 1
+}

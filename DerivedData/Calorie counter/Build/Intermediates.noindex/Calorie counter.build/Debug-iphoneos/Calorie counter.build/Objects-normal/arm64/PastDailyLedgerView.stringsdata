@@ -1,0 +1,40 @@
+{
+  "source": "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/PastDailyLedgerView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Day %d"
+      },
+      {
+        "comment": "",
+        "key": "Summary"
+      },
+      {
+        "comment": "",
+        "key": "Ledger"
+      },
+      {
+        "comment": "",
+        "key": "No entries for this day."
+      },
+      {
+        "comment": "",
+        "key": "Calorie Intake:"
+      },
+      {
+        "comment": "",
+        "key": "%d / %d cal"
+      },
+      {
+        "comment": "",
+        "key": "Status:"
+      },
+      {
+        "comment": "",
+        "key": "%d"
+      }
+    ]
+  },
+  "version": 1
+}

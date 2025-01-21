@@ -25,6 +25,7 @@ struct DailyProgressView: View {
     @State private var showWorkoutInput = false
     @State private var inputName = ""
     @State private var inputCalories = ""
+    @State private var dailyWeighIn: Int = 0
     private var currentDate: Date {
         guard let startDate = userProfile.startDate else { return Date() }
         return Calendar.current.date(byAdding: .day, value: dayNumber - 1, to: startDate) ?? Date()
@@ -45,15 +46,20 @@ struct DailyProgressView: View {
 
             // Progress Bar
             ZStack(alignment: .leading) {
-                Rectangle()
-                    .fill(Color.gray.opacity(0.2))
-                    .frame(height: 20)
-                    .cornerRadius(10)
+                GeometryReader { geometry in
+                    let barWidth = geometry.size.width // Measure container's width
 
-                Rectangle()
-                    .fill(isOverLimit ? Color.red : Color.green)
-                    .frame(width: UIScreen.main.bounds.width * progress, height: 20)
-                    .cornerRadius(10)
+                    Rectangle()
+                        .fill(Color.gray.opacity(0.2))
+                        .frame(height: 40)
+                        .cornerRadius(10)
+                    
+                    Rectangle()
+                        .fill(isOverLimit ? Color.red : Color.green)
+                        .frame(width: min(CGFloat(progress) * barWidth, barWidth), height: 40) // Cap width
+                        .cornerRadius(10)
+                }
+                .frame(height: 40) // Fixed height for the progress bar
             }
 
             // Remaining Calories or Over Limit Message
@@ -66,7 +72,7 @@ struct DailyProgressView: View {
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
-
+        
             // Buttons for Adding Food and Workout
             HStack {
                 Button("Add Food") {
@@ -112,6 +118,8 @@ struct DailyProgressView: View {
                             inputCalories = ""
                             showFoodInput = false
                             showWorkoutInput = false
+                            print("Daily Weigh-In Set To: \(dailyWeighIn)")
+                            
                         }
                     }
                     .frame(maxWidth: .infinity)
@@ -126,26 +134,42 @@ struct DailyProgressView: View {
             // Ledger
             ScrollView {
                 VStack {
-                    ForEach(ledger.indices, id: \ .self) { index in
-                        HStack {
-                            Text(ledger[index].type)
-                                .foregroundColor(ledger[index].type == "Workout" ? .red : .green)
-                                .frame(width: 80, alignment: .leading)
-                            Text(ledger[index].name)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .foregroundColor(ledger[index].type == "Workout" ? .red : .green)
-                            Text("\(ledger[index].calories)")
-                                .foregroundColor(ledger[index].type == "Workout" ? .red : .green)
-                                .frame(width: 80, alignment: .trailing)
+                    if ledger.isEmpty {
+                        // Placeholder for when the ledger is empty
+                        Text("Add a meal or activity")
+                            .font(.headline)
+                            .foregroundColor(.gray)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 10)
+                            .background(Color.gray.opacity(0.1))
+                            .cornerRadius(10)
+                    } else {
+                        // Render ledger items when not empty
+                        ForEach(ledger.indices, id: \.self) { index in
+                            HStack {
+                                Text(ledger[index].type)
+                                    .foregroundColor(ledger[index].type == "Workout" ? .red : .green)
+                                    .frame(width: 80, alignment: .leading)
+                                Text(ledger[index].name)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .foregroundColor(ledger[index].type == "Workout" ? .red : .green)
+                                Text("\(ledger[index].calories)")
+                                    .foregroundColor(ledger[index].type == "Workout" ? .red : .green)
+                                    .frame(width: 80, alignment: .trailing)
+                            }
+                            .padding(.vertical, 5)
                         }
-                        .padding(.vertical, 5)
                     }
                 }
+                .frame(maxWidth: .infinity, minHeight: CGFloat(5 * 40)) // Extend horizontally and simulate height of 5 items
                 .padding()
                 .background(Color.gray.opacity(0.1))
                 .cornerRadius(10)
             }
-            .frame(maxHeight: 200)
+            .frame(maxHeight: 200) // Ensures consistent height
+
+
+
 
             // Buttons for Weigh In and Progression
             HStack(spacing: 20) {
@@ -179,6 +203,7 @@ struct DailyProgressView: View {
             }
 
             // Weight Input Field
+            // Weight Input Field
             if showWeightInput {
                 VStack {
                     TextField("Enter Weight (lbs)", text: $inputWeight)
@@ -187,14 +212,18 @@ struct DailyProgressView: View {
                         .padding(.vertical)
 
                     Button(action: {
+                        print("Input Weight: \(inputWeight)") // Debugging: Log the raw input
+
                         if let weight = Int(inputWeight), weight > 0 {
-                            saveWeightToDailyProgress(weight: weight)
+                            dailyWeighIn = weight
+                            print("Daily Weigh-In Set To: \(dailyWeighIn)") // Debugging: Confirm State Update
                             showWeightInput = false
                             inputWeight = ""
                         } else {
-                            print("Invalid weight entered")
+                            print("Invalid weight entered or conversion failed.") // Debugging: Log invalid input
                         }
-                    }) {
+                    })
+                    {
                         HStack {
                             Image(systemName: "checkmark")
                             Text("Save Weight")
@@ -208,6 +237,7 @@ struct DailyProgressView: View {
                 }
                 .padding(.horizontal)
             }
+
         }
         .padding()
         .background(Color.white)
@@ -215,42 +245,19 @@ struct DailyProgressView: View {
         .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
         .onAppear {
             loadDailyProgress()
+            
         }
     }
 
     // MARK: - Save Weight to Daily Progress
     private func saveWeightToDailyProgress(weight: Int) {
-        guard let dailyProgressSet = userProfile.dailyProgress as? Set<DailyProgress> else { return }
+        // Update the local daily weigh-in variable
+        dailyWeighIn = weight
 
-        // Find or create progress for the current day
-        if let currentDayProgress = dailyProgressSet.first(where: { $0.dayNumber == Int32(dayNumber) }) {
-            currentDayProgress.dailyWeight = Int32(weight)
-        } else {
-            let newProgress = DailyProgress(context: context)
-            newProgress.dayNumber = Int32(dayNumber)
-            newProgress.date = currentDate
-            newProgress.dailyWeight = Int32(weight)
-            userProfile.addToDailyProgress(newProgress)
-        }
-
-        // Update the UserProfile weight immediately
-        userProfile.weight = Int32(weight)
-
-        // Debugging: Print the weight being saved
-        print("""
-        Saving Weight:
-        Entered Weight: \(weight)
-        Current UserProfile Weight: \(userProfile.weight)
-        """)
-
-        // Save changes to Core Data
-        do {
-            try context.save()
-            print("Weight saved successfully!")
-        } catch {
-            print("Failed to save weight: \(error)")
-        }
+        // Debugging: Print the updated weight
+        print("Updated local weigh-in for Day \(dayNumber): \(dailyWeighIn)")
     }
+
 
 
     // MARK: - Load Daily Progress
@@ -291,22 +298,40 @@ struct DailyProgressView: View {
     func saveDailyProgressAndReset() {
         // Create a new DailyProgress object for the current day
         let newProgress = DailyProgress(context: context)
-        newProgress.dayNumber = Int32(dayNumber) // Use dayNumber for DailyProgress
+        newProgress.dayNumber = Int32(dayNumber)
         newProgress.date = currentDate
         newProgress.calorieIntake = Int32(calorieIntake)
         newProgress.dailyLimit = Int32(dailyLimit)
         newProgress.passOrFail = calorieIntake <= dailyLimit ? "Pass" : "Fail"
 
-        // Set the weight for the day
-        if let weight = Int(inputWeight), weight > 0 {
-            newProgress.dailyWeight = Int32(weight)
-            userProfile.weight = Int32(weight) // Update the UserProfile's weight
+        // Calculate TDEE
+        let multiplier: Double
+        switch userProfile.activityLevel {
+        case "Sedentary": multiplier = 1.2
+        case "Lightly Active": multiplier = 1.375
+        case "Moderately Active": multiplier = 1.55
+        case "Very Active": multiplier = 1.725
+        case "Extra Active": multiplier = 1.9
+        default: multiplier = 1.2
+        }
+        let tdee = Int(Double(userProfile.userBMR) * multiplier)
+
+        // Calculate dailyCalorieDeficit
+        let dailyCalDeficit = tdee - calorieIntake
+        newProgress.dailyCalDeficit = Int32(dailyCalDeficit)
+
+        // Use `dailyWeighIn` for weight or fallback to `userProfile.weight`
+        if dailyWeighIn > 0 {
+            print("DailyWeighIN > 0")
+            newProgress.dailyWeight = Int32(dailyWeighIn)
+            userProfile.weight = Int32(dailyWeighIn) // Update UserProfile weight
         } else {
-            newProgress.dailyWeight = userProfile.weight // Use the existing weight from UserProfile
+            newProgress.dailyWeight = userProfile.weight // Default to UserProfile weight
         }
 
         userProfile.addToDailyProgress(newProgress)
 
+        // Save ledger entries
         for entry in ledger {
             let ledgerEntry = LedgerEntry(context: context)
             ledgerEntry.type = entry.type
@@ -320,7 +345,6 @@ struct DailyProgressView: View {
             dayNumber += 1
             userProfile.tempDayNumber = Int32(dayNumber)
 
-            // Debugging: Print what is being saved
             print("""
             Saving Daily Progress:
             Day Number: \(newProgress.dayNumber)
@@ -329,6 +353,7 @@ struct DailyProgressView: View {
             Daily Limit: \(newProgress.dailyLimit)
             Pass/Fail: \(newProgress.passOrFail ?? "Unknown")
             Daily Weight: \(newProgress.dailyWeight)
+            Daily Calorie Deficit: \(newProgress.dailyCalDeficit)
             User Profile Weight: \(userProfile.weight)
             """)
 
@@ -336,14 +361,19 @@ struct DailyProgressView: View {
             try context.save()
             print("Daily progress and weight saved successfully!")
 
-            // Reset for the new day
+            // Reset for the next day
             ledger.removeAll()
             calorieIntake = 0
-            inputWeight = "" // Clear the weight input field
+            inputWeight = ""
+            dailyWeighIn = 0 // Reset `dailyWeighIn`
         } catch {
             print("Failed to save daily progress: \(error)")
         }
     }
+
+
+
+
 
     // MARK: - Computed Properties
     private var progress: CGFloat {

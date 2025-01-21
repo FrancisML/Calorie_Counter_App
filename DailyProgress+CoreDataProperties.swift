@@ -2,7 +2,7 @@
 //  DailyProgress+CoreDataProperties.swift
 //  Calorie counter
 //
-//  Created by frank lasalvia on 1/15/25.
+//  Created by frank lasalvia on 1/17/25.
 //
 //
 
@@ -16,12 +16,13 @@ extension DailyProgress {
         return NSFetchRequest<DailyProgress>(entityName: "DailyProgress")
     }
 
+    @NSManaged public var calorieIntake: Int32
     @NSManaged public var dailyLimit: Int32
     @NSManaged public var dailyWeight: Int32
     @NSManaged public var date: Date?
     @NSManaged public var dayNumber: Int32
     @NSManaged public var passOrFail: String?
-    @NSManaged public var calorieIntake: Int32
+    @NSManaged public var dailyCalDeficit: Int32
     @NSManaged public var ledgerEntries: NSSet?
     @NSManaged public var userProfile: UserProfile?
 

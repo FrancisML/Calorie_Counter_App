@@ -1,0 +1,32 @@
+{
+  "source": "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/DashboardView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Loading user profile..."
+      },
+      {
+        "comment": "",
+        "key": "Current Weight: %lld lbs"
+      },
+      {
+        "comment": "",
+        "key": "Goal Weight: %lld lbs"
+      },
+      {
+        "comment": "",
+        "key": "Goal Date: %@"
+      },
+      {
+        "comment": "",
+        "key": "Simulate Day"
+      },
+      {
+        "comment": "",
+        "key": "Restart Setup"
+      }
+    ]
+  },
+  "version": 1
+}
