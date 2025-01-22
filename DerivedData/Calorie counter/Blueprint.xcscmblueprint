@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F4FC7C2E7A9D3DA192FFC09BC6B8DE703C2C3BE6",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F4FC7C2E7A9D3DA192FFC09BC6B8DE703C2C3BE6" : 0,
+    "34B7B6C08E2FB3B9C06EC32130C8D4B72612640A" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "AF37A994-5B53-4270-ADF6-1774AC3ED19E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F4FC7C2E7A9D3DA192FFC09BC6B8DE703C2C3BE6" : "Calorie%20counter\/",
+    "34B7B6C08E2FB3B9C06EC32130C8D4B72612640A" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Calorie counter",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Calorie counter.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/FrancisML\/ResumeWebsite.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "34B7B6C08E2FB3B9C06EC32130C8D4B72612640A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/FrancisML\/Calorie_Counter_App.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F4FC7C2E7A9D3DA192FFC09BC6B8DE703C2C3BE6"
+    }
+  ]
+}
