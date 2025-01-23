@@ -2,12 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-	<string>PhotosUI</string>
-	<string>SwiftUI</string>
 	<string>Combine</string>
+	<string>SwiftUI</string>
 	<string>Charts</string>
-	<string>CoreData</string>
-	<string>XCTest</string>
 	<string>Foundation</string>
+	<string>CoreData</string>
+	<string>PhotosUI</string>
+	<string>XCTest</string>
 </array>
 </plist>

@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+
+extension Color {
+    static let customGray = Color(red: 0.2, green: 0.2, blue: 0.2) // RGB for #666666
+}
+
 struct UserSetupView: View {
     @State private var name: String = ""
     @State private var gender: String = ""
@@ -14,6 +19,9 @@ struct UserSetupView: View {
     @State private var profilePicture: UIImage? = nil
     @State private var showDatePicker: Bool = false
     @State private var temporaryDate: Date? = nil
+    @State private var hasPickedDate: Bool = false
+    
+    
 
 
     var body: some View {
@@ -79,10 +87,12 @@ struct UserSetupView: View {
 
                     // Birth Date Selection
                     FloatingInputWithAction(
-                        placeholder: "Birthday",
+                        placeholder: " Birthday ",
                         displayedText: birthDateFormatted,
-                        action: { showDatePicker = true }
+                        action: { showDatePicker = true },
+                        hasPickedDate: $hasPickedDate // Pass the binding to hasPickedDate
                     )
+
 
                     // Profile Picture Section
                     HStack {
@@ -97,46 +107,65 @@ struct UserSetupView: View {
 
                         Spacer()
 
-                        if let image = profilePicture {
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFill()
+                        ZStack {
+                            // Background Circle
+                            Circle()
+                                .fill(Color.gray.opacity(0.3)) // Transparent gray base circle
                                 .frame(width: 100, height: 100)
-                                .clipShape(Circle())
-                                .overlay(Circle().stroke(Color.gray, lineWidth: 2))
-                        } else {
-                            ZStack {
-                                Circle()
-                                    .fill(Color.gray.opacity(0.3))
-                                    .frame(width: 100, height: 100)
 
+                            // Background Image (scaled to fit the circle)
+                            if let image = profilePicture {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFill() // Fills the circle completely
+                                    .frame(width: 100, height: 100)
+                                    .clipShape(Circle()) // Ensures it stays circular
+                                    .overlay(
+                                        Circle()
+                                            .fill(Color.black.opacity(0.2)) // Slightly see-through gray overlay
+                                    )
+                            } else {
                                 Image("Empty man PP")
                                     .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 50, height: 50)
-
-                                Button(action: { /* Add action to pick image */ }) {
-                                    Text("Add")
-                                        .font(.caption)
-                                        .foregroundColor(.blue)
-                                        .padding(5)
-                                        .background(Color.white)
-                                        .clipShape(Capsule())
-                                        .offset(y: 40)
-                                }
+                                    .scaledToFill() // Fills the circle completely
+                                    .frame(width: 100, height: 100)
+                                    .clipShape(Circle()) // Ensures it stays circular
+                                    .overlay(
+                                        Circle()
+                                            .fill(Color.black.opacity(0.2)) // Slightly see-through gray overlay
+                                    )
                             }
+
+                            // Add Button
+                            Button(action: {
+                                // Add action to pick image
+                            }) {
+                                Text("Add")
+                                    .font(.caption)
+                                    .foregroundColor(.blue)
+                                    .padding(10)
+                                    .background(Color.clear) // Transparent background
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 4)
+                                            .stroke(Color.blue, lineWidth: 1) // Blue border for the button
+                                    )
+                            }
+                            .frame(width: 60, height: 30) // Square button size
                         }
                     }
+
+
                 }
                 .padding(.horizontal, 20) // Add padding for centering
                 .padding(.vertical, 20)   // Add vertical padding
+           
                 .background(
                     RoundedRectangle(cornerRadius: 15)
-                        .fill(Color.gray.opacity(0.1)) // Light gray background
+                        .fill(Color.customGray) // Use the custom color
                 )
                 .overlay(
                     RoundedRectangle(cornerRadius: 15)
-                        .stroke(Color.gray.opacity(0.5), lineWidth: 2) // Lighter gray border
+                        .stroke(Color.white, lineWidth: 2) // Border color and width
                 )
                 .padding(.horizontal, 40) // Outer padding for layout
 
@@ -153,39 +182,70 @@ struct UserSetupView: View {
                 .disabled(!canProceed)
                 .padding(.horizontal)
             }
-            .sheet(isPresented: $showDatePicker) {
-                VStack {
-                    // DatePicker UI
-                    DatePicker(
-                        "Select Your Birthday",
-                        selection: Binding(
-                            get: { temporaryDate ?? Date() }, // Show current date if no temporary date
-                            set: { temporaryDate = $0 } // Update the temporary date
-                        ),
-                        displayedComponents: .date
-                    )
-                    .datePickerStyle(WheelDatePickerStyle())
-                    .labelsHidden()
-                    .padding()
+            .overlay(
+                Group {
+                    if showDatePicker {
+                        ZStack {
+                            // Dim background
+                            Color.black.opacity(0.3)
+                                .ignoresSafeArea()
 
-                    // Save and Cancel Buttons
-                    HStack {
-                        Button("Cancel") {
-                            showDatePicker = false // Dismiss the picker without saving
-                        }
-                        .frame(maxWidth: .infinity)
+                            // DatePicker Pop-Up
+                            VStack(spacing: 20) {
+                                Text("Select Your Birthday")
+                                    .font(.headline)
 
-                        Button("Save") {
-                            if let selectedDate = temporaryDate {
-                                birthDate = selectedDate // Save the selected date
+                                DatePicker(
+                                    "",
+                                    selection: Binding(
+                                        get: { temporaryDate ?? birthDate ?? Date() },
+                                        set: { temporaryDate = $0 }
+                                    ),
+                                    displayedComponents: .date
+                                )
+                                .datePickerStyle(WheelDatePickerStyle())
+                                .labelsHidden()
+                                .padding(.horizontal)
+
+                                // Save and Cancel Buttons
+                                HStack {
+                                    Button("Cancel") {
+                                        temporaryDate = nil // Reset temporary date
+                                        hasPickedDate = birthDate != nil // Retain the border color if there's an existing date
+                                        showDatePicker = false // Close picker
+                                    }
+                                    .frame(maxWidth: .infinity)
+
+                                    Button("Save") {
+                                        if let selectedDate = temporaryDate {
+                                            birthDate = selectedDate // Save the selected date
+                                            hasPickedDate = true // Mark as date picked
+                                        }
+                                        showDatePicker = false // Close picker
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                }
+                                .padding(.horizontal)
                             }
-                            showDatePicker = false // Dismiss the picker
+                            .padding(20)
+                            .background(
+                                RoundedRectangle(cornerRadius: 15)
+                                    .fill(Color.customGray) // Match input style
+                            )
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 15)
+                                    .stroke(Color.white, lineWidth: 2) // Match border style
+                            )
+                            .frame(width: UIScreen.main.bounds.width * 0.9) // Match Vstack width
                         }
-                        .frame(maxWidth: .infinity)
                     }
-                    .padding()
                 }
-            }
+            )
+
+
+
+
+
 
 
            
@@ -194,7 +254,7 @@ struct UserSetupView: View {
 
     // Computed property to check if all required fields are filled
     private var canProceed: Bool {
-        !name.isEmpty && !gender.isEmpty
+        !name.isEmpty && !gender.isEmpty && birthDate != nil
     }
 
     // Computed property to format the birth date
@@ -212,26 +272,43 @@ struct FloatingTextField: View {
     @Binding var text: String
     @FocusState private var isFocused: Bool
 
+    // Computed property to determine border color
+    private var borderColor: Color {
+        if !text.isEmpty {
+            return Color.blue // Blue when input is not empty
+        } else if isFocused {
+            return Color.blue // Blue when focused
+        } else {
+            return Color.gray // Default color
+        }
+    }
+
     var body: some View {
         ZStack(alignment: .leading) {
+            // Border
             RoundedRectangle(cornerRadius: 10)
-                .stroke(isFocused ? Color.blue : Color.gray, lineWidth: 2)
+                .stroke(borderColor, lineWidth: 2) // Use the computed border color
 
+            // Placeholder
             if isFocused || !text.isEmpty {
                 Text(placeholder)
                     .font(.caption)
                     .foregroundColor(.gray)
-                    .background(Color(.systemBackground))
+                    .background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color.customGray) // Use the custom color
+                    )
                     .padding(.horizontal, 4)
                     .offset(x: 12, y: -29)
                     .animation(.easeInOut, value: isFocused || !text.isEmpty)
             }
 
+            // TextField and Icon
             HStack {
                 TextField(isFocused || !text.isEmpty ? "" : placeholder, text: $text)
                     .focused($isFocused)
                     .font(.system(size: 18))
-                    .foregroundColor(!text.isEmpty ? .yellow : .primary)
+                    .foregroundColor(.primary)
                     .padding(.vertical, 10)
                     .padding(.horizontal, 10)
 
@@ -250,22 +327,35 @@ struct FloatingTextField: View {
     }
 }
 
+
 struct FloatingInputWithAction: View {
     var placeholder: String
     var displayedText: String
     var action: () -> Void
+    @Binding var hasPickedDate: Bool // Bind to parent's state
     @State private var isFocused: Bool = false
+
+    private var borderColor: Color {
+        if hasPickedDate {
+            return Color.blue // Blue if a date is picked and saved
+        } else {
+            return Color.gray // Default border color
+        }
+    }
 
     var body: some View {
         ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 10)
-                .stroke(isFocused ? Color.blue : Color.gray, lineWidth: 2)
+                .stroke(borderColor, lineWidth: 2)
 
             if isFocused || !displayedText.isEmpty {
                 Text(placeholder)
                     .font(.caption)
                     .foregroundColor(.gray)
-                    .background(Color(.systemBackground))
+                    .background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color.customGray)
+                    )
                     .padding(.horizontal, 4)
                     .offset(x: 12, y: -29)
                     .animation(.easeInOut, value: isFocused || !displayedText.isEmpty)
@@ -283,7 +373,7 @@ struct FloatingInputWithAction: View {
                         .padding(.vertical, 10)
                         .padding(.horizontal, 10)
 
-                    if !displayedText.isEmpty {
+                    if hasPickedDate {
                         Image(systemName: "checkmark.circle.fill")
                             .resizable()
                             .scaledToFit()
@@ -298,6 +388,8 @@ struct FloatingInputWithAction: View {
         .padding(.horizontal, 0)
     }
 }
+
+
 
 
 
