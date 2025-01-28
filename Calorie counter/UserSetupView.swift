@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 extension Color {
     static let customGray = Color(red: 0.2, green: 0.2, blue: 0.2) // RGB for #666666
 }
@@ -20,9 +19,9 @@ struct UserSetupView: View {
     @State private var showDatePicker: Bool = false
     @State private var temporaryDate: Date? = nil
     @State private var hasPickedDate: Bool = false
-    
-    
-
+    @State private var showImagePicker = false
+    @State private var imagePickerSourceType: UIImagePickerController.SourceType = .camera
+    @State private var showActionSheet = false // To show the action sheet
 
     var body: some View {
         NavigationView {
@@ -53,10 +52,10 @@ struct UserSetupView: View {
                         .font(.subheadline)
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.center)
-                        .frame(maxWidth: 300) // Limit width for wrapping
+                        .frame(maxWidth: 300)
                 }
-                .frame(maxWidth: .infinity) // Makes the VStack take full width
-                .multilineTextAlignment(.center) // Centers the text within the VStack
+                .frame(maxWidth: .infinity)
+                .multilineTextAlignment(.center)
                 .padding(.horizontal)
 
                 // Input Fields
@@ -64,6 +63,7 @@ struct UserSetupView: View {
                     // Name Input
                     FloatingTextField(placeholder: " First Name ", text: $name)
 
+                   
                     // Gender Selection
                     HStack(spacing: 20) {
                         Button(action: { gender = "Man" }) {
@@ -73,6 +73,10 @@ struct UserSetupView: View {
                                 .background(gender == "Man" ? Color.blue : Color.gray.opacity(0.3))
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(gender == "Man" ? Color.green : Color.clear, lineWidth: 3)
+                                )
                         }
 
                         Button(action: { gender = "Woman" }) {
@@ -82,18 +86,24 @@ struct UserSetupView: View {
                                 .background(gender == "Woman" ? Color.pink : Color.gray.opacity(0.3))
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(gender == "Woman" ? Color.green : Color.clear, lineWidth: 3)
+                                )
                         }
                     }
+
+
 
                     // Birth Date Selection
                     FloatingInputWithAction(
                         placeholder: " Birthday ",
                         displayedText: birthDateFormatted,
                         action: { showDatePicker = true },
-                        hasPickedDate: $hasPickedDate // Pass the binding to hasPickedDate
+                        hasPickedDate: $hasPickedDate
                     )
 
-
+                    // Profile Picture Section
                     // Profile Picture Section
                     HStack {
                         VStack(alignment: .leading) {
@@ -108,79 +118,113 @@ struct UserSetupView: View {
                         Spacer()
 
                         ZStack {
-                            // Background Circle
+                            // Border Circle
                             Circle()
-                                .fill(Color.gray.opacity(0.3)) // Transparent gray base circle
+                                .stroke(profilePicture != nil ? Color.green : Color.gray, lineWidth: 3)
                                 .frame(width: 100, height: 100)
 
-                            // Background Image (scaled to fit the circle)
+                            // Background Circle
+                            Circle()
+                                .fill(Color.gray.opacity(0.3))
+                                .frame(width: 100, height: 100)
+
+                            // Profile Picture
                             if let image = profilePicture {
                                 Image(uiImage: image)
                                     .resizable()
-                                    .scaledToFill() // Fills the circle completely
+                                    .scaledToFill()
                                     .frame(width: 100, height: 100)
-                                    .clipShape(Circle()) // Ensures it stays circular
-                                    .overlay(
-                                        Circle()
-                                            .fill(Color.black.opacity(0.2)) // Slightly see-through gray overlay
-                                    )
+                                    .clipShape(Circle())
                             } else {
                                 Image("Empty man PP")
                                     .resizable()
-                                    .scaledToFill() // Fills the circle completely
+                                    .scaledToFill()
                                     .frame(width: 100, height: 100)
-                                    .clipShape(Circle()) // Ensures it stays circular
-                                    .overlay(
-                                        Circle()
-                                            .fill(Color.black.opacity(0.2)) // Slightly see-through gray overlay
-                                    )
+                                    .clipShape(Circle())
                             }
 
-                            // Add Button
+                            // Semi-Transparent Overlay
+                            Circle()
+                                .fill(Color.black.opacity(0.5)) // Semi-transparent grey overlay
+                                .frame(width: 100, height: 100)
+
+                            // Add Button with Larger Text
                             Button(action: {
-                                // Add action to pick image
+                                showActionSheet = true // Show the action sheet
                             }) {
                                 Text("Add")
-                                    .font(.caption)
-                                    .foregroundColor(.blue)
+                                    .font(.headline)
+                                    .foregroundColor(.white)
                                     .padding(10)
-                                    .background(Color.clear) // Transparent background
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 4)
-                                            .stroke(Color.blue, lineWidth: 1) // Blue border for the button
-                                    )
+                                    .frame(width: 100, height: 100)
+                                    .background(Color.clear)
                             }
-                            .frame(width: 60, height: 30) // Square button size
+                            .actionSheet(isPresented: $showActionSheet) {
+                                ActionSheet(
+                                    title: Text("Select Profile Picture"),
+                                    buttons: [
+                                        .default(Text("Take a Photo")) {
+                                            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                                                imagePickerSourceType = .camera
+                                                showImagePicker = true // Open the image picker
+                                            } else {
+                                                
+                                            }
+                                        },
+                                        .default(Text("Choose from Library")) {
+                                            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                                                imagePickerSourceType = .photoLibrary
+                                                showImagePicker = true // Open the image picker
+                                            } else {
+                                                
+                                            }
+                                        },
+                                        .cancel()
+                                    ]
+                                )
+                            }
+                            .sheet(isPresented: $showImagePicker) {
+                                ImagePicker(selectedImage: $profilePicture, sourceType: imagePickerSourceType)
+                            }
+
                         }
                     }
 
-
                 }
-                .padding(.horizontal, 20) // Add padding for centering
-                .padding(.vertical, 20)   // Add vertical padding
-           
+                .padding(.horizontal, 20)
+                .padding(.vertical, 20)
                 .background(
                     RoundedRectangle(cornerRadius: 15)
-                        .fill(Color.customGray) // Use the custom color
+                        .fill(Color.customGray)
                 )
                 .overlay(
                     RoundedRectangle(cornerRadius: 15)
-                        .stroke(Color.white, lineWidth: 2) // Border color and width
+                        .stroke(Color.white, lineWidth: 2)
                 )
-                .padding(.horizontal, 40) // Outer padding for layout
+                .padding(.horizontal, 40)
 
                 Spacer()
 
                 // Next Button
-                Button(action: { /* Proceed to next screen */ }) {
-                    Text("Next")
-                        .frame(maxWidth: .infinity, minHeight: 50)
-                        .background(canProceed ? Color.blue : Color.gray)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+                HStack {
+                    Spacer() // Push the button to the right
+
+                    Button(action: { /* Proceed to next screen */ }) {
+                        Text("Next")
+                            .font(.title2) // Slightly larger text
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 10) // Increased vertical padding to make the button 30% taller
+                            .background(canProceed ? Color.blue : Color.gray)
+                            .cornerRadius(25) // Slightly more rounded corners
+                    }
+                    .disabled(!canProceed)
+                    .padding(.trailing, 20) // Add padding from the right edge
+                    .padding(.bottom, 30) // Add padding from the bottom edge
                 }
-                .disabled(!canProceed)
-                .padding(.horizontal)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+
+
             }
             .overlay(
                 Group {
@@ -210,18 +254,18 @@ struct UserSetupView: View {
                                 // Save and Cancel Buttons
                                 HStack {
                                     Button("Cancel") {
-                                        temporaryDate = nil // Reset temporary date
-                                        hasPickedDate = birthDate != nil // Retain the border color if there's an existing date
-                                        showDatePicker = false // Close picker
+                                        temporaryDate = nil
+                                        hasPickedDate = birthDate != nil
+                                        showDatePicker = false
                                     }
                                     .frame(maxWidth: .infinity)
 
                                     Button("Save") {
                                         if let selectedDate = temporaryDate {
-                                            birthDate = selectedDate // Save the selected date
-                                            hasPickedDate = true // Mark as date picked
+                                            birthDate = selectedDate
+                                            hasPickedDate = true
                                         }
-                                        showDatePicker = false // Close picker
+                                        showDatePicker = false
                                     }
                                     .frame(maxWidth: .infinity)
                                 }
@@ -230,34 +274,24 @@ struct UserSetupView: View {
                             .padding(20)
                             .background(
                                 RoundedRectangle(cornerRadius: 15)
-                                    .fill(Color.customGray) // Match input style
+                                    .fill(Color.customGray)
                             )
                             .overlay(
                                 RoundedRectangle(cornerRadius: 15)
-                                    .stroke(Color.white, lineWidth: 2) // Match border style
+                                    .stroke(Color.white, lineWidth: 2)
                             )
-                            .frame(width: UIScreen.main.bounds.width * 0.9) // Match Vstack width
+                            .frame(width: UIScreen.main.bounds.width * 0.9)
                         }
                     }
                 }
             )
-
-
-
-
-
-
-
-           
         }
     }
 
-    // Computed property to check if all required fields are filled
     private var canProceed: Bool {
         !name.isEmpty && !gender.isEmpty && birthDate != nil
     }
 
-    // Computed property to format the birth date
     private var birthDateFormatted: String {
         guard let birthDate = birthDate else { return "" }
         let formatter = DateFormatter()
@@ -266,44 +300,39 @@ struct UserSetupView: View {
     }
 }
 
-
 struct FloatingTextField: View {
     var placeholder: String
     @Binding var text: String
     @FocusState private var isFocused: Bool
 
-    // Computed property to determine border color
     private var borderColor: Color {
         if !text.isEmpty {
-            return Color.blue // Blue when input is not empty
+            return Color.blue
         } else if isFocused {
-            return Color.blue // Blue when focused
+            return Color.blue
         } else {
-            return Color.gray // Default color
+            return Color.gray
         }
     }
 
     var body: some View {
         ZStack(alignment: .leading) {
-            // Border
             RoundedRectangle(cornerRadius: 10)
-                .stroke(borderColor, lineWidth: 2) // Use the computed border color
+                .stroke(borderColor, lineWidth: 2)
 
-            // Placeholder
             if isFocused || !text.isEmpty {
                 Text(placeholder)
                     .font(.caption)
                     .foregroundColor(.gray)
                     .background(
                         RoundedRectangle(cornerRadius: 15)
-                            .fill(Color.customGray) // Use the custom color
+                            .fill(Color.customGray)
                     )
                     .padding(.horizontal, 4)
                     .offset(x: 12, y: -29)
                     .animation(.easeInOut, value: isFocused || !text.isEmpty)
             }
 
-            // TextField and Icon
             HStack {
                 TextField(isFocused || !text.isEmpty ? "" : placeholder, text: $text)
                     .focused($isFocused)
@@ -327,19 +356,18 @@ struct FloatingTextField: View {
     }
 }
 
-
 struct FloatingInputWithAction: View {
     var placeholder: String
     var displayedText: String
     var action: () -> Void
-    @Binding var hasPickedDate: Bool // Bind to parent's state
+    @Binding var hasPickedDate: Bool
     @State private var isFocused: Bool = false
 
     private var borderColor: Color {
         if hasPickedDate {
-            return Color.blue // Blue if a date is picked and saved
+            return Color.blue
         } else {
-            return Color.gray // Default border color
+            return Color.gray
         }
     }
 
@@ -388,6 +416,15 @@ struct FloatingInputWithAction: View {
         .padding(.horizontal, 0)
     }
 }
+
+func presentAlert(alert: UIAlertController) {
+    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+       let window = windowScene.windows.first,
+       let rootViewController = window.rootViewController {
+        rootViewController.present(alert, animated: true)
+    }
+}
+
 
 
 

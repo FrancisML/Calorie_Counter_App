@@ -142,7 +142,7 @@ struct DashboardSetupView: View {
                         .padding()
 
                     Button("Go to Dashboard") {
-                        saveUserProfile()
+//                        saveUserProfile()
                         appState = "dashboard"
                     }
                     .frame(maxWidth: .infinity, minHeight: 50)
@@ -155,44 +155,44 @@ struct DashboardSetupView: View {
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
         }
-        .sheet(isPresented: $isPickingProfilePicture) {
-            ImagePicker { image in
-                profilePicture = image
-            }
-        }
-        .sheet(isPresented: $isPickingBeginningPicture) {
-            ImagePicker { image in
-                startPicture = image
-            }
+//        .sheet(isPresented: $isPickingProfilePicture) {
+//            ImagePicker { image in
+//                profilePicture = image
+//            }
+//        }
+//        .sheet(isPresented: $isPickingBeginningPicture) {
+//            ImagePicker { image in
+//                startPicture = image
+//            }
         }
     }
 
     // MARK: - Save User Profile
-    private func saveUserProfile() {
-        let fetchRequest: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
-
-        do {
-            let userProfiles = try PersistenceController.shared.context.fetch(fetchRequest)
-            let userProfile = userProfiles.first ?? UserProfile(context: PersistenceController.shared.context)
-
-            userProfile.name = name
-            userProfile.startDate = userProfile.startDate ?? Date() // Set startDate only if it hasn't been set before
-            if let profileImageData = profilePicture?.jpegData(compressionQuality: 0.8) {
-                userProfile.profilePicture = profileImageData
-            }
-            if let beginningImageData = startPicture?.jpegData(compressionQuality: 0.8) {
-                userProfile.startPicture = beginningImageData
-            }
-
-            try PersistenceController.shared.context.save()
-            print("User profile saved successfully.")
-        } catch {
-            print("Failed to save user profile: \(error)")
-        }
-    }
-
-}
-
-#Preview {
-    DashboardSetupView()
-}
+//    private func saveUserProfile() {
+//        let fetchRequest: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
+//
+//        do {
+//            let userProfiles = try PersistenceController.shared.context.fetch(fetchRequest)
+//            let userProfile = userProfiles.first ?? UserProfile(context: PersistenceController.shared.context)
+//
+//            userProfile.name = name
+//            userProfile.startDate = userProfile.startDate ?? Date() // Set startDate only if it hasn't been set before
+//            if let profileImageData = profilePicture?.jpegData(compressionQuality: 0.8) {
+//                userProfile.profilePicture = profileImageData
+//            }
+//            if let beginningImageData = startPicture?.jpegData(compressionQuality: 0.8) {
+//                userProfile.startPicture = beginningImageData
+//            }
+//
+//            try PersistenceController.shared.context.save()
+//            print("User profile saved successfully.")
+//        } catch {
+//            print("Failed to save user profile: \(error)")
+//        }
+//    }
+//
+//}
+//
+//#Preview {
+//    DashboardSetupView()
+//}

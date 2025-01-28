@@ -58,13 +58,9 @@ struct AddProgressPictureView: View {
             .foregroundColor(.white)
             .cornerRadius(10)
         }
-        .sheet(isPresented: $showImagePicker) {
-            ImagePicker { image in
-                selectedImage = image
-                showImagePicker = false
-            }
+       
         }
-        .padding()
+     
     }
-}
+
 
