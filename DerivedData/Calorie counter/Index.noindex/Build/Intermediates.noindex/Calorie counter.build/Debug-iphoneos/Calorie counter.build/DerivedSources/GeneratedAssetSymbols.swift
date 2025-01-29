@@ -31,6 +31,27 @@ extension DeveloperToolsSupport.ColorResource {
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 extension DeveloperToolsSupport.ImageResource {
 
+    /// The "AL-0" asset catalog image resource.
+    static let AL_0 = DeveloperToolsSupport.ImageResource(name: "AL-0", bundle: resourceBundle)
+
+    /// The "AL-1" asset catalog image resource.
+    static let AL_1 = DeveloperToolsSupport.ImageResource(name: "AL-1", bundle: resourceBundle)
+
+    /// The "AL-2" asset catalog image resource.
+    static let AL_2 = DeveloperToolsSupport.ImageResource(name: "AL-2", bundle: resourceBundle)
+
+    /// The "AL-3" asset catalog image resource.
+    static let AL_3 = DeveloperToolsSupport.ImageResource(name: "AL-3", bundle: resourceBundle)
+
+    /// The "AL-4" asset catalog image resource.
+    static let AL_4 = DeveloperToolsSupport.ImageResource(name: "AL-4", bundle: resourceBundle)
+
+    /// The "AL-5" asset catalog image resource.
+    static let AL_5 = DeveloperToolsSupport.ImageResource(name: "AL-5", bundle: resourceBundle)
+
+    /// The "AL-6" asset catalog image resource.
+    static let AL_6 = DeveloperToolsSupport.ImageResource(name: "AL-6", bundle: resourceBundle)
+
     /// The "BMR" asset catalog image resource.
     static let BMR = DeveloperToolsSupport.ImageResource(name: "BMR", bundle: resourceBundle)
 
@@ -123,6 +144,69 @@ extension SwiftUI.ShapeStyle where Self == SwiftUI.Color {
 @available(macOS 14.0, *)
 @available(macCatalyst, unavailable)
 extension AppKit.NSImage {
+
+    /// The "AL-0" asset catalog image.
+    static var AL_0: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .AL_0)
+#else
+        .init()
+#endif
+    }
+
+    /// The "AL-1" asset catalog image.
+    static var AL_1: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .AL_1)
+#else
+        .init()
+#endif
+    }
+
+    /// The "AL-2" asset catalog image.
+    static var AL_2: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .AL_2)
+#else
+        .init()
+#endif
+    }
+
+    /// The "AL-3" asset catalog image.
+    static var AL_3: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .AL_3)
+#else
+        .init()
+#endif
+    }
+
+    /// The "AL-4" asset catalog image.
+    static var AL_4: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .AL_4)
+#else
+        .init()
+#endif
+    }
+
+    /// The "AL-5" asset catalog image.
+    static var AL_5: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .AL_5)
+#else
+        .init()
+#endif
+    }
+
+    /// The "AL-6" asset catalog image.
+    static var AL_6: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .AL_6)
+#else
+        .init()
+#endif
+    }
 
     /// The "BMR" asset catalog image.
     static var BMR: AppKit.NSImage {
@@ -293,6 +377,69 @@ extension AppKit.NSImage {
 @available(iOS 17.0, tvOS 17.0, *)
 @available(watchOS, unavailable)
 extension UIKit.UIImage {
+
+    /// The "AL-0" asset catalog image.
+    static var AL_0: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .AL_0)
+#else
+        .init()
+#endif
+    }
+
+    /// The "AL-1" asset catalog image.
+    static var AL_1: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .AL_1)
+#else
+        .init()
+#endif
+    }
+
+    /// The "AL-2" asset catalog image.
+    static var AL_2: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .AL_2)
+#else
+        .init()
+#endif
+    }
+
+    /// The "AL-3" asset catalog image.
+    static var AL_3: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .AL_3)
+#else
+        .init()
+#endif
+    }
+
+    /// The "AL-4" asset catalog image.
+    static var AL_4: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .AL_4)
+#else
+        .init()
+#endif
+    }
+
+    /// The "AL-5" asset catalog image.
+    static var AL_5: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .AL_5)
+#else
+        .init()
+#endif
+    }
+
+    /// The "AL-6" asset catalog image.
+    static var AL_6: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .AL_6)
+#else
+        .init()
+#endif
+    }
 
     /// The "BMR" asset catalog image.
     static var BMR: UIKit.UIImage {
