@@ -163,6 +163,127 @@ struct HeightPicker: View {
         }
     }
 }
+// MARK: - Activity Level View
+import SwiftUI
+
+struct CustomActivitySlider: View {
+    @Binding var activityLevel: Int
+
+    private let activityImages = ["AL-1", "AL-2", "AL-3", "AL-4", "AL-5", "AL-6"]
+    private let activityNames = ["None", "Sedentary", "Lightly Active", "Moderately Active", "Very Active", "Extra Active"]
+    private let activityDescriptions = [
+        "No physical activity at all.",
+        "Little to no exercise. Mostly sitting throughout the day.",
+        "Light exercise or sports 1-3 days per week.",
+        "Moderate exercise or sports 3-5 days per week.",
+        "Hard exercise or sports 6-7 days per week.",
+        "Very intense exercise, physical job, or training twice per day."
+    ]
+
+    private let stepCount = 5  // Number of stops (0 to 5)
+    private let trackOffset: CGFloat = 30  //  Move the track & tick marks down
+
+    @State private var dragOffset: CGFloat = 0
+    @State private var liveActivityLevel: Int  //  Live updates while dragging
+
+    private let trackWidth: CGFloat = UIScreen.main.bounds.width * 0.75  //  Keep within parent
+    private let thumbSize: CGFloat = 55  //  Thumb (slider image) size
+
+    init(activityLevel: Binding<Int>) {
+        _activityLevel = activityLevel
+        _liveActivityLevel = State(initialValue: activityLevel.wrappedValue)  //  Sync initial value
+    }
+
+    var body: some View {
+        VStack(spacing: 15) {
+            Text("Activity Level")
+                .font(.headline)
+                .padding(.bottom, 10)
+
+            // **Activity Image (Updates LIVE)**
+            Image(activityImages[liveActivityLevel])
+                .resizable()
+                .scaledToFit()
+                .frame(width: 80, height: 80)
+
+            // **Activity Name (Updates LIVE)**
+            Text(activityNames[liveActivityLevel])
+                .font(.subheadline)
+                .font(.title2)
+                .fontWeight(.bold)
+
+            // **Activity Description (Updates LIVE)**
+            Text(activityDescriptions[liveActivityLevel])
+                .font(.subheadline)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 20)
+
+            // **Custom Slider with Tick Marks**
+            ZStack(alignment: .leading) {
+                // **Track (Moves Down)**
+                RoundedRectangle(cornerRadius: 4)
+                    .frame(width: trackWidth, height: 10)
+                    .foregroundColor(Color.gray.opacity(0.5))
+                    .offset(y: trackOffset)  // Move track down
+
+                // **Tick Marks (Moves Down with Track)**
+                HStack(spacing: (trackWidth - thumbSize) / CGFloat(stepCount)) {
+                    ForEach(0...stepCount, id: \.self) { index in
+                        Rectangle()
+                            .frame(width: 3, height: 20) //  Tick Mark Size
+                            .foregroundColor(Color.customGray)
+                    }
+                }
+                .frame(width: trackWidth, height: 20)
+                .offset(y: trackOffset)  // Move tick marks down to match the track
+
+                // **Draggable Image (Acts as the Thumb)**
+                Image("SliderIcon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: thumbSize, height: thumbSize)
+                    .offset(x: dragOffset)
+                    .gesture(
+                        DragGesture()
+                            .onChanged { gesture in
+                                let newOffset = min(
+                                    max(gesture.translation.width + stepPosition(activityLevel), 0),  //  Left boundary
+                                    trackWidth - thumbSize  //  Right boundary (fixed)
+                                )
+                                dragOffset = newOffset
+                                liveActivityLevel = closestStep(for: dragOffset)  //  Live update
+                            }
+                            .onEnded { _ in
+                                let newLevel = closestStep(for: dragOffset)
+                                activityLevel = newLevel  //  Saves final selection
+                                liveActivityLevel = newLevel  //  Ensures UI stays synced
+                                dragOffset = stepPosition(newLevel)  // Snap to step position
+                            }
+                    )
+            }
+            .frame(width: trackWidth, height: 80)  // Increased height for spacing
+        }
+        .onAppear {
+            dragOffset = stepPosition(activityLevel)
+            liveActivityLevel = activityLevel  // Sync initial state
+        }
+    }
+
+    // 🔹 **Returns the position of a step**
+    private func stepPosition(_ step: Int) -> CGFloat {
+        let stepSpacing = (trackWidth - thumbSize) / CGFloat(stepCount)
+        return stepSpacing * CGFloat(step)
+    }
+
+    // 🔹 **Finds the closest step based on position**
+    private func closestStep(for offset: CGFloat) -> Int {
+        let stepSpacing = (trackWidth - thumbSize) / CGFloat(stepCount)
+        return Int(round(offset / stepSpacing))
+    }
+}
+
+
 
 // MARK: - Utility Function to Present Alerts
 func presentAlert(alert: UIAlertController) {

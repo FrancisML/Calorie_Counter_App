@@ -36,6 +36,9 @@ static NSString * const ACImageNameEmptyManPP AC_SWIFT_PRIVATE = @"Empty man PP"
 /// The "Empty woman PP" asset catalog image resource.
 static NSString * const ACImageNameEmptyWomanPP AC_SWIFT_PRIVATE = @"Empty woman PP";
 
+/// The "SliderIcon" asset catalog image resource.
+static NSString * const ACImageNameSliderIcon AC_SWIFT_PRIVATE = @"SliderIcon";
+
 /// The "age" asset catalog image resource.
 static NSString * const ACImageNameAge AC_SWIFT_PRIVATE = @"age";
 

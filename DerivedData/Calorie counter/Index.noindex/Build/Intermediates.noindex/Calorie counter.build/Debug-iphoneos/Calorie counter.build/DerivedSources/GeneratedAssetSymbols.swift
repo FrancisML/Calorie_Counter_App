@@ -61,6 +61,9 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "Empty woman PP" asset catalog image resource.
     static let emptyWomanPP = DeveloperToolsSupport.ImageResource(name: "Empty woman PP", bundle: resourceBundle)
 
+    /// The "SliderIcon" asset catalog image resource.
+    static let sliderIcon = DeveloperToolsSupport.ImageResource(name: "SliderIcon", bundle: resourceBundle)
+
     /// The "age" asset catalog image resource.
     static let age = DeveloperToolsSupport.ImageResource(name: "age", bundle: resourceBundle)
 
@@ -230,6 +233,15 @@ extension AppKit.NSImage {
     static var emptyWomanPP: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .emptyWomanPP)
+#else
+        .init()
+#endif
+    }
+
+    /// The "SliderIcon" asset catalog image.
+    static var sliderIcon: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .sliderIcon)
 #else
         .init()
 #endif
@@ -463,6 +475,15 @@ extension UIKit.UIImage {
     static var emptyWomanPP: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .emptyWomanPP)
+#else
+        .init()
+#endif
+    }
+
+    /// The "SliderIcon" asset catalog image.
+    static var sliderIcon: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .sliderIcon)
 #else
         .init()
 #endif

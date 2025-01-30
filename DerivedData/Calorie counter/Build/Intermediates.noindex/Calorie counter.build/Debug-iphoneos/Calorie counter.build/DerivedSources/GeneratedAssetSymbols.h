@@ -6,6 +6,27 @@
 #define AC_SWIFT_PRIVATE
 #endif
 
+/// The "AL-0" asset catalog image resource.
+static NSString * const ACImageName_AL_0 AC_SWIFT_PRIVATE = @"AL-0";
+
+/// The "AL-1" asset catalog image resource.
+static NSString * const ACImageName_AL_1 AC_SWIFT_PRIVATE = @"AL-1";
+
+/// The "AL-2" asset catalog image resource.
+static NSString * const ACImageName_AL_2 AC_SWIFT_PRIVATE = @"AL-2";
+
+/// The "AL-3" asset catalog image resource.
+static NSString * const ACImageName_AL_3 AC_SWIFT_PRIVATE = @"AL-3";
+
+/// The "AL-4" asset catalog image resource.
+static NSString * const ACImageName_AL_4 AC_SWIFT_PRIVATE = @"AL-4";
+
+/// The "AL-5" asset catalog image resource.
+static NSString * const ACImageName_AL_5 AC_SWIFT_PRIVATE = @"AL-5";
+
+/// The "AL-6" asset catalog image resource.
+static NSString * const ACImageName_AL_6 AC_SWIFT_PRIVATE = @"AL-6";
+
 /// The "BMR" asset catalog image resource.
 static NSString * const ACImageNameBMR AC_SWIFT_PRIVATE = @"BMR";
 
@@ -14,6 +35,9 @@ static NSString * const ACImageNameEmptyManPP AC_SWIFT_PRIVATE = @"Empty man PP"
 
 /// The "Empty woman PP" asset catalog image resource.
 static NSString * const ACImageNameEmptyWomanPP AC_SWIFT_PRIVATE = @"Empty woman PP";
+
+/// The "SliderIcon" asset catalog image resource.
+static NSString * const ACImageNameSliderIcon AC_SWIFT_PRIVATE = @"SliderIcon";
 
 /// The "age" asset catalog image resource.
 static NSString * const ACImageNameAge AC_SWIFT_PRIVATE = @"age";

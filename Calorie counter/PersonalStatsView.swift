@@ -65,31 +65,7 @@ struct PersonalStatsView: View {
                 )
 
 
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Activity Level")
-                        .font(.headline)
-
-                    Slider(value: Binding(
-                        get: { Double(activityLevel) },
-                        set: { activityLevel = Int($0) }
-                    ), in: 0...5, step: 1)
-                        .accentColor(.blue)
-
-                    HStack {
-                        Text("None")
-                        Spacer()
-                        Text("Sedentary")
-                        Spacer()
-                        Text("Lightly Active")
-                        Spacer()
-                        Text("Moderately Active")
-                        Spacer()
-                        Text("Very Active")
-                        Spacer()
-                        Text("Extra Active")
-                    }
-                    .font(.caption)
-                }
+                CustomActivitySlider(activityLevel: $activityLevel)
             }
             .frame(maxWidth: .infinity)
             .padding(.horizontal, 20)
@@ -107,7 +83,7 @@ struct PersonalStatsView: View {
             Spacer()
         }
         .padding(.horizontal, 0)
-        // ✅ Overlay for Height Picker
+        //  Overlay for Height Picker
         .overlay(
             Group {
                 if showHeightPicker {
@@ -146,16 +122,16 @@ struct PersonalStatsView: View {
         )
     }
 
-    // ✅ Format Height Display
+    //  Format Height Display
     private var formattedHeight: String {
         if hasPickedHeight {
             return useMetric ? "\(heightFeet) cm" : "\(heightFeet) ft \(heightInches) in"
         }
-        return ""  // ✅ Return empty if height has not been picked
+        return ""  //  Return empty if height has not been picked
     }
 
 
-    // ✅ Hidden Height Picker
+    //  Hidden Height Picker
     private var heightPicker: some View {
         VStack {
             if useMetric {
