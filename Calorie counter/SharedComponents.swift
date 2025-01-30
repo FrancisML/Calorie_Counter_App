@@ -70,6 +70,7 @@ struct FloatingTextField: View {
 
 
 // MARK: - Floating Input With Action
+// MARK: - Floating Input With Action
 struct FloatingInputWithAction: View {
     var placeholder: String
     var displayedText: String
@@ -86,7 +87,7 @@ struct FloatingInputWithAction: View {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(borderColor, lineWidth: 2)
 
-            // ✅ Placeholder ONLY appears if a value has been selected
+            // Placeholder ONLY appears if a value has been selected
             if hasPickedValue {
                 Text(placeholder)
                     .font(.caption)
@@ -110,6 +111,15 @@ struct FloatingInputWithAction: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.vertical, 10)
                         .padding(.horizontal, 10)
+
+                    if hasPickedValue {
+                        Image(systemName: "checkmark.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 18, height: 18)
+                            .foregroundColor(.green)
+                            .padding(.trailing, 8)
+                    }
                 }
             }
         }
@@ -118,14 +128,10 @@ struct FloatingInputWithAction: View {
     }
 }
 
-
-
-
-
-
 // MARK: - Height Picker
 struct HeightPicker: View {
     @Binding var heightFeet: Int
+    @Binding var heightCm: Int
     @Binding var heightInches: Int
     @Binding var useMetric: Bool
 
@@ -135,7 +141,7 @@ struct HeightPicker: View {
                 .font(.headline)
 
             if useMetric {
-                Picker("Height (cm)", selection: $heightFeet) {
+                Picker("Height (cm)", selection: $heightCm) {
                     ForEach(100...250, id: \.self) { cm in
                         Text("\(cm) cm").tag(cm)
                     }
@@ -169,7 +175,6 @@ import SwiftUI
 struct CustomActivitySlider: View {
     @Binding var activityLevel: Int
 
-    private let activityImages = ["AL-1", "AL-2", "AL-3", "AL-4", "AL-5", "AL-6"]
     private let activityNames = ["None", "Sedentary", "Lightly Active", "Moderately Active", "Very Active", "Extra Active"]
     private let activityDescriptions = [
         "No physical activity at all.",
@@ -200,24 +205,7 @@ struct CustomActivitySlider: View {
                 .font(.headline)
                 .padding(.bottom, 10)
 
-            // **Activity Image (Updates LIVE)**
-            Image(activityImages[liveActivityLevel])
-                .resizable()
-                .scaledToFit()
-                .frame(width: 80, height: 80)
-
-            // **Activity Name (Updates LIVE)**
-            Text(activityNames[liveActivityLevel])
-                .font(.subheadline)
-                .font(.title2)
-                .fontWeight(.bold)
-
-            // **Activity Description (Updates LIVE)**
-            Text(activityDescriptions[liveActivityLevel])
-                .font(.subheadline)
-                .foregroundColor(.gray)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 20)
+           
 
             // **Custom Slider with Tick Marks**
             ZStack(alignment: .leading) {
@@ -263,6 +251,21 @@ struct CustomActivitySlider: View {
                     )
             }
             .frame(width: trackWidth, height: 80)  // Increased height for spacing
+            // **Activity Image (Updates LIVE)**
+         
+
+            // **Activity Name (Updates LIVE)**
+            Text(activityNames[liveActivityLevel])
+                .font(.subheadline)
+                .font(.title2)
+                .fontWeight(.bold)
+
+            // **Activity Description (Updates LIVE)**
+            Text(activityDescriptions[liveActivityLevel])
+                .font(.subheadline)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 20)
         }
         .onAppear {
             dragOffset = stepPosition(activityLevel)
@@ -291,5 +294,11 @@ func presentAlert(alert: UIAlertController) {
        let window = windowScene.windows.first,
        let rootViewController = window.rootViewController {
         rootViewController.present(alert, animated: true)
+    }
+}
+
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }

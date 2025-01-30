@@ -5,7 +5,6 @@
 //  Created by frank lasalvia on 1/21/25.
 //
 
-
 import SwiftUI
 
 struct UserSetupView: View {
@@ -21,17 +20,19 @@ struct UserSetupView: View {
     @State private var imagePickerSourceType: UIImagePickerController.SourceType = .camera
     @State private var showActionSheet: Bool = false
     @State private var weight: String = ""
-    @State private var heightFeet: Int = 5
+    @State private var heightFeet: Int = 0
+    @State private var heightCm: Int = 0
     @State private var heightInches: Int = 0
     @State private var useMetric: Bool = false
     @State private var goalWeight: String = ""
     @State private var activityLevel: Int = 0
     @State private var temporaryDate: Date? = nil  // TEMPORARY DATE FOR PICKER
+    @FocusState private var isKeyboardActive: Bool // Added to track keyboard focus
 
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                // ✅ HEADER (Always at the Top)
+                // HEADER (Always at the Top)
                 HStack {
                     Spacer()
                     Image("logo")
@@ -47,7 +48,7 @@ struct UserSetupView: View {
                 }
                 .padding()
 
-                // ✅ ZStack for Swipe Transition (Views Below Header)
+                // ZStack for Swipe Transition (Views Below Header)
                 ZStack {
                     if currentStep == 1 {
                         PersonalDetailsView(
@@ -61,28 +62,29 @@ struct UserSetupView: View {
                             imagePickerSourceType: $imagePickerSourceType,
                             showActionSheet: $showActionSheet
                         )
-                        .transition(.move(edge: .leading))  // ✅ Swiping Left Transition
+                        .transition(.move(edge: .leading)) // Swiping Left Transition
                     }
                     
                     if currentStep == 2 {
                         PersonalStatsView(
                             weight: $weight,
                             heightFeet: $heightFeet,
-                            heightInches: $heightInches,
+                            heightInches: $heightInches, 
+                            heightCm: $heightCm,
                             useMetric: $useMetric,
                             goalWeight: $goalWeight,
                             activityLevel: $activityLevel,
                             onBack: { withAnimation(.easeInOut(duration: 0.4)) { currentStep -= 1 } },
                             onNext: { withAnimation(.easeInOut(duration: 0.4)) { currentStep += 1 } }
                         )
-                        .transition(.move(edge: .trailing))  // ✅ Swiping Right Transition
+                        .transition(.move(edge: .trailing)) // Swiping Right Transition
                     }
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height * 0.7)
 
                 Spacer()
 
-                // ✅ BACK AND NEXT BUTTONS
+                // BACK AND NEXT BUTTONS
                 HStack {
                     if currentStep > 1 {
                         Button(action: {
@@ -119,8 +121,18 @@ struct UserSetupView: View {
                 .padding(.horizontal, 20)
                 .padding(.bottom, 30)
             }
+            .focused($isKeyboardActive) // Ensures focus tracking
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") {
+                        isKeyboardActive = false
+                        hideKeyboard()
+                    }
+                }
+            }
         }
-        // ✅ DATE PICKER OVERLAY (Works Like Before)
+        // DATE PICKER OVERLAY (Works Like Before)
         .overlay(
             Group {
                 if showDatePicker {
@@ -173,6 +185,7 @@ struct UserSetupView: View {
         )
     }
 }
+
 
 
 
