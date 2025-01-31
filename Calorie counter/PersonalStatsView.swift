@@ -19,10 +19,9 @@ struct PersonalStatsView: View {
     @State private var showHeightPicker: Bool = false
     @State private var tempHeightCm: Int = 0  // Temporary variable for cm selection
 
-    var onBack: () -> Void
-    var onNext: () -> Void
 
-    init(weight: Binding<String>, heightFeet: Binding<Int>, heightInches: Binding<Int>, heightCm: Binding<Int>, useMetric: Binding<Bool>, goalWeight: Binding<String>, activityLevel: Binding<Int>, onBack: @escaping () -> Void, onNext: @escaping () -> Void) {
+
+    init(weight: Binding<String>, heightFeet: Binding<Int>, heightInches: Binding<Int>, heightCm: Binding<Int>, useMetric: Binding<Bool>, goalWeight: Binding<String>, activityLevel: Binding<Int>) {
         _weight = weight
         _heightFeet = heightFeet
         _heightInches = heightInches
@@ -30,8 +29,7 @@ struct PersonalStatsView: View {
         _useMetric = useMetric
         _goalWeight = goalWeight
         _activityLevel = activityLevel
-        self.onBack = onBack
-        self.onNext = onNext
+       
 
         _hasPickedHeight = State(initialValue: heightCm.wrappedValue > 0 || heightFeet.wrappedValue > 0)
         _tempHeightCm = State(initialValue: heightCm.wrappedValue)  // Initialize temp value

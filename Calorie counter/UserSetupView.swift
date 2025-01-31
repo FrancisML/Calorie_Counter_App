@@ -1,4 +1,3 @@
-//
 //  UserSetupView.swift
 //  Calorie counter
 //
@@ -50,37 +49,37 @@ struct UserSetupView: View {
 
                 // ZStack for Swipe Transition (Views Below Header)
                 ZStack {
-                    if currentStep == 1 {
-                        PersonalDetailsView(
-                            name: $name,
-                            gender: $gender,
-                            birthDate: $birthDate,
-                            profilePicture: $profilePicture,
-                            showDatePicker: $showDatePicker,
-                            hasPickedDate: $hasPickedDate,
-                            showImagePicker: $showImagePicker,
-                            imagePickerSourceType: $imagePickerSourceType,
-                            showActionSheet: $showActionSheet
-                        )
-                        .transition(.move(edge: .leading)) // Swiping Left Transition
-                    }
+                    PersonalDetailsView(
+                        name: $name,
+                        gender: $gender,
+                        birthDate: $birthDate,
+                        profilePicture: $profilePicture,
+                        showDatePicker: $showDatePicker,
+                        hasPickedDate: $hasPickedDate,
+                        showImagePicker: $showImagePicker,
+                        imagePickerSourceType: $imagePickerSourceType,
+                        showActionSheet: $showActionSheet
+                    )
+                    .offset(x: currentStep == 1 ? 0 : -geometry.size.width)
                     
-                    if currentStep == 2 {
-                        PersonalStatsView(
-                            weight: $weight,
-                            heightFeet: $heightFeet,
-                            heightInches: $heightInches, 
-                            heightCm: $heightCm,
-                            useMetric: $useMetric,
-                            goalWeight: $goalWeight,
-                            activityLevel: $activityLevel,
-                            onBack: { withAnimation(.easeInOut(duration: 0.4)) { currentStep -= 1 } },
-                            onNext: { withAnimation(.easeInOut(duration: 0.4)) { currentStep += 1 } }
-                        )
-                        .transition(.move(edge: .trailing)) // Swiping Right Transition
-                    }
+                    PersonalStatsView(
+                        weight: $weight,
+                        heightFeet: $heightFeet,
+                        heightInches: $heightInches,
+                        heightCm: $heightCm,
+                        useMetric: $useMetric,
+                        goalWeight: $goalWeight,
+                        activityLevel: $activityLevel
+                    )
+                    .offset(x: currentStep == 2 ? 0 : (currentStep > 2 ? -geometry.size.width : geometry.size.width))
+
+                    PersonalGoalsView(
+                      
+                    )
+                    .offset(x: currentStep == 3 ? 0 : geometry.size.width)
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height * 0.7)
+                .animation(.easeInOut(duration: 0.4), value: currentStep)
 
                 Spacer()
 

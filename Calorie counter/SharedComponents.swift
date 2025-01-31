@@ -302,3 +302,112 @@ extension View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+// MARK: - Horizontal whell picker
+
+import SwiftUI
+
+struct HorizontalWheelPicker: View {
+    @Binding var selectedValue: Double
+    private let values: [Double] = [-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2]
+    private let totalTicks = 41  // 9 major ticks + 32 small ones (4 per section)
+
+    private let trackWidth: CGFloat = UIScreen.main.bounds.width * 0.8
+    private let indicatorWidth: CGFloat = 3
+    private let tickHeightTall: CGFloat = 30  // Increased for visibility
+    private let tickHeightSmall: CGFloat = 12
+    private let tickSpacing: CGFloat = 15
+
+    @State private var dragOffset: CGFloat = 0
+    @State private var liveValue: Double = 0
+    @State private var initialOffset: CGFloat = 0
+
+    var body: some View {
+        VStack(spacing: 10) {
+            Text("Select Your Goal")
+                .font(.title2)
+                .fontWeight(.bold)
+                .padding(.bottom, 10)
+            ZStack {
+                // 🔴 Static Center Selection Indicator
+                Rectangle()
+                    .fill(Color.red)
+                    .frame(width: indicatorWidth, height: 30)
+                    .zIndex(1)
+
+                // 📏 Moving Scale (Tick Marks)
+                HStack(spacing: tickSpacing) {
+                    ForEach(0..<totalTicks, id: \.self) { index in
+                        let isMajorTick = index % 5 == 0
+                        let tickColor: Color = isMajorTick ? .yellow : .white
+                        let tickHeight = isMajorTick ? tickHeightTall : tickHeightSmall
+
+                        Rectangle()
+                            .fill(tickColor)
+                            .frame(width: 2, height: tickHeight)
+                            .frame(maxHeight: tickHeightTall, alignment: .bottom)
+                    }
+                }
+                .frame(width: CGFloat(totalTicks - 1) * tickSpacing, height: tickHeightTall)
+                .offset(x: dragOffset)
+            }
+            .frame(width: trackWidth, height: tickHeightTall + 40)
+            .clipped() // 🔥 Restores clipping to prevent overflow
+            .contentShape(Rectangle()) // 🔥 Ensures tapping anywhere allows dragging
+            .gesture(
+                DragGesture()
+                    .onChanged { gesture in
+                        let maxDragOffset = 340  // Ensures full movement range
+                        let newOffset = min(max(Int(gesture.translation.width + initialOffset), -maxDragOffset), maxDragOffset)
+                        dragOffset = CGFloat(newOffset)  // 🔥 Movement matches finger
+                        liveValue = closestValue(for: dragOffset)
+                    }
+                    .onEnded { _ in
+                        let newValue = closestValue(for: dragOffset)
+                        selectedValue = newValue
+                        dragOffset = stepPosition(newValue)  // 🔥 Snap to closest tick
+                        initialOffset = dragOffset  // Store new starting offset
+                    }
+            )
+
+
+
+
+
+            // Display Selected Value
+            Text("Current Selection: \(String(format: "%.1f", liveValue))")
+                .font(.title)
+                .foregroundColor(.yellow)
+        }
+        .onAppear {
+            dragOffset = stepPosition(selectedValue)  // Initialize centered
+            liveValue = selectedValue
+        }
+    }
+
+    // Get the exact x-offset for each step
+    private func stepPosition(_ value: Double) -> CGFloat {
+        let stepSpacing = (tickSpacing + 2) * 5  // 🔥 Distance between major ticks (yellow)
+
+        if let index = values.firstIndex(of: value) {
+            return CGFloat(index - 4) * stepSpacing  // 🔥 Center the 0.0 index
+        }
+        return 0
+    }
+
+
+    // ✅ Ensures snapping goes to the closest valid tick
+    private func closestValue(for offset: CGFloat) -> Double {
+        let stepSpacing = tickSpacing * 5  // 🔥 Ensure alignment with major ticks
+        let index = Int(round(offset / stepSpacing)) + 4  // 🔥 Offsets correctly
+        return values[max(0, min(index, values.count - 1))]  // 🔥 Keep within bounds
+    }
+
+}
+
+// Preview Struct
+struct HorizontalWheelPicker_Previews: PreviewProvider {
+    static var previews: some View {
+        HorizontalWheelPicker(selectedValue: .constant(0))
+            .preferredColorScheme(.dark)
+    }
+}
