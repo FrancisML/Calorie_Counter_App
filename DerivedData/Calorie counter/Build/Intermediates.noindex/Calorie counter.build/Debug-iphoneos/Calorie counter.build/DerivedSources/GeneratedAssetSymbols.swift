@@ -97,6 +97,9 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "scale" asset catalog image resource.
     static let scale = DeveloperToolsSupport.ImageResource(name: "scale", bundle: resourceBundle)
 
+    /// The "scaleIndicator" asset catalog image resource.
+    static let scaleIndicator = DeveloperToolsSupport.ImageResource(name: "scaleIndicator", bundle: resourceBundle)
+
     /// The "stats" asset catalog image resource.
     static let stats = DeveloperToolsSupport.ImageResource(name: "stats", bundle: resourceBundle)
 
@@ -346,6 +349,15 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "scaleIndicator" asset catalog image.
+    static var scaleIndicator: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .scaleIndicator)
+#else
+        .init()
+#endif
+    }
+
     /// The "stats" asset catalog image.
     static var stats: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
@@ -583,6 +595,15 @@ extension UIKit.UIImage {
     static var scale: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .scale)
+#else
+        .init()
+#endif
+    }
+
+    /// The "scaleIndicator" asset catalog image.
+    static var scaleIndicator: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .scaleIndicator)
 #else
         .init()
 #endif

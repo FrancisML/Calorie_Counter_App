@@ -304,8 +304,6 @@ extension View {
 }
 // MARK: - Horizontal whell picker
 
-import SwiftUI
-
 struct HorizontalWheelPicker: View {
     @Binding var selectedValue: Double
     private let values: [Double] = [-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2]
@@ -315,7 +313,7 @@ struct HorizontalWheelPicker: View {
     private let indicatorWidth: CGFloat = 3
     private let tickHeightTall: CGFloat = 30  // Increased for visibility
     private let tickHeightSmall: CGFloat = 12
-    private let tickSpacing: CGFloat = 15
+    private let tickSpacing: CGFloat = 8
 
     @State private var dragOffset: CGFloat = 0
     @State private var liveValue: Double = 0
@@ -329,9 +327,11 @@ struct HorizontalWheelPicker: View {
                 .padding(.bottom, 10)
             ZStack {
                 // 🔴 Static Center Selection Indicator
-                Rectangle()
-                    .fill(Color.red)
-                    .frame(width: indicatorWidth, height: 30)
+                Image("scaleIndicator")
+                    .resizable()  // Allow the image to resize
+                    .aspectRatio(contentMode: .fit)  // Maintain the original aspect ratio
+                    .frame(height: tickHeightTall + 10)  // Match the yellow tick height
+                    .offset(y: -7)  // Align with tick marks (adjust if needed)
                     .zIndex(1)
 
                 // 📏 Moving Scale (Tick Marks)
@@ -341,14 +341,37 @@ struct HorizontalWheelPicker: View {
                         let tickColor: Color = isMajorTick ? .yellow : .white
                         let tickHeight = isMajorTick ? tickHeightTall : tickHeightSmall
 
-                        Rectangle()
-                            .fill(tickColor)
-                            .frame(width: 2, height: tickHeight)
-                            .frame(maxHeight: tickHeightTall, alignment: .bottom)
+                        VStack(spacing: 2) {  // Keep spacing tight between tick and label
+                            Rectangle()
+                                .fill(tickColor)
+                                .frame(width: 2, height: tickHeight)
+                                .frame(maxHeight: tickHeightTall, alignment: .bottom)
+
+                            if isMajorTick {
+                                let labelIndex = index / 5
+                                if values.indices.contains(labelIndex) {
+                                    let labelValue = values[labelIndex]
+                                    let formattedValue = labelValue > 0
+                                        ? "+\(String(format: "%.1f", labelValue))"  // Add '+' for positive numbers
+                                        : String(format: "%.1f", labelValue)        // Keep '-' for negatives
+
+                                    Text(formattedValue)
+                                        .font(.caption2)
+                                        .foregroundColor(.yellow)
+                                        .fixedSize()
+                                }
+                            } else {
+                                Spacer().frame(height: 14)  // 🔥 Add space below white ticks to align with yellow ticks and labels
+                            }
+                        }
+                        .frame(width: tickSpacing)
+
+
                     }
                 }
-                .frame(width: CGFloat(totalTicks - 1) * tickSpacing, height: tickHeightTall)
+                .frame(width: CGFloat(totalTicks - 1) * tickSpacing, height: tickHeightTall + 20)  // Extra height for labels
                 .offset(x: dragOffset)
+
             }
             .frame(width: trackWidth, height: tickHeightTall + 40)
             .clipped() // 🔥 Restores clipping to prevent overflow
@@ -356,25 +379,22 @@ struct HorizontalWheelPicker: View {
             .gesture(
                 DragGesture()
                     .onChanged { gesture in
-                        let maxDragOffset = 340  // Ensures full movement range
+                        let maxDragOffset = 340
                         let newOffset = min(max(Int(gesture.translation.width + initialOffset), -maxDragOffset), maxDragOffset)
-                        dragOffset = CGFloat(newOffset)  // 🔥 Movement matches finger
-                        liveValue = closestValue(for: dragOffset)
+                        dragOffset = CGFloat(newOffset)
+
+                        // Invert the value to correct the flipped behavior
+                        liveValue = -closestValue(for: dragOffset)
                     }
                     .onEnded { _ in
-                        let newValue = closestValue(for: dragOffset)
+                        let newValue = -closestValue(for: dragOffset)  // Ensure selectedValue is also correct
                         selectedValue = newValue
-                        dragOffset = stepPosition(newValue)  // 🔥 Snap to closest tick
-                        initialOffset = dragOffset  // Store new starting offset
+                        dragOffset = stepPosition(-newValue)  // Pass the inverted value to maintain alignment
+                        initialOffset = dragOffset
                     }
             )
-
-
-
-
-
             // Display Selected Value
-            Text("Current Selection: \(String(format: "%.1f", liveValue))")
+            Text(selectionMessage(for: liveValue))
                 .font(.title)
                 .foregroundColor(.yellow)
         }
@@ -385,21 +405,32 @@ struct HorizontalWheelPicker: View {
     }
 
     // Get the exact x-offset for each step
+    // Get the exact x-offset for each step to align with yellow ticks
     private func stepPosition(_ value: Double) -> CGFloat {
-        let stepSpacing = (tickSpacing + 2) * 5  // 🔥 Distance between major ticks (yellow)
-
+        let majorTickSpacing = tickSpacing * 5 * 2  // 🔥 Double the spacing between major ticks
+        
         if let index = values.firstIndex(of: value) {
-            return CGFloat(index - 4) * stepSpacing  // 🔥 Center the 0.0 index
+            let centeredIndex = index - (values.count / 2)  // Center the 0.0 index
+            return CGFloat(centeredIndex) * majorTickSpacing
         }
         return 0
     }
 
-
-    // ✅ Ensures snapping goes to the closest valid tick
+    // Ensures snapping goes to the closest valid yellow tick
     private func closestValue(for offset: CGFloat) -> Double {
-        let stepSpacing = tickSpacing * 5  // 🔥 Ensure alignment with major ticks
-        let index = Int(round(offset / stepSpacing)) + 4  // 🔥 Offsets correctly
-        return values[max(0, min(index, values.count - 1))]  // 🔥 Keep within bounds
+        let majorTickSpacing = tickSpacing * 5 * 2  // 🔥 Double the spacing for snapping
+        let indexOffset = Int(round(offset / majorTickSpacing)) + (values.count / 2)
+        
+        return values[max(0, min(indexOffset, values.count - 1))]  // Keep within bounds
+    }
+    private func selectionMessage(for value: Double) -> String {
+        if value < 0 {
+            return "Lose \(String(format: "%.1f", abs(value))) per week"  // Correctly show 'Lose' for negative values
+        } else if value == 0 {
+            return "Maintain current weight"
+        } else {
+            return "Gain \(String(format: "%.1f", value)) per week"
+        }
     }
 
 }

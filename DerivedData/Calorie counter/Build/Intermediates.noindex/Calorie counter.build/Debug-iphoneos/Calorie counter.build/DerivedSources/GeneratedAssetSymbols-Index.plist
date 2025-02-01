@@ -230,6 +230,16 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameScaleIndicator</string>
+			<key>relativePath</key>
+			<string>./scaleIndicator.imageset</string>
+			<key>swiftSymbol</key>
+			<string>scaleIndicator</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameStats</string>
 			<key>relativePath</key>
 			<string>./stats.imageset</string>

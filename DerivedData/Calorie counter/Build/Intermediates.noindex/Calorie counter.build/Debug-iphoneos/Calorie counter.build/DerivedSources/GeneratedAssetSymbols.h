@@ -72,6 +72,9 @@ static NSString * const ACImageNameManorwoman AC_SWIFT_PRIVATE = @"manorwoman";
 /// The "scale" asset catalog image resource.
 static NSString * const ACImageNameScale AC_SWIFT_PRIVATE = @"scale";
 
+/// The "scaleIndicator" asset catalog image resource.
+static NSString * const ACImageNameScaleIndicator AC_SWIFT_PRIVATE = @"scaleIndicator";
+
 /// The "stats" asset catalog image resource.
 static NSString * const ACImageNameStats AC_SWIFT_PRIVATE = @"stats";
 
