@@ -74,7 +74,7 @@ struct UserSetupView: View {
                     .offset(x: currentStep == 2 ? 0 : (currentStep > 2 ? -geometry.size.width : geometry.size.width))
 
                     PersonalGoalsView(
-                      
+                        useMetric: $useMetric
                     )
                     .offset(x: currentStep == 3 ? 0 : geometry.size.width)
                 }

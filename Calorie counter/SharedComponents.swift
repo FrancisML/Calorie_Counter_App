@@ -70,7 +70,7 @@ struct FloatingTextField: View {
 
 
 // MARK: - Floating Input With Action
-// MARK: - Floating Input With Action
+
 struct FloatingInputWithAction: View {
     var placeholder: String
     var displayedText: String
@@ -306,14 +306,19 @@ extension View {
 
 struct HorizontalWheelPicker: View {
     @Binding var selectedValue: Double
-    private let values: [Double] = [-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2]
+    @Binding var useMetric: Bool  // Added to switch between imperial and metric
+
+    // Imperial (lbs) and Metric (kg) Value Arrays
+    private let imperialValues: [Double] = [-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2]
+    private let metricValues: [Double] = [-1, -0.75, -0.50, -0.25, 0, 0.25, 0.50, 0.75, 1]
+    private var values: [Double] { useMetric ? metricValues : imperialValues }
+
     private let totalTicks = 41  // 9 major ticks + 32 small ones (4 per section)
 
-    private let trackWidth: CGFloat = UIScreen.main.bounds.width * 0.8
     private let indicatorWidth: CGFloat = 3
-    private let tickHeightTall: CGFloat = 30  // Increased for visibility
+    private let tickHeightTall: CGFloat = 30
     private let tickHeightSmall: CGFloat = 12
-    private let tickSpacing: CGFloat = 8
+    private let tickSpacing: CGFloat = 5
 
     @State private var dragOffset: CGFloat = 0
     @State private var liveValue: Double = 0
@@ -321,96 +326,87 @@ struct HorizontalWheelPicker: View {
 
     var body: some View {
         VStack(spacing: 10) {
-            Text("Select Your Goal")
-                .font(.title2)
-                .fontWeight(.bold)
-                .padding(.bottom, 10)
-            ZStack {
-                // 🔴 Static Center Selection Indicator
-                Image("scaleIndicator")
-                    .resizable()  // Allow the image to resize
-                    .aspectRatio(contentMode: .fit)  // Maintain the original aspect ratio
-                    .frame(height: tickHeightTall + 10)  // Match the yellow tick height
-                    .offset(y: -7)  // Align with tick marks (adjust if needed)
-                    .zIndex(1)
-
-                // 📏 Moving Scale (Tick Marks)
-                HStack(spacing: tickSpacing) {
-                    ForEach(0..<totalTicks, id: \.self) { index in
-                        let isMajorTick = index % 5 == 0
-                        let tickColor: Color = isMajorTick ? .yellow : .white
-                        let tickHeight = isMajorTick ? tickHeightTall : tickHeightSmall
-
-                        VStack(spacing: 2) {  // Keep spacing tight between tick and label
-                            Rectangle()
-                                .fill(tickColor)
-                                .frame(width: 2, height: tickHeight)
-                                .frame(maxHeight: tickHeightTall, alignment: .bottom)
-
-                            if isMajorTick {
-                                let labelIndex = index / 5
-                                if values.indices.contains(labelIndex) {
-                                    let labelValue = values[labelIndex]
-                                    let formattedValue = labelValue > 0
-                                        ? "+\(String(format: "%.1f", labelValue))"  // Add '+' for positive numbers
-                                        : String(format: "%.1f", labelValue)        // Keep '-' for negatives
-
-                                    Text(formattedValue)
-                                        .font(.caption2)
-                                        .foregroundColor(.yellow)
-                                        .fixedSize()
-                                }
-                            } else {
-                                Spacer().frame(height: 14)  // 🔥 Add space below white ticks to align with yellow ticks and labels
-                            }
-                        }
-                        .frame(width: tickSpacing)
-
-
-                    }
-                }
-                .frame(width: CGFloat(totalTicks - 1) * tickSpacing, height: tickHeightTall + 20)  // Extra height for labels
-                .offset(x: dragOffset)
-
-            }
-            .frame(width: trackWidth, height: tickHeightTall + 40)
-            .clipped() // 🔥 Restores clipping to prevent overflow
-            .contentShape(Rectangle()) // 🔥 Ensures tapping anywhere allows dragging
-            .gesture(
-                DragGesture()
-                    .onChanged { gesture in
-                        let maxDragOffset = 340
-                        let newOffset = min(max(Int(gesture.translation.width + initialOffset), -maxDragOffset), maxDragOffset)
-                        dragOffset = CGFloat(newOffset)
-
-                        // Invert the value to correct the flipped behavior
-                        liveValue = -closestValue(for: dragOffset)
-                    }
-                    .onEnded { _ in
-                        let newValue = -closestValue(for: dragOffset)  // Ensure selectedValue is also correct
-                        selectedValue = newValue
-                        dragOffset = stepPosition(-newValue)  // Pass the inverted value to maintain alignment
-                        initialOffset = dragOffset
-                    }
-            )
-            // Display Selected Value
             Text(selectionMessage(for: liveValue))
-                .font(.title)
-                .foregroundColor(.yellow)
+                .font(.title2)
+                .foregroundColor(.white)
+
+            GeometryReader { geometry in
+                ZStack {
+                    // Static Center Selection Indicator
+                    Image("scaleIndicator")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: tickHeightTall + 10)
+                        .offset(y: -7)
+                        .zIndex(1)
+
+                    // Moving Scale (Tick Marks)
+                    HStack(spacing: tickSpacing) {
+                        ForEach(0..<totalTicks, id: \.self) { index in
+                            let isMajorTick = index % 5 == 0
+                            let tickColor: Color = isMajorTick ? .yellow : .white
+                            let tickHeight = isMajorTick ? tickHeightTall : tickHeightSmall
+
+                            VStack(spacing: 2) {
+                                Rectangle()
+                                    .fill(tickColor)
+                                    .frame(width: 2, height: tickHeight)
+                                    .frame(maxHeight: tickHeightTall, alignment: .bottom)
+
+                                if isMajorTick {
+                                    let labelIndex = index / 5
+                                    if values.indices.contains(labelIndex) {
+                                        let labelValue = values[labelIndex]
+                                        let formattedValue = formatValue(labelValue)
+                                        Text(formattedValue)
+                                            .font(.caption2)
+                                            .foregroundColor(.yellow)
+                                            .fixedSize()
+                                    }
+                                } else {
+                                    Spacer().frame(height: 14)
+                                }
+                            }
+                            .frame(width: tickSpacing)
+                        }
+                    }
+                    .frame(width: geometry.size.width, height: tickHeightTall + 20)
+                    .offset(x: dragOffset)
+                }
+                .frame(width: geometry.size.width, height: tickHeightTall + 40)
+                .clipped()
+                .contentShape(Rectangle())
+                .gesture(
+                    DragGesture()
+                        .onChanged { gesture in
+                            let maxDragOffset = 340
+                            let newOffset = min(max(Int(gesture.translation.width + initialOffset), -maxDragOffset), maxDragOffset)
+                            dragOffset = CGFloat(newOffset)
+                            liveValue = -closestValue(for: dragOffset)
+                        }
+                        .onEnded { _ in
+                            let newValue = -closestValue(for: dragOffset)
+                            selectedValue = newValue
+                            dragOffset = stepPosition(-newValue)
+                            initialOffset = dragOffset
+                        }
+                )
+            }
+            .frame(maxWidth: .infinity)
+            .frame(height: tickHeightTall)
+            .padding(.bottom, 40)
         }
         .onAppear {
-            dragOffset = stepPosition(selectedValue)  // Initialize centered
+            dragOffset = stepPosition(selectedValue)
             liveValue = selectedValue
         }
     }
 
-    // Get the exact x-offset for each step
     // Get the exact x-offset for each step to align with yellow ticks
     private func stepPosition(_ value: Double) -> CGFloat {
-        let majorTickSpacing = tickSpacing * 5 * 2  // 🔥 Double the spacing between major ticks
-        
+        let majorTickSpacing = tickSpacing * 5 * 2
         if let index = values.firstIndex(of: value) {
-            let centeredIndex = index - (values.count / 2)  // Center the 0.0 index
+            let centeredIndex = index - (values.count / 2)
             return CGFloat(centeredIndex) * majorTickSpacing
         }
         return 0
@@ -418,27 +414,53 @@ struct HorizontalWheelPicker: View {
 
     // Ensures snapping goes to the closest valid yellow tick
     private func closestValue(for offset: CGFloat) -> Double {
-        let majorTickSpacing = tickSpacing * 5 * 2  // 🔥 Double the spacing for snapping
+        let majorTickSpacing = tickSpacing * 5 * 2
         let indexOffset = Int(round(offset / majorTickSpacing)) + (values.count / 2)
-        
-        return values[max(0, min(indexOffset, values.count - 1))]  // Keep within bounds
+        return values[max(0, min(indexOffset, values.count - 1))]
     }
+
+    // Selection Message for Displaying Changes
     private func selectionMessage(for value: Double) -> String {
         if value < 0 {
-            return "Lose \(String(format: "%.1f", abs(value))) per week"  // Correctly show 'Lose' for negative values
+            return useMetric
+                ? "Lose \(String(format: "%.2f", abs(value))) kg per week"
+                : "Lose \(String(format: "%.1f", abs(value))) lbs per week"
         } else if value == 0 {
             return "Maintain current weight"
         } else {
-            return "Gain \(String(format: "%.1f", value)) per week"
+            return useMetric
+                ? "Gain \(String(format: "%.2f", value)) kg per week"
+                : "Gain \(String(format: "%.1f", value)) lbs per week"
         }
     }
 
+    // Format Labels for Metric and Imperial Values
+    private func formatValue(_ value: Double) -> String {
+        if useMetric {
+            return value > 0
+                ? "+\(String(format: "%.2f", value))"
+                : String(format: "%.2f", value)
+        } else {
+            return value > 0
+                ? "+\(String(format: "%.1f", value))"
+                : String(format: "%.1f", value)
+        }
+    }
 }
+
 
 // Preview Struct
 struct HorizontalWheelPicker_Previews: PreviewProvider {
     static var previews: some View {
-        HorizontalWheelPicker(selectedValue: .constant(0))
-            .preferredColorScheme(.dark)
+        Group {
+            HorizontalWheelPicker(selectedValue: .constant(0), useMetric: .constant(false))
+                .preferredColorScheme(.dark)
+                .previewDisplayName("Imperial (lbs)")
+
+            HorizontalWheelPicker(selectedValue: .constant(0), useMetric: .constant(true))
+                .preferredColorScheme(.dark)
+                .previewDisplayName("Metric (kg)")
+        }
     }
 }
+
