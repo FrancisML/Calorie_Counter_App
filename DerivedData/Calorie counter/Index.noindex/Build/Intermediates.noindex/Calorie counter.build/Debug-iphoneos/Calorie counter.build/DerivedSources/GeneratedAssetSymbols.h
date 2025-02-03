@@ -60,6 +60,9 @@ static NSString * const ACImageNameCarrot AC_SWIFT_PRIVATE = @"carrot";
 /// The "flame" asset catalog image resource.
 static NSString * const ACImageNameFlame AC_SWIFT_PRIVATE = @"flame";
 
+/// The "grayscaleIndicator" asset catalog image resource.
+static NSString * const ACImageNameGrayscaleIndicator AC_SWIFT_PRIVATE = @"grayscaleIndicator";
+
 /// The "hungry" asset catalog image resource.
 static NSString * const ACImageNameHungry AC_SWIFT_PRIVATE = @"hungry";
 

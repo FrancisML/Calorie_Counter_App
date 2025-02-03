@@ -190,6 +190,16 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameGrayscaleIndicator</string>
+			<key>relativePath</key>
+			<string>./grayscaleIndicator.imageset</string>
+			<key>swiftSymbol</key>
+			<string>grayscaleIndicator</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameHungry</string>
 			<key>relativePath</key>
 			<string>./hungry.imageset</string>

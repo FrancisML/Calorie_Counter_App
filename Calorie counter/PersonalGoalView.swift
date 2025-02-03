@@ -58,57 +58,77 @@ struct PersonalGoalsView: View {
                 }
                 
                 // Weight Goal Section (Always Visible, Disabled if Not Selected)
-                HorizontalWheelPicker(selectedValue: $selectedGoal, useMetric: $useMetric)
+                VStack(alignment: .leading, spacing: 10) {
+                    // HorizontalWheelPicker remains unchanged
+                    HorizontalWheelPicker(
+                        selectedValue: $selectedGoal,
+                        useMetric: $useMetric,
+                        isCalorieGoalSelected: Binding(
+                            get: { selectedGoalType == .calorieGoal },
+                            set: { _ in }
+                        )
+                    )
                     .disabled(selectedGoalType != .weightGoal)
                     .padding(.leading, 40)
-                                                    
-                // Conditionally show these inputs if the slider is not on 0.0
-                if selectedGoal != 0 {
+
+                    // Smooth transition for the parent container
                     VStack(alignment: .leading, spacing: 10) {
-                        // Goal Weight Input
-                        Text("Do you have a goal weight?")
-                            .font(.headline)
-                            .padding(.bottom, 5)
-                            .padding(.leading, 40)
+                        if selectedGoal != 0 {
+                            VStack(alignment: .leading, spacing: 10) {
+                                // Goal Weight Input
+                                Text("Do you have a goal weight?")
+                                    .font(.headline)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 40)
 
-                        FloatingTextField(
-                            placeholder: useMetric ? " Goal Weight (kg) " : " Goal Weight (lbs) ",
-                            text: $goalWeight
-                        )
-                        .keyboardType(.numberPad)
-                        .onReceive(goalWeight.publisher.collect()) { newValue in
-                            let filtered = newValue.filter { $0.isNumber }
-                            let trimmed = String(filtered.prefix(3))
-                            if goalWeight != trimmed { goalWeight = trimmed }
-                        }
-                        .disabled(selectedGoalType != .weightGoal)
-                        .padding(.leading, 40)
-                    }
-                    .transition(.opacity)  // Smooth transition for Goal Weight input
-
-                    // Show Target Date only if Goal Weight is entered
-                    if !goalWeight.isEmpty {
-                        VStack(alignment: .leading, spacing: 10) {
-                            Text("Do you want to reach this weight by a certain date?")
-                                .font(.headline)
-                                .padding(.bottom, 5)
+                                FloatingTextField(
+                                    placeholder: useMetric ? " Goal Weight (kg) " : " Goal Weight (lbs) ",
+                                    text: $goalWeight
+                                )
+                                .keyboardType(.numberPad)
+                                .onReceive(goalWeight.publisher.collect()) { newValue in
+                                    let filtered = newValue.filter { $0.isNumber }
+                                    let trimmed = String(filtered.prefix(3))
+                                    if goalWeight != trimmed { goalWeight = trimmed }
+                                }
+                                .background(Color.customGray)
+                                .disabled(selectedGoalType != .weightGoal)
                                 .padding(.leading, 40)
-
-                            FloatingInputWithAction(
-                                placeholder: " Target Date ",
-                                displayedText: formattedGoalDate,
-                                action: {
-                                    temporaryGoalDate = goalDate ?? minSelectableDate
-                                    showDatePicker = true
-                                },
-                                hasPickedValue: $hasPickedDate
-                            )
-                            .disabled(selectedGoalType != .weightGoal)
-                            .padding(.leading, 40)
+                            }
+                            .background(Color.customGray)
+                            .transition(.move(edge: .top).combined(with: .opacity))  // Slide in from top
                         }
-                        .transition(.opacity)  // Smooth transition for Target Date input
+
+                        if !goalWeight.isEmpty {
+                            VStack(alignment: .leading, spacing: 10) {
+                                // Target Date Input
+                                Text("Do you want to reach this weight by a certain date?")
+                                    .font(.headline)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 40)
+
+                                FloatingInputWithAction(
+                                    placeholder: " Target Date ",
+                                    displayedText: formattedGoalDate,
+                                    action: {
+                                        temporaryGoalDate = goalDate ?? minSelectableDate
+                                        showDatePicker = true
+                                    },
+                                    hasPickedValue: $hasPickedDate
+                                )
+                                .disabled(selectedGoalType != .weightGoal)
+                                .padding(.leading, 40)
+                                .frame(maxWidth: .infinity)
+                            }
+                            .transition(.move(edge: .top).combined(with: .opacity))  // Slide in from top
+                            .clipped()
+                        }
                     }
+                    .clipped()  // Prevent overflow during animation
+                    .animation(.easeOut(duration: 0.5), value: selectedGoal)  // Animate the parent resizing
+                    .animation(.easeOut(duration: 0.5), value: goalWeight)
                 }
+
 
                 Divider()  // Divider between radio button selections
                 
@@ -130,20 +150,25 @@ struct PersonalGoalsView: View {
                 }
                 
                 // Custom Calorie Goal Input (Always Visible, Disabled if Not Selected)
-                VStack(alignment: .leading, spacing: 10) {
-                    FloatingTextField(
-                        placeholder: " Enter Calorie Goal ",
-                        text: $customCals
-                    )
-                    .keyboardType(.numberPad)
-                    .onReceive(customCals.publisher.collect()) { newValue in
-                        let filtered = newValue.filter { $0.isNumber }
-                        let trimmed = String(filtered.prefix(5))
-                        if customCals != trimmed { customCals = trimmed }
+                // Custom Calorie Goal Input (Only Visible When Selected)
+                if selectedGoalType == .calorieGoal {
+                    VStack(alignment: .leading, spacing: 10) {
+                        FloatingTextField(
+                            placeholder: " Enter Calorie Goal ",
+                            text: $customCals
+                        )
+                        .keyboardType(.numberPad)
+                        .onReceive(customCals.publisher.collect()) { newValue in
+                            let filtered = newValue.filter { $0.isNumber }
+                            let trimmed = String(filtered.prefix(5))
+                            if customCals != trimmed { customCals = trimmed }
+                        }
+                        .padding(.leading, 40)
                     }
-                    .disabled(selectedGoalType != .calorieGoal)
-                    .padding(.leading, 40)
+                    .transition(.move(edge: .top).combined(with: .opacity))  // Smooth slide-in from top
+                    .animation(.easeOut(duration: 0.5), value: selectedGoalType)
                 }
+
             }
             .frame(maxWidth: .infinity)
             .padding(.horizontal, 20)

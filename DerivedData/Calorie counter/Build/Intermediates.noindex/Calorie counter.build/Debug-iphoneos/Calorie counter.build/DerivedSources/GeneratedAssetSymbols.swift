@@ -85,6 +85,9 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "flame" asset catalog image resource.
     static let flame = DeveloperToolsSupport.ImageResource(name: "flame", bundle: resourceBundle)
 
+    /// The "grayscaleIndicator" asset catalog image resource.
+    static let grayscaleIndicator = DeveloperToolsSupport.ImageResource(name: "grayscaleIndicator", bundle: resourceBundle)
+
     /// The "hungry" asset catalog image resource.
     static let hungry = DeveloperToolsSupport.ImageResource(name: "hungry", bundle: resourceBundle)
 
@@ -308,6 +311,15 @@ extension AppKit.NSImage {
     static var flame: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .flame)
+#else
+        .init()
+#endif
+    }
+
+    /// The "grayscaleIndicator" asset catalog image.
+    static var grayscaleIndicator: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .grayscaleIndicator)
 #else
         .init()
 #endif
@@ -559,6 +571,15 @@ extension UIKit.UIImage {
     static var flame: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .flame)
+#else
+        .init()
+#endif
+    }
+
+    /// The "grayscaleIndicator" asset catalog image.
+    static var grayscaleIndicator: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .grayscaleIndicator)
 #else
         .init()
 #endif

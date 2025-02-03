@@ -306,7 +306,9 @@ extension View {
 
 struct HorizontalWheelPicker: View {
     @Binding var selectedValue: Double
-    @Binding var useMetric: Bool  // Added to switch between imperial and metric
+    @Binding var useMetric: Bool
+    @Binding var isCalorieGoalSelected: Bool  // New binding to track goal type selection
+  // Added to switch between imperial and metric
 
     // Imperial (lbs) and Metric (kg) Value Arrays
     private let imperialValues: [Double] = [-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2]
@@ -328,12 +330,12 @@ struct HorizontalWheelPicker: View {
         VStack(spacing: 10) {
             Text(selectionMessage(for: liveValue))
                 .font(.title2)
-                .foregroundColor(.white)
+                .foregroundColor(isCalorieGoalSelected ? .gray : .white)  // Change text color based on goal type
 
             GeometryReader { geometry in
                 ZStack {
-                    // Static Center Selection Indicator
-                    Image("scaleIndicator")
+                    // Change Indicator Image Based on Goal Type
+                    Image(isCalorieGoalSelected ? "grayscaleIndicator" : "scaleIndicator")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height: tickHeightTall + 10)
@@ -344,7 +346,8 @@ struct HorizontalWheelPicker: View {
                     HStack(spacing: tickSpacing) {
                         ForEach(0..<totalTicks, id: \.self) { index in
                             let isMajorTick = index % 5 == 0
-                            let tickColor: Color = isMajorTick ? .yellow : .white
+                            let tickColor: Color = isCalorieGoalSelected ? .gray : (isMajorTick ? .yellow : .white)
+                            let labelColor: Color = isCalorieGoalSelected ? .gray : .yellow
                             let tickHeight = isMajorTick ? tickHeightTall : tickHeightSmall
 
                             VStack(spacing: 2) {
@@ -360,7 +363,7 @@ struct HorizontalWheelPicker: View {
                                         let formattedValue = formatValue(labelValue)
                                         Text(formattedValue)
                                             .font(.caption2)
-                                            .foregroundColor(.yellow)
+                                            .foregroundColor(labelColor)  // Update label color
                                             .fixedSize()
                                     }
                                 } else {
@@ -401,6 +404,7 @@ struct HorizontalWheelPicker: View {
             liveValue = selectedValue
         }
     }
+
 
     // Get the exact x-offset for each step to align with yellow ticks
     private func stepPosition(_ value: Double) -> CGFloat {
@@ -450,17 +454,5 @@ struct HorizontalWheelPicker: View {
 
 
 // Preview Struct
-struct HorizontalWheelPicker_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            HorizontalWheelPicker(selectedValue: .constant(0), useMetric: .constant(false))
-                .preferredColorScheme(.dark)
-                .previewDisplayName("Imperial (lbs)")
 
-            HorizontalWheelPicker(selectedValue: .constant(0), useMetric: .constant(true))
-                .preferredColorScheme(.dark)
-                .previewDisplayName("Metric (kg)")
-        }
-    }
-}
 
