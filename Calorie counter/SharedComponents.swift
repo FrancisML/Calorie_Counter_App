@@ -38,7 +38,7 @@ struct FloatingTextField: View {
                     .foregroundColor(.gray)
                     .background(
                         RoundedRectangle(cornerRadius: 15)
-                            .fill(Color.customGray)
+                            .fill(Styles.secondaryBackground)
                     )
                     .padding(.horizontal, 4)
                     .offset(x: 12, y: -29)
@@ -94,7 +94,7 @@ struct FloatingInputWithAction: View {
                     .foregroundColor(.gray)
                     .background(
                         RoundedRectangle(cornerRadius: 15)
-                            .fill(Color.customGray)
+                            .fill(Styles.secondaryBackground)
                     )
                     .padding(.horizontal, 4)
                     .offset(x: 12, y: -29)
@@ -448,6 +448,21 @@ struct HorizontalWheelPicker: View {
             return value > 0
                 ? "+\(String(format: "%.1f", value))"
                 : String(format: "%.1f", value)
+        }
+    }
+}
+// SharedComponents.swift
+
+import SwiftUI
+import Combine
+
+// Your existing shared components here...
+
+// MARK: - ThemeManager (Temporary)
+class ThemeManager: ObservableObject {
+    @Published var isDarkMode: Bool = false {
+        didSet {
+            Styles.isDarkMode = isDarkMode // Update the Styles struct globally
         }
     }
 }

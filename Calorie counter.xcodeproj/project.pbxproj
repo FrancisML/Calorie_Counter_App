@@ -13,6 +13,7 @@
 		012AF0F42D3426B0005D03B1 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0F32D3426B0005D03B1 /* ImagePicker.swift */; };
 		012AF0FE2D3484A3005D03B1 /* DailyProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0FD2D3484A3005D03B1 /* DailyProgressView.swift */; };
 		01323EE22D526BF9005C025A /* UserOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01323EE12D526BF9005C025A /* UserOverviewView.swift */; };
+		01323EE42D529022005C025A /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01323EE32D529022005C025A /* Styles.swift */; };
 		01425DBC2D398D9800A98F2E /* DailyDataTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01425DBB2D398D9800A98F2E /* DailyDataTracker.swift */; };
 		01425DC32D3A1D9100A98F2E /* UserProfile+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01425DC12D3A1D9100A98F2E /* UserProfile+CoreDataClass.swift */; };
 		01425DC42D3A1D9100A98F2E /* UserProfile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01425DC22D3A1D9100A98F2E /* UserProfile+CoreDataProperties.swift */; };
@@ -69,6 +70,7 @@
 		012AF0F32D3426B0005D03B1 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		012AF0FD2D3484A3005D03B1 /* DailyProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyProgressView.swift; sourceTree = "<group>"; };
 		01323EE12D526BF9005C025A /* UserOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOverviewView.swift; sourceTree = "<group>"; };
+		01323EE32D529022005C025A /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		01425DBB2D398D9800A98F2E /* DailyDataTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDataTracker.swift; sourceTree = "<group>"; };
 		01425DC12D3A1D9100A98F2E /* UserProfile+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataClass.swift"; sourceTree = "<group>"; };
 		01425DC22D3A1D9100A98F2E /* UserProfile+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				01C772792D40374000402083 /* UserSetupView.swift */,
 				016E52722D4A92BE00105B8E /* PersonalStatsView.swift */,
 				016E52742D4A93B200105B8E /* SharedComponents.swift */,
+				01323EE32D529022005C025A /* Styles.swift */,
 			);
 			path = "Calorie counter";
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				0190ECF32D30B7F5003AA451 /* SummaryView.swift in Sources */,
 				017384D62D35BE3700379FD5 /* PastLedgerView.swift in Sources */,
 				01C7727A2D40374000402083 /* UserSetupView.swift in Sources */,
+				01323EE42D529022005C025A /* Styles.swift in Sources */,
 				019C9CCE2D31A17500E0F608 /* ChangeDateView.swift in Sources */,
 				01425DC42D3A1D9100A98F2E /* UserProfile+CoreDataProperties.swift in Sources */,
 				0173850F2D36F43900379FD5 /* ProgressPictureDetailView.swift in Sources */,
