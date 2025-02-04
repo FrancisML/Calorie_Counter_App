@@ -9,24 +9,33 @@ import SwiftUI
 struct UserSetupView: View {
     @State private var currentStep: Int = 1
 
-    @State private var name: String = ""
-    @State private var gender: String = ""
-    @State private var birthDate: Date? = nil
-    @State private var profilePicture: UIImage? = nil
-    @State private var showDatePicker: Bool = false
-    @State private var hasPickedDate: Bool = false
-    @State private var showImagePicker: Bool = false
-    @State private var imagePickerSourceType: UIImagePickerController.SourceType = .camera
-    @State private var showActionSheet: Bool = false
-    @State private var weight: String = ""
-    @State private var heightFeet: Int = 0
-    @State private var heightCm: Int = 0
-    @State private var heightInches: Int = 0
-    @State private var useMetric: Bool = false
-    @State private var goalWeight: String = ""
-    @State private var activityLevel: Int = 0
-    @State private var temporaryDate: Date? = nil  // TEMPORARY DATE FOR PICKER
-    @FocusState private var isKeyboardActive: Bool // Added to track keyboard focus
+        // Personal Details Variables
+        @State private var name: String = ""
+        @State private var gender: String = ""
+        @State private var birthDate: Date? = nil
+        @State private var profilePicture: UIImage? = nil
+        @State private var showDatePicker: Bool = false
+        @State private var hasPickedDate: Bool = false
+        @State private var showImagePicker: Bool = false
+        @State private var imagePickerSourceType: UIImagePickerController.SourceType = .camera
+        @State private var showActionSheet: Bool = false
+
+        // Personal Stats Variables
+        @State private var weight: String = ""
+        @State private var heightFeet: Int = 0
+        @State private var heightCm: Int = 0
+        @State private var heightInches: Int = 0
+        @State private var useMetric: Bool = false
+        @State private var activityLevel: Int = 0
+        @State private var temporaryDate: Date? = nil  // TEMPORARY DATE FOR PICKER
+        @FocusState private var isKeyboardActive: Bool // Added to track keyboard focus
+
+        // New Variables from PersonalGoalsView
+        @State private var customCals: String = ""
+        @State private var goalWeight: String = ""
+        @State private var goalDate: Date? = nil
+        @State private var weekGoal: Double = 0.0
+
 
     var body: some View {
         GeometryReader { geometry in
@@ -74,9 +83,34 @@ struct UserSetupView: View {
                     .offset(x: currentStep == 2 ? 0 : (currentStep > 2 ? -geometry.size.width : geometry.size.width))
 
                     PersonalGoalsView(
-                        useMetric: $useMetric
+                        useMetric: $useMetric,
+                        goalWeight: $goalWeight,
+                        goalDate: $goalDate,
+                        customCals: $customCals,
+                        weekGoal: $weekGoal
                     )
-                    .offset(x: currentStep == 3 ? 0 : geometry.size.width)
+                        .offset(x: currentStep == 3 ? 0 : (currentStep < 3 ? geometry.size.width : -geometry.size.width))
+
+                    
+                    UserOverviewView(
+                        name: name,
+                        profilePicture: profilePicture,
+                        gender: gender,
+                        birthDate: birthDate,
+                        weight: weight,
+                        heightFeet: heightFeet,
+                        heightInches: heightInches,
+                        heightCm: heightCm,
+                        useMetric: useMetric,
+                        activityLevel: activityLevel,
+                        customCals: customCals,
+                        goalWeight: goalWeight,
+                        goalDate: goalDate,
+                        weekGoal: weekGoal
+                                        )
+                                        .offset(x: currentStep == 4 ? 0 : geometry.size.width)
+
+
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height * 0.7)
                 .animation(.easeInOut(duration: 0.4), value: currentStep)
@@ -105,10 +139,12 @@ struct UserSetupView: View {
 
                     Button(action: {
                         withAnimation(.easeInOut(duration: 0.4)) {
-                            currentStep += 1
+                            if currentStep < 4 {
+                                currentStep += 1
+                            }
                         }
                     }) {
-                        Text("Next >")
+                        Text(currentStep < 4 ? "Next >" : "Finish")
                             .font(.title2)
                             .foregroundColor(.white)
                             .padding(.horizontal, 20)
