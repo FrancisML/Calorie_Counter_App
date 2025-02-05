@@ -16,28 +16,27 @@ struct FloatingTextField: View {
     var placeholder: String
     @Binding var text: String
     @FocusState private var isFocused: Bool
+    @EnvironmentObject var themeManager: ThemeManager  // Ensures reactivity on theme change
 
     private var borderColor: Color {
-        if !text.isEmpty {
-            return Color.blue
-        } else if isFocused {
+        if !text.isEmpty || isFocused {
             return Color.blue
         } else {
-            return Color.gray
+            return Styles.primaryText
         }
     }
 
     var body: some View {
         ZStack(alignment: .leading) {
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(borderColor, lineWidth: 2)
+            RoundedRectangle(cornerRadius: 2)
+                .stroke(borderColor, lineWidth: 1)
 
             if isFocused || !text.isEmpty {
                 Text(placeholder)
                     .font(.caption)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Styles.primaryText)
                     .background(
-                        RoundedRectangle(cornerRadius: 15)
+                        RoundedRectangle(cornerRadius: 0)
                             .fill(Styles.secondaryBackground)
                     )
                     .padding(.horizontal, 4)
@@ -46,12 +45,21 @@ struct FloatingTextField: View {
             }
 
             HStack {
-                TextField(isFocused || !text.isEmpty ? "" : placeholder, text: $text)
-                    .focused($isFocused)
-                    .font(.system(size: 18))
-                    .foregroundColor(.primary)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 10)
+                ZStack(alignment: .leading) {
+                    if text.isEmpty {
+                        Text(placeholder)
+                            .foregroundColor(Styles.secondaryText)  // Updates with theme change
+                            .padding(.horizontal, 10)
+                            
+                    }
+
+                    TextField("", text: $text)
+                        .focused($isFocused)
+                        .font(.system(size: 18))
+                        .foregroundColor(Styles.primaryText)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 10)
+                }
 
                 if !text.isEmpty {
                     Image(systemName: "checkmark.circle.fill")
@@ -69,6 +77,9 @@ struct FloatingTextField: View {
 }
 
 
+     
+
+
 // MARK: - Floating Input With Action
 
 struct FloatingInputWithAction: View {
@@ -79,19 +90,19 @@ struct FloatingInputWithAction: View {
     @State private var isFocused: Bool = false
 
     private var borderColor: Color {
-        hasPickedValue ? Color.blue : Color.gray
+        hasPickedValue ? Color.blue : Styles.primaryText
     }
 
     var body: some View {
         ZStack(alignment: .leading) {
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(borderColor, lineWidth: 2)
+            RoundedRectangle(cornerRadius: 2)
+                .stroke(borderColor, lineWidth: 1)
 
             // Placeholder ONLY appears if a value has been selected
             if hasPickedValue {
                 Text(placeholder)
                     .font(.caption)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Styles.primaryText)
                     .background(
                         RoundedRectangle(cornerRadius: 15)
                             .fill(Styles.secondaryBackground)
@@ -106,7 +117,7 @@ struct FloatingInputWithAction: View {
             }) {
                 HStack {
                     Text(displayedText.isEmpty ? placeholder : displayedText)
-                        .foregroundColor(displayedText.isEmpty ? .gray : .primary)
+                        .foregroundColor(Styles.secondaryText)
                         .font(.system(size: 18))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.vertical, 10)

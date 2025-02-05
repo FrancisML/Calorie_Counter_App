@@ -26,11 +26,12 @@ struct PersonalDetailsView: View {
             VStack(spacing: 10) {
                 Text("Personal Details")
                     .font(.largeTitle)
+                    .foregroundColor(Styles.primaryText)
                     .fontWeight(.bold)
                 
                 Text("Please enter your information as accurately as possible")
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Styles.secondaryText)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: 300)
             }
@@ -55,9 +56,9 @@ struct PersonalDetailsView: View {
                                 .frame(maxWidth: .infinity)
                                 .background(gender == "Man" ? Color(red: 0.635, green: 0.824, blue: 1.0) : Styles.primaryBackground.opacity(0.3)) // #A2D2FF
                                 .foregroundColor(gender == "Man" ? .gray : Styles.primaryText)  // Gray text when selected
-                                .cornerRadius(10)
+                                .cornerRadius(2)
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
+                                    RoundedRectangle(cornerRadius: 2)
                                         .stroke(
                                             gender == "Man" ? Color.green : Styles.primaryText,  // Green stroke if "Man" is selected
                                             lineWidth: gender == "Man" ? 3 : 1                  // Thicker stroke when selected
@@ -71,9 +72,9 @@ struct PersonalDetailsView: View {
                                 .frame(maxWidth: .infinity)
                                 .background(gender == "Woman" ? Color(red: 1.0, green: 0.686, blue: 0.8) : Styles.primaryBackground.opacity(0.3)) // #FFAFCC
                                 .foregroundColor(gender == "Woman" ? .gray : Styles.primaryText)  // Gray text when selected
-                                .cornerRadius(10)
+                                .cornerRadius(2)
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
+                                    RoundedRectangle(cornerRadius: 2)
                                         .stroke(
                                             gender == "Woman" ? Color.green : Styles.primaryText,  // Green stroke if "Woman" is selected
                                             lineWidth: gender == "Woman" ? 3 : 1                  // Thicker stroke when selected
@@ -95,11 +96,12 @@ struct PersonalDetailsView: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text("Add Profile Picture")
+                                .foregroundColor(Styles.primaryText)
                                 .font(.headline)
                             
                             Text("Optional")
                                 .font(.subheadline)
-                                .foregroundColor(.gray)
+                                .foregroundColor(Styles.secondaryText)
                         }
                         
                         Spacer()
@@ -107,7 +109,7 @@ struct PersonalDetailsView: View {
                         ZStack {
                             // Border Circle
                             Circle()
-                                .stroke(profilePicture != nil ? Color.green : Color.gray, lineWidth: 3)
+                                .stroke(profilePicture != nil ? Color.green : Styles.primaryText, lineWidth: 3)
                                 .frame(width: 100, height: 100)
                             
                             // Background Circle
@@ -132,7 +134,7 @@ struct PersonalDetailsView: View {
                             
                             // Semi-Transparent Overlay
                             Circle()
-                                .fill(Color.black.opacity(0.5)) // Semi-transparent grey overlay
+                                .fill(Color.black.opacity(0.1)) // Semi-transparent grey overlay
                                 .frame(width: 100, height: 100)
                             
                             // Add Button with Larger Text
