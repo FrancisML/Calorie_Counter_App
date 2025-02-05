@@ -8,143 +8,150 @@
 import SwiftUI
 
 struct PersonalGoalsView: View {
-    @Binding var useMetric: Bool               // Passed from PersonalStatsView
-    @Binding var goalWeight: String            // Bind to UserSetupView
-    @Binding var goalDate: Date?               // Bind to UserSetupView
-    @Binding var customCals: String            // Bind to UserSetupView
-    @Binding var weekGoal: Double              // Bind to UserSetupView, renamed from selectedGoal
+    @Binding var useMetric: Bool
+    @Binding var goalWeight: String
+    @Binding var goalDate: Date?
+    @Binding var customCals: String
+    @Binding var weekGoal: Double
 
-    @State private var temporaryGoalDate: Date = Date() // Temporary date for picker
-    @State private var showDatePicker: Bool = false     // Controls date picker visibility
-    @State private var hasPickedDate: Bool = false      // Tracks if a date was picked
+    @State private var temporaryGoalDate: Date = Date()
+    @State private var showDatePicker: Bool = false
+    @State private var hasPickedDate: Bool = false
 
-    // Radio Button Selection State
     enum GoalType {
         case weightGoal, calorieGoal
     }
-    @State private var selectedGoalType: GoalType = .weightGoal  // Default to weight goal selection
+    @State private var selectedGoalType: GoalType = .weightGoal
 
     var body: some View {
         VStack(spacing: 20) {
-            VStack(spacing: 20) {
+            // Title and Subtitle
+            VStack(spacing: 10) {
                 Text("Personal Goals")
                     .font(.largeTitle)
+                    .foregroundColor(Styles.primaryText)
                     .fontWeight(.bold)
 
                 Text("Tell us your goal")
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Styles.secondaryText)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: 300)
             }
+            .frame(maxWidth: .infinity)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal)
 
-            VStack(spacing: 20) {
-                // Weight Goal Radio Button
-                HStack {
-                    Button(action: {
-                        selectedGoalType = .weightGoal
-                        resetCalorieGoal()
-                    }) {
-                        HStack {
-                            Image(systemName: selectedGoalType == .weightGoal ? "largecircle.fill.circle" : "circle")
-                                .foregroundColor(.blue)
-                            Text("Weight & Target Date Goal")
-                                .foregroundColor(.primary)
-                                .font(.headline)
+            // Shadow applied to the container
+            ZStack {
+                Styles.secondaryBackground
+                    .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
+
+                VStack(spacing: 20) {
+                    // Weight Goal Radio Button
+                    HStack {
+                        Button(action: {
+                            selectedGoalType = .weightGoal
+                            resetCalorieGoal()
+                        }) {
+                            HStack {
+                                Image(systemName: selectedGoalType == .weightGoal ? "largecircle.fill.circle" : "circle")
+                                    .foregroundColor(.blue)
+                                Text("Weight & Target Date Goal")
+                                    .foregroundColor(Styles.primaryText)
+                                    .font(.headline)
+                            }
                         }
+                        Spacer()
                     }
-                    Spacer()
-                }
 
-                // Weight Goal Section
-                VStack(alignment: .leading, spacing: 10) {
-                    HorizontalWheelPicker(
-                        selectedValue: $weekGoal,
-                        useMetric: $useMetric,
-                        isCalorieGoalSelected: Binding(
-                            get: { selectedGoalType == .calorieGoal },
-                            set: { _ in }
+                    // Weight Goal Section
+                    VStack(alignment: .leading, spacing: 10) {
+                        HorizontalWheelPicker(
+                            selectedValue: $weekGoal,
+                            useMetric: $useMetric,
+                            isCalorieGoalSelected: Binding(
+                                get: { selectedGoalType == .calorieGoal },
+                                set: { _ in }
+                            )
                         )
-                    )
-                    .disabled(selectedGoalType != .weightGoal)
-                    .padding(.leading, 40)
+                        .disabled(selectedGoalType != .weightGoal)
+                        .padding(.leading, 40)
 
-                    VStack(alignment: .leading, spacing: 10) {
-                        if weekGoal != 0 {
-                            VStack(alignment: .leading, spacing: 10) {
-                                Text("Do you have a goal weight?")
-                                    .font(.headline)
-                                    .padding(.bottom, 5)
+                        VStack(alignment: .leading, spacing: 10) {
+                            if weekGoal != 0 {
+                                VStack(alignment: .leading, spacing: 10) {
+                                    // Smaller Label with Padding
+                                    Text("Do you have a goal weight?")
+                                        .font(.subheadline)  // Smaller font size
+                                        .foregroundColor(Styles.primaryText)
+                                        .padding(.leading, 40)
+                                        .padding(.bottom, 6)  // Padding below the label
+
+                                    FloatingTextField(
+                                        placeholder: useMetric ? " Goal Weight (kg) " : " Goal Weight (lbs) ",
+                                        text: $goalWeight
+                                    )
+                                    .keyboardType(.numberPad)
+                                    .onReceive(goalWeight.publisher.collect()) { newValue in
+                                        let filtered = newValue.filter { $0.isNumber }
+                                        let trimmed = String(filtered.prefix(3))
+                                        if goalWeight != trimmed { goalWeight = trimmed }
+                                    }
+                                    .disabled(selectedGoalType != .weightGoal)
                                     .padding(.leading, 40)
-
-                                FloatingTextField(
-                                    placeholder: useMetric ? " Goal Weight (kg) " : " Goal Weight (lbs) ",
-                                    text: $goalWeight
-                                )
-                                .keyboardType(.numberPad)
-                                .onReceive(goalWeight.publisher.collect()) { newValue in
-                                    let filtered = newValue.filter { $0.isNumber }
-                                    let trimmed = String(filtered.prefix(3))
-                                    if goalWeight != trimmed { goalWeight = trimmed }
                                 }
-                                .background(Color.customGray)
-                                .disabled(selectedGoalType != .weightGoal)
-                                .padding(.leading, 40)
+                                .transition(.move(edge: .top).combined(with: .opacity))
                             }
-                            .background(Color.customGray)
-                            .transition(.move(edge: .top).combined(with: .opacity))
-                        }
 
-                        if !goalWeight.isEmpty {
-                            VStack(alignment: .leading, spacing: 10) {
-                                Text("Do you want to reach this weight by a certain date?")
-                                    .font(.headline)
-                                    .padding(.bottom, 5)
+                            if !goalWeight.isEmpty {
+                                VStack(alignment: .leading, spacing: 10) {
+                                    // Smaller Label with Padding
+                                    Text("Do you have a target date?")
+                                        .font(.subheadline)  // Smaller font size
+                                        .foregroundColor(Styles.primaryText)
+                                        .padding(.leading, 40)
+                                        .padding(.bottom, 6)  // Padding below the label
+
+                                    FloatingInputWithAction(
+                                        placeholder: " Target Date ",
+                                        displayedText: formattedGoalDate,
+                                        action: {
+                                            temporaryGoalDate = goalDate ?? minSelectableDate
+                                            showDatePicker = true
+                                        },
+                                        hasPickedValue: $hasPickedDate
+                                    )
+                                    .disabled(selectedGoalType != .weightGoal)
                                     .padding(.leading, 40)
-
-                                FloatingInputWithAction(
-                                    placeholder: " Target Date ",
-                                    displayedText: formattedGoalDate,
-                                    action: {
-                                        temporaryGoalDate = goalDate ?? minSelectableDate
-                                        showDatePicker = true
-                                    },
-                                    hasPickedValue: $hasPickedDate
-                                )
-                                .disabled(selectedGoalType != .weightGoal)
-                                .padding(.leading, 40)
-                                .frame(maxWidth: .infinity)
+                                }
+                                .transition(.move(edge: .top).combined(with: .opacity))
                             }
-                            .transition(.move(edge: .top).combined(with: .opacity))
-                            .clipped()
                         }
+                        .animation(.easeOut(duration: 0.5), value: weekGoal)
+                        .animation(.easeOut(duration: 0.5), value: goalWeight)
                     }
-                    .clipped()
-                    .animation(.easeOut(duration: 0.5), value: weekGoal)
-                    .animation(.easeOut(duration: 0.5), value: goalWeight)
-                }
 
-                Divider()
+                    Divider()
 
-                // Custom Calorie Goal Radio Button
-                HStack {
-                    Button(action: {
-                        selectedGoalType = .calorieGoal
-                        resetWeightAndDateInputs()
-                    }) {
-                        HStack {
-                            Image(systemName: selectedGoalType == .calorieGoal ? "largecircle.fill.circle" : "circle")
-                                .foregroundColor(.blue)
-                            Text("Custom Calorie Goal")
-                                .foregroundColor(.primary)
-                                .font(.headline)
+                    // Custom Calorie Goal Radio Button
+                    HStack {
+                        Button(action: {
+                            selectedGoalType = .calorieGoal
+                            resetWeightAndDateInputs()
+                        }) {
+                            HStack {
+                                Image(systemName: selectedGoalType == .calorieGoal ? "largecircle.fill.circle" : "circle")
+                                    .foregroundColor(.blue)
+                                Text("Custom Calorie Goal")
+                                    .foregroundColor(Styles.primaryText)
+                                    .font(.headline)
+                            }
                         }
+                        Spacer()
                     }
-                    Spacer()
-                }
 
-                if selectedGoalType == .calorieGoal {
-                    VStack(alignment: .leading, spacing: 10) {
+                    if selectedGoalType == .calorieGoal {
                         FloatingTextField(
                             placeholder: " Enter Calorie Goal ",
                             text: $customCals
@@ -156,49 +163,34 @@ struct PersonalGoalsView: View {
                             if customCals != trimmed { customCals = trimmed }
                         }
                         .padding(.leading, 40)
+                        .transition(.move(edge: .top).combined(with: .opacity))
                     }
-                    .transition(.move(edge: .top).combined(with: .opacity))
-                    .animation(.easeOut(duration: 0.5), value: selectedGoalType)
                 }
-
+                .padding(20)
             }
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal, 20)
-            .padding(.vertical, 20)
-            .background(
-                RoundedRectangle(cornerRadius: 15)
-                    .fill(Color.customGray)
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 15)
-                    .stroke(Color.white, lineWidth: 2)
-            )
+            .fixedSize(horizontal: false, vertical: true)
             .padding(.horizontal, 40)
 
             Spacer()
         }
-        .padding(.horizontal, 0)
         .sheet(isPresented: $showDatePicker) {
             VStack(spacing: 20) {
                 Text("Select Target Date")
                     .font(.headline)
+                    .foregroundColor(Styles.primaryText)
                     .padding()
 
-                DatePicker(
-                    "",
-                    selection: $temporaryGoalDate,
-                    in: minSelectableDate...,
-                    displayedComponents: [.date]
-                )
-                .datePickerStyle(WheelDatePickerStyle())
-                .labelsHidden()
-                .padding(.horizontal)
+                // Replace SwiftUI DatePicker with CustomDatePicker
+                CustomDatePicker(selectedDate: $temporaryGoalDate, minimumDate: minSelectableDate)
+                    .frame(height: 200)  // Adjust as needed
+                    .clipped()
 
                 HStack {
                     Button("Cancel") {
                         showDatePicker = false
                     }
                     .frame(maxWidth: .infinity)
+                    .foregroundColor(Styles.primaryText)
 
                     Button("Save") {
                         goalDate = temporaryGoalDate
@@ -206,14 +198,16 @@ struct PersonalGoalsView: View {
                         showDatePicker = false
                     }
                     .frame(maxWidth: .infinity)
+                    .foregroundColor(.blue)
                 }
                 .padding(.horizontal)
             }
             .padding()
-            .background(RoundedRectangle(cornerRadius: 15).fill(Color.customGray))
-            .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.white, lineWidth: 2))
+            .background(Styles.secondaryBackground)
+            .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
             .frame(width: UIScreen.main.bounds.width * 0.9)
         }
+
     }
 
     private var formattedGoalDate: String {
@@ -238,4 +232,3 @@ struct PersonalGoalsView: View {
         hasPickedDate = false
     }
 }
-

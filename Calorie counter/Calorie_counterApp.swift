@@ -12,6 +12,7 @@ import SwiftUI
 
 @main
 struct CalorieCounterApp: App {
+  
     
     let persistenceController = PersistenceController.shared // Ensure the Core Data stack is initialized here
     @StateObject private var tracker = DailyDataTracker() // Initialize DailyDataTracker

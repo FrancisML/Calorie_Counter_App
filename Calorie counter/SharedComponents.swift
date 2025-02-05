@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 extension Color {
     static let customGray = Color(red: 0.2, green: 0.2, blue: 0.2) // RGB for #666666
@@ -316,13 +317,12 @@ extension View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
-// MARK: - Horizontal whell picker
+// MARK: - Horizontal Wheel Picker
 
 struct HorizontalWheelPicker: View {
     @Binding var selectedValue: Double
     @Binding var useMetric: Bool
-    @Binding var isCalorieGoalSelected: Bool  // New binding to track goal type selection
-  // Added to switch between imperial and metric
+    @Binding var isCalorieGoalSelected: Bool  // Tracks goal type selection
 
     // Imperial (lbs) and Metric (kg) Value Arrays
     private let imperialValues: [Double] = [-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2]
@@ -342,13 +342,14 @@ struct HorizontalWheelPicker: View {
 
     var body: some View {
         VStack(spacing: 10) {
+            // Updated selection message style
             Text(selectionMessage(for: liveValue))
-                .font(.title2)
-                .foregroundColor(isCalorieGoalSelected ? .gray : .white)  // Change text color based on goal type
+                .font(.headline)  // Slightly smaller than title2
+                .foregroundColor(isCalorieGoalSelected ? .gray : Styles.primaryText)  // Dynamic text color
 
             GeometryReader { geometry in
                 ZStack {
-                    // Change Indicator Image Based on Goal Type
+                    // Change indicator image based on goal type
                     Image(isCalorieGoalSelected ? "grayscaleIndicator" : "scaleIndicator")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -360,8 +361,12 @@ struct HorizontalWheelPicker: View {
                     HStack(spacing: tickSpacing) {
                         ForEach(0..<totalTicks, id: \.self) { index in
                             let isMajorTick = index % 5 == 0
-                            let tickColor: Color = isCalorieGoalSelected ? .gray : (isMajorTick ? .yellow : .white)
-                            let labelColor: Color = isCalorieGoalSelected ? .gray : .yellow
+                            let tickColor: Color = isCalorieGoalSelected
+                                ? .gray
+                                : (isMajorTick ? Styles.primaryText : Styles.primaryBackground)  // Updated tick colors
+                            let labelColor: Color = isCalorieGoalSelected
+                                ? .gray
+                                : Styles.primaryText  // Updated label color
                             let tickHeight = isMajorTick ? tickHeightTall : tickHeightSmall
 
                             VStack(spacing: 2) {
@@ -377,7 +382,7 @@ struct HorizontalWheelPicker: View {
                                         let formattedValue = formatValue(labelValue)
                                         Text(formattedValue)
                                             .font(.caption2)
-                                            .foregroundColor(labelColor)  // Update label color
+                                            .foregroundColor(labelColor)
                                             .fixedSize()
                                     }
                                 } else {
@@ -419,8 +424,7 @@ struct HorizontalWheelPicker: View {
         }
     }
 
-
-    // Get the exact x-offset for each step to align with yellow ticks
+    // Get the exact x-offset for each step to align with major ticks
     private func stepPosition(_ value: Double) -> CGFloat {
         let majorTickSpacing = tickSpacing * 5 * 2
         if let index = values.firstIndex(of: value) {
@@ -430,14 +434,14 @@ struct HorizontalWheelPicker: View {
         return 0
     }
 
-    // Ensures snapping goes to the closest valid yellow tick
+    // Ensures snapping goes to the closest valid tick
     private func closestValue(for offset: CGFloat) -> Double {
         let majorTickSpacing = tickSpacing * 5 * 2
         let indexOffset = Int(round(offset / majorTickSpacing)) + (values.count / 2)
         return values[max(0, min(indexOffset, values.count - 1))]
     }
 
-    // Selection Message for Displaying Changes
+    // Selection message for displaying weight changes
     private func selectionMessage(for value: Double) -> String {
         if value < 0 {
             return useMetric
@@ -452,7 +456,7 @@ struct HorizontalWheelPicker: View {
         }
     }
 
-    // Format Labels for Metric and Imperial Values
+    // Format labels for metric and imperial values
     private func formatValue(_ value: Double) -> String {
         if useMetric {
             return value > 0
@@ -465,12 +469,54 @@ struct HorizontalWheelPicker: View {
         }
     }
 }
+
 // SharedComponents.swift
 
 import SwiftUI
 import Combine
 
 // Your existing shared components here...
+// MARK: - DatePicker
+
+
+struct CustomDatePicker: UIViewRepresentable {
+    @Binding var selectedDate: Date
+    var minimumDate: Date?
+
+    func makeUIView(context: Context) -> UIDatePicker {
+        let datePicker = UIDatePicker()
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.datePickerMode = .date
+        datePicker.minimumDate = minimumDate
+
+        // Set the text color to match Styles.primaryText
+        datePicker.setValue(UIColor(Styles.primaryText), forKeyPath: "textColor")
+
+        datePicker.addTarget(context.coordinator, action: #selector(Coordinator.dateChanged(_:)), for: .valueChanged)
+        return datePicker
+    }
+
+    func updateUIView(_ uiView: UIDatePicker, context: Context) {
+        uiView.date = selectedDate
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject {
+        var parent: CustomDatePicker
+
+        init(_ parent: CustomDatePicker) {
+            self.parent = parent
+        }
+
+        @objc func dateChanged(_ sender: UIDatePicker) {
+            parent.selectedDate = sender.date
+        }
+    }
+}
+
 
 // MARK: - ThemeManager (Temporary)
 class ThemeManager: ObservableObject {

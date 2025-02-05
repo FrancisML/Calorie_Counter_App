@@ -14,87 +14,10 @@
             filePath = "Calorie counter/SharedComponents.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "unknown"
             landmarkType = "0">
-            <Locations>
-               <Location
-                  uuid = "DEF75C20-C94F-4B42-8814-436CF6AA103E - 9d263e57aaeb37e2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Calorie_counter.CustomActivitySlider.activityLevel.getter : Swift.Int"
-                  moduleName = "Calorie counter"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/frank/Desktop/Workspace/Calorie%20counter/Calorie%20counter/SharedComponents.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  uuid = "DEF75C20-C94F-4B42-8814-436CF6AA103E - 978031d4786dcd27"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Calorie_counter.CustomActivitySlider.activityLevel.setter : Swift.Int"
-                  moduleName = "Calorie counter"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/frank/Desktop/Workspace/Calorie%20counter/Calorie%20counter/SharedComponents.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "185"
-                  endingLineNumber = "185"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  uuid = "DEF75C20-C94F-4B42-8814-436CF6AA103E - a9a572cf24c99ad6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Calorie_counter.CustomActivitySlider.activityLevel.modify : Swift.Int"
-                  moduleName = "Calorie counter"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/frank/Desktop/Workspace/Calorie%20counter/Calorie%20counter/SharedComponents.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "185"
-                  endingLineNumber = "185"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  uuid = "DEF75C20-C94F-4B42-8814-436CF6AA103E - f9ac2ff933370123"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Calorie_counter.CustomActivitySlider.activityLevel.modify : Swift.Int with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "Calorie counter"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/frank/Desktop/Workspace/Calorie%20counter/%3Ccompiler-generated%3E"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "40">
-               </Location>
-               <Location
-                  uuid = "DEF75C20-C94F-4B42-8814-436CF6AA103E - e72f86467e831626"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Calorie_counter.CustomActivitySlider.$activityLevel.getter : SwiftUI.Binding&lt;Swift.Int&gt;"
-                  moduleName = "Calorie counter"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/frank/Desktop/Workspace/Calorie%20counter/Calorie%20counter/SharedComponents.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
