@@ -132,6 +132,48 @@
 			<key>uniqueIdentifier</key>
 			<string>07955664-3BC5-4CA5-94D5-683081A35E85</string>
 		</dict>
+		<key>08A8B2D8-F379-40EB-B504-B7665236957F</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>08A8B2D8-F379-40EB-B504-B7665236957F.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>760479532.17939997</real>
+			<key>timeStoppedRecording</key>
+			<real>760479540.46482897</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>08A8B2D8-F379-40EB-B504-B7665236957F</string>
+		</dict>
 		<key>0FDE2A90-29BE-4792-B762-96491FF961C2</key>
 		<dict>
 			<key>className</key>
@@ -1896,6 +1938,48 @@
 			<key>uniqueIdentifier</key>
 			<string>C7899D3E-DB83-40ED-82AB-927F445F2EF6</string>
 		</dict>
+		<key>C7B84550-E036-4F74-8A9A-7C627A539704</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>C7B84550-E036-4F74-8A9A-7C627A539704.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>760480174.36328495</real>
+			<key>timeStoppedRecording</key>
+			<real>760480184.00095201</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>C7B84550-E036-4F74-8A9A-7C627A539704</string>
+		</dict>
 		<key>C7F4846C-31F8-4501-ABCC-451F3518DFE9</key>
 		<dict>
 			<key>className</key>
@@ -2357,6 +2441,48 @@
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
 			<string>FD919D9A-2340-4307-9D6F-EDF2928409E0</string>
+		</dict>
+		<key>FF4B3B0A-0A8C-4D63-9C0C-D58847611376</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>FF4B3B0A-0A8C-4D63-9C0C-D58847611376.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>760480080.48724997</real>
+			<key>timeStoppedRecording</key>
+			<real>760480090.32006395</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>FF4B3B0A-0A8C-4D63-9C0C-D58847611376</string>
 		</dict>
 	</dict>
 </dict>

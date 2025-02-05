@@ -24,7 +24,7 @@ struct UserOverviewView: View {
     var goalWeight: String
     var goalDate: Date?
     var weekGoal: Double
-
+    @EnvironmentObject var themeManager: ThemeManager
     private let activityNames = ["None", "Sedentary", "Lightly Active", "Moderately Active", "Very Active", "Extra Active"]
 
     var body: some View {
@@ -33,11 +33,12 @@ struct UserOverviewView: View {
             VStack(spacing: 10) {
                 Text("Overview")
                     .font(.largeTitle)
+                    .foregroundColor(Styles.primaryText)
                     .fontWeight(.bold)
 
                 Text("Is all this information correct?")
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Styles.secondaryText)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: 300)
             }
@@ -45,79 +46,77 @@ struct UserOverviewView: View {
             .multilineTextAlignment(.center)
             .padding(.horizontal)
 
-            // Gray Box with Profile Picture, Name, and Other Details
-            VStack(alignment: .leading, spacing: 20) {
-                // Profile Picture and Name
-                HStack(spacing: 20) {
-                    ZStack {
-                        Circle()
-                            .stroke(profilePicture != nil ? Color.green : Color.gray, lineWidth: 3)
-                            .frame(width: 100, height: 100)
-                        
-                        Circle()
-                            .fill(Color.gray.opacity(0.3))
-                            .frame(width: 100, height: 100)
-                        
-                        if let image = profilePicture {
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFill()
+            // Styled Box with Profile Picture, Name, and Other Details
+            ZStack {
+                Styles.secondaryBackground
+                    .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
+
+                VStack(alignment: .leading, spacing: 20) {
+                    // Profile Picture and Name
+                    HStack(spacing: 20) {
+                        ZStack {
+                            Circle()
+                                .stroke(profilePicture != nil ? Color.green : Styles.primaryText, lineWidth: 3)
                                 .frame(width: 100, height: 100)
-                                .clipShape(Circle())
-                        } else {
-                            Image("Empty man PP")
-                                .resizable()
-                                .scaledToFill()
+                            
+                            Circle()
+                                .fill(Styles.primaryBackground.opacity(0.3))
                                 .frame(width: 100, height: 100)
-                                .clipShape(Circle())
+                            
+                            if let image = profilePicture {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 100, height: 100)
+                                    .clipShape(Circle())
+                            } else {
+                                Image("Empty man PP")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 100, height: 100)
+                                    .clipShape(Circle())
+                            }
+                        }
+                        
+                        VStack(alignment: .leading) {
+                            Text("First Name")
+                                .font(.headline)
+                                .foregroundColor(Styles.secondaryText)
+                            Text(name.isEmpty ? "Not Provided" : name)
+                                .font(.title2)
+                                .foregroundColor(Styles.primaryText)
+                                .fontWeight(.bold)
                         }
                     }
-                    
-                    VStack(alignment: .leading) {
-                        Text("First Name")
+
+                    Divider().background(Styles.primaryText)
+
+                    // Additional Information
+                    VStack(spacing: 10) {
+                        overviewRow(label: "Gender", value: gender.isEmpty ? "Not Provided" : gender)
+                        overviewRow(label: "Birthdate", value: formattedBirthDate)
+                        overviewRow(label: "Weight", value: formattedWeight)
+                        overviewRow(label: "Height", value: formattedHeight)
+                        overviewRow(label: "Activity Level", value: activityNames[activityLevel])
+                    }
+
+                    Divider().background(Styles.primaryText)
+
+                    // Goal Section
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Goal")
                             .font(.headline)
-                            .foregroundColor(.gray)
-                        Text(name.isEmpty ? "Not Provided" : name)
-                            .font(.title2)
-                            .fontWeight(.bold)
+                            .foregroundColor(Styles.secondaryText)
+                        
+                        Text(goalMessage)
+                            .font(.body)
+                            .foregroundColor(Styles.primaryText)
+                            .multilineTextAlignment(.leading)
                     }
                 }
-
-                Divider()
-
-                // VStack for Additional Information
-                VStack(spacing: 10) {
-                    overviewRow(label: "Gender", value: gender.isEmpty ? "Not Provided" : gender)
-                    overviewRow(label: "Birthdate", value: formattedBirthDate)
-                    overviewRow(label: "Weight", value: formattedWeight)
-                    overviewRow(label: "Height", value: formattedHeight)
-                    overviewRow(label: "Activity Level", value: activityNames[activityLevel])
-                }
-
-                Divider()
-
-                // Goal Section
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Goal")
-                        .font(.headline)
-                        .foregroundColor(.gray)
-                    
-                    Text(goalMessage)
-                        .font(.body)
-                        .foregroundColor(.white)
-                        .multilineTextAlignment(.leading)
-                }
+                .padding(20)
             }
-            .padding(20)
-            .frame(maxWidth: .infinity)
-            .background(
-                RoundedRectangle(cornerRadius: 15)
-                    .fill(Color.customGray)
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 15)
-                    .stroke(Color.white, lineWidth: 2)
-            )
+            .fixedSize(horizontal: false, vertical: true)
             .padding(.horizontal, 40)
 
             Spacer()
@@ -131,11 +130,11 @@ struct UserOverviewView: View {
         HStack {
             Text(label)
                 .font(.headline)
-                .foregroundColor(.white)
+                .foregroundColor(Styles.primaryText)
             Spacer()
             Text(value)
                 .font(.body)
-                .foregroundColor(.white)
+                .foregroundColor(Styles.secondaryText)
         }
     }
 
@@ -161,44 +160,38 @@ struct UserOverviewView: View {
 
     // MARK: - Goal Message Logic
     private var goalMessage: String {
-            // 1. Custom Calorie Goal takes priority
-            if !customCals.isEmpty {
-                return "Keep daily calories to \(customCals)"
-            }
-
-            // Convert user weight and goal weight to Double for comparison
-            let currentWeight = Double(weight) ?? 0
-            let targetWeight = Double(goalWeight) ?? 0
-            let weightDifference = abs(targetWeight - currentWeight)
-            let formattedDifference = useMetric ? "\(String(format: "%.1f", weightDifference)) kg" : "\(String(format: "%.1f", weightDifference)) lbs"
-            
-            if weekGoal == 0 {
-                // 2. Maintain Goal
-                return "Maintain Current Weight"
-            } else if goalWeight.isEmpty {
-                // 3. Lose or Gain X per week (no goal weight)
-                let action = weekGoal < 0 ? "Lose" : "Gain"
-                let formattedGoal = useMetric ? "\(abs(weekGoal)) kg" : "\(abs(weekGoal)) lbs"
-                return "\(action) \(formattedGoal) per week"
-            } else if goalWeight.isEmpty == false && goalDate == nil {
-                // 4. Goal weight entered, but no goal date
-                let action = weekGoal < 0 ? "Lose" : "Gain"
-                let formattedGoal = useMetric ? "\(abs(weekGoal)) kg" : "\(abs(weekGoal)) lbs"
-                return "\(action) \(formattedDifference) by \(action.lowercased())ing \(formattedGoal) per week"
-            } else if goalWeight.isEmpty == false && goalDate != nil {
-                // 5. Goal weight and goal date entered
-                let action = weekGoal < 0 ? "Lose" : "Gain"
-                let formattedDate = formattedGoalDate
-                return "\(action) \(formattedDifference) by \(formattedDate)"
-            } else {
-                return "No Goal Set"
-            }
+        if !customCals.isEmpty {
+            return "Keep daily calories to \(customCals)"
         }
 
-        private var formattedGoalDate: String {
-            guard let goalDate = goalDate else { return "Not Provided" }
-            let formatter = DateFormatter()
-            formatter.dateStyle = .medium
-            return formatter.string(from: goalDate)
+        let currentWeight = Double(weight) ?? 0
+        let targetWeight = Double(goalWeight) ?? 0
+        let weightDifference = abs(targetWeight - currentWeight)
+        let formattedDifference = useMetric ? "\(String(format: "%.1f", weightDifference)) kg" : "\(String(format: "%.1f", weightDifference)) lbs"
+
+        if weekGoal == 0 {
+            return "Maintain Current Weight"
+        } else if goalWeight.isEmpty {
+            let action = weekGoal < 0 ? "Lose" : "Gain"
+            let formattedGoal = useMetric ? "\(abs(weekGoal)) kg" : "\(abs(weekGoal)) lbs"
+            return "\(action) \(formattedGoal) per week"
+        } else if !goalWeight.isEmpty && goalDate == nil {
+            let action = weekGoal < 0 ? "Lose" : "Gain"
+            let formattedGoal = useMetric ? "\(abs(weekGoal)) kg" : "\(abs(weekGoal)) lbs"
+            return "\(action) \(formattedDifference) by \(action.lowercased())ing \(formattedGoal) per week"
+        } else if !goalWeight.isEmpty && goalDate != nil {
+            let action = weekGoal < 0 ? "Lose" : "Gain"
+            let formattedDate = formattedGoalDate
+            return "\(action) \(formattedDifference) by \(formattedDate)"
+        } else {
+            return "No Goal Set"
         }
     }
+
+    private var formattedGoalDate: String {
+        guard let goalDate = goalDate else { return "Not Provided" }
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter.string(from: goalDate)
+    }
+}
