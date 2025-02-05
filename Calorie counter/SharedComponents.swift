@@ -184,6 +184,7 @@ struct HeightPicker: View {
 import SwiftUI
 
 struct CustomActivitySlider: View {
+    @EnvironmentObject var themeManager: ThemeManager
     @Binding var activityLevel: Int
 
     private let activityNames = ["None", "Sedentary", "Lightly Active", "Moderately Active", "Very Active", "Extra Active"]
@@ -214,6 +215,7 @@ struct CustomActivitySlider: View {
         VStack(spacing: 15) {
             Text("Activity Level")
                 .font(.headline)
+                .foregroundColor(Styles.primaryText)
                 .padding(.bottom, 10)
 
            
@@ -223,7 +225,7 @@ struct CustomActivitySlider: View {
                 // **Track (Moves Down)**
                 RoundedRectangle(cornerRadius: 4)
                     .frame(width: trackWidth, height: 10)
-                    .foregroundColor(Color.gray.opacity(0.5))
+                    .foregroundColor(Styles.primaryText.opacity(0.5))
                     .offset(y: trackOffset)  // Move track down
 
                 // **Tick Marks (Moves Down with Track)**
@@ -231,14 +233,14 @@ struct CustomActivitySlider: View {
                     ForEach(0...stepCount, id: \.self) { index in
                         Rectangle()
                             .frame(width: 3, height: 20) //  Tick Mark Size
-                            .foregroundColor(Color.customGray)
+                            .foregroundColor(Styles.secondaryBackground)
                     }
                 }
                 .frame(width: trackWidth, height: 20)
                 .offset(y: trackOffset)  // Move tick marks down to match the track
 
                 // **Draggable Image (Acts as the Thumb)**
-                Image("SliderIcon")
+                Image(themeManager.isDarkMode ? "SliderIcon" : "SliderIconDark")
                     .resizable()
                     .scaledToFit()
                     .frame(width: thumbSize, height: thumbSize)
@@ -247,19 +249,20 @@ struct CustomActivitySlider: View {
                         DragGesture()
                             .onChanged { gesture in
                                 let newOffset = min(
-                                    max(gesture.translation.width + stepPosition(activityLevel), 0),  //  Left boundary
-                                    trackWidth - thumbSize  //  Right boundary (fixed)
+                                    max(gesture.translation.width + stepPosition(activityLevel), 0),
+                                    trackWidth - thumbSize
                                 )
                                 dragOffset = newOffset
-                                liveActivityLevel = closestStep(for: dragOffset)  //  Live update
+                                liveActivityLevel = closestStep(for: dragOffset)
                             }
                             .onEnded { _ in
                                 let newLevel = closestStep(for: dragOffset)
-                                activityLevel = newLevel  //  Saves final selection
-                                liveActivityLevel = newLevel  //  Ensures UI stays synced
-                                dragOffset = stepPosition(newLevel)  // Snap to step position
+                                activityLevel = newLevel
+                                liveActivityLevel = newLevel
+                                dragOffset = stepPosition(newLevel)
                             }
                     )
+
             }
             .frame(width: trackWidth, height: 80)  // Increased height for spacing
             // **Activity Image (Updates LIVE)**
@@ -268,14 +271,14 @@ struct CustomActivitySlider: View {
             // **Activity Name (Updates LIVE)**
             Text(activityNames[liveActivityLevel])
                 .font(.subheadline)
+                .foregroundColor(Styles.secondaryText)
                 .font(.title2)
                 .fontWeight(.bold)
 
             // **Activity Description (Updates LIVE)**
             Text(activityDescriptions[liveActivityLevel])
                 .font(.subheadline)
-                .foregroundColor(.gray)
-                .multilineTextAlignment(.center)
+                .foregroundColor(Styles.secondaryText)
                 .padding(.horizontal, 20)
         }
         .onAppear {

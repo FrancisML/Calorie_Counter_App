@@ -15,12 +15,12 @@ struct PersonalStatsView: View {
     @Binding var useMetric: Bool
     @Binding var goalWeight: String
     @Binding var activityLevel: Int
+    
     @State private var hasPickedHeight: Bool
     @State private var showHeightPicker: Bool = false
     @State private var tempHeightCm: Int = 0  // Temporary variable for cm selection
-
-
-
+    @EnvironmentObject var themeManager: ThemeManager
+    
     init(weight: Binding<String>, heightFeet: Binding<Int>, heightInches: Binding<Int>, heightCm: Binding<Int>, useMetric: Binding<Bool>, goalWeight: Binding<String>, activityLevel: Binding<Int>) {
         _weight = weight
         _heightFeet = heightFeet
@@ -29,87 +29,95 @@ struct PersonalStatsView: View {
         _useMetric = useMetric
         _goalWeight = goalWeight
         _activityLevel = activityLevel
-       
-
         _hasPickedHeight = State(initialValue: heightCm.wrappedValue > 0 || heightFeet.wrappedValue > 0)
-        _tempHeightCm = State(initialValue: heightCm.wrappedValue)  // Initialize temp value
+        _tempHeightCm = State(initialValue: heightCm.wrappedValue)
     }
-
+    
     var body: some View {
         VStack(spacing: 20) {
+            // Title and Subtitle
             VStack(spacing: 10) {
                 Text("Personal Stats")
                     .font(.largeTitle)
+                    .foregroundColor(Styles.primaryText)
                     .fontWeight(.bold)
-
+                
                 Text("Enter your stats")
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Styles.secondaryText)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: 300)
             }
-
-            VStack(spacing: 20) {
-                HStack {
-                    Spacer()
-                    Toggle(isOn: Binding(
-                        get: { useMetric },
-                        set: { newValue in
-                            if newValue != useMetric {
-                                useMetric = newValue
-                                hasPickedHeight = false
-                                if newValue {
-                                    // Convert feet + inches to cm when switching to metric
-                                    heightCm = Int(Double((heightFeet * 12 + heightInches)) * 2.54)
-                                    tempHeightCm = heightCm  // Keep the converted value for selection
-                                } else {
-                                    // Convert cm to feet + inches when switching to imperial
-                                    let totalInches = Int(Double(heightCm) / 2.54)
-                                    heightFeet = totalInches / 12
-                                    heightInches = totalInches % 12
+            .frame(maxWidth: .infinity)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal)
+            
+            // Shadow applied to the container
+            ZStack {
+                Styles.secondaryBackground
+                    .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
+                
+                VStack(spacing: 20) {
+                    // Metric Toggle
+                    HStack {
+                        Spacer()
+                        Toggle(isOn: Binding(
+                            get: { useMetric },
+                            set: { newValue in
+                                if newValue != useMetric {
+                                    useMetric = newValue
+                                    hasPickedHeight = false
+                                    weight = ""  // Clear the weight input when toggling
+                                    
+                                    if newValue {
+                                        // Convert feet + inches to cm when switching to metric
+                                        heightCm = Int(Double((heightFeet * 12 + heightInches)) * 2.54)
+                                        tempHeightCm = heightCm
+                                    } else {
+                                        // Convert cm to feet + inches when switching to imperial
+                                        let totalInches = Int(Double(heightCm) / 2.54)
+                                        heightFeet = totalInches / 12
+                                        heightInches = totalInches % 12
+                                    }
                                 }
                             }
+                        )) {
+                            Text("Metric")
+                                .foregroundColor(Styles.primaryText)
                         }
-                    )) {
-                        Text("Metric")
+                        .toggleStyle(SquareToggleStyle())
                     }
+                    .padding(.trailing, 10)
+                    
+                    
+                    // Weight Input
+                    FloatingTextField(
+                        placeholder: useMetric ? " Weight (kg) " : " Weight (lbs) ",
+                        text: $weight
+                    )
+                    .keyboardType(.numberPad)
+                    .onReceive(weight.publisher.collect()) { newValue in
+                        let filtered = newValue.filter { $0.isNumber }
+                        let trimmed = String(filtered.prefix(3))
+                        if weight != trimmed { weight = trimmed }
+                    }
+                    
+                    // Height Input
+                    FloatingInputWithAction(
+                        placeholder: useMetric ? " Height (cm) " : " Height (ft/in) ",
+                        displayedText: formattedHeight,
+                        action: { showHeightPicker = true },
+                        hasPickedValue: $hasPickedHeight
+                    )
+                    
+                    // Activity Level Slider
+                    CustomActivitySlider(activityLevel: $activityLevel)
                 }
-                .padding(.trailing, 10)
-
-                FloatingTextField(
-                    placeholder: useMetric ? " Weight (kg) " : " Weight (lbs) ",
-                    text: $weight
-                )
-                .keyboardType(.numberPad)
-                .onReceive(weight.publisher.collect()) { newValue in
-                    let filtered = newValue.filter { $0.isNumber } // ✅ Keep only numbers
-                    let trimmed = String(filtered.prefix(3)) // ✅ Convert to String and limit to 3 digits
-                    if weight != trimmed { weight = trimmed } // ✅ Prevents infinite loop
-                }
-
-
-                FloatingInputWithAction(
-                    placeholder: useMetric ? " Height (cm) " : " Height (ft/in) ",
-                    displayedText: formattedHeight,
-                    action: { showHeightPicker = true },
-                    hasPickedValue: $hasPickedHeight
-                )
-
-                CustomActivitySlider(activityLevel: $activityLevel)
+                .padding(20)
             }
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal, 20)
-            .padding(.vertical, 20)
-            .background(
-                RoundedRectangle(cornerRadius: 15)
-                    .fill(Color.customGray)
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 15)
-                    .stroke(Color.white, lineWidth: 2)
-            )
+            .fixedSize(horizontal: false, vertical: true)
             .padding(.horizontal, 40)
-
+            
             Spacer()
         }
         .padding(.horizontal, 0)
@@ -119,23 +127,25 @@ struct PersonalStatsView: View {
                     ZStack {
                         Color.black.opacity(0.3)
                             .ignoresSafeArea()
-
+                        
                         VStack(spacing: 20) {
                             Text("Select Your Height")
                                 .font(.headline)
-
+                                .foregroundColor(Styles.primaryText)
+                            
                             heightPicker
                                 .padding(.horizontal)
-
+                            
                             HStack {
                                 Button("Cancel") {
                                     showHeightPicker = false
                                 }
                                 .frame(maxWidth: .infinity)
-
+                                .foregroundColor(Styles.primaryText)
+                                
                                 Button("Save") {
                                     if useMetric {
-                                        heightCm = tempHeightCm  // ✅ Correctly assign from picker
+                                        heightCm = tempHeightCm
                                     } else {
                                         heightCm = 0
                                     }
@@ -143,53 +153,96 @@ struct PersonalStatsView: View {
                                     showHeightPicker = false
                                 }
                                 .frame(maxWidth: .infinity)
+                                .foregroundColor(.blue)
                             }
                             .padding(.horizontal)
                         }
                         .padding(20)
-                        .background(RoundedRectangle(cornerRadius: 15).fill(Color.customGray))
-                        .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.white, lineWidth: 2))
+                        .background(Styles.secondaryBackground)
+                        .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
                         .frame(width: UIScreen.main.bounds.width * 0.9)
                     }
                 }
             }
         )
     }
-
+    
     private var formattedHeight: String {
         if hasPickedHeight {
             return useMetric ? "\(heightCm) cm" : "\(heightFeet) ft \(heightInches) in"
         }
         return ""
     }
-
+    
     private var heightPicker: some View {
         VStack {
             if useMetric {
-                Picker("Height (cm)", selection: $tempHeightCm) {  // ✅ Use temp value
+                Picker("Height (cm)", selection: $tempHeightCm) {
                     ForEach(100...250, id: \.self) { cm in
-                        Text("\(cm) cm").tag(cm)
+                        Text("\(cm) cm")
+                            .foregroundColor(Styles.secondaryText)
                     }
                 }
                 .pickerStyle(WheelPickerStyle())
+                .frame(maxWidth: UIScreen.main.bounds.width * 0.4) // Reduce width by 60%
+                .clipped()
             } else {
                 HStack {
                     Picker("Feet", selection: $heightFeet) {
                         ForEach(3...7, id: \.self) { feet in
-                            Text("\(feet) ft").tag(feet)
+                            Text("\(feet) ft")
+                                .foregroundColor(Styles.secondaryText)
                         }
                     }
                     .pickerStyle(WheelPickerStyle())
-
+                    .frame(maxWidth: UIScreen.main.bounds.width * 0.2) // Reduce width for feet
+                    .clipped()
+                    
                     Picker("Inches", selection: $heightInches) {
                         ForEach(0..<12, id: \.self) { inch in
-                            Text("\(inch) in").tag(inch)
+                            Text("\(inch) in")
+                                .foregroundColor(Styles.secondaryText)
                         }
                     }
                     .pickerStyle(WheelPickerStyle())
+                    .frame(maxWidth: UIScreen.main.bounds.width * 0.2) // Reduce width for inches
+                    .clipped()
                 }
             }
         }
     }
+
 }
+
+
+struct SquareToggleStyle: ToggleStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        HStack {
+            configuration.label
+
+            Spacer()
+
+            // Toggle container with dynamic background
+            ZStack(alignment: configuration.isOn ? .trailing : .leading) {
+                Rectangle()
+                    .fill(configuration.isOn ? Color.blue : Styles.primaryText)
+                    .frame(width: 50, height: 30)
+                    .cornerRadius(4)
+                    .animation(.easeInOut(duration: 0.2), value: configuration.isOn)
+
+                // Square slider with primary background color
+                Rectangle()
+                    .fill(Styles.secondaryBackground)
+                    .frame(width: 24, height: 24)
+                    .padding(3)
+                    .shadow(radius: 2)
+            }
+            .onTapGesture {
+                configuration.isOn.toggle()
+            }
+        }
+    }
+}
+
+
 

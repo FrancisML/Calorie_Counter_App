@@ -120,6 +120,16 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameSliderIconDark</string>
+			<key>relativePath</key>
+			<string>./SliderIconDark.imageset</string>
+			<key>swiftSymbol</key>
+			<string>sliderIconDark</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameAge</string>
 			<key>relativePath</key>
 			<string>./age.imageset</string>

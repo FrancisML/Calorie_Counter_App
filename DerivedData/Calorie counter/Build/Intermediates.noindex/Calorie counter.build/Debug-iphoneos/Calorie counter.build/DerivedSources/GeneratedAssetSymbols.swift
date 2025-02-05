@@ -64,6 +64,9 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "SliderIcon" asset catalog image resource.
     static let sliderIcon = DeveloperToolsSupport.ImageResource(name: "SliderIcon", bundle: resourceBundle)
 
+    /// The "SliderIconDark" asset catalog image resource.
+    static let sliderIconDark = DeveloperToolsSupport.ImageResource(name: "SliderIconDark", bundle: resourceBundle)
+
     /// The "age" asset catalog image resource.
     static let age = DeveloperToolsSupport.ImageResource(name: "age", bundle: resourceBundle)
 
@@ -248,6 +251,15 @@ extension AppKit.NSImage {
     static var sliderIcon: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .sliderIcon)
+#else
+        .init()
+#endif
+    }
+
+    /// The "SliderIconDark" asset catalog image.
+    static var sliderIconDark: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .sliderIconDark)
 #else
         .init()
 #endif
@@ -508,6 +520,15 @@ extension UIKit.UIImage {
     static var sliderIcon: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .sliderIcon)
+#else
+        .init()
+#endif
+    }
+
+    /// The "SliderIconDark" asset catalog image.
+    static var sliderIconDark: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .sliderIconDark)
 #else
         .init()
 #endif
