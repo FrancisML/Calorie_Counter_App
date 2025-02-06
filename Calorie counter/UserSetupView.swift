@@ -72,7 +72,6 @@ struct UserSetupView: View {
                         imagePickerSourceType: $imagePickerSourceType,
                         showActionSheet: $showActionSheet
                     )
-                     // Apply secondary background
                     .offset(x: currentStep == 1 ? 0 : -geometry.size.width)
                     
                     PersonalStatsView(
@@ -84,7 +83,6 @@ struct UserSetupView: View {
                         goalWeight: $goalWeight,
                         activityLevel: $activityLevel
                     )
-                    
                     .offset(x: currentStep == 2 ? 0 : (currentStep > 2 ? -geometry.size.width : geometry.size.width))
 
                     PersonalGoalsView(
@@ -94,7 +92,6 @@ struct UserSetupView: View {
                         customCals: $customCals,
                         weekGoal: $weekGoal
                     )
-                    
                     .offset(x: currentStep == 3 ? 0 : (currentStep < 3 ? geometry.size.width : -geometry.size.width))
 
                     UserOverviewView(
@@ -113,16 +110,15 @@ struct UserSetupView: View {
                         goalDate: goalDate,
                         weekGoal: weekGoal
                     )
-                    
                     .offset(x: currentStep == 4 ? 0 : geometry.size.width)
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height * 0.7)
+                
                 .animation(.easeInOut(duration: 0.4), value: currentStep)
 
                 Spacer()
 
-                // BACK AND NEXT BUTTONS
-                // BACK AND NEXT BUTTONS WITH TOGGLE IN MIDDLE
+                // BACK AND NEXT BUTTONS (Fixed at the Bottom)
                 HStack {
                     if currentStep > 1 {
                         Button(action: {
@@ -154,6 +150,7 @@ struct UserSetupView: View {
                             .background(Color.blue)
                             .cornerRadius(25)
                     }
+
                     Spacer()
 
                     Button(action: {
@@ -174,10 +171,10 @@ struct UserSetupView: View {
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 30)
-
             }
             .background(Styles.primaryBackground) // Apply primary background to the whole view
             .focused($isKeyboardActive) // Ensures focus tracking
+            .ignoresSafeArea(.keyboard) // Make sure keyboard floats on top without affecting layout
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
@@ -189,6 +186,7 @@ struct UserSetupView: View {
                 }
             }
         }
+        .ignoresSafeArea(.keyboard) // Make sure keyboard floats on top without affecting layout
         // DATE PICKER OVERLAY (Works Like Before)
         .overlay(
             Group {
@@ -245,10 +243,6 @@ struct UserSetupView: View {
         )
     }
 }
-
-
-
-
 
 
 
