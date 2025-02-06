@@ -38,6 +38,37 @@ struct UserSetupView: View {
     
     @State private var isDarkMode: Bool = false
     @EnvironmentObject var themeManager: ThemeManager
+    
+    // MARK: - Validation for Personal Details
+    private var isPersonalDetailsComplete: Bool {
+        return !name.isEmpty && !gender.isEmpty && birthDate != nil
+    }
+    
+    private var isPersonalStatsComplete: Bool {
+        return !weight.isEmpty && hasEnteredHeight
+    }
+
+    // Helper for checking if height is entered (works for both metric and imperial)
+    private var hasEnteredHeight: Bool {
+        if useMetric {
+            return heightCm > 0
+        } else {
+            return heightFeet > 0 || heightInches > 0
+        }
+    }
+
+    // Enable the Next button only if validation passes or not on Step 1
+    private var isNextButtonEnabled: Bool {
+        switch currentStep {
+        case 1:
+            return isPersonalDetailsComplete  // Validate Personal Details
+        case 2:
+            return isPersonalStatsComplete    // Validate Personal Stats
+        default:
+            return true  // Enable by default for other steps
+        }
+    }
+
 
     var body: some View {
         GeometryReader { geometry in
@@ -118,29 +149,39 @@ struct UserSetupView: View {
 
                 Spacer()
 
-                // BACK AND NEXT BUTTONS (Fixed at the Bottom)
+            
+                // BACK, DARK MODE TOGGLE, AND NEXT BUTTONS
+                // BACK, DARK MODE TOGGLE, AND NEXT BUTTONS
                 HStack {
+                    // BACK BUTTON (Styled)
+                    // BACK BUTTON (Prevents Going Below Step 1)
                     if currentStep > 1 {
                         Button(action: {
                             withAnimation(.easeInOut(duration: 0.4)) {
-                                currentStep -= 1
+                                if currentStep > 1 {  // Prevents going below 1
+                                    currentStep -= 1
+                                }
                             }
                         }) {
                             Text("< Back")
                                 .font(.title2)
-                                .foregroundColor(.white)
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 10)
-                                .background(Color.blue)
-                                .cornerRadius(25)
+                                .foregroundColor(Styles.primaryText)
+                                .padding()
+                                .frame(width: 120, height: 50)
+                                .background(Styles.secondaryBackground)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 4)
+                                        .stroke(Styles.primaryText, lineWidth: 1)
+                                )
                         }
                     }
 
+
                     Spacer()
 
-                    // Dark/Light Mode Toggle Button
+                    // DARK MODE TOGGLE BUTTON (Unchanged)
                     Button(action: {
-                        themeManager.isDarkMode.toggle()  // Toggle dark mode
+                        themeManager.isDarkMode.toggle()
                     }) {
                         Image(systemName: themeManager.isDarkMode ? "moon.fill" : "sun.max.fill")
                             .font(.title2)
@@ -153,6 +194,7 @@ struct UserSetupView: View {
 
                     Spacer()
 
+                    // NEXT BUTTON (Styled and Conditional)
                     Button(action: {
                         withAnimation(.easeInOut(duration: 0.4)) {
                             if currentStep < 4 {
@@ -162,15 +204,22 @@ struct UserSetupView: View {
                     }) {
                         Text(currentStep < 4 ? "Next >" : "Finish")
                             .font(.title2)
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 10)
-                            .background(Color.blue)
-                            .cornerRadius(25)
+                            .foregroundColor(isNextButtonEnabled ? Styles.primaryText : Styles.secondaryBackground)  // Text changes when disabled
+                            .padding()
+                            .frame(width: 120, height: 50)
+                            .background(isNextButtonEnabled ? Styles.secondaryBackground : Color.gray.opacity(0.3))  // Background stays light gray when disabled
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 4)
+                                    .stroke(isNextButtonEnabled ? Styles.primaryText : Styles.secondaryBackground, lineWidth: 1)  // Border changes when disabled
+                            )
                     }
+                    .disabled(!isNextButtonEnabled)
+
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 30)
+
+
             }
             .background(Styles.primaryBackground) // Apply primary background to the whole view
             .focused($isKeyboardActive) // Ensures focus tracking
