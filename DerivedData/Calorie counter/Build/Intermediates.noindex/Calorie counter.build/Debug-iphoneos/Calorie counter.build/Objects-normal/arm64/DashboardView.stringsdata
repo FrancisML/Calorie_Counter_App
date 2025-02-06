@@ -4,27 +4,31 @@
     "Localizable": [
       {
         "comment": "",
-        "key": "Loading user profile..."
+        "key": "Welcome to Your Dashboard"
       },
       {
         "comment": "",
-        "key": "Current Weight: %lld lbs"
+        "key": "No user data available."
       },
       {
         "comment": "",
-        "key": "Goal Weight: %lld lbs"
+        "key": "Hello, %@!"
       },
       {
         "comment": "",
-        "key": "Goal Date: %@"
+        "key": "Current Weight: %d %@"
       },
       {
         "comment": "",
-        "key": "Simulate Day"
+        "key": "Goal Weight: %d %@"
       },
       {
         "comment": "",
-        "key": "Restart Setup"
+        "key": "Target Date: %@"
+      },
+      {
+        "comment": "",
+        "key": "Refresh Data"
       }
     ]
   },

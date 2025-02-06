@@ -2,7 +2,7 @@
 //  UserProfile+CoreDataProperties.swift
 //  Calorie counter
 //
-//  Created by frank lasalvia on 1/17/25.
+//  Created by frank lasalvia on 2/6/25.
 //
 //
 
@@ -16,9 +16,12 @@ extension UserProfile {
         return NSFetchRequest<UserProfile>(entityName: "UserProfile")
     }
 
-    @NSManaged public var activityLevel: String?
+    @NSManaged public var activityInt: Int32
     @NSManaged public var age: Int32
+    @NSManaged public var birthdate: Date?
     @NSManaged public var calorieDeficit: Int32
+    @NSManaged public var currentWeight: Int32
+    @NSManaged public var customCals: Int32
     @NSManaged public var dailyCalorieGoal: Int32
     @NSManaged public var dailyLimit: Int32
     @NSManaged public var daysLeft: Int32
@@ -34,11 +37,12 @@ extension UserProfile {
     @NSManaged public var profilePicture: Data?
     @NSManaged public var startDate: Date?
     @NSManaged public var startPicture: Data?
+    @NSManaged public var startWeight: Int32
     @NSManaged public var targetDate: Date?
+    @NSManaged public var tempDayNumber: Int32
     @NSManaged public var useMetric: Bool
     @NSManaged public var userBMR: Int32
-    @NSManaged public var weight: Int32
-    @NSManaged public var tempDayNumber: Int32
+    @NSManaged public var weekGoal: Double
     @NSManaged public var dailyProgress: NSSet?
     @NSManaged public var progressPicture: NSSet?
 

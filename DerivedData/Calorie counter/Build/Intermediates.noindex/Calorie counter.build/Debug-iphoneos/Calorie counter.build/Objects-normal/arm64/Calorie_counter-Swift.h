@@ -393,9 +393,12 @@ SWIFT_CLASS("_TtC15Calorie_counter11UserProfile")
 
 
 @interface UserProfile (SWIFT_EXTENSION(Calorie_counter))
-@property (nonatomic, copy) NSString * _Nullable activityLevel;
+@property (nonatomic) int32_t activityInt;
 @property (nonatomic) int32_t age;
+@property (nonatomic, copy) NSDate * _Nullable birthdate;
 @property (nonatomic) int32_t calorieDeficit;
+@property (nonatomic) int32_t currentWeight;
+@property (nonatomic) int32_t customCals;
 @property (nonatomic) int32_t dailyCalorieGoal;
 @property (nonatomic) int32_t dailyLimit;
 @property (nonatomic) int32_t daysLeft;
@@ -411,11 +414,12 @@ SWIFT_CLASS("_TtC15Calorie_counter11UserProfile")
 @property (nonatomic, copy) NSData * _Nullable profilePicture;
 @property (nonatomic, copy) NSDate * _Nullable startDate;
 @property (nonatomic, copy) NSData * _Nullable startPicture;
+@property (nonatomic) int32_t startWeight;
 @property (nonatomic, copy) NSDate * _Nullable targetDate;
+@property (nonatomic) int32_t tempDayNumber;
 @property (nonatomic) BOOL useMetric;
 @property (nonatomic) int32_t userBMR;
-@property (nonatomic) int32_t weight;
-@property (nonatomic) int32_t tempDayNumber;
+@property (nonatomic) double weekGoal;
 @property (nonatomic, strong) NSSet * _Nullable dailyProgress;
 @property (nonatomic, strong) NSSet * _Nullable progressPicture;
 @end

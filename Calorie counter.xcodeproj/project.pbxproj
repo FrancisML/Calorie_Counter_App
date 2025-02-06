@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0107C8442D554D6000AF12A0 /* UserProfile+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0107C8422D554D6000AF12A0 /* UserProfile+CoreDataClass.swift */; };
+		0107C8452D554D6000AF12A0 /* UserProfile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0107C8432D554D6000AF12A0 /* UserProfile+CoreDataProperties.swift */; };
 		012AF0D62D337F35005D03B1 /* CalorieCounterModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0D42D337F35005D03B1 /* CalorieCounterModel.xcdatamodeld */; };
 		012AF0D82D3384AD005D03B1 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0D72D3384AD005D03B1 /* PersistenceController.swift */; };
 		012AF0F22D342658005D03B1 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0F12D342658005D03B1 /* DashboardView.swift */; };
@@ -15,8 +17,6 @@
 		01323EE22D526BF9005C025A /* UserOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01323EE12D526BF9005C025A /* UserOverviewView.swift */; };
 		01323EE42D529022005C025A /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01323EE32D529022005C025A /* Styles.swift */; };
 		01425DBC2D398D9800A98F2E /* DailyDataTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01425DBB2D398D9800A98F2E /* DailyDataTracker.swift */; };
-		01425DC32D3A1D9100A98F2E /* UserProfile+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01425DC12D3A1D9100A98F2E /* UserProfile+CoreDataClass.swift */; };
-		01425DC42D3A1D9100A98F2E /* UserProfile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01425DC22D3A1D9100A98F2E /* UserProfile+CoreDataProperties.swift */; };
 		01425DC72D3A76C900A98F2E /* DailyProgress+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01425DC52D3A76C900A98F2E /* DailyProgress+CoreDataClass.swift */; };
 		01425DC82D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01425DC62D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift */; };
 		01466C742D30E33D008648A6 /* GoalSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01466C732D30E33D008648A6 /* GoalSummaryView.swift */; };
@@ -64,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0107C8422D554D6000AF12A0 /* UserProfile+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0107C8432D554D6000AF12A0 /* UserProfile+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		012AF0D52D337F35005D03B1 /* CalorieCounterModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CalorieCounterModel.xcdatamodel; sourceTree = "<group>"; };
 		012AF0D72D3384AD005D03B1 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		012AF0F12D342658005D03B1 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
@@ -72,8 +74,6 @@
 		01323EE12D526BF9005C025A /* UserOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOverviewView.swift; sourceTree = "<group>"; };
 		01323EE32D529022005C025A /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		01425DBB2D398D9800A98F2E /* DailyDataTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDataTracker.swift; sourceTree = "<group>"; };
-		01425DC12D3A1D9100A98F2E /* UserProfile+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataClass.swift"; sourceTree = "<group>"; };
-		01425DC22D3A1D9100A98F2E /* UserProfile+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		01425DC52D3A76C900A98F2E /* DailyProgress+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyProgress+CoreDataClass.swift"; sourceTree = "<group>"; };
 		01425DC62D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyProgress+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		01466C732D30E33D008648A6 /* GoalSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSummaryView.swift; sourceTree = "<group>"; };
@@ -132,13 +132,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0107C8352D5513FE00AF12A0 /* UserSetup */ = {
+			isa = PBXGroup;
+			children = (
+				016E52702D4A919F00105B8E /* PersonalDetailsView.swift */,
+				01C772792D40374000402083 /* UserSetupView.swift */,
+				016E52722D4A92BE00105B8E /* PersonalStatsView.swift */,
+				015B6C8A2D4D264F0095CB7F /* PersonalGoalView.swift */,
+				01323EE12D526BF9005C025A /* UserOverviewView.swift */,
+			);
+			path = UserSetup;
+			sourceTree = "<group>";
+		};
+		0107C8462D5551AD00AF12A0 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
 		01BF35EF2D2E486E002D1E51 = {
 			isa = PBXGroup;
 			children = (
+				0107C8422D554D6000AF12A0 /* UserProfile+CoreDataClass.swift */,
+				0107C8432D554D6000AF12A0 /* UserProfile+CoreDataProperties.swift */,
 				01425DC52D3A76C900A98F2E /* DailyProgress+CoreDataClass.swift */,
 				01425DC62D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift */,
-				01425DC12D3A1D9100A98F2E /* UserProfile+CoreDataClass.swift */,
-				01425DC22D3A1D9100A98F2E /* UserProfile+CoreDataProperties.swift */,
 				0173855E2D3856AC00379FD5 /* ProgressPicture+CoreDataClass.swift */,
 				0173855F2D3856AC00379FD5 /* ProgressPicture+CoreDataProperties.swift */,
 				017385642D3856AC00379FD5 /* LedgerEntry+CoreDataClass.swift */,
@@ -172,12 +191,9 @@
 				017385102D36F6AF00379FD5 /* ProgressImage.swift */,
 				0173850A2D36F2ED00379FD5 /* ProgressPicsView.swift */,
 				0173850E2D36F43900379FD5 /* ProgressPictureDetailView.swift */,
-				01323EE12D526BF9005C025A /* UserOverviewView.swift */,
 				0173850C2D36F3AC00379FD5 /* AddProgressPictureView.swift */,
 				01466C732D30E33D008648A6 /* GoalSummaryView.swift */,
 				019C9CCD2D31A17500E0F608 /* ChangeDateView.swift */,
-				015B6C8A2D4D264F0095CB7F /* PersonalGoalView.swift */,
-				016E52702D4A919F00105B8E /* PersonalDetailsView.swift */,
 				01F1E7AF2D335C9500B8C524 /* DashboardSetupView.swift */,
 				012AF0D72D3384AD005D03B1 /* PersistenceController.swift */,
 				012AF0F12D342658005D03B1 /* DashboardView.swift */,
@@ -186,8 +202,6 @@
 				017384D52D35BE3700379FD5 /* PastLedgerView.swift */,
 				017384D72D35BECD00379FD5 /* PastDailyLedgerView.swift */,
 				01425DBB2D398D9800A98F2E /* DailyDataTracker.swift */,
-				01C772792D40374000402083 /* UserSetupView.swift */,
-				016E52722D4A92BE00105B8E /* PersonalStatsView.swift */,
 				016E52742D4A93B200105B8E /* SharedComponents.swift */,
 				01323EE32D529022005C025A /* Styles.swift */,
 			);
@@ -197,6 +211,8 @@
 		01BF36042D2E4877002D1E51 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				0107C8462D5551AD00AF12A0 /* Dashboard */,
+				0107C8352D5513FE00AF12A0 /* UserSetup */,
 				01BF36052D2E4877002D1E51 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -359,10 +375,10 @@
 				016E52752D4A93B200105B8E /* SharedComponents.swift in Sources */,
 				0190ECF32D30B7F5003AA451 /* SummaryView.swift in Sources */,
 				017384D62D35BE3700379FD5 /* PastLedgerView.swift in Sources */,
+				0107C8452D554D6000AF12A0 /* UserProfile+CoreDataProperties.swift in Sources */,
 				01C7727A2D40374000402083 /* UserSetupView.swift in Sources */,
 				01323EE42D529022005C025A /* Styles.swift in Sources */,
 				019C9CCE2D31A17500E0F608 /* ChangeDateView.swift in Sources */,
-				01425DC42D3A1D9100A98F2E /* UserProfile+CoreDataProperties.swift in Sources */,
 				0173850F2D36F43900379FD5 /* ProgressPictureDetailView.swift in Sources */,
 				01466C742D30E33D008648A6 /* GoalSummaryView.swift in Sources */,
 				0173850D2D36F3AC00379FD5 /* AddProgressPictureView.swift in Sources */,
@@ -379,8 +395,8 @@
 				012AF0D82D3384AD005D03B1 /* PersistenceController.swift in Sources */,
 				01425DBC2D398D9800A98F2E /* DailyDataTracker.swift in Sources */,
 				01425DC82D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift in Sources */,
-				01425DC32D3A1D9100A98F2E /* UserProfile+CoreDataClass.swift in Sources */,
 				0173856D2D3856AC00379FD5 /* LedgerEntry+CoreDataProperties.swift in Sources */,
+				0107C8442D554D6000AF12A0 /* UserProfile+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

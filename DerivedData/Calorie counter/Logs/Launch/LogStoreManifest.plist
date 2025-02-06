@@ -6,10 +6,10 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>12C08CB2-4756-49FC-9959-42CAF2F8CE3F</key>
+		<key>028DDD74-296F-4C7E-A596-D3B8003E3C31</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
-			<string>B5784A68-1E1B-4345-B062-6E6B445D4529</string>
+			<string>2E973770-AB70-4100-9087-21836E5261EE</string>
 			<key>auxiliaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
@@ -30,7 +30,7 @@
 			<key>domainType</key>
 			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
 			<key>fileName</key>
-			<string>Run-Calorie counter-2025.02.05_21-01-05--0500.xcresult</string>
+			<string>Run-Calorie counter-2025.02.06_14-47-20--0500.xcresult</string>
 			<key>hasAuxiliaryLog</key>
 			<true/>
 			<key>hasConsoleLog</key>
@@ -59,18 +59,18 @@
 			<key>signature</key>
 			<string>Run Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>760500065.43113995</real>
+			<real>760564040.15981197</real>
 			<key>timeStoppedRecording</key>
 			<real>0.0</real>
 			<key>title</key>
 			<string>Run Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>12C08CB2-4756-49FC-9959-42CAF2F8CE3F</string>
+			<string>028DDD74-296F-4C7E-A596-D3B8003E3C31</string>
 		</dict>
-		<key>1C3E8EC5-CBA7-4332-9AE3-ED2A63861729</key>
+		<key>05330780-A8BA-404F-9EB6-5A70D6FD41FC</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
-			<string>58FFDDF3-ADA5-47B3-B67A-49E42F0E40F3</string>
+			<string>803CDA32-5E59-4A55-AC4A-C613C2356E9D</string>
 			<key>auxiliaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
@@ -91,7 +91,7 @@
 			<key>domainType</key>
 			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
 			<key>fileName</key>
-			<string>Run-Calorie counter-2025.02.05_21-21-25--0500.xcresult</string>
+			<string>Run-Calorie counter-2025.02.06_12-43-29--0500.xcresult</string>
 			<key>hasAuxiliaryLog</key>
 			<true/>
 			<key>hasConsoleLog</key>
@@ -120,18 +120,18 @@
 			<key>signature</key>
 			<string>Run Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>760501285.127092</real>
+			<real>760556609.54568601</real>
 			<key>timeStoppedRecording</key>
 			<real>0.0</real>
 			<key>title</key>
 			<string>Run Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>1C3E8EC5-CBA7-4332-9AE3-ED2A63861729</string>
+			<string>05330780-A8BA-404F-9EB6-5A70D6FD41FC</string>
 		</dict>
-		<key>25894984-0C00-4A97-A078-73E35A5BBF9F</key>
+		<key>0F2796F0-5491-41A7-8B90-A9BD8549A90B</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
-			<string>08DC9411-2B17-4AD6-BC16-6A828507CC75</string>
+			<string>697BC986-FB31-42FD-AAF8-4384FBBB06EE</string>
 			<key>auxiliaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
@@ -152,7 +152,7 @@
 			<key>domainType</key>
 			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
 			<key>fileName</key>
-			<string>Run-Calorie counter-2025.02.05_21-13-09--0500.xcresult</string>
+			<string>Run-Calorie counter-2025.02.06_15-10-35--0500.xcresult</string>
 			<key>hasAuxiliaryLog</key>
 			<true/>
 			<key>hasConsoleLog</key>
@@ -181,26 +181,26 @@
 			<key>signature</key>
 			<string>Run Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>760500789.91732705</real>
+			<real>760565435.99457502</real>
 			<key>timeStoppedRecording</key>
 			<real>0.0</real>
 			<key>title</key>
 			<string>Run Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>25894984-0C00-4A97-A078-73E35A5BBF9F</string>
+			<string>0F2796F0-5491-41A7-8B90-A9BD8549A90B</string>
 		</dict>
-		<key>3153F31B-48EE-4086-8724-8C6E0B5F6ED1</key>
+		<key>10F263B3-805A-41C3-9A24-805F7099DB64</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
-			<string>964DA2F3-E0BB-4421-969C-A8C595A920E8</string>
+			<string>AC9D3AC9-B1F2-41A6-867F-41CA3ADF802B</string>
 			<key>auxiliaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
-				<string>S</string>
+				<string>E</string>
 				<key>totalNumberOfAnalyzerIssues</key>
 				<integer>0</integer>
 				<key>totalNumberOfErrors</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>totalNumberOfTestFailures</key>
 				<integer>0</integer>
 				<key>totalNumberOfWarnings</key>
@@ -213,7 +213,7 @@
 			<key>domainType</key>
 			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
 			<key>fileName</key>
-			<string>Run-Calorie counter-2025.02.05_21-05-11--0500.xcresult</string>
+			<string>Run-Calorie counter-2025.02.06_15-06-24--0500.xcresult</string>
 			<key>hasAuxiliaryLog</key>
 			<true/>
 			<key>hasConsoleLog</key>
@@ -223,11 +223,11 @@
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
-				<string>S</string>
+				<string>E</string>
 				<key>totalNumberOfAnalyzerIssues</key>
 				<integer>0</integer>
 				<key>totalNumberOfErrors</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>totalNumberOfTestFailures</key>
 				<integer>0</integer>
 				<key>totalNumberOfWarnings</key>
@@ -242,18 +242,18 @@
 			<key>signature</key>
 			<string>Run Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>760500311.33807898</real>
+			<real>760565184.65203595</real>
 			<key>timeStoppedRecording</key>
 			<real>0.0</real>
 			<key>title</key>
 			<string>Run Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>3153F31B-48EE-4086-8724-8C6E0B5F6ED1</string>
+			<string>10F263B3-805A-41C3-9A24-805F7099DB64</string>
 		</dict>
-		<key>50137F01-481C-44F0-B60C-019E4E541CC9</key>
+		<key>11C61DF1-8154-4C9D-845B-A5F61D85D13A</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
-			<string>50465C9F-7520-4C01-A73F-CC39AFBA1883</string>
+			<string>E6B7D730-B8D8-4FD2-987F-39D92519C693</string>
 			<key>auxiliaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
@@ -274,7 +274,7 @@
 			<key>domainType</key>
 			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
 			<key>fileName</key>
-			<string>Run-Calorie counter-2025.02.05_20-59-40--0500.xcresult</string>
+			<string>Run-Calorie counter-2025.02.06_12-46-02--0500.xcresult</string>
 			<key>hasAuxiliaryLog</key>
 			<true/>
 			<key>hasConsoleLog</key>
@@ -284,11 +284,11 @@
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
-				<string>S</string>
+				<string>E</string>
 				<key>totalNumberOfAnalyzerIssues</key>
 				<integer>0</integer>
 				<key>totalNumberOfErrors</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>totalNumberOfTestFailures</key>
 				<integer>0</integer>
 				<key>totalNumberOfWarnings</key>
@@ -303,26 +303,26 @@
 			<key>signature</key>
 			<string>Run Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>760499980.88684404</real>
+			<real>760556762.53331196</real>
 			<key>timeStoppedRecording</key>
 			<real>0.0</real>
 			<key>title</key>
 			<string>Run Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>50137F01-481C-44F0-B60C-019E4E541CC9</string>
+			<string>11C61DF1-8154-4C9D-845B-A5F61D85D13A</string>
 		</dict>
-		<key>555B98F7-9145-40E3-A2EA-AA712071099F</key>
+		<key>1BD306EF-952F-4126-9315-448141FBA71C</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
-			<string>32EEA0E0-BC8F-4EA8-8924-98560C3674EC</string>
+			<string>CEE25BDC-B0E1-4C1A-8750-6DF175D0591D</string>
 			<key>auxiliaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
-				<string>S</string>
+				<string>E</string>
 				<key>totalNumberOfAnalyzerIssues</key>
 				<integer>0</integer>
 				<key>totalNumberOfErrors</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>totalNumberOfTestFailures</key>
 				<integer>0</integer>
 				<key>totalNumberOfWarnings</key>
@@ -335,7 +335,7 @@
 			<key>domainType</key>
 			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
 			<key>fileName</key>
-			<string>Run-Calorie counter-2025.02.05_20-58-47--0500.xcresult</string>
+			<string>Run-Calorie counter-2025.02.06_14-46-28--0500.xcresult</string>
 			<key>hasAuxiliaryLog</key>
 			<true/>
 			<key>hasConsoleLog</key>
@@ -345,11 +345,11 @@
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
-				<string>S</string>
+				<string>E</string>
 				<key>totalNumberOfAnalyzerIssues</key>
 				<integer>0</integer>
 				<key>totalNumberOfErrors</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>totalNumberOfTestFailures</key>
 				<integer>0</integer>
 				<key>totalNumberOfWarnings</key>
@@ -364,18 +364,18 @@
 			<key>signature</key>
 			<string>Run Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>760499927.30727696</real>
+			<real>760563988.52085102</real>
 			<key>timeStoppedRecording</key>
 			<real>0.0</real>
 			<key>title</key>
 			<string>Run Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>555B98F7-9145-40E3-A2EA-AA712071099F</string>
+			<string>1BD306EF-952F-4126-9315-448141FBA71C</string>
 		</dict>
-		<key>6CE0F1A8-3841-489E-AB67-0F97A537B718</key>
+		<key>20812575-6990-422B-9FDB-7E363908AF58</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
-			<string>E1E6DE6C-ADC7-4E7E-A7E1-2C9894D5D8B3</string>
+			<string>FC252B40-67D0-4DB5-B97C-47EC7C47C322</string>
 			<key>auxiliaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
@@ -396,7 +396,7 @@
 			<key>domainType</key>
 			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
 			<key>fileName</key>
-			<string>Run-Calorie counter-2025.02.05_21-33-14--0500.xcresult</string>
+			<string>Run-Calorie counter-2025.02.06_12-33-26--0500.xcresult</string>
 			<key>hasAuxiliaryLog</key>
 			<true/>
 			<key>hasConsoleLog</key>
@@ -425,26 +425,26 @@
 			<key>signature</key>
 			<string>Run Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>760501994.25255001</real>
+			<real>760556006.07987404</real>
 			<key>timeStoppedRecording</key>
 			<real>0.0</real>
 			<key>title</key>
 			<string>Run Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>6CE0F1A8-3841-489E-AB67-0F97A537B718</string>
+			<string>20812575-6990-422B-9FDB-7E363908AF58</string>
 		</dict>
-		<key>6F8EED8A-63B3-48B3-A124-4225FBBA490E</key>
+		<key>2A1D8700-264E-479D-969E-B3B87DAA91DD</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
-			<string>B55302B1-60B4-4C38-8C9F-3967829ABCE2</string>
+			<string>6F46D309-F019-474D-AE43-E7D587CE4F9A</string>
 			<key>auxiliaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
-				<string>S</string>
+				<string>E</string>
 				<key>totalNumberOfAnalyzerIssues</key>
 				<integer>0</integer>
 				<key>totalNumberOfErrors</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>totalNumberOfTestFailures</key>
 				<integer>0</integer>
 				<key>totalNumberOfWarnings</key>
@@ -457,7 +457,7 @@
 			<key>domainType</key>
 			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
 			<key>fileName</key>
-			<string>Run-Calorie counter-2025.02.05_20-50-04--0500.xcresult</string>
+			<string>Run-Calorie counter-2025.02.06_15-08-07--0500.xcresult</string>
 			<key>hasAuxiliaryLog</key>
 			<true/>
 			<key>hasConsoleLog</key>
@@ -467,11 +467,11 @@
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
-				<string>S</string>
+				<string>E</string>
 				<key>totalNumberOfAnalyzerIssues</key>
 				<integer>0</integer>
 				<key>totalNumberOfErrors</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>totalNumberOfTestFailures</key>
 				<integer>0</integer>
 				<key>totalNumberOfWarnings</key>
@@ -486,18 +486,18 @@
 			<key>signature</key>
 			<string>Run Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>760499404.59647095</real>
+			<real>760565287.51391399</real>
 			<key>timeStoppedRecording</key>
 			<real>0.0</real>
 			<key>title</key>
 			<string>Run Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>6F8EED8A-63B3-48B3-A124-4225FBBA490E</string>
+			<string>2A1D8700-264E-479D-969E-B3B87DAA91DD</string>
 		</dict>
-		<key>81F5C352-98A8-4071-A929-D1EF1BB56B4D</key>
+		<key>2ABCD668-55FA-477C-8437-81533AE56BDB</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
-			<string>2133AD80-CBCE-413C-9214-D688E23A5676</string>
+			<string>2EA99761-8D7A-4563-89C7-FDE379BC1F47</string>
 			<key>auxiliaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
@@ -518,7 +518,7 @@
 			<key>domainType</key>
 			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
 			<key>fileName</key>
-			<string>Run-Calorie counter-2025.02.05_20-54-00--0500.xcresult</string>
+			<string>Run-Calorie counter-2025.02.06_12-33-36--0500.xcresult</string>
 			<key>hasAuxiliaryLog</key>
 			<true/>
 			<key>hasConsoleLog</key>
@@ -547,18 +547,18 @@
 			<key>signature</key>
 			<string>Run Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>760499640.46688294</real>
+			<real>760556016.13339102</real>
 			<key>timeStoppedRecording</key>
 			<real>0.0</real>
 			<key>title</key>
 			<string>Run Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>81F5C352-98A8-4071-A929-D1EF1BB56B4D</string>
+			<string>2ABCD668-55FA-477C-8437-81533AE56BDB</string>
 		</dict>
-		<key>A657B1B6-62D2-40D6-8C4E-57EF14C30852</key>
+		<key>6C286D04-CDBC-4A68-8D18-DFCC3C341877</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
-			<string>59506E93-185B-40FE-A5BA-2E7694230C65</string>
+			<string>8747193C-57AD-4C41-9E54-3A047FD5D072</string>
 			<key>auxiliaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
@@ -579,7 +579,7 @@
 			<key>domainType</key>
 			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
 			<key>fileName</key>
-			<string>Run-Calorie counter-2025.02.05_21-11-53--0500.xcresult</string>
+			<string>Run-Calorie counter-2025.02.06_12-33-57--0500.xcresult</string>
 			<key>hasAuxiliaryLog</key>
 			<true/>
 			<key>hasConsoleLog</key>
@@ -608,26 +608,26 @@
 			<key>signature</key>
 			<string>Run Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>760500713.30408299</real>
+			<real>760556037.34121597</real>
 			<key>timeStoppedRecording</key>
 			<real>0.0</real>
 			<key>title</key>
 			<string>Run Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>A657B1B6-62D2-40D6-8C4E-57EF14C30852</string>
+			<string>6C286D04-CDBC-4A68-8D18-DFCC3C341877</string>
 		</dict>
-		<key>C135B618-88C2-45A1-83A5-A6F295ACD2BA</key>
+		<key>831B147E-DD21-4D88-B286-A48D0B18969C</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
-			<string>DA7EC5DA-7D58-4EE7-B409-5D0CD0697A52</string>
+			<string>D2F40A7E-4C03-417A-8D90-ED53FA8F3D0F</string>
 			<key>auxiliaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
-				<string>S</string>
+				<string>E</string>
 				<key>totalNumberOfAnalyzerIssues</key>
 				<integer>0</integer>
 				<key>totalNumberOfErrors</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>totalNumberOfTestFailures</key>
 				<integer>0</integer>
 				<key>totalNumberOfWarnings</key>
@@ -640,7 +640,7 @@
 			<key>domainType</key>
 			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
 			<key>fileName</key>
-			<string>Run-Calorie counter-2025.02.05_21-02-23--0500.xcresult</string>
+			<string>Run-Calorie counter-2025.02.06_15-09-48--0500.xcresult</string>
 			<key>hasAuxiliaryLog</key>
 			<true/>
 			<key>hasConsoleLog</key>
@@ -650,11 +650,11 @@
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
-				<string>S</string>
+				<string>E</string>
 				<key>totalNumberOfAnalyzerIssues</key>
 				<integer>0</integer>
 				<key>totalNumberOfErrors</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>totalNumberOfTestFailures</key>
 				<integer>0</integer>
 				<key>totalNumberOfWarnings</key>
@@ -669,18 +669,18 @@
 			<key>signature</key>
 			<string>Run Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>760500143.83658302</real>
+			<real>760565388.89556599</real>
 			<key>timeStoppedRecording</key>
 			<real>0.0</real>
 			<key>title</key>
 			<string>Run Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>C135B618-88C2-45A1-83A5-A6F295ACD2BA</string>
+			<string>831B147E-DD21-4D88-B286-A48D0B18969C</string>
 		</dict>
-		<key>C933B32C-25E5-40FC-97AC-29A45BC8F685</key>
+		<key>A78B567B-B8D5-4E3D-800F-E930982A4CF9</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
-			<string>072BD0F0-254E-4655-80C4-F0800387EF4A</string>
+			<string>F3E3B5AB-B672-4063-8738-CC8DB683E0E7</string>
 			<key>auxiliaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
@@ -701,7 +701,7 @@
 			<key>domainType</key>
 			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
 			<key>fileName</key>
-			<string>Run-Calorie counter-2025.02.05_21-27-42--0500.xcresult</string>
+			<string>Run-Calorie counter-2025.02.06_12-33-42--0500.xcresult</string>
 			<key>hasAuxiliaryLog</key>
 			<true/>
 			<key>hasConsoleLog</key>
@@ -730,18 +730,18 @@
 			<key>signature</key>
 			<string>Run Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>760501662.35149205</real>
+			<real>760556022.62580705</real>
 			<key>timeStoppedRecording</key>
 			<real>0.0</real>
 			<key>title</key>
 			<string>Run Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>C933B32C-25E5-40FC-97AC-29A45BC8F685</string>
+			<string>A78B567B-B8D5-4E3D-800F-E930982A4CF9</string>
 		</dict>
-		<key>D1C47631-FB19-4EBF-A6F5-691AB5933FA1</key>
+		<key>AFF066EC-D3A1-4873-A5CB-88B849A146A2</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
-			<string>ACDB895C-A304-4CBA-BCCF-721C9CF7B88E</string>
+			<string>DEDD81A7-2F08-448D-BD2B-6BC98B224237</string>
 			<key>auxiliaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
@@ -762,7 +762,7 @@
 			<key>domainType</key>
 			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
 			<key>fileName</key>
-			<string>Run-Calorie counter-2025.02.05_20-56-43--0500.xcresult</string>
+			<string>Run-Calorie counter-2025.02.06_12-30-49--0500.xcresult</string>
 			<key>hasAuxiliaryLog</key>
 			<true/>
 			<key>hasConsoleLog</key>
@@ -791,18 +791,18 @@
 			<key>signature</key>
 			<string>Run Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>760499803.97434103</real>
+			<real>760555849.21836305</real>
 			<key>timeStoppedRecording</key>
 			<real>0.0</real>
 			<key>title</key>
 			<string>Run Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>D1C47631-FB19-4EBF-A6F5-691AB5933FA1</string>
+			<string>AFF066EC-D3A1-4873-A5CB-88B849A146A2</string>
 		</dict>
-		<key>DF9EFD21-90F2-49F5-A9B5-168023DC569A</key>
+		<key>D5C15E81-3B61-46F3-8258-66209AF23F54</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
-			<string>FF4B3B0A-0A8C-4D63-9C0C-D58847611376</string>
+			<string>5685485F-0FC6-4291-8A75-D888B036640F</string>
 			<key>auxiliaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
@@ -823,7 +823,7 @@
 			<key>domainType</key>
 			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
 			<key>fileName</key>
-			<string>Run-Calorie counter-2025.02.05_15-28-00--0500.xcresult</string>
+			<string>Run-Calorie counter-2025.02.06_15-25-46--0500.xcresult</string>
 			<key>hasAuxiliaryLog</key>
 			<true/>
 			<key>hasConsoleLog</key>
@@ -852,13 +852,257 @@
 			<key>signature</key>
 			<string>Run Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>760480080.48705697</real>
+			<real>760566346.87832201</real>
 			<key>timeStoppedRecording</key>
 			<real>0.0</real>
 			<key>title</key>
 			<string>Run Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>DF9EFD21-90F2-49F5-A9B5-168023DC569A</string>
+			<string>D5C15E81-3B61-46F3-8258-66209AF23F54</string>
+		</dict>
+		<key>E0E9BE31-84FD-4A0B-AA7A-EE440EB79E54</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>8061BC25-3373-4967-9272-CABAAF26101D</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Calorie counter-2025.02.06_12-08-53--0500.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>1</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>760554533.81161201</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>E0E9BE31-84FD-4A0B-AA7A-EE440EB79E54</string>
+		</dict>
+		<key>E220833E-F030-4668-96CE-52682DE309E3</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>A267FEF3-A003-4FE0-AEDA-F8545BC232D0</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Calorie counter-2025.02.06_12-32-14--0500.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>760555934.65236497</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>E220833E-F030-4668-96CE-52682DE309E3</string>
+		</dict>
+		<key>F726A61F-FA24-4780-B39D-7C0FF4E7384D</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>A6677FC4-C501-4AC3-B416-B5D76A34370C</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Calorie counter-2025.02.06_14-45-57--0500.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>760563957.02269995</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>F726A61F-FA24-4780-B39D-7C0FF4E7384D</string>
+		</dict>
+		<key>F874E93D-5E1A-4C38-B82D-7E9DB6EFA493</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>AB56DAB0-4A36-42AA-9C99-CDD255735904</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Calorie counter-2025.02.06_12-33-16--0500.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>760555996.82960999</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>F874E93D-5E1A-4C38-B82D-7E9DB6EFA493</string>
 		</dict>
 	</dict>
 </dict>
