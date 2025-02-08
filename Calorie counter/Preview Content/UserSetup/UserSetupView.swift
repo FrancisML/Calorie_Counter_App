@@ -9,6 +9,7 @@ import SwiftUI
 struct UserSetupView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State private var currentStep: Int = 1
+    @State private var showWelcomeSequence: Bool = false
     
     // Personal Details Variables
     @State private var name: String = ""
@@ -20,6 +21,9 @@ struct UserSetupView: View {
     @State private var showImagePicker: Bool = false
     @State private var imagePickerSourceType: UIImagePickerController.SourceType = .camera
     @State private var showActionSheet: Bool = false
+    @State private var isWeightTargetDateGoalSelected: Bool = true
+    @State private var isCustomCalorieGoalSelected: Bool = false
+
     
     // Personal Stats Variables
     @State private var weight: String = ""
@@ -123,8 +127,11 @@ struct UserSetupView: View {
                         goalWeight: $goalWeight,
                         goalDate: $goalDate,
                         customCals: $customCals,
-                        weekGoal: $weekGoal
+                        weekGoal: $weekGoal,
+                        isWeightTargetDateGoalSelected: $isWeightTargetDateGoalSelected,
+                        isCustomCalorieGoalSelected: $isCustomCalorieGoalSelected
                     )
+
                     .offset(x: currentStep == 3 ? 0 : (currentStep < 3 ? geometry.size.width : -geometry.size.width))
                     
                     UserOverviewView(
@@ -203,7 +210,8 @@ struct UserSetupView: View {
                                 if currentStep < 4 {
                                     currentStep += 1
                                 } else {
-                                    saveUserProfile() // Call function to save user data on "Finish"
+                                    saveUserProfile()  // Call function to save user data on "Finish"
+                                    showWelcomeSequence = true  // Trigger the welcome transition view
                                 }
                             }
                         }
@@ -220,6 +228,10 @@ struct UserSetupView: View {
                             )
                     }
                     .disabled(!isNextButtonEnabled)
+                    .fullScreenCover(isPresented: $showWelcomeSequence) {
+                        WelcomeSequenceView()
+                    }
+
                     
                 }
                 .padding(.horizontal, 20)
@@ -304,41 +316,85 @@ struct UserSetupView: View {
         userProfile.name = name
         userProfile.gender = gender
         userProfile.birthdate = birthDate
-        userProfile.profilePicture = profilePicture?.pngData()  // Convert UIImage to Data
+        userProfile.profilePicture = profilePicture?.pngData()
         userProfile.startWeight = Int32(weight) ?? 0
         userProfile.currentWeight = Int32(weight) ?? 0
         userProfile.goalWeight = Int32(goalWeight) ?? 0
         userProfile.targetDate = goalDate
-        userProfile.weekGoal = weekGoal  // ✅ Save weekGoal (Double)
+        userProfile.weekGoal = weekGoal
         userProfile.customCals = Int32(customCals) ?? 0
+        userProfile.useMetric = useMetric
 
-        // ✅ Save height attributes
         userProfile.heightCm = Int32(heightCm)
         userProfile.heightFt = Int32(heightFeet)
         userProfile.heightIn = Int32(heightInches)
 
-        // ✅ Save useMetric
-        userProfile.useMetric = useMetric
+        if let birthDate = userProfile.birthdate {
+            let calendar = Calendar.current
+            let ageComponents = calendar.dateComponents([.year], from: birthDate, to: Date())
+            userProfile.age = Int32(ageComponents.year ?? 0)
+        } else {
+            userProfile.age = 0
+        }
+
+        userProfile.activityInt = Int32(activityLevel)
+
+        userProfile.userBMR = calculateBMR(
+            weight: userProfile.currentWeight,
+            heightCm: userProfile.heightCm,
+            heightFt: userProfile.heightFt,
+            heightIn: userProfile.heightIn,
+            age: userProfile.age,
+            gender: userProfile.gender,
+            activityInt: userProfile.activityInt,
+            useMetric: userProfile.useMetric
+        )
+
+        let calorieFactor: Int32 = useMetric ? 7000 : 3500
+        userProfile.dailyCalorieDif = Int32((Double(calorieFactor) * weekGoal) / 7)
+
+        // ✅ Calculate weight difference if goal weight is set
+        if let goalWeightInt = Int32(goalWeight), goalWeightInt > 0 {
+            userProfile.weightDifference = abs(userProfile.currentWeight - goalWeightInt)
+        } else {
+            userProfile.weightDifference = 0
+        }
+
+        // ✅ Ensure `goalId` is set properly
+        if isWeightTargetDateGoalSelected {
+            if weekGoal != 0 && (goalWeight.isEmpty || goalWeight == "0") {
+                userProfile.goalId = 1  // Scenario: User set weekly goal but no goal weight
+            } else if !goalWeight.isEmpty && goalDate == nil {
+                userProfile.goalId = 2  // Scenario: User entered a goal weight but no date
+            } else if !goalWeight.isEmpty && goalDate != nil {
+                userProfile.goalId = 3  // Scenario: User entered both goal weight and target date
+            } else if weekGoal == 0 {
+                userProfile.goalId = 4  // Scenario: User did not set a week goal
+            }
+        } else if isCustomCalorieGoalSelected && !customCals.isEmpty && customCals != "0" {
+            userProfile.goalId = 5  // Scenario: User set a custom calorie goal
+        }
+
+        // ✅ Update the last saved date
+        userProfile.lastSavedDate = Date()
+
+        print("---- SAVING TO CORE DATA ----")
+        print("Week Goal: \(weekGoal)")
+        print("User BMR: \(userProfile.userBMR)")
+        print("Goal ID: \(userProfile.goalId)")
+        print("Use Metric: \(useMetric)")
+        print("Daily Calorie Difference: \(userProfile.dailyCalorieDif)")
+        print("Weight Difference: \(userProfile.weightDifference)")
+        print("-----------------------------")
 
         do {
             try viewContext.save()
-            print("User Profile Saved:")
-            print("Name: \(userProfile.name ?? "N/A")")
-            print("Gender: \(userProfile.gender ?? "N/A")")
-            print("Birthdate: \(userProfile.birthdate ?? Date())")
-            print("Start Weight: \(userProfile.startWeight)")
-            print("Current Weight: \(userProfile.currentWeight)")
-            print("Goal Weight: \(userProfile.goalWeight)")
-            print("Target Date: \(String(describing: userProfile.targetDate))")
-            print("Week Goal: \(userProfile.weekGoal)")
-            print("Custom Cals: \(userProfile.customCals)")
-            print("Height (cm): \(userProfile.heightCm)")
-            print("Height (ft/in): \(userProfile.heightFt) ft \(userProfile.heightIn) in")
-            print("Use Metric: \(userProfile.useMetric)")  // ✅ Confirm useMetric is saved
+            print("✅ User Profile Saved Successfully!")
         } catch {
-            print("Error saving user profile: \(error.localizedDescription)")
+            print("❌ ERROR: Failed to save user profile: \(error.localizedDescription)")
         }
     }
+
 
 
 }

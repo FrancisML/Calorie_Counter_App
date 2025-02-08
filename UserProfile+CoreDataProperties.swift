@@ -2,7 +2,7 @@
 //  UserProfile+CoreDataProperties.swift
 //  Calorie counter
 //
-//  Created by frank lasalvia on 2/6/25.
+//  Created by frank lasalvia on 2/7/25.
 //
 //
 
@@ -27,7 +27,6 @@ extension UserProfile {
     @NSManaged public var daysLeft: Int32
     @NSManaged public var gender: String?
     @NSManaged public var goalCalories: Int32
-    @NSManaged public var goalMass: Double
     @NSManaged public var goalWeight: Int32
     @NSManaged public var heightCm: Int32
     @NSManaged public var heightFt: Int32
@@ -43,6 +42,9 @@ extension UserProfile {
     @NSManaged public var useMetric: Bool
     @NSManaged public var userBMR: Int32
     @NSManaged public var weekGoal: Double
+    @NSManaged public var goalId: Int32
+    @NSManaged public var dailyCalorieDif: Int32
+    @NSManaged public var weightDifference: Int32
     @NSManaged public var dailyProgress: NSSet?
     @NSManaged public var progressPicture: NSSet?
 

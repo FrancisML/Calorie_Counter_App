@@ -406,7 +406,6 @@ SWIFT_CLASS("_TtC15Calorie_counter11UserProfile")
 @property (nonatomic) int32_t daysLeft;
 @property (nonatomic, copy) NSString * _Nullable gender;
 @property (nonatomic) int32_t goalCalories;
-@property (nonatomic) double goalMass;
 @property (nonatomic) int32_t goalWeight;
 @property (nonatomic) int32_t heightCm;
 @property (nonatomic) int32_t heightFt;
@@ -422,6 +421,9 @@ SWIFT_CLASS("_TtC15Calorie_counter11UserProfile")
 @property (nonatomic) BOOL useMetric;
 @property (nonatomic) int32_t userBMR;
 @property (nonatomic) double weekGoal;
+@property (nonatomic) int32_t goalId;
+@property (nonatomic) int32_t dailyCalorieDif;
+@property (nonatomic) int32_t weightDifference;
 @property (nonatomic, strong) NSSet * _Nullable dailyProgress;
 @property (nonatomic, strong) NSSet * _Nullable progressPicture;
 @end

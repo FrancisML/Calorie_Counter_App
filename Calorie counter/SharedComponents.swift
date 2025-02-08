@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UIKit
+import Foundation
 
 extension Color {
     static let customGray = Color(red: 0.2, green: 0.2, blue: 0.2) // RGB for #666666
@@ -529,5 +530,37 @@ class ThemeManager: ObservableObject {
 
 
 // Preview Struct
+// MARK: -BMR
 
 
+
+func calculateBMR(weight: Int32, heightCm: Int32, heightFt: Int32, heightIn: Int32, age: Int32, gender: String?, activityInt: Int32, useMetric: Bool) -> Int32 {
+    // Convert height to cm if using imperial
+    let finalHeightCm: Double = useMetric ? Double(heightCm) : (Double(heightFt) * 30.48 + Double(heightIn) * 2.54)
+
+    // Convert weight to kg if using imperial
+    let finalWeightKg: Double = useMetric ? Double(weight) : Double(weight) * 0.453592
+
+    // Validate inputs before calculating
+    guard finalHeightCm > 0, finalWeightKg > 0, age > 0, let gender = gender else {
+        print("Error: Invalid values for BMR calculation")
+        return 0
+    }
+
+    // BMR Formula (Mifflin-St Jeor Equation)
+    var bmr: Double
+    if gender.lowercased() == "man" {
+        bmr = (10 * finalWeightKg) + (6.25 * finalHeightCm) - (5 * Double(age)) + 5
+    } else {
+        bmr = (10 * finalWeightKg) + (6.25 * finalHeightCm) - (5 * Double(age)) - 161
+    }
+
+    // Apply Activity Level Multiplier
+    let activityMultipliers: [Double] = [1, 1.2, 1.375, 1.55, 1.725, 1.9]
+    let activityMultiplier = activityMultipliers[Int(activityInt)]
+
+    let finalBMR = bmr * activityMultiplier
+
+    print("Calculated BMR: \(finalBMR)")
+    return Int32(finalBMR)
+}

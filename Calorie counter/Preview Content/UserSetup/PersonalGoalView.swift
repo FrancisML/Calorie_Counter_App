@@ -13,6 +13,9 @@ struct PersonalGoalsView: View {
     @Binding var goalDate: Date?
     @Binding var customCals: String
     @Binding var weekGoal: Double
+    @Binding var isWeightTargetDateGoalSelected: Bool
+       @Binding var isCustomCalorieGoalSelected: Bool
+
 
     @State private var temporaryGoalDate: Date = Date()
     @State private var showDatePicker: Bool = false
@@ -51,17 +54,20 @@ struct PersonalGoalsView: View {
                     // Weight Goal Radio Button
                     HStack {
                         Button(action: {
-                            selectedGoalType = .weightGoal
+                            isWeightTargetDateGoalSelected = true
+                            isCustomCalorieGoalSelected = false
+                            selectedGoalType = .weightGoal  // ✅ Ensure the goal type is updated
                             resetCalorieGoal()
                         }) {
                             HStack {
-                                Image(systemName: selectedGoalType == .weightGoal ? "largecircle.fill.circle" : "circle")
+                                Image(systemName: isWeightTargetDateGoalSelected ? "largecircle.fill.circle" : "circle")
                                     .foregroundColor(.blue)
                                 Text("Weight & Target Date Goal")
                                     .foregroundColor(Styles.primaryText)
                                     .font(.headline)
                             }
                         }
+
                         Spacer()
                     }
 
@@ -137,21 +143,24 @@ struct PersonalGoalsView: View {
                     // Custom Calorie Goal Radio Button
                     HStack {
                         Button(action: {
-                            selectedGoalType = .calorieGoal
+                            isWeightTargetDateGoalSelected = false
+                            isCustomCalorieGoalSelected = true
+                            selectedGoalType = .calorieGoal  // ✅ Ensure the goal type is updated
                             resetWeightAndDateInputs()
                         }) {
                             HStack {
-                                Image(systemName: selectedGoalType == .calorieGoal ? "largecircle.fill.circle" : "circle")
+                                Image(systemName: isCustomCalorieGoalSelected ? "largecircle.fill.circle" : "circle")
                                     .foregroundColor(.blue)
                                 Text("Custom Calorie Goal")
                                     .foregroundColor(Styles.primaryText)
                                     .font(.headline)
                             }
                         }
+
                         Spacer()
                     }
 
-                    if selectedGoalType == .calorieGoal {
+                    if isCustomCalorieGoalSelected {
                         FloatingTextField(
                             placeholder: " Enter Calorie Goal ",
                             text: $customCals
@@ -231,4 +240,6 @@ struct PersonalGoalsView: View {
         goalDate = nil
         hasPickedDate = false
     }
+    
+
 }

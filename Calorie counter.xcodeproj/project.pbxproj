@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0107C8442D554D6000AF12A0 /* UserProfile+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0107C8422D554D6000AF12A0 /* UserProfile+CoreDataClass.swift */; };
-		0107C8452D554D6000AF12A0 /* UserProfile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0107C8432D554D6000AF12A0 /* UserProfile+CoreDataProperties.swift */; };
+		0107C8482D55617000AF12A0 /* WelcomeSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0107C8472D55617000AF12A0 /* WelcomeSequenceView.swift */; };
+		0107C8572D56877E00AF12A0 /* UserProfile+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0107C8552D56877E00AF12A0 /* UserProfile+CoreDataClass.swift */; };
+		0107C8582D56877E00AF12A0 /* UserProfile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0107C8562D56877E00AF12A0 /* UserProfile+CoreDataProperties.swift */; };
 		012AF0D62D337F35005D03B1 /* CalorieCounterModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0D42D337F35005D03B1 /* CalorieCounterModel.xcdatamodeld */; };
 		012AF0D82D3384AD005D03B1 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0D72D3384AD005D03B1 /* PersistenceController.swift */; };
 		012AF0F22D342658005D03B1 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0F12D342658005D03B1 /* DashboardView.swift */; };
@@ -64,8 +65,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0107C8422D554D6000AF12A0 /* UserProfile+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataClass.swift"; sourceTree = "<group>"; };
-		0107C8432D554D6000AF12A0 /* UserProfile+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0107C8472D55617000AF12A0 /* WelcomeSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeSequenceView.swift; sourceTree = "<group>"; };
+		0107C8552D56877E00AF12A0 /* UserProfile+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0107C8562D56877E00AF12A0 /* UserProfile+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		012AF0D52D337F35005D03B1 /* CalorieCounterModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CalorieCounterModel.xcdatamodel; sourceTree = "<group>"; };
 		012AF0D72D3384AD005D03B1 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		012AF0F12D342658005D03B1 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				016E52722D4A92BE00105B8E /* PersonalStatsView.swift */,
 				015B6C8A2D4D264F0095CB7F /* PersonalGoalView.swift */,
 				01323EE12D526BF9005C025A /* UserOverviewView.swift */,
+				0107C8472D55617000AF12A0 /* WelcomeSequenceView.swift */,
 			);
 			path = UserSetup;
 			sourceTree = "<group>";
@@ -154,8 +157,8 @@
 		01BF35EF2D2E486E002D1E51 = {
 			isa = PBXGroup;
 			children = (
-				0107C8422D554D6000AF12A0 /* UserProfile+CoreDataClass.swift */,
-				0107C8432D554D6000AF12A0 /* UserProfile+CoreDataProperties.swift */,
+				0107C8552D56877E00AF12A0 /* UserProfile+CoreDataClass.swift */,
+				0107C8562D56877E00AF12A0 /* UserProfile+CoreDataProperties.swift */,
 				01425DC52D3A76C900A98F2E /* DailyProgress+CoreDataClass.swift */,
 				01425DC62D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift */,
 				0173855E2D3856AC00379FD5 /* ProgressPicture+CoreDataClass.swift */,
@@ -185,7 +188,6 @@
 				01BF35FB2D2E486F002D1E51 /* Calorie_counterApp.swift */,
 				012AF0D42D337F35005D03B1 /* CalorieCounterModel.xcdatamodeld */,
 				01BF36012D2E4877002D1E51 /* Assets.xcassets */,
-				01BF36032D2E4877002D1E51 /* Calorie_counter.entitlements */,
 				01BF36042D2E4877002D1E51 /* Preview Content */,
 				0190ECF22D30B7F4003AA451 /* SummaryView.swift */,
 				017385102D36F6AF00379FD5 /* ProgressImage.swift */,
@@ -211,6 +213,7 @@
 		01BF36042D2E4877002D1E51 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				01BF36032D2E4877002D1E51 /* Calorie_counter.entitlements */,
 				0107C8462D5551AD00AF12A0 /* Dashboard */,
 				0107C8352D5513FE00AF12A0 /* UserSetup */,
 				01BF36052D2E4877002D1E51 /* Preview Assets.xcassets */,
@@ -368,6 +371,7 @@
 				0173856C2D3856AC00379FD5 /* LedgerEntry+CoreDataClass.swift in Sources */,
 				012AF0D62D337F35005D03B1 /* CalorieCounterModel.xcdatamodeld in Sources */,
 				012AF0FE2D3484A3005D03B1 /* DailyProgressView.swift in Sources */,
+				0107C8582D56877E00AF12A0 /* UserProfile+CoreDataProperties.swift in Sources */,
 				015B6C8B2D4D264F0095CB7F /* PersonalGoalView.swift in Sources */,
 				017385662D3856AC00379FD5 /* ProgressPicture+CoreDataClass.swift in Sources */,
 				01323EE22D526BF9005C025A /* UserOverviewView.swift in Sources */,
@@ -375,11 +379,11 @@
 				016E52752D4A93B200105B8E /* SharedComponents.swift in Sources */,
 				0190ECF32D30B7F5003AA451 /* SummaryView.swift in Sources */,
 				017384D62D35BE3700379FD5 /* PastLedgerView.swift in Sources */,
-				0107C8452D554D6000AF12A0 /* UserProfile+CoreDataProperties.swift in Sources */,
 				01C7727A2D40374000402083 /* UserSetupView.swift in Sources */,
 				01323EE42D529022005C025A /* Styles.swift in Sources */,
 				019C9CCE2D31A17500E0F608 /* ChangeDateView.swift in Sources */,
 				0173850F2D36F43900379FD5 /* ProgressPictureDetailView.swift in Sources */,
+				0107C8572D56877E00AF12A0 /* UserProfile+CoreDataClass.swift in Sources */,
 				01466C742D30E33D008648A6 /* GoalSummaryView.swift in Sources */,
 				0173850D2D36F3AC00379FD5 /* AddProgressPictureView.swift in Sources */,
 				017385112D36F6AF00379FD5 /* ProgressImage.swift in Sources */,
@@ -389,6 +393,7 @@
 				01425DC72D3A76C900A98F2E /* DailyProgress+CoreDataClass.swift in Sources */,
 				0173850B2D36F2ED00379FD5 /* ProgressPicsView.swift in Sources */,
 				016E52712D4A919F00105B8E /* PersonalDetailsView.swift in Sources */,
+				0107C8482D55617000AF12A0 /* WelcomeSequenceView.swift in Sources */,
 				016E52732D4A92BE00105B8E /* PersonalStatsView.swift in Sources */,
 				012AF0F42D3426B0005D03B1 /* ImagePicker.swift in Sources */,
 				012AF0F22D342658005D03B1 /* DashboardView.swift in Sources */,
@@ -396,7 +401,6 @@
 				01425DBC2D398D9800A98F2E /* DailyDataTracker.swift in Sources */,
 				01425DC82D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift in Sources */,
 				0173856D2D3856AC00379FD5 /* LedgerEntry+CoreDataProperties.swift in Sources */,
-				0107C8442D554D6000AF12A0 /* UserProfile+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,7 +560,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Calorie counter/Calorie_counter.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -603,7 +607,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Calorie counter/Calorie_counter.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
