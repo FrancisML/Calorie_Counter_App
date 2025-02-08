@@ -19,6 +19,8 @@ struct PersonalDetailsView: View {
     @Binding var showImagePicker: Bool
     @Binding var imagePickerSourceType: UIImagePickerController.SourceType
     @Binding var showActionSheet: Bool
+    @State private var temporaryBirthDate: Date = Date()
+
     
     var body: some View {
         VStack(spacing: 20) {
@@ -85,13 +87,17 @@ struct PersonalDetailsView: View {
 
                     
                     // Birth Date Selection
+                    // Birth Date Selection using FloatingInputWithAction
                     FloatingInputWithAction(
                         placeholder: " Birthday ",
-                        displayedText: birthDateFormatted,
-                        action: { showDatePicker = true },
+                        displayedText: formattedBirthDate,
+                        action: {
+                            temporaryBirthDate = birthDate ?? Date()
+                            showDatePicker = true
+                        },
                         hasPickedValue: $hasPickedDate
                     )
-                    
+
                     // Profile Picture Section
                     HStack {
                         VStack(alignment: .leading) {
@@ -181,10 +187,12 @@ struct PersonalDetailsView: View {
             Spacer()
 
         }
+        
+
     }
     
     // Date formatting for birthdate
-    private var birthDateFormatted: String {
+    private var formattedBirthDate: String {
         guard let birthDate = birthDate else { return "" }
         let formatter = DateFormatter()
         formatter.dateStyle = .medium

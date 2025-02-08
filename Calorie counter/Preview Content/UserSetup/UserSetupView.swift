@@ -23,6 +23,8 @@ struct UserSetupView: View {
     @State private var showActionSheet: Bool = false
     @State private var isWeightTargetDateGoalSelected: Bool = true
     @State private var isCustomCalorieGoalSelected: Bool = false
+    @State private var temporaryBirthDate: Date = Date()
+
 
     
     // Personal Stats Variables
@@ -131,7 +133,7 @@ struct UserSetupView: View {
                         isWeightTargetDateGoalSelected: $isWeightTargetDateGoalSelected,
                         isCustomCalorieGoalSelected: $isCustomCalorieGoalSelected
                     )
-
+                    
                     .offset(x: currentStep == 3 ? 0 : (currentStep < 3 ? geometry.size.width : -geometry.size.width))
                     
                     UserOverviewView(
@@ -231,7 +233,7 @@ struct UserSetupView: View {
                     .fullScreenCover(isPresented: $showWelcomeSequence) {
                         WelcomeSequenceView()
                     }
-
+                    
                     
                 }
                 .padding(.horizontal, 20)
@@ -259,142 +261,133 @@ struct UserSetupView: View {
             Group {
                 if showDatePicker {
                     ZStack {
-                        Color.black.opacity(0.3)
+                        Color.black.opacity(0.3) // ✅ Adds background dimming (optional)
                             .ignoresSafeArea()
-                        
+
                         VStack(spacing: 20) {
                             Text("Select Your Birthday")
                                 .font(.headline)
                                 .foregroundColor(Styles.primaryText)
-                            
-                            DatePicker(
-                                "",
-                                selection: Binding(
-                                    get: { temporaryDate ?? birthDate ?? Date() },
-                                    set: { temporaryDate = $0 }
-                                ),
-                                displayedComponents: .date
-                            )
-                            .datePickerStyle(WheelDatePickerStyle())
-                            .labelsHidden()
-                            .padding(.horizontal)
-                            
+
+                            // ✅ Custom Date Picker Styled Like Height Picker
+                            CustomDatePicker(selectedDate: $temporaryBirthDate, minimumDate: nil)
+                                .frame(height: 200)
+                                .clipped()
+
                             HStack {
                                 Button("Cancel") {
-                                    temporaryDate = nil
-                                    hasPickedDate = birthDate != nil
                                     showDatePicker = false
                                 }
                                 .frame(maxWidth: .infinity)
-                                .foregroundColor(Styles.warning)
-                                
+                                .foregroundColor(Styles.primaryText)
+
                                 Button("Save") {
-                                    if let selectedDate = temporaryDate {
-                                        birthDate = selectedDate
-                                        hasPickedDate = true
-                                    }
+                                    birthDate = temporaryBirthDate
+                                    hasPickedDate = true
                                     showDatePicker = false
                                 }
                                 .frame(maxWidth: .infinity)
-                                .foregroundColor(Styles.success)
+                                .foregroundColor(.blue)
                             }
                             .padding(.horizontal)
                         }
                         .padding(20)
-                        .background(RoundedRectangle(cornerRadius: 15).fill(Styles.secondaryBackground))
-                        .overlay(RoundedRectangle(cornerRadius: 15).stroke(Styles.primaryText, lineWidth: 2))
+                        .background(RoundedRectangle(cornerRadius: 0).fill(Styles.secondaryBackground))
+                
                         .frame(width: UIScreen.main.bounds.width * 0.9)
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center) // ✅ Centers the Date Picker
                 }
             }
         )
+
+
     }
-    
-    private func saveUserProfile() {
-        let userProfile = UserProfile(context: viewContext)
-
-        userProfile.name = name
-        userProfile.gender = gender
-        userProfile.birthdate = birthDate
-        userProfile.profilePicture = profilePicture?.pngData()
-        userProfile.startWeight = Int32(weight) ?? 0
-        userProfile.currentWeight = Int32(weight) ?? 0
-        userProfile.goalWeight = Int32(goalWeight) ?? 0
-        userProfile.targetDate = goalDate
-        userProfile.weekGoal = weekGoal
-        userProfile.customCals = Int32(customCals) ?? 0
-        userProfile.useMetric = useMetric
-
-        userProfile.heightCm = Int32(heightCm)
-        userProfile.heightFt = Int32(heightFeet)
-        userProfile.heightIn = Int32(heightInches)
-
-        if let birthDate = userProfile.birthdate {
-            let calendar = Calendar.current
-            let ageComponents = calendar.dateComponents([.year], from: birthDate, to: Date())
-            userProfile.age = Int32(ageComponents.year ?? 0)
-        } else {
-            userProfile.age = 0
-        }
-
-        userProfile.activityInt = Int32(activityLevel)
-
-        userProfile.userBMR = calculateBMR(
-            weight: userProfile.currentWeight,
-            heightCm: userProfile.heightCm,
-            heightFt: userProfile.heightFt,
-            heightIn: userProfile.heightIn,
-            age: userProfile.age,
-            gender: userProfile.gender,
-            activityInt: userProfile.activityInt,
-            useMetric: userProfile.useMetric
-        )
-
-        let calorieFactor: Int32 = useMetric ? 7000 : 3500
-        userProfile.dailyCalorieDif = Int32((Double(calorieFactor) * weekGoal) / 7)
-
-        // ✅ Calculate weight difference if goal weight is set
-        if let goalWeightInt = Int32(goalWeight), goalWeightInt > 0 {
-            userProfile.weightDifference = abs(userProfile.currentWeight - goalWeightInt)
-        } else {
-            userProfile.weightDifference = 0
-        }
-
-        // ✅ Ensure `goalId` is set properly
-        if isWeightTargetDateGoalSelected {
-            if weekGoal != 0 && (goalWeight.isEmpty || goalWeight == "0") {
-                userProfile.goalId = 1  // Scenario: User set weekly goal but no goal weight
-            } else if !goalWeight.isEmpty && goalDate == nil {
-                userProfile.goalId = 2  // Scenario: User entered a goal weight but no date
-            } else if !goalWeight.isEmpty && goalDate != nil {
-                userProfile.goalId = 3  // Scenario: User entered both goal weight and target date
-            } else if weekGoal == 0 {
-                userProfile.goalId = 4  // Scenario: User did not set a week goal
+        private func saveUserProfile() {
+            let userProfile = UserProfile(context: viewContext)
+            
+            userProfile.name = name
+            userProfile.gender = gender
+            userProfile.birthdate = birthDate
+            userProfile.profilePicture = profilePicture?.pngData()
+            userProfile.startWeight = Int32(weight) ?? 0
+            userProfile.currentWeight = Int32(weight) ?? 0
+            userProfile.goalWeight = Int32(goalWeight) ?? 0
+            userProfile.targetDate = goalDate
+            userProfile.weekGoal = weekGoal
+            userProfile.customCals = Int32(customCals) ?? 0
+            userProfile.useMetric = useMetric
+            
+            userProfile.heightCm = Int32(heightCm)
+            userProfile.heightFt = Int32(heightFeet)
+            userProfile.heightIn = Int32(heightInches)
+            
+            if let birthDate = userProfile.birthdate {
+                let calendar = Calendar.current
+                let ageComponents = calendar.dateComponents([.year], from: birthDate, to: Date())
+                userProfile.age = Int32(ageComponents.year ?? 0)
+            } else {
+                userProfile.age = 0
             }
-        } else if isCustomCalorieGoalSelected && !customCals.isEmpty && customCals != "0" {
-            userProfile.goalId = 5  // Scenario: User set a custom calorie goal
+            
+            userProfile.activityInt = Int32(activityLevel)
+            
+            userProfile.userBMR = calculateBMR(
+                weight: userProfile.currentWeight,
+                heightCm: userProfile.heightCm,
+                heightFt: userProfile.heightFt,
+                heightIn: userProfile.heightIn,
+                age: userProfile.age,
+                gender: userProfile.gender,
+                activityInt: userProfile.activityInt,
+                useMetric: userProfile.useMetric
+            )
+            
+            let calorieFactor: Int32 = useMetric ? 7000 : 3500
+            userProfile.dailyCalorieDif = Int32((Double(calorieFactor) * weekGoal) / 7)
+            
+            // ✅ Calculate weight difference if goal weight is set
+            if let goalWeightInt = Int32(goalWeight), goalWeightInt > 0 {
+                userProfile.weightDifference = abs(userProfile.currentWeight - goalWeightInt)
+            } else {
+                userProfile.weightDifference = 0
+            }
+            
+            // ✅ Ensure `goalId` is set properly
+            if isWeightTargetDateGoalSelected {
+                if weekGoal != 0 && (goalWeight.isEmpty || goalWeight == "0") {
+                    userProfile.goalId = 1  // Scenario: User set weekly goal but no goal weight
+                } else if !goalWeight.isEmpty && goalDate == nil {
+                    userProfile.goalId = 2  // Scenario: User entered a goal weight but no date
+                } else if !goalWeight.isEmpty && goalDate != nil {
+                    userProfile.goalId = 3  // Scenario: User entered both goal weight and target date
+                } else if weekGoal == 0 {
+                    userProfile.goalId = 4  // Scenario: User did not set a week goal
+                }
+            } else if isCustomCalorieGoalSelected && !customCals.isEmpty && customCals != "0" {
+                userProfile.goalId = 5  // Scenario: User set a custom calorie goal
+            }
+            
+            // ✅ Update the last saved date
+            userProfile.lastSavedDate = Date()
+            
+            print("---- SAVING TO CORE DATA ----")
+            print("Week Goal: \(weekGoal)")
+            print("User BMR: \(userProfile.userBMR)")
+            print("Goal ID: \(userProfile.goalId)")
+            print("Use Metric: \(useMetric)")
+            print("Daily Calorie Difference: \(userProfile.dailyCalorieDif)")
+            print("Weight Difference: \(userProfile.weightDifference)")
+            print("-----------------------------")
+            
+            do {
+                try viewContext.save()
+                print("✅ User Profile Saved Successfully!")
+            } catch {
+                print("❌ ERROR: Failed to save user profile: \(error.localizedDescription)")
+            }
         }
-
-        // ✅ Update the last saved date
-        userProfile.lastSavedDate = Date()
-
-        print("---- SAVING TO CORE DATA ----")
-        print("Week Goal: \(weekGoal)")
-        print("User BMR: \(userProfile.userBMR)")
-        print("Goal ID: \(userProfile.goalId)")
-        print("Use Metric: \(useMetric)")
-        print("Daily Calorie Difference: \(userProfile.dailyCalorieDif)")
-        print("Weight Difference: \(userProfile.weightDifference)")
-        print("-----------------------------")
-
-        do {
-            try viewContext.save()
-            print("✅ User Profile Saved Successfully!")
-        } catch {
-            print("❌ ERROR: Failed to save user profile: \(error.localizedDescription)")
-        }
+        
+        
     }
 
-
-
-}

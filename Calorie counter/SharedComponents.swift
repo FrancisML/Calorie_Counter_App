@@ -490,7 +490,10 @@ struct CustomDatePicker: UIViewRepresentable {
         datePicker.datePickerMode = .date
         datePicker.minimumDate = minimumDate
 
-        // Set the text color to match Styles.primaryText
+        // ✅ Remove the gray background by setting a clear background color
+        datePicker.backgroundColor = .clear
+
+        // ✅ Set text color to match theme
         datePicker.setValue(UIColor(Styles.primaryText), forKeyPath: "textColor")
 
         datePicker.addTarget(context.coordinator, action: #selector(Coordinator.dateChanged(_:)), for: .valueChanged)
