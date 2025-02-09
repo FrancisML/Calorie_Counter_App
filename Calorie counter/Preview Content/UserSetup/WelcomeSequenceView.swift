@@ -118,7 +118,7 @@ struct WelcomeSequenceView: View {
         let goalType = weekGoal < 0 ? "lose" : "gain"
         let absWeekGoal = abs(weekGoal)
         let unit = useMetric ? "kg" : "lbs"
-        let calorieAction = weekGoal < 0 ? "limit" : "reach"
+        _ = weekGoal < 0 ? "limit" : "reach"
         let progressWord = weekGoal < 0 ? "losing" : "gaining"
 
         var messageList: [String] = []
@@ -151,7 +151,7 @@ struct WelcomeSequenceView: View {
                 : "To gain \(absWeekGoal) \(unit) a week, you need to reach an intake of \(adjustedCalories) calories daily."
             messageList.append(finalMessage)
 
-            messageList.append("By \(progressWord) \(absWeekGoal) \(unit) per week, you should \(goalType) by \(estimatedFinishDate).")
+            messageList.append("By \(progressWord) \(absWeekGoal) \(unit) per week, you should \(goalType) \(weightDifference) \(unit) by \(estimatedFinishDate).")
 
         } else if goalId == 3 {
             // Scenario 3: Lose/gain a certain weight by a specific date
@@ -179,7 +179,7 @@ struct WelcomeSequenceView: View {
             let calculatedWeight = abs(Double(calorieDifference * 7) / Double(calorieFactor))
 
             let weightChange = String(format: "%.1f", calculatedWeight)
-            let weightChangeType = calorieDifference < 0 ? "lose" : "gain"
+            _ = calorieDifference < 0 ? "lose" : "gain"
 
             messageList.append("You want to keep your calorie intake to \(customCals) calories per day.")
             messageList.append("Based on your information, your BMR is \(userBMR).")
@@ -195,19 +195,22 @@ struct WelcomeSequenceView: View {
 
 
     /// **Calculates the estimated finish date based on weight difference and weekly goal**
+    /// **Calculates the estimated finish date based on weight difference and weekly goal**
     private func calculateFinishDate(weightDifference: Double, weekGoal: Double) -> String {
         guard weekGoal > 0 else { return "Unknown" } // Avoid division by zero
 
-        let weeksNeeded = weightDifference / weekGoal
+        let totalDaysNeeded = (weightDifference / weekGoal) * 7  // Convert weeks to days
         let calendar = Calendar.current
-        if let estimatedDate = calendar.date(byAdding: .weekOfYear, value: Int(ceil(weeksNeeded)), to: Date()) {
+
+        if let estimatedDate = calendar.date(byAdding: .day, value: Int(ceil(totalDaysNeeded)), to: Date()) {
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
             return formatter.string(from: estimatedDate)
         }
-        
+
         return "Unknown"
     }
+
 
     /// **Calculates the calorie intake needed to reach the goal weight by the target date**
     private func calculateCaloriesByDate(weightDifference: Double, userBMR: Int32, targetDate: Date?) -> Int32 {

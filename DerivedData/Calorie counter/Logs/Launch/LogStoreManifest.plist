@@ -6,6 +6,128 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
+		<key>BCCD5C2A-83DF-4663-83B3-C28CDC871F9D</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>3CAC2EF1-ADAA-4730-AE89-D6C5CD77D5F1</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>2</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Calorie counter-2025.02.09_13-58-14--0500.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>2</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>760820294.14165497</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>BCCD5C2A-83DF-4663-83B3-C28CDC871F9D</string>
+		</dict>
+		<key>CAC60BD4-2F89-459B-9758-470E68EF3585</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>80B4E054-88B3-4C2D-8674-AE58D0496EEA</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Calorie counter-2025.02.09_14-12-09--0500.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>760821129.96431696</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>CAC60BD4-2F89-459B-9758-470E68EF3585</string>
+		</dict>
 		<key>E1876ADD-6901-4598-B394-917A079D8354</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
