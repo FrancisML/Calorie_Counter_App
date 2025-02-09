@@ -182,40 +182,50 @@ struct PersonalGoalsView: View {
 
             Spacer()
         }
-        .sheet(isPresented: $showDatePicker) {
-            VStack(spacing: 20) {
-                Text("Select Target Date")
-                    .font(.headline)
-                    .foregroundColor(Styles.primaryText)
-                    .padding()
+        .overlay(
+            Group {
+                if showDatePicker {
+                    ZStack {
+                        Color.black.opacity(0.3) // Background dimming effect (optional)
+                            .ignoresSafeArea()
 
-                // Replace SwiftUI DatePicker with CustomDatePicker
-                CustomDatePicker(selectedDate: $temporaryGoalDate, minimumDate: minSelectableDate)
-                    .frame(height: 200)  // Adjust as needed
-                    .clipped()
+                        VStack(spacing: 20) {
+                            Text("Select Target Date")
+                                .font(.headline)
+                                .foregroundColor(Styles.primaryText)
 
-                HStack {
-                    Button("Cancel") {
-                        showDatePicker = false
+                            //  Correct Date Picker Styled Like Birthdate Picker
+                            CustomDatePicker(selectedDate: $temporaryGoalDate, minimumDate: minSelectableDate)
+                                .frame(height: 200)
+                                .clipped()
+
+                            HStack {
+                                Button("Cancel") {
+                                    showDatePicker = false
+                                }
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(Styles.primaryText)
+
+                                Button("Save") {
+                                    goalDate = temporaryGoalDate
+                                    hasPickedDate = true
+                                    showDatePicker = false
+                                }
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(.blue)
+                            }
+                            .padding(.horizontal)
+                        }
+                        .padding(20)
+                        .background(RoundedRectangle(cornerRadius: 0).fill(Styles.secondaryBackground))
+                       
+                        .frame(width: UIScreen.main.bounds.width * 0.9)
                     }
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(Styles.primaryText)
-
-                    Button("Save") {
-                        goalDate = temporaryGoalDate
-                        hasPickedDate = true
-                        showDatePicker = false
-                    }
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.blue)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center) // ✅ Centers Date Picker
                 }
-                .padding(.horizontal)
             }
-            .padding()
-            .background(Styles.secondaryBackground)
-            .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
-            .frame(width: UIScreen.main.bounds.width * 0.9)
-        }
+        )
+
 
     }
 
