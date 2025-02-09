@@ -44,7 +44,6 @@
 		01BF361A2D2E4878002D1E51 /* Calorie_counterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF36192D2E4878002D1E51 /* Calorie_counterUITests.swift */; };
 		01BF361C2D2E4878002D1E51 /* Calorie_counterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF361B2D2E4878002D1E51 /* Calorie_counterUITestsLaunchTests.swift */; };
 		01C7727A2D40374000402083 /* UserSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C772792D40374000402083 /* UserSetupView.swift */; };
-		01F1E7B02D335C9500B8C524 /* DashboardSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F1E7AF2D335C9500B8C524 /* DashboardSetupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,7 +105,6 @@
 		01BF36192D2E4878002D1E51 /* Calorie_counterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calorie_counterUITests.swift; sourceTree = "<group>"; };
 		01BF361B2D2E4878002D1E51 /* Calorie_counterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calorie_counterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		01C772792D40374000402083 /* UserSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupView.swift; sourceTree = "<group>"; };
-		01F1E7AF2D335C9500B8C524 /* DashboardSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardSetupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,7 +194,6 @@
 				0173850C2D36F3AC00379FD5 /* AddProgressPictureView.swift */,
 				01466C732D30E33D008648A6 /* GoalSummaryView.swift */,
 				019C9CCD2D31A17500E0F608 /* ChangeDateView.swift */,
-				01F1E7AF2D335C9500B8C524 /* DashboardSetupView.swift */,
 				012AF0D72D3384AD005D03B1 /* PersistenceController.swift */,
 				012AF0F12D342658005D03B1 /* DashboardView.swift */,
 				012AF0F32D3426B0005D03B1 /* ImagePicker.swift */,
@@ -375,7 +372,6 @@
 				015B6C8B2D4D264F0095CB7F /* PersonalGoalView.swift in Sources */,
 				017385662D3856AC00379FD5 /* ProgressPicture+CoreDataClass.swift in Sources */,
 				01323EE22D526BF9005C025A /* UserOverviewView.swift in Sources */,
-				01F1E7B02D335C9500B8C524 /* DashboardSetupView.swift in Sources */,
 				016E52752D4A93B200105B8E /* SharedComponents.swift in Sources */,
 				0190ECF32D30B7F5003AA451 /* SummaryView.swift in Sources */,
 				017384D62D35BE3700379FD5 /* PastLedgerView.swift in Sources */,

@@ -6,6 +6,7 @@ struct WelcomeSequenceView: View {
     @State private var showText: Bool = false
     @Environment(\.dismiss) var dismiss  // Used to dismiss the view
     @Environment(\.managedObjectContext) private var viewContext
+    @AppStorage("appState") private var appState: String = "setup" // Store app state
 
     // Variables fetched from Core Data
     @State private var weekGoal: Double = 0.0
@@ -16,6 +17,7 @@ struct WelcomeSequenceView: View {
     @State private var weightDifference: Int32 = 0  // ✅ New variable
     @State private var goalDate: Date? = nil
     @State private var customCals: Int32 = 0  // ✅ Add customCals variable
+    
     
     var body: some View {
         VStack {
@@ -36,6 +38,7 @@ struct WelcomeSequenceView: View {
 
             if currentStep == messages.count - 1 {
                 Button(action: {
+                    appState = "dashboard" 
                     dismiss()  // Navigate away or present the main app
                 }) {
                     Text("Start Counting")

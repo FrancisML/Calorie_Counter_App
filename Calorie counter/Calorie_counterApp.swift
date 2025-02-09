@@ -32,18 +32,15 @@ struct CalorieCounterApp: App {
 struct SplashScreenView: View {
     @State private var isActive = false
     @AppStorage("appState") private var appState: String = "setup" // Tracks the app's current state
-   
 
     var body: some View {
         VStack {
             if isActive {
                 // Navigate dynamically based on appState
                 if appState == "dashboard" {
-                    DashboardView()
-                } else if appState == "dashboardSetup" {
-                    DashboardSetupView()
+                    DashboardView() // ✅ Redirect to Dashboard
                 } else {
-                    UserSetupView()
+                    DashboardView()
                 }
             } else {
                 // Display the splash screen
@@ -63,5 +60,6 @@ struct SplashScreenView: View {
         }
     }
 }
+
 
 

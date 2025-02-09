@@ -6,91 +6,100 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct DashboardView: View {
-    @Environment(\.managedObjectContext) private var viewContext  // Access Core Data
-    @FetchRequest(
-        entity: UserProfile.entity(),
-        sortDescriptors: []
-    ) private var userProfile: FetchedResults<UserProfile>
+    @State private var selectedTab: Tab = .today // Tracks the active tab
+    @State private var isPlusButtonPressed: Bool = false // Tracks press state for "+" button
+
+    enum Tab {
+        case today, past, progress, settings
+    }
 
     var body: some View {
-        NavigationView {
-            VStack(spacing: 20) {
-                // Welcome Message
-                Text("Welcome to Your Dashboard")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(Styles.primaryText)
+        VStack {
+            Spacer()
 
-                // Profile Summary Box
-                ZStack {
-                    Styles.secondaryBackground
-                        .cornerRadius(10)
-                        .shadow(radius: 5)
+            // Content of the DashboardView
+            Text("Welcome to Your Dashboard!") // Replace with views for each tab
+                .font(.largeTitle)
+                .foregroundColor(Styles.primaryText)
+                .padding()
 
-                    VStack(spacing: 10) {
-                        if let user = userProfile.first {
-                            Text("Hello, \(user.name ?? "User")!")
-                                .font(.title)
-                                .fontWeight(.semibold)
+            Spacer()
 
-                            Text("Current Weight: \(user.currentWeight) \(user.useMetric ? "kg" : "lbs")")
-                                .font(.headline)
+            // Bottom Navigation Bar
+            ZStack {
+                // Background Bar
+                Rectangle()
+                    .fill(Styles.secondaryBackground)
+                    .frame(height: 96)
+                    .shadow(radius: 5)
 
-                            Text("Goal Weight: \(user.goalWeight) \(user.useMetric ? "kg" : "lbs")")
-                                .font(.subheadline)
-                                .foregroundColor(Styles.secondaryText)
+                HStack {
+                    // Left-side buttons
+                    navButton(icon: "book", label: "Today", tab: .today)
+                        .frame(maxWidth: .infinity)
+                    navButton(icon: "clock", label: "Past", tab: .past)
+                        .frame(maxWidth: .infinity)
 
-                            if let targetDate = user.targetDate {
-                                Text("Target Date: \(formattedDate(targetDate))")
-                                    .font(.subheadline)
-                                    .foregroundColor(Styles.secondaryText)
-                            }
-                        } else {
-                            Text("No user data available.")
-                                .font(.headline)
-                        }
-                    }
-                    .padding()
+                    Spacer()
+                        .frame(width: 80) // Same width as the "+" button
+
+                    // Right-side buttons
+                    navButton(icon: "chart.bar", label: "Progress", tab: .progress)
+                        .frame(maxWidth: .infinity)
+                    navButton(icon: "gear", label: "Settings", tab: .settings)
+                        .frame(maxWidth: .infinity)
                 }
+                .padding(.horizontal, 15)
                 .frame(maxWidth: .infinity)
-                .padding(.horizontal)
+                .offset(y: -10) // Move buttons up by 30%
 
-                // Refresh Button
-                Button(action: {
-                    reloadData()
-                }) {
-                    Text("Refresh Data")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(width: 200, height: 50)
-                        .background(Color.blue)
-                        .cornerRadius(10)
+                // Center "+" Button (Sticking out)
+                VStack {
+                    ZStack {
+                        Circle()
+                            .fill(isPlusButtonPressed ? Styles.secondaryText : Styles.primaryText) // ✅ Uses primaryText and secondaryText
+                            .frame(width: 80, height: 80)
+                            .shadow(radius: 5)
+
+                        Image(systemName: "plus")
+                            .font(.largeTitle)
+                            .foregroundColor(Styles.secondaryBackground) // Keeps contrast
+                    }
+                    .simultaneousGesture(
+                        DragGesture(minimumDistance: 0)
+                            .onChanged { _ in
+                                withAnimation(nil) { isPlusButtonPressed = true } // ✅ Instantly switch to secondaryText
+                            }
+                            .onEnded { _ in
+                                withAnimation(.easeOut(duration: 0.2)) { isPlusButtonPressed = false } // ✅ Smooth transition back
+                                selectedTab = .today
+                            }
+                    )
+                    .offset(y: -36) // Adjusted to fit new bar height
                 }
-
-                Spacer()
             }
-            .padding()
+            .frame(height: 96)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Styles.primaryBackground)
+        .ignoresSafeArea(edges: .bottom)
     }
 
-    // Function to Format Date
-    private func formattedDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        return formatter.string(from: date)
-    }
-
-    // Function to Reload Data (You Can Expand This Later)
-    private func reloadData() {
-        do {
-            try viewContext.save()
-        } catch {
-            print("Error reloading data: \(error.localizedDescription)")
+    // Navigation Button View with Active State (Now Orange When Active)
+    private func navButton(icon: String, label: String, tab: Tab) -> some View {
+        VStack(spacing: 2) {
+            Image(systemName: icon)
+                .font(.title) // 20% bigger icon
+                .frame(width: 30, height: 30)
+                .foregroundColor(selectedTab == tab ? .orange : Styles.secondaryText) // ✅ Active buttons are now ORANGE
+            Text(label)
+                .font(.caption2)
+                .foregroundColor(selectedTab == tab ? .orange : Styles.secondaryText) // ✅ Text also turns orange when active
+        }
+        .onTapGesture {
+            selectedTab = tab
         }
     }
 }
-
