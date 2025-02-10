@@ -40,7 +40,7 @@ struct SplashScreenView: View {
                 if appState == "dashboard" {
                     DashboardView() // ✅ Redirect to Dashboard
                 } else {
-                    DashboardView()
+                    UserSetupView()
                 }
             } else {
                 // Display the splash screen

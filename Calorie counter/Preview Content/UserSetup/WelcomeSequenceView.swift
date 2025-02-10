@@ -61,6 +61,7 @@ struct WelcomeSequenceView: View {
         }
         .onAppear {
             fetchUserProfile()
+            setDailyCalorieGoal() // ✅ Set daily calorie goal only once
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Styles.primaryBackground)
@@ -138,6 +139,7 @@ struct WelcomeSequenceView: View {
                 ? "To lose \(absWeekGoal) \(unit) a week, you need to limit your calorie intake to \(adjustedCalories) daily."
                 : "To gain \(absWeekGoal) \(unit) a week, you need to reach an intake of \(adjustedCalories) calories daily."
             messageList.append(finalMessage)
+          
 
         } else if goalId == 2 {
             // Scenario 2: Lose/gain a certain weight but no date
@@ -155,6 +157,7 @@ struct WelcomeSequenceView: View {
             messageList.append(finalMessage)
 
             messageList.append("By \(progressWord) \(absWeekGoal) \(unit) per week, you should \(goalType) \(weightDifference) \(unit) by \(estimatedFinishDate).")
+            
 
         } else if goalId == 3 {
             // Scenario 3: Lose/gain a certain weight by a specific date
@@ -168,6 +171,7 @@ struct WelcomeSequenceView: View {
                 ? "To lose \(absWeekGoal) \(unit) by \(formattedDate), you need to limit your calorie intake to \(adjustedCaloriesByDate) daily."
                 : "To gain \(absWeekGoal) \(unit) by \(formattedDate), you need to reach an intake of \(adjustedCaloriesByDate) calories daily."
             messageList.append(finalMessage)
+           
 
         } else if goalId == 4 {
             // Scenario 4: Maintain current weight
@@ -186,11 +190,12 @@ struct WelcomeSequenceView: View {
 
             messageList.append("You want to keep your calorie intake to \(customCals) calories per day.")
             messageList.append("Based on your information, your BMR is \(userBMR).")
-            
+           
             let finalMessage = calorieDifference < 0
                 ? "If you keep your calories to \(customCals) calories a day, you will gain \(weightChange) \(unit) per week."
                 : "If you keep your calories to \(customCals) calories a day, you will lose \(weightChange) \(unit) per week."
             messageList.append(finalMessage)
+           
         }
 
         return messageList
@@ -257,6 +262,38 @@ struct WelcomeSequenceView: View {
         formatter.dateStyle = .medium
         return formatter.string(from: goalDate)
     }
+    private func updateDailyCalorieGoal(_ calories: Int32) {
+        DispatchQueue.main.async {
+            let fetchRequest: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastSavedDate", ascending: false)]
+            
+            do {
+                if let userProfile = try viewContext.fetch(fetchRequest).first {
+                    userProfile.dailyCalorieGoal = calories
+                    try viewContext.save()
+                    
+                    print("✅ DailyCalorieGoal Updated: \(calories)")
+                }
+            } catch {
+                print("⚠️ ERROR: Failed to save dailyCalorieGoal to Core Data: \(error.localizedDescription)")
+            }
+        }
+    }
+    private func setDailyCalorieGoal() {
+        var newCalorieGoal: Int32 = userBMR  // Default to BMR
+
+        if goalId == 1 || goalId == 2 {
+            let absCalorieDifference = abs(dailyCalorieDif)
+            newCalorieGoal = weekGoal < 0 ? userBMR - absCalorieDifference : userBMR + absCalorieDifference
+        } else if goalId == 3 {
+            newCalorieGoal = calculateCaloriesByDate(weightDifference: Double(weightDifference), userBMR: userBMR, targetDate: goalDate)
+        } else if goalId == 5 {
+            newCalorieGoal = customCals
+        }
+
+        updateDailyCalorieGoal(newCalorieGoal)  // ✅ Now only updates once
+    }
+
     
     
 }

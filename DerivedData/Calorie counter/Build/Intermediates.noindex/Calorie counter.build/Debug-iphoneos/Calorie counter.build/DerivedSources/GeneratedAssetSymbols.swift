@@ -55,6 +55,9 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "BMR" asset catalog image resource.
     static let BMR = DeveloperToolsSupport.ImageResource(name: "BMR", bundle: resourceBundle)
 
+    /// The "CalW" asset catalog image resource.
+    static let calW = DeveloperToolsSupport.ImageResource(name: "CalW", bundle: resourceBundle)
+
     /// The "Empty man PP" asset catalog image resource.
     static let emptyManPP = DeveloperToolsSupport.ImageResource(name: "Empty man PP", bundle: resourceBundle)
 
@@ -227,6 +230,15 @@ extension AppKit.NSImage {
     static var BMR: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .BMR)
+#else
+        .init()
+#endif
+    }
+
+    /// The "CalW" asset catalog image.
+    static var calW: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .calW)
 #else
         .init()
 #endif
@@ -505,6 +517,15 @@ extension UIKit.UIImage {
     static var BMR: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .BMR)
+#else
+        .init()
+#endif
+    }
+
+    /// The "CalW" asset catalog image.
+    static var calW: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .calW)
 #else
         .init()
 #endif

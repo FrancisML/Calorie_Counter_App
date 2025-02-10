@@ -30,6 +30,9 @@ static NSString * const ACImageName_AL_6 AC_SWIFT_PRIVATE = @"AL-6";
 /// The "BMR" asset catalog image resource.
 static NSString * const ACImageNameBMR AC_SWIFT_PRIVATE = @"BMR";
 
+/// The "CalW" asset catalog image resource.
+static NSString * const ACImageNameCalW AC_SWIFT_PRIVATE = @"CalW";
+
 /// The "Empty man PP" asset catalog image resource.
 static NSString * const ACImageNameEmptyManPP AC_SWIFT_PRIVATE = @"Empty man PP";
 

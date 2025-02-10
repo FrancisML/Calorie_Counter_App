@@ -22,6 +22,7 @@
 		01425DC82D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01425DC62D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift */; };
 		01466C742D30E33D008648A6 /* GoalSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01466C732D30E33D008648A6 /* GoalSummaryView.swift */; };
 		015B6C8B2D4D264F0095CB7F /* PersonalGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015B6C8A2D4D264F0095CB7F /* PersonalGoalView.swift */; };
+		015EF3332D5AA31F00902E42 /* DiaryEntriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015EF3322D5AA31F00902E42 /* DiaryEntriesView.swift */; };
 		016E52712D4A919F00105B8E /* PersonalDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016E52702D4A919F00105B8E /* PersonalDetailsView.swift */; };
 		016E52732D4A92BE00105B8E /* PersonalStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016E52722D4A92BE00105B8E /* PersonalStatsView.swift */; };
 		016E52752D4A93B200105B8E /* SharedComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016E52742D4A93B200105B8E /* SharedComponents.swift */; };
@@ -83,6 +84,7 @@
 		01425DC62D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyProgress+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		01466C732D30E33D008648A6 /* GoalSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSummaryView.swift; sourceTree = "<group>"; };
 		015B6C8A2D4D264F0095CB7F /* PersonalGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalGoalView.swift; sourceTree = "<group>"; };
+		015EF3322D5AA31F00902E42 /* DiaryEntriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntriesView.swift; sourceTree = "<group>"; };
 		016E52702D4A919F00105B8E /* PersonalDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDetailsView.swift; sourceTree = "<group>"; };
 		016E52722D4A92BE00105B8E /* PersonalStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalStatsView.swift; sourceTree = "<group>"; };
 		016E52742D4A93B200105B8E /* SharedComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedComponents.swift; sourceTree = "<group>"; };
@@ -156,13 +158,22 @@
 		0107C8462D5551AD00AF12A0 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				015EF3312D5A930100902E42 /* TodayVIew */,
 				012AF0F12D342658005D03B1 /* DashboardView.swift */,
 				01E507772D598A1A00CFBE40 /* SettingsView.swift */,
 				01E507732D5989C100CFBE40 /* PastView.swift */,
-				01E507712D5988E700CFBE40 /* TodayView.swift */,
 				01E507752D5989DA00CFBE40 /* ProgressView.swift */,
 			);
 			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		015EF3312D5A930100902E42 /* TodayVIew */ = {
+			isa = PBXGroup;
+			children = (
+				01E507712D5988E700CFBE40 /* TodayView.swift */,
+				015EF3322D5AA31F00902E42 /* DiaryEntriesView.swift */,
+			);
+			path = TodayVIew;
 			sourceTree = "<group>";
 		};
 		01BF35EF2D2E486E002D1E51 = {
@@ -396,6 +407,7 @@
 				01466C742D30E33D008648A6 /* GoalSummaryView.swift in Sources */,
 				0173850D2D36F3AC00379FD5 /* AddProgressPictureView.swift in Sources */,
 				017385112D36F6AF00379FD5 /* ProgressImage.swift in Sources */,
+				015EF3332D5AA31F00902E42 /* DiaryEntriesView.swift in Sources */,
 				017384D82D35BECD00379FD5 /* PastDailyLedgerView.swift in Sources */,
 				01BF35FC2D2E486F002D1E51 /* Calorie_counterApp.swift in Sources */,
 				01E507782D598A1A00CFBE40 /* SettingsView.swift in Sources */,
