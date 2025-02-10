@@ -44,6 +44,10 @@
 		01BF361A2D2E4878002D1E51 /* Calorie_counterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF36192D2E4878002D1E51 /* Calorie_counterUITests.swift */; };
 		01BF361C2D2E4878002D1E51 /* Calorie_counterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF361B2D2E4878002D1E51 /* Calorie_counterUITestsLaunchTests.swift */; };
 		01C7727A2D40374000402083 /* UserSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C772792D40374000402083 /* UserSetupView.swift */; };
+		01E507722D5988E700CFBE40 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E507712D5988E700CFBE40 /* TodayView.swift */; };
+		01E507742D5989C100CFBE40 /* PastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E507732D5989C100CFBE40 /* PastView.swift */; };
+		01E507762D5989DA00CFBE40 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E507752D5989DA00CFBE40 /* ProgressView.swift */; };
+		01E507782D598A1A00CFBE40 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E507772D598A1A00CFBE40 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +109,10 @@
 		01BF36192D2E4878002D1E51 /* Calorie_counterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calorie_counterUITests.swift; sourceTree = "<group>"; };
 		01BF361B2D2E4878002D1E51 /* Calorie_counterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calorie_counterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		01C772792D40374000402083 /* UserSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupView.swift; sourceTree = "<group>"; };
+		01E507712D5988E700CFBE40 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		01E507732D5989C100CFBE40 /* PastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastView.swift; sourceTree = "<group>"; };
+		01E507752D5989DA00CFBE40 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		01E507772D598A1A00CFBE40 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +156,11 @@
 		0107C8462D5551AD00AF12A0 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				012AF0F12D342658005D03B1 /* DashboardView.swift */,
+				01E507772D598A1A00CFBE40 /* SettingsView.swift */,
+				01E507732D5989C100CFBE40 /* PastView.swift */,
+				01E507712D5988E700CFBE40 /* TodayView.swift */,
+				01E507752D5989DA00CFBE40 /* ProgressView.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -188,14 +201,13 @@
 				01BF36012D2E4877002D1E51 /* Assets.xcassets */,
 				01BF36042D2E4877002D1E51 /* Preview Content */,
 				0190ECF22D30B7F4003AA451 /* SummaryView.swift */,
+				012AF0D72D3384AD005D03B1 /* PersistenceController.swift */,
 				017385102D36F6AF00379FD5 /* ProgressImage.swift */,
 				0173850A2D36F2ED00379FD5 /* ProgressPicsView.swift */,
 				0173850E2D36F43900379FD5 /* ProgressPictureDetailView.swift */,
 				0173850C2D36F3AC00379FD5 /* AddProgressPictureView.swift */,
 				01466C732D30E33D008648A6 /* GoalSummaryView.swift */,
 				019C9CCD2D31A17500E0F608 /* ChangeDateView.swift */,
-				012AF0D72D3384AD005D03B1 /* PersistenceController.swift */,
-				012AF0F12D342658005D03B1 /* DashboardView.swift */,
 				012AF0F32D3426B0005D03B1 /* ImagePicker.swift */,
 				012AF0FD2D3484A3005D03B1 /* DailyProgressView.swift */,
 				017384D52D35BE3700379FD5 /* PastLedgerView.swift */,
@@ -369,6 +381,7 @@
 				012AF0D62D337F35005D03B1 /* CalorieCounterModel.xcdatamodeld in Sources */,
 				012AF0FE2D3484A3005D03B1 /* DailyProgressView.swift in Sources */,
 				0107C8582D56877E00AF12A0 /* UserProfile+CoreDataProperties.swift in Sources */,
+				01E507722D5988E700CFBE40 /* TodayView.swift in Sources */,
 				015B6C8B2D4D264F0095CB7F /* PersonalGoalView.swift in Sources */,
 				017385662D3856AC00379FD5 /* ProgressPicture+CoreDataClass.swift in Sources */,
 				01323EE22D526BF9005C025A /* UserOverviewView.swift in Sources */,
@@ -385,9 +398,11 @@
 				017385112D36F6AF00379FD5 /* ProgressImage.swift in Sources */,
 				017384D82D35BECD00379FD5 /* PastDailyLedgerView.swift in Sources */,
 				01BF35FC2D2E486F002D1E51 /* Calorie_counterApp.swift in Sources */,
+				01E507782D598A1A00CFBE40 /* SettingsView.swift in Sources */,
 				017385672D3856AC00379FD5 /* ProgressPicture+CoreDataProperties.swift in Sources */,
 				01425DC72D3A76C900A98F2E /* DailyProgress+CoreDataClass.swift in Sources */,
 				0173850B2D36F2ED00379FD5 /* ProgressPicsView.swift in Sources */,
+				01E507742D5989C100CFBE40 /* PastView.swift in Sources */,
 				016E52712D4A919F00105B8E /* PersonalDetailsView.swift in Sources */,
 				0107C8482D55617000AF12A0 /* WelcomeSequenceView.swift in Sources */,
 				016E52732D4A92BE00105B8E /* PersonalStatsView.swift in Sources */,
@@ -395,6 +410,7 @@
 				012AF0F22D342658005D03B1 /* DashboardView.swift in Sources */,
 				012AF0D82D3384AD005D03B1 /* PersistenceController.swift in Sources */,
 				01425DBC2D398D9800A98F2E /* DailyDataTracker.swift in Sources */,
+				01E507762D5989DA00CFBE40 /* ProgressView.swift in Sources */,
 				01425DC82D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift in Sources */,
 				0173856D2D3856AC00379FD5 /* LedgerEntry+CoreDataProperties.swift in Sources */,
 			);

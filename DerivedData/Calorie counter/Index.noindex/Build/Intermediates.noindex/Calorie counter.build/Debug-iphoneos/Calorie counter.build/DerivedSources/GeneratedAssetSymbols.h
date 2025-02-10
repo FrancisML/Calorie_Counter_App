@@ -60,6 +60,9 @@ static NSString * const ACImageNameCalx AC_SWIFT_PRIVATE = @"calx";
 /// The "carrot" asset catalog image resource.
 static NSString * const ACImageNameCarrot AC_SWIFT_PRIVATE = @"carrot";
 
+/// The "drop" asset catalog image resource.
+static NSString * const ACImageNameDrop AC_SWIFT_PRIVATE = @"drop";
+
 /// The "flame" asset catalog image resource.
 static NSString * const ACImageNameFlame AC_SWIFT_PRIVATE = @"flame";
 

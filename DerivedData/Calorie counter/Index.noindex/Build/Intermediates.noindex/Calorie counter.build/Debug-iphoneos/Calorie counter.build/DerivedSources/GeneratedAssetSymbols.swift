@@ -85,6 +85,9 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "carrot" asset catalog image resource.
     static let carrot = DeveloperToolsSupport.ImageResource(name: "carrot", bundle: resourceBundle)
 
+    /// The "drop" asset catalog image resource.
+    static let drop = DeveloperToolsSupport.ImageResource(name: "drop", bundle: resourceBundle)
+
     /// The "flame" asset catalog image resource.
     static let flame = DeveloperToolsSupport.ImageResource(name: "flame", bundle: resourceBundle)
 
@@ -314,6 +317,15 @@ extension AppKit.NSImage {
     static var carrot: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .carrot)
+#else
+        .init()
+#endif
+    }
+
+    /// The "drop" asset catalog image.
+    static var drop: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .drop)
 #else
         .init()
 #endif
@@ -583,6 +595,15 @@ extension UIKit.UIImage {
     static var carrot: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .carrot)
+#else
+        .init()
+#endif
+    }
+
+    /// The "drop" asset catalog image.
+    static var drop: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .drop)
 #else
         .init()
 #endif

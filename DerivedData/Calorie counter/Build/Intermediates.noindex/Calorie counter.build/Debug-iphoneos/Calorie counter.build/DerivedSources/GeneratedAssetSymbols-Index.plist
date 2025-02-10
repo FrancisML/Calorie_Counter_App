@@ -190,6 +190,16 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameDrop</string>
+			<key>relativePath</key>
+			<string>./drop.imageset</string>
+			<key>swiftSymbol</key>
+			<string>drop</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameFlame</string>
 			<key>relativePath</key>
 			<string>./flame.imageset</string>
