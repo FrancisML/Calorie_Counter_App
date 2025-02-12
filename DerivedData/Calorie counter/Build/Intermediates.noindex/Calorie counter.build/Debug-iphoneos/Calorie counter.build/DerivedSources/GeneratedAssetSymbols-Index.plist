@@ -220,6 +220,16 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameFood</string>
+			<key>relativePath</key>
+			<string>./food.imageset</string>
+			<key>swiftSymbol</key>
+			<string>food</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameGrayscaleIndicator</string>
 			<key>relativePath</key>
 			<string>./grayscaleIndicator.imageset</string>
@@ -315,6 +325,26 @@
 			<string>./trophy.imageset</string>
 			<key>swiftSymbol</key>
 			<string>trophy</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameWater</string>
+			<key>relativePath</key>
+			<string>./water.imageset</string>
+			<key>swiftSymbol</key>
+			<string>water</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameWorkout</string>
+			<key>relativePath</key>
+			<string>./workout.imageset</string>
+			<key>swiftSymbol</key>
+			<string>workout</string>
 		</dict>
 	</array>
 	<key>symbols</key>

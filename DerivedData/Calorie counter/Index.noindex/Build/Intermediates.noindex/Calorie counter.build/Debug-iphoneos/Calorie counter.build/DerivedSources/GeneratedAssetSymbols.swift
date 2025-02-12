@@ -94,6 +94,9 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "flame" asset catalog image resource.
     static let flame = DeveloperToolsSupport.ImageResource(name: "flame", bundle: resourceBundle)
 
+    /// The "food" asset catalog image resource.
+    static let food = DeveloperToolsSupport.ImageResource(name: "food", bundle: resourceBundle)
+
     /// The "grayscaleIndicator" asset catalog image resource.
     static let grayscaleIndicator = DeveloperToolsSupport.ImageResource(name: "grayscaleIndicator", bundle: resourceBundle)
 
@@ -123,6 +126,12 @@ extension DeveloperToolsSupport.ImageResource {
 
     /// The "trophy" asset catalog image resource.
     static let trophy = DeveloperToolsSupport.ImageResource(name: "trophy", bundle: resourceBundle)
+
+    /// The "water" asset catalog image resource.
+    static let water = DeveloperToolsSupport.ImageResource(name: "water", bundle: resourceBundle)
+
+    /// The "workout" asset catalog image resource.
+    static let workout = DeveloperToolsSupport.ImageResource(name: "workout", bundle: resourceBundle)
 
 }
 
@@ -352,6 +361,15 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "food" asset catalog image.
+    static var food: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .food)
+#else
+        .init()
+#endif
+    }
+
     /// The "grayscaleIndicator" asset catalog image.
     static var grayscaleIndicator: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
@@ -437,6 +455,24 @@ extension AppKit.NSImage {
     static var trophy: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .trophy)
+#else
+        .init()
+#endif
+    }
+
+    /// The "water" asset catalog image.
+    static var water: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .water)
+#else
+        .init()
+#endif
+    }
+
+    /// The "workout" asset catalog image.
+    static var workout: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .workout)
 #else
         .init()
 #endif
@@ -639,6 +675,15 @@ extension UIKit.UIImage {
 #endif
     }
 
+    /// The "food" asset catalog image.
+    static var food: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .food)
+#else
+        .init()
+#endif
+    }
+
     /// The "grayscaleIndicator" asset catalog image.
     static var grayscaleIndicator: UIKit.UIImage {
 #if !os(watchOS)
@@ -724,6 +769,24 @@ extension UIKit.UIImage {
     static var trophy: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .trophy)
+#else
+        .init()
+#endif
+    }
+
+    /// The "water" asset catalog image.
+    static var water: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .water)
+#else
+        .init()
+#endif
+    }
+
+    /// The "workout" asset catalog image.
+    static var workout: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .workout)
 #else
         .init()
 #endif

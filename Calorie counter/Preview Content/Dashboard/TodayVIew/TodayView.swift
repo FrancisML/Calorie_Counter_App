@@ -2,7 +2,7 @@
 //  TodayView.swift
 //  Calorie counter
 //
-//  Created by frank lasalvia on 2/9/25.
+//  Created by Frank LaSalvia on 2/9/25.
 //
 
 import SwiftUI
@@ -15,11 +15,18 @@ struct TodayView: View {
     @State private var goalMessage: String = "No Goal Set"
     @State private var highestStreak: Int32 = 1
     @State private var selectedDate: Date = Date()
+    @State private var dailyCalorieGoal: Int = 2000
+    @State private var isWaterPickerPresented: Bool = false // ✅ Controls picker visibility
+
+   
+
+
 
     @State private var diaryEntries: [DiaryEntry] = [
-        DiaryEntry(time: "8:00 AM", icon: "carrot.fill", description: "Breakfast", calories: 250, type: "Food"),
-        DiaryEntry(time: "10:00 AM", icon: "bicycle", description: "Cycling", calories: 300, type: "Workout"),
-        DiaryEntry(time: "12:30 PM", icon: "carrot.fill", description: "Lunch", calories: 500, type: "Food")
+        DiaryEntry(time: "8:00 AM", iconName: "food", description: "Eggs", detail: "2 eggs", calories: 250, type: "Food"),
+        DiaryEntry(time: "10:00 AM", iconName: "workout", description: "Cycling", detail: "30 min", calories: 300, type: "Workout"),
+        DiaryEntry(time: "12:30 PM", iconName: "food", description: "Chicken Salad", detail: "1 bowl", calories: 500, type: "Food"),
+        DiaryEntry(time: "2:00 PM", iconName: "water", description: "Water", detail: "500ml", calories: 0, type: "Water")
     ]
 
     @State private var calorieProgress: CGFloat = 0
@@ -68,12 +75,17 @@ struct TodayView: View {
                 selectedDate: $selectedDate,
                 diaryEntries: diaryEntries,
                 highestStreak: highestStreak,
-                calorieProgress: calorieProgress,
-                calorieGoal: calorieGoal,
+                calorieProgress: CGFloat(diaryEntries.reduce(0) { $0 + ($1.type == "Workout" ? -$1.calories : $1.calories) }), // ✅ Workouts now subtract from total
+                calorieGoal: CGFloat(dailyCalorieGoal),
                 waterProgress: waterProgress,
-                waterGoal: waterGoal,
+
                 useMetric: useMetric
             )
+            .sheet(isPresented: $isWaterPickerPresented) {
+                WaterGoalPicker(useMetric: useMetric, selectedGoal: $waterGoal)
+            }
+
+
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Styles.primaryBackground)
@@ -83,9 +95,6 @@ struct TodayView: View {
         }
     }
 
-
-
-    // ✅ Fetch User Data from Core Data
     private func fetchUserData() {
         let fetchRequest: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastSavedDate", ascending: false)]
@@ -101,6 +110,7 @@ struct TodayView: View {
                 self.goalMessage = generateGoalMessage(userProfile: userProfile)
                 self.highestStreak = 1
                 self.useMetric = userProfile.useMetric
+                self.dailyCalorieGoal = Int(userProfile.dailyCalorieGoal) // ✅ Fetch dailyCalorieGoal
             }
         } catch {
             print("⚠️ ERROR: Failed to fetch user profile: \(error.localizedDescription)")
@@ -108,18 +118,10 @@ struct TodayView: View {
     }
 
 
-    // FORMAT CURRENT DATE
-    private static func formattedCurrentDate() -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        return formatter.string(from: Date())
-    }
-
-    // GENERATE GOAL MESSAGE LOGIC
     private func generateGoalMessage(userProfile: UserProfile) -> String {
         let weightDifference = abs(userProfile.goalWeight - userProfile.currentWeight)
         let formattedDifference = userProfile.useMetric ? "\(weightDifference) kg" : "\(weightDifference) lbs"
-
+        
         if userProfile.weekGoal == 0 {
             return "Maintain Current Weight"
         } else if userProfile.goalWeight == 0 {
@@ -136,15 +138,16 @@ struct TodayView: View {
         }
     }
 
-    // FORMAT GOAL DATE
     private func formattedGoalDate(_ date: Date?) -> String {
         guard let date = date else { return "Not Provided" }
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         return formatter.string(from: date)
     }
+    private static func formattedCurrentDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter.string(from: Date())
+    }
 }
-
-
-
 

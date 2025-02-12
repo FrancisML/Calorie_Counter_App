@@ -1,8 +1,8 @@
 //
 //  DiaryEntriesView.swift
-//  Calorie counter
+//  Calorie Counter
 //
-//  Created by frank lasalvia on 2/10/25.
+//  Created by Frank LaSalvia on 2/10/25.
 //
 
 import SwiftUI
@@ -14,11 +14,14 @@ struct DiaryEntriesView: View {
     var calorieProgress: CGFloat
     var calorieGoal: CGFloat
     var waterProgress: CGFloat
-    var waterGoal: CGFloat
     var useMetric: Bool
+    @State private var isWaterPickerPresented: Bool = false // ✅ Controls picker visibility
+    @State private var waterGoal: CGFloat = 0
+
+
 
     var body: some View {
-        VStack(spacing: 0) { // ✅ Forces sections to touch
+        VStack(spacing: 0) {
             // 🔹 NAVIGATION BAR BELOW PROFILE (With Drop Shadow)
             HStack {
                 Button(action: {
@@ -28,9 +31,9 @@ struct DiaryEntriesView: View {
                         .font(.title2)
                         .foregroundColor(Styles.primaryText)
                 }
-                
+
                 Spacer()
-                
+
                 VStack {
                     Text("Today")
                         .font(.headline)
@@ -39,9 +42,9 @@ struct DiaryEntriesView: View {
                         .font(.subheadline)
                         .foregroundColor(Styles.primaryText)
                 }
-                
+
                 Spacer()
-                
+
                 Button(action: {
                     selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: selectedDate) ?? selectedDate
                 }) {
@@ -49,9 +52,9 @@ struct DiaryEntriesView: View {
                         .font(.title2)
                         .foregroundColor(Styles.primaryText)
                 }
-                
+
                 Spacer()
-                
+
                 HStack {
                     Image(systemName: "flame.fill")
                         .foregroundColor(.orange)
@@ -64,28 +67,30 @@ struct DiaryEntriesView: View {
             .padding(.vertical, 10)
             .background(Styles.secondaryBackground)
             .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 3)
-            .zIndex(1) // ✅ Ensures shadow overlaps progress bar
-            
+            .zIndex(1)
+
             // 🔹 PROGRESS BARS SECTION (Full Width with Internal Padding)
             VStack(spacing: 15) {
+                // Calories Progress Bar
+                // Calories Progress Bar (Updated)
                 HStack(spacing: 10) {
                     Image("bolt")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 30, height: 30)
+                        .frame(width: 30, height: 40)
                         .padding(.trailing, 5)
-                    
+
                     VStack(alignment: .leading) {
                         HStack {
                             Text("Calories")
                                 .font(.headline)
                                 .foregroundColor(Styles.primaryText)
                             Spacer()
-                            Text("\(Int(calorieProgress))/\(Int(calorieGoal))")
+                            Text("\(Int(calorieProgress))/\(Int(calorieGoal))") // ✅ Dynamic values
                                 .font(.subheadline)
                                 .foregroundColor(Styles.secondaryText)
                         }
-                        
+
                         GeometryReader { geometry in
                             ZStack(alignment: .leading) {
                                 Rectangle()
@@ -94,21 +99,25 @@ struct DiaryEntriesView: View {
 
                                 Rectangle()
                                     .fill(Styles.primaryText)
-                                    .frame(width: (calorieProgress / calorieGoal) * geometry.size.width, height: 20)
+                                    .frame(width: min((calorieProgress / calorieGoal) * geometry.size.width, geometry.size.width), height: 20)
                                     .animation(.easeInOut(duration: 0.3), value: calorieProgress)
                             }
                         }
                         .frame(height: 20)
                     }
                 }
+                Divider()
 
+
+                // Water Progress Bar
+                // 🔹 WATER PROGRESS BAR (Now Clickable)
                 HStack(spacing: 10) {
                     Image("drop")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 30, height: 30)
+                        .frame(width: 30, height: 40)
                         .padding(.trailing, 5)
-                    
+
                     VStack(alignment: .leading) {
                         HStack {
                             Text("Water")
@@ -119,30 +128,40 @@ struct DiaryEntriesView: View {
                                 .font(.subheadline)
                                 .foregroundColor(Styles.secondaryText)
                         }
-                        
+
                         GeometryReader { geometry in
                             ZStack(alignment: .leading) {
                                 Rectangle()
-                                    .fill(Styles.primaryText.opacity(0.2))
+                                    .fill(isWaterPickerPresented ? Styles.tertiaryBackground : Styles.primaryText.opacity(0.2)) // ✅ Background changes when clicked
                                     .frame(height: 20)
-                                
+
                                 Rectangle()
                                     .fill(Styles.primaryText)
-                                    .frame(width: (waterProgress / waterGoal) * geometry.size.width, height: 20)
+                                    .frame(
+                                        width: min((waterProgress / max(waterGoal, 1)) * geometry.size.width, geometry.size.width), // ✅ Stops at max width
+                                        height: 20
+                                    )
                                     .animation(.easeInOut(duration: 0.3), value: waterProgress)
                             }
                         }
                         .frame(height: 20)
                     }
                 }
+                .contentShape(Rectangle()) // ✅ Makes the entire row clickable
+                .onTapGesture {
+                    isWaterPickerPresented = true // ✅ Opens picker when tapped
+                }
 
+                Divider()
+
+                // 🔹 DAILY WEIGH-IN SECTION (Fully Restored)
                 HStack(spacing: 10) {
                     Image("CalW")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 30, height: 30)
+                        .frame(width: 30, height: 40)
                         .padding(.trailing, 5)
-                    
+
                     VStack(alignment: .leading) {
                         HStack {
                             Text("Daily Weigh-In:")
@@ -156,65 +175,56 @@ struct DiaryEntriesView: View {
                     }
                 }
             }
-            .padding(15) // ✅ Internal padding for elements
+            .padding(15)
             .background(Styles.secondaryBackground)
-            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 3) // ✅ Drop shadow remains
-            
-            // 🔹 DIARY LABEL BAR (SEPARATE HSTACK, MATCHING NAV BAR STYLE)
+            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 3)
+
+            // 🔹 DIARY LABEL BAR
             HStack {
                 Text("Diary")
-                    .font(.title2) // ✅ Increased text size
+                    .font(.title2)
                     .foregroundColor(Styles.primaryText)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 10)
             .background(Styles.secondaryBackground)
-            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 0) // ✅ Equal shadow on top and bottom
-            .zIndex(1) // ✅ Ensures shadow overlaps content below
+            // ✅ Apply two shadows: one on top and one on bottom
+            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 3)  // Bottom shadow
+            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: -3) // Top shadow (inverted)
+            .zIndex(1)
 
 
-            // 🔹 DIARY ENTRIES SECTION (Fills Remaining Space, Justified at Top)
-            VStack(alignment: .leading) {
-                if diaryEntries.isEmpty {
-                    Text("No Entries Yet")
-                        .font(.subheadline)
-                        .foregroundColor(Styles.secondaryText)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                } else {
-                    VStack {
-                        ForEach(diaryEntries, id: \.id) { entry in
-                            HStack {
-                                Text(entry.time)
-                                    .font(.subheadline)
-                                    .foregroundColor(Styles.secondaryText)
-                                    .frame(width: 70, alignment: .leading)
-                                
-                                Image(systemName: entry.icon)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 20, height: 20)
-                                    .foregroundColor(entry.type == "Food" ? .green : .red)
-                                
-                                Text(entry.description)
-                                    .font(.subheadline)
-                                    .foregroundColor(Styles.primaryText)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                
-                                Text("\(entry.type == "Food" ? "+" : "-")\(entry.calories)")
-                                    .font(.subheadline)
-                                    .foregroundColor(entry.type == "Food" ? .green : .red)
-                                    .frame(width: 60, alignment: .trailing)
-                            }
-                            .padding(.vertical, 5)
+            // 🔹 DIARY ENTRIES LIST (Scrolls Independently, Alternating Row Colors, Timestamp Added)
+            ScrollView {
+                VStack(spacing: 0) {
+                    if diaryEntries.isEmpty {
+                        Text("No Entries Yet")
+                            .font(.subheadline)
+                            .foregroundColor(Styles.secondaryText)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                    } else {
+                        ForEach(Array(diaryEntries.enumerated()), id: \.element.id) { index, entry in
+                            DiaryEntryRow(entry: entry)
+                                .frame(maxWidth: .infinity) // ✅ Makes the background extend fully to the sides
+                                .padding(.horizontal, 15) // ✅ Internal padding to keep content away from the edges
+                                .background(index.isMultiple(of: 2) ? Styles.tertiaryBackground : Styles.secondaryBackground) // ✅ Alternating row colors
                         }
+
+                        
                     }
-                    .padding(15) // ✅ Internal padding for diary entries
-                    .frame(maxWidth: .infinity, alignment: .top) // ✅ Justifies entries at the top
                 }
+                .padding(15)
+                .frame(maxWidth: .infinity, alignment: .top)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Styles.secondaryBackground)
+        }
+        .sheet(isPresented: $isWaterPickerPresented) {
+            WaterGoalPicker(
+                useMetric: useMetric,
+                selectedGoal: $waterGoal
+            )
         }
     }
 
@@ -225,11 +235,61 @@ struct DiaryEntriesView: View {
     }
 }
 
+// 🔹 DIARY ENTRY ROW COMPONENT (With Timestamp & Alternating Colors)
+struct DiaryEntryRow: View {
+    var entry: DiaryEntry
+
+    var body: some View {
+        HStack(spacing: 10) {
+            Text(entry.time) // ✅ Adds timestamp before the image
+                .font(.subheadline)
+                .foregroundColor(Styles.secondaryText)
+                .frame(width: 70, alignment: .leading)
+
+            Image(entry.iconName) // ✅ Uses custom image for "food", "workout", "water"
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50, height: 50)
+                .clipShape(RoundedRectangle(cornerRadius: 5))
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(entry.description)
+                    .font(.headline)
+                    .foregroundColor(Styles.primaryText)
+
+                Text(entry.detail)
+                    .font(.subheadline)
+                    .foregroundColor(Styles.secondaryText)
+            }
+
+            Spacer()
+
+            Text(entry.type == "Water" ? "0" : entry.type == "Workout" ? "-\(entry.calories)" : "+\(entry.calories)") // ✅ Ensures workouts are negative, water is 0
+                .font(.subheadline)
+                .foregroundColor(entry.type == "Food" ? .green : entry.type == "Workout" ? .red : .blue)
+                .frame(width: 60, alignment: .trailing)
+        }
+        .padding(.vertical, 5)
+
+    }
+}
+
+
+// 🔹 DIARY ENTRY MODEL
 struct DiaryEntry: Identifiable {
     let id = UUID()
     let time: String
-    let icon: String
+    let iconName: String
     let description: String
+    let detail: String
     let calories: Int
-    let type: String // "Food" or "Workout"
+    let type: String // "Food", "Workout", "Water"
 }
+
+// 🔹 UPDATED DUMMY DATA
+let sampleDiaryEntries = [
+    DiaryEntry(time: "8:00 AM", iconName: "food", description: "Oatmeal", detail: "1 cup", calories: 250, type: "Food"),
+    DiaryEntry(time: "10:00 AM", iconName: "workout", description: "Cycling", detail: "30 min", calories: 300, type: "Workout"),
+    DiaryEntry(time: "12:30 PM", iconName: "food", description: "Chicken Breast", detail: "200g", calories: 500, type: "Food"),
+    DiaryEntry(time: "2:00 PM", iconName: "water", description: "Water", detail: "500ml", calories: 0, type: "Water")
+]

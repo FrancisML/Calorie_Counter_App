@@ -27,6 +27,11 @@ struct Styles {
         ? Color(red: 0.243, green: 0.345, blue: 0.475)  // Dark Mode (#3E5879)
         : Color(red: 0.961, green: 0.937, blue: 0.906)  // Light Mode (#F5EFE7)
     }
+    static var tertiaryBackground: Color {
+            isDarkMode
+            ? Color(red: 0.192, green: 0.286, blue: 0.400)  // Dark Mode (#314965) - A shade darker than #3E5879
+            : Color(red: 0.925, green: 0.902, blue: 0.875)  // Light Mode (#ECE5DE) - A shade darker than #F5EFE7
+        }
 
     // Primary Text
     static var primaryText: Color {

@@ -69,6 +69,9 @@ static NSString * const ACImageNameDrop AC_SWIFT_PRIVATE = @"drop";
 /// The "flame" asset catalog image resource.
 static NSString * const ACImageNameFlame AC_SWIFT_PRIVATE = @"flame";
 
+/// The "food" asset catalog image resource.
+static NSString * const ACImageNameFood AC_SWIFT_PRIVATE = @"food";
+
 /// The "grayscaleIndicator" asset catalog image resource.
 static NSString * const ACImageNameGrayscaleIndicator AC_SWIFT_PRIVATE = @"grayscaleIndicator";
 
@@ -98,5 +101,11 @@ static NSString * const ACImageNameTarget AC_SWIFT_PRIVATE = @"target";
 
 /// The "trophy" asset catalog image resource.
 static NSString * const ACImageNameTrophy AC_SWIFT_PRIVATE = @"trophy";
+
+/// The "water" asset catalog image resource.
+static NSString * const ACImageNameWater AC_SWIFT_PRIVATE = @"water";
+
+/// The "workout" asset catalog image resource.
+static NSString * const ACImageNameWorkout AC_SWIFT_PRIVATE = @"workout";
 
 #undef AC_SWIFT_PRIVATE
