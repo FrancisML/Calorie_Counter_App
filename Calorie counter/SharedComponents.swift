@@ -569,90 +569,83 @@ func calculateBMR(weight: Int32, heightCm: Int32, heightFt: Int32, heightIn: Int
 }
 // MARK: -WaterPicker
 
-import SwiftUI
-
 struct WaterGoalPicker: View {
     var useMetric: Bool
     @Binding var selectedGoal: CGFloat
-    @Environment(\.presentationMode) var presentationMode
+    @Binding var isWaterPickerPresented: Bool
+    @Binding var selectedUnit: String  // ✅ Bind to DiaryEntriesView
 
     @State private var selectedValue: Double = 0
-    @State private var selectedUnit: String = "fl oz"
-
-    private let imperialValues = Array(stride(from: 0, through: 128, by: 8)).map { Double($0) } // ✅ 17 choices (0 to 128 fl oz)
-    private let gallonValues = [0.0, 0.25, 0.5, 0.75, 1.0] // ✅ 5 choices (0 to 1 gallon)
-    private let metricValues = [0, 1, 2, 3, 4].map { Double($0) } // ✅ 5 choices (0 to 4 liters)
-    private let milliliterValues = Array(stride(from: 0, through: 4000, by: 250)).map { Double($0) } // ✅ 17 choices (0 to 4000 mL)
+    
+    private let imperialValues = Array(stride(from: 0, through: 128, by: 8)).map { Double($0) }
+    private let gallonValues = [0.0, 0.25, 0.5, 0.75, 1.0]
+    private let metricValues = [0, 1, 2, 3, 4].map { Double($0) }
+    private let milliliterValues = Array(stride(from: 0, through: 4000, by: 250)).map { Double($0) }
 
     var body: some View {
-        VStack(spacing: 0) {
-            // ✅ Title (Same as Height Picker)
-            Text("Select Water Goal")
-                .font(.headline)
-                .foregroundColor(Styles.primaryText)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Styles.secondaryBackground)
+        ZStack {
+            Color.black.opacity(0.3)
+                .ignoresSafeArea()
 
-            // ✅ Picker Section (Matching Height Picker)
-            HStack(spacing: 0) {
-                Picker("Amount", selection: $selectedValue) {
-                    ForEach(currentValues(), id: \.self) { value in
-                        if selectedUnit == "Gallons" {
-                            Text(String(format: "%.2f", value))
-                        } else {
-                            Text("\(Int(value))")
+            VStack(spacing: 20) {
+                Text("Select Water Goal")
+                    .font(.headline)
+                    .foregroundColor(Styles.primaryText)
+
+                HStack {
+                    Picker("Amount", selection: $selectedValue) {
+                        ForEach(currentValues(), id: \.self) { value in
+                            Text(value == floor(value) ? "\(Int(value))" : String(format: "%.2f", value))
+                                .foregroundColor(Styles.primaryText)
                         }
                     }
-                }
-                .pickerStyle(WheelPickerStyle())
-                .frame(maxWidth: .infinity)
+                    .pickerStyle(WheelPickerStyle())
+                    .frame(maxWidth: UIScreen.main.bounds.width * 0.4)
+                    .clipped()
 
-                Picker("Unit", selection: $selectedUnit) {
-                    ForEach(currentUnits(), id: \.self) { unit in
-                        Text(unit)
+                    Picker("Unit", selection: $selectedUnit) {
+                        ForEach(currentUnits(), id: \.self) { unit in
+                            Text(unit)
+                                .foregroundColor(Styles.primaryText)
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                    .frame(maxWidth: UIScreen.main.bounds.width * 0.4)
+                    .clipped()
+                    .onChange(of: selectedUnit) { _ in
+                        selectedValue = 0
                     }
                 }
-                .pickerStyle(WheelPickerStyle())
-                .frame(maxWidth: .infinity)
-                .onChange(of: selectedUnit) { _ in
-                    selectedValue = 0 // ✅ Reset value when unit changes
-                }
-            }
-            .frame(height: 180)
-            .background(Styles.secondaryBackground)
 
-            // ✅ Buttons (Matching Height Picker)
-            HStack {
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    Text("Cancel")
-                        .foregroundColor(.red)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                }
+                HStack {
+                    Button("Cancel") {
+                        isWaterPickerPresented = false
+                    }
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(Styles.primaryText)
 
-                Button(action: {
-                    saveWaterGoal()
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    Text("Save")
-                        .foregroundColor(Styles.primaryText)
-                        .frame(maxWidth: .infinity)
-                        .padding()
+                    Button("Save") {
+                        DispatchQueue.main.async {
+                            selectedGoal = CGFloat(selectedValue) // ✅ Force UI update
+                        }
+                        isWaterPickerPresented = false
+                    }
+
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.blue)
                 }
+                .padding(.horizontal)
             }
+            .padding(20)
             .background(Styles.secondaryBackground)
+            .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
+            .frame(width: UIScreen.main.bounds.width * 0.9)
         }
         .onAppear {
-            selectedUnit = useMetric ? "Liters" : "fl oz" // ✅ Default based on metric/imperial
+            selectedValue = Double(selectedGoal)
         }
-        .background(Styles.secondaryBackground) // ✅ Same as Height Picker
-        .edgesIgnoringSafeArea(.all) // ✅ Makes it full-screen, like Height Picker
     }
 
-    /// ✅ Returns the correct values based on the selected unit
     private func currentValues() -> [Double] {
         switch selectedUnit {
         case "Gallons": return gallonValues
@@ -662,13 +655,8 @@ struct WaterGoalPicker: View {
         }
     }
 
-    /// ✅ Returns the correct units based on whether metric is selected
     private func currentUnits() -> [String] {
         return useMetric ? ["Liters", "Milliliters"] : ["fl oz", "Gallons"]
     }
-
-    /// ✅ Saves the selected goal amount
-    private func saveWaterGoal() {
-        selectedGoal = CGFloat(selectedValue)
-    }
+    
 }

@@ -11,14 +11,25 @@ struct DiaryEntriesView: View {
     @Binding var selectedDate: Date
     var diaryEntries: [DiaryEntry]
     var highestStreak: Int32
-    var calorieProgress: CGFloat
+
+    var calorieProgress: CGFloat {
+        CGFloat(diaryEntries.reduce(0) { $0 + ($1.type == "Workout" ? -$1.calories : ($1.type == "Food" ? $1.calories : 0)) }) // ✅ Water excluded
+    }
+    var totalDailyWater: CGFloat {
+        convertWaterUnit(amount: totalWaterIntake(), from: "fl oz", to: selectedUnit)
+    }
+
+
     var calorieGoal: CGFloat
-    var waterProgress: CGFloat
+    var waterProgress: CGFloat {
+        totalWaterIntake() // ✅ Always reflects the latest water intake
+    }
+// ✅ Automatically updates with entries
+
     var useMetric: Bool
-    @State private var isWaterPickerPresented: Bool = false // ✅ Controls picker visibility
+    @State private var isWaterPickerPresented: Bool = false
     @State private var waterGoal: CGFloat = 0
-
-
+    @State private var selectedUnit: String = "fl oz" // ✅ Default to fl oz
 
     var body: some View {
         VStack(spacing: 0) {
@@ -72,7 +83,6 @@ struct DiaryEntriesView: View {
             // 🔹 PROGRESS BARS SECTION (Full Width with Internal Padding)
             VStack(spacing: 15) {
                 // Calories Progress Bar
-                // Calories Progress Bar (Updated)
                 HStack(spacing: 10) {
                     Image("bolt")
                         .resizable()
@@ -86,7 +96,7 @@ struct DiaryEntriesView: View {
                                 .font(.headline)
                                 .foregroundColor(Styles.primaryText)
                             Spacer()
-                            Text("\(Int(calorieProgress))/\(Int(calorieGoal))") // ✅ Dynamic values
+                            Text("\(Int(calorieProgress))/\(Int(calorieGoal))")
                                 .font(.subheadline)
                                 .foregroundColor(Styles.secondaryText)
                         }
@@ -108,9 +118,7 @@ struct DiaryEntriesView: View {
                 }
                 Divider()
 
-
-                // Water Progress Bar
-                // 🔹 WATER PROGRESS BAR (Now Clickable)
+                // 🔹 WATER PROGRESS BAR
                 HStack(spacing: 10) {
                     Image("drop")
                         .resizable()
@@ -124,37 +132,52 @@ struct DiaryEntriesView: View {
                                 .font(.headline)
                                 .foregroundColor(Styles.primaryText)
                             Spacer()
-                            Text("\(Int(waterProgress))/\(Int(waterGoal))")
-                                .font(.subheadline)
-                                .foregroundColor(Styles.secondaryText)
+
+                            // ✅ Use totalDailyWater + waterGoal directly
+                            Text(waterGoal == 0 ?
+                                (selectedUnit == "Gallons" ? String(format: "%.2f", totalDailyWater) + " \(selectedUnit)" : // ✅ Show correct value in gallons
+                                "\(Int(totalDailyWater)) \(selectedUnit)") :
+                                (selectedUnit == "Gallons" ?
+                                    String(format: "%.2f", totalDailyWater) + " / " + formattedGallonGoal(waterGoal) + " \(selectedUnit)" :
+                                    "\(Int(totalDailyWater)) / \(Int(waterGoal)) \(selectedUnit)"
+                                )
+                            )
+
+
+                            .font(.subheadline)
+                            .foregroundColor(Styles.secondaryText)
                         }
 
+                        // ✅ Progress Bar Section
                         GeometryReader { geometry in
                             ZStack(alignment: .leading) {
                                 Rectangle()
-                                    .fill(isWaterPickerPresented ? Styles.tertiaryBackground : Styles.primaryText.opacity(0.2)) // ✅ Background changes when clicked
+                                    .fill(Styles.primaryText.opacity(0.2))
                                     .frame(height: 20)
 
                                 Rectangle()
                                     .fill(Styles.primaryText)
                                     .frame(
-                                        width: min((waterProgress / max(waterGoal, 1)) * geometry.size.width, geometry.size.width), // ✅ Stops at max width
+                                        width: waterGoal == 0 ? geometry.size.width : // ✅ Full bar if no goal is set
+                                            min((totalDailyWater / max(waterGoal, 0.01)) * geometry.size.width, geometry.size.width),
                                         height: 20
                                     )
-                                    .animation(.easeInOut(duration: 0.3), value: waterProgress)
+                                    .animation(.easeInOut(duration: 0.3), value: totalDailyWater)
                             }
                         }
                         .frame(height: 20)
+
                     }
                 }
-                .contentShape(Rectangle()) // ✅ Makes the entire row clickable
+                .contentShape(Rectangle())
                 .onTapGesture {
-                    isWaterPickerPresented = true // ✅ Opens picker when tapped
+                    isWaterPickerPresented = true
                 }
+
 
                 Divider()
 
-                // 🔹 DAILY WEIGH-IN SECTION (Fully Restored)
+                // 🔹 DAILY WEIGH-IN SECTION
                 HStack(spacing: 10) {
                     Image("CalW")
                         .resizable()
@@ -189,13 +212,11 @@ struct DiaryEntriesView: View {
             .padding(.horizontal, 20)
             .padding(.vertical, 10)
             .background(Styles.secondaryBackground)
-            // ✅ Apply two shadows: one on top and one on bottom
-            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 3)  // Bottom shadow
-            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: -3) // Top shadow (inverted)
+            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 3)
+            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: -3)
             .zIndex(1)
 
-
-            // 🔹 DIARY ENTRIES LIST (Scrolls Independently, Alternating Row Colors, Timestamp Added)
+            // 🔹 DIARY ENTRIES LIST
             ScrollView {
                 VStack(spacing: 0) {
                     if diaryEntries.isEmpty {
@@ -206,12 +227,10 @@ struct DiaryEntriesView: View {
                     } else {
                         ForEach(Array(diaryEntries.enumerated()), id: \.element.id) { index, entry in
                             DiaryEntryRow(entry: entry)
-                                .frame(maxWidth: .infinity) // ✅ Makes the background extend fully to the sides
-                                .padding(.horizontal, 15) // ✅ Internal padding to keep content away from the edges
-                                .background(index.isMultiple(of: 2) ? Styles.tertiaryBackground : Styles.secondaryBackground) // ✅ Alternating row colors
+                                .frame(maxWidth: .infinity)
+                                .padding(.horizontal, 15)
+                                .background(index.isMultiple(of: 2) ? Styles.tertiaryBackground : Styles.secondaryBackground)
                         }
-
-                        
                     }
                 }
                 .padding(15)
@@ -220,12 +239,18 @@ struct DiaryEntriesView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Styles.secondaryBackground)
         }
-        .sheet(isPresented: $isWaterPickerPresented) {
-            WaterGoalPicker(
-                useMetric: useMetric,
-                selectedGoal: $waterGoal
-            )
-        }
+      .overlay(
+                    Group {
+                        if isWaterPickerPresented {
+                            WaterGoalPicker(
+                                useMetric: useMetric,
+                                selectedGoal: $waterGoal, // ✅ Binding ensures updates
+                                isWaterPickerPresented: $isWaterPickerPresented,
+                                selectedUnit: $selectedUnit
+                            )
+                        }
+            }
+        )
     }
 
     private func formattedDate(_ date: Date) -> String {
@@ -233,6 +258,132 @@ struct DiaryEntriesView: View {
         formatter.dateStyle = .long
         return formatter.string(from: date)
     }
+   /// ✅ Converts gallon values to fractions (1/4, 1/2, 3/4) & keeps other units unchanged
+    private func formattedWaterProgress(_ progress: CGFloat, _ goal: CGFloat, _ unit: String) -> String {
+        let progressInSelectedUnit = convertWaterUnit(amount: progress, from: "fl oz", to: unit) // ✅ Convert progress to match goal
+
+        print("🔹 Water Progress (Converted):", progressInSelectedUnit)
+        print("🔹 Goal (Unchanged):", goal)
+
+        // ✅ If no goal is set, just display total intake in fl oz
+        if goal == 0 {
+            return "\(Int(progressInSelectedUnit)) fl oz"
+        }
+
+        // ✅ Handle Gallons as Fractions (1/4, 1/2, 3/4, 1 gallon)
+        if unit == "Gallons" {
+            let fractionMap: [Double: String] = [
+                0.25: "1/4",
+                0.5: "1/2",
+                0.75: "3/4",
+                1.0: "1"
+            ]
+
+            let formattedProgress = fractionMap[progressInSelectedUnit] ?? String(format: "%.2f", progressInSelectedUnit)
+            let formattedGoal = fractionMap[goal] ?? String(format: "%.2f", goal) // ✅ Do not convert goal
+
+            return "\(formattedProgress)/\(formattedGoal) gal"
+        }
+
+        // ✅ Default for all other units
+        return "\(Int(progressInSelectedUnit))/\(Int(goal)) \(unit)"
+    }
+
+
+    
+    /// Extracts numeric value from a water entry detail (e.g., "500ml" → 500, "1L" → 1)
+    private func extractWaterAmount(_ detail: String) -> CGFloat {
+        let numberString = detail.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        return CGFloat(Double(numberString) ?? 0) // ✅ Convert safely to CGFloat
+    }
+
+
+
+
+
+
+    private func totalWaterIntake() -> CGFloat {
+        var totalIntake: CGFloat = 0
+
+        for entry in diaryEntries where entry.type == "Water" {
+            let amount = extractWaterAmount(entry.detail) // Extract numeric value
+            let unit = extractWaterUnit(entry.detail) // Extract unit (e.g., "ml", "L", "fl oz")
+            let convertedAmount = convertWaterUnit(amount: amount, from: unit, to: "fl oz") // ✅ Always convert to fl oz
+            totalIntake += convertedAmount
+        }
+
+        print("💧 Total Water Intake in fl oz (Converted):", totalIntake) // Debugging
+        return totalIntake // Always in fl oz
+    }
+
+
+
+
+
+
+    /// Extracts numeric value from water entry detail (e.g., "500ml" → 500)
+    private func extractWaterUnit(_ detail: String) -> String {
+        if detail.contains("ml") { return "ml" }
+        if detail.contains("L") { return "L" }
+        if detail.contains("gal") { return "gal" }
+        if detail.contains("fl oz") { return "fl oz" }
+        return "ml" // Default to mL if no unit is found
+    }
+    private func formattedGallonGoal(_ goal: CGFloat) -> String {
+        let fractionMap: [CGFloat: String] = [
+            0.25: "1/4",
+            0.5: "1/2",
+            0.75: "3/4",
+            1.0: "1"
+        ]
+        return fractionMap[goal] ?? String(format: "%.2f", goal) // ✅ Use fraction map or fallback to decimal
+    }
+
+
+
+    /// Converts any water unit into the selected goal unit (fl oz, gal, L, mL)
+    /// Converts any water unit into the selected goal unit (fl oz, gal, L, mL)
+    /// Converts any water unit into the selected goal unit (fl oz, gal, L, mL)
+    /// Converts water between ml, Liters, Gallons, and fl oz
+    /// Converts water between ml, Liters, Gallons, and fl oz
+    private func convertWaterUnit(amount: CGFloat, from fromUnit: String, to toUnit: String) -> CGFloat {
+        let mlPerFlOz: CGFloat = 29.5735
+        let mlPerGallon: CGFloat = 3785.41
+        let mlPerLiter: CGFloat = 1000
+
+        // Convert source unit to milliliters (mL) first
+        var amountInMl: CGFloat
+        switch fromUnit {
+        case "Milliliters", "ml":
+            amountInMl = amount
+        case "Liters", "L":
+            amountInMl = amount * mlPerLiter
+        case "Gallons", "gal":
+            amountInMl = amount * mlPerGallon
+        case "fl oz":
+            amountInMl = amount * mlPerFlOz
+        default:
+            return amount // If unit is unrecognized, return original value
+        }
+
+        // Convert from milliliters (mL) to the target unit
+        switch toUnit {
+        case "Milliliters", "ml":
+            return amountInMl
+        case "Liters", "L":
+            return amountInMl / mlPerLiter
+        case "Gallons", "gal":
+            return amountInMl / mlPerGallon // ✅ Ensures fraction values match 1/4, 1/2, etc.
+        case "fl oz":
+            return amountInMl / mlPerFlOz
+        default:
+            return amount // If target unit is unrecognized, return original value
+        }
+    }
+
+
+
+
 }
 
 // 🔹 DIARY ENTRY ROW COMPONENT (With Timestamp & Alternating Colors)
@@ -264,7 +415,8 @@ struct DiaryEntryRow: View {
 
             Spacer()
 
-            Text(entry.type == "Water" ? "0" : entry.type == "Workout" ? "-\(entry.calories)" : "+\(entry.calories)") // ✅ Ensures workouts are negative, water is 0
+            Text(entry.type == "Water" ? entry.detail : entry.type == "Workout" ? "-\(entry.calories)" : "+\(entry.calories)")
+// ✅ Ensures workouts are negative, water is 0
                 .font(.subheadline)
                 .foregroundColor(entry.type == "Food" ? .green : entry.type == "Workout" ? .red : .blue)
                 .frame(width: 60, alignment: .trailing)
@@ -272,6 +424,8 @@ struct DiaryEntryRow: View {
         .padding(.vertical, 5)
 
     }
+    /// Converts water entries into a standardized unit for the progress bar
+   
 }
 
 
@@ -283,7 +437,7 @@ struct DiaryEntry: Identifiable {
     let description: String
     let detail: String
     let calories: Int
-    let type: String // "Food", "Workout", "Water"
+    let type: String
 }
 
 // 🔹 UPDATED DUMMY DATA

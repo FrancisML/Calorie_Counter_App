@@ -17,6 +17,7 @@ struct TodayView: View {
     @State private var selectedDate: Date = Date()
     @State private var dailyCalorieGoal: Int = 2000
     @State private var isWaterPickerPresented: Bool = false // ✅ Controls picker visibility
+    @State private var selectedUnit: String = "fl oz"
 
    
 
@@ -75,15 +76,21 @@ struct TodayView: View {
                 selectedDate: $selectedDate,
                 diaryEntries: diaryEntries,
                 highestStreak: highestStreak,
-                calorieProgress: CGFloat(diaryEntries.reduce(0) { $0 + ($1.type == "Workout" ? -$1.calories : $1.calories) }), // ✅ Workouts now subtract from total
+                
                 calorieGoal: CGFloat(dailyCalorieGoal),
-                waterProgress: waterProgress,
+         
 
                 useMetric: useMetric
             )
             .sheet(isPresented: $isWaterPickerPresented) {
-                WaterGoalPicker(useMetric: useMetric, selectedGoal: $waterGoal)
+                WaterGoalPicker(
+                    useMetric: useMetric,
+                    selectedGoal: $waterGoal,
+                    isWaterPickerPresented: $isWaterPickerPresented,
+                    selectedUnit: $selectedUnit // ✅ Correctly passed as a binding!
+                )
             }
+
 
 
         }
