@@ -52,6 +52,15 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "AL-6" asset catalog image resource.
     static let AL_6 = DeveloperToolsSupport.ImageResource(name: "AL-6", bundle: resourceBundle)
 
+    /// The "AddFood" asset catalog image resource.
+    static let addFood = DeveloperToolsSupport.ImageResource(name: "AddFood", bundle: resourceBundle)
+
+    /// The "AddWater" asset catalog image resource.
+    static let addWater = DeveloperToolsSupport.ImageResource(name: "AddWater", bundle: resourceBundle)
+
+    /// The "AddWeight" asset catalog image resource.
+    static let addWeight = DeveloperToolsSupport.ImageResource(name: "AddWeight", bundle: resourceBundle)
+
     /// The "BMR" asset catalog image resource.
     static let BMR = DeveloperToolsSupport.ImageResource(name: "BMR", bundle: resourceBundle)
 
@@ -230,6 +239,33 @@ extension AppKit.NSImage {
     static var AL_6: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .AL_6)
+#else
+        .init()
+#endif
+    }
+
+    /// The "AddFood" asset catalog image.
+    static var addFood: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .addFood)
+#else
+        .init()
+#endif
+    }
+
+    /// The "AddWater" asset catalog image.
+    static var addWater: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .addWater)
+#else
+        .init()
+#endif
+    }
+
+    /// The "AddWeight" asset catalog image.
+    static var addWeight: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .addWeight)
 #else
         .init()
 #endif
@@ -544,6 +580,33 @@ extension UIKit.UIImage {
     static var AL_6: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .AL_6)
+#else
+        .init()
+#endif
+    }
+
+    /// The "AddFood" asset catalog image.
+    static var addFood: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .addFood)
+#else
+        .init()
+#endif
+    }
+
+    /// The "AddWater" asset catalog image.
+    static var addWater: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .addWater)
+#else
+        .init()
+#endif
+    }
+
+    /// The "AddWeight" asset catalog image.
+    static var addWeight: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .addWeight)
 #else
         .init()
 #endif

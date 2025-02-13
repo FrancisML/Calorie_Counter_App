@@ -72,7 +72,7 @@ struct TodayView: View {
             .padding(.horizontal)
             .padding(.bottom, 15)
 
-            DiaryEntriesView(
+            DailyDBView(
                 selectedDate: $selectedDate,
                 diaryEntries: diaryEntries,
                 highestStreak: highestStreak,

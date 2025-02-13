@@ -1,0 +1,32 @@
+{
+  "source": "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/TodayVIew/DailyDBView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Today"
+      },
+      {
+        "comment": "",
+        "key": "Streak: %d"
+      },
+      {
+        "comment": "",
+        "key": "Calories"
+      },
+      {
+        "comment": "",
+        "key": "%lld/%lld"
+      },
+      {
+        "comment": "",
+        "key": "Daily Weigh-In:"
+      },
+      {
+        "comment": "",
+        "key": "0 %@"
+      }
+    ]
+  },
+  "version": 1
+}

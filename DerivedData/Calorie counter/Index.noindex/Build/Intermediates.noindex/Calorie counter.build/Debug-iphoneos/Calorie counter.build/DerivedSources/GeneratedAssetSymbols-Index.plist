@@ -80,6 +80,36 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameAddFood</string>
+			<key>relativePath</key>
+			<string>./AddFood.imageset</string>
+			<key>swiftSymbol</key>
+			<string>addFood</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameAddWater</string>
+			<key>relativePath</key>
+			<string>./AddWater.imageset</string>
+			<key>swiftSymbol</key>
+			<string>addWater</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameAddWeight</string>
+			<key>relativePath</key>
+			<string>./AddWeight.imageset</string>
+			<key>swiftSymbol</key>
+			<string>addWeight</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameBMR</string>
 			<key>relativePath</key>
 			<string>./BMR.imageset</string>

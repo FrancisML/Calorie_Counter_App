@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>0F555DC9-27EA-4142-9FC8-2A00DC8C82AD</key>
+		<key>01D625BD-D001-464D-A135-BD6419E920C1</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -15,7 +15,931 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>0F555DC9-27EA-4142-9FC8-2A00DC8C82AD.xcactivitylog</string>
+			<string>01D625BD-D001-464D-A135-BD6419E920C1.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761165193.29178905</real>
+			<key>timeStoppedRecording</key>
+			<real>761165197.766258</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>01D625BD-D001-464D-A135-BD6419E920C1</string>
+		</dict>
+		<key>04C20D63-B1D3-4E14-AC24-44422E8EEE1F</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>04C20D63-B1D3-4E14-AC24-44422E8EEE1F.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761111167.98325002</real>
+			<key>timeStoppedRecording</key>
+			<real>761111173.65932298</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>04C20D63-B1D3-4E14-AC24-44422E8EEE1F</string>
+		</dict>
+		<key>04D7FE1F-E016-4610-B123-DA6860F05396</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>04D7FE1F-E016-4610-B123-DA6860F05396.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761115251.73751795</real>
+			<key>timeStoppedRecording</key>
+			<real>761115257.20455801</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>04D7FE1F-E016-4610-B123-DA6860F05396</string>
+		</dict>
+		<key>061D6288-BBF2-4514-A243-980A0EDF2F37</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>061D6288-BBF2-4514-A243-980A0EDF2F37.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761113008.96714401</real>
+			<key>timeStoppedRecording</key>
+			<real>761113016.02554095</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>061D6288-BBF2-4514-A243-980A0EDF2F37</string>
+		</dict>
+		<key>073F7F9C-3853-427C-95EC-718DC0613939</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>073F7F9C-3853-427C-95EC-718DC0613939.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761114713.48146498</real>
+			<key>timeStoppedRecording</key>
+			<real>761114717.41586101</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>073F7F9C-3853-427C-95EC-718DC0613939</string>
+		</dict>
+		<key>0A10ECC6-CA0E-4CF4-8C48-CCA9B4C7754E</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>0A10ECC6-CA0E-4CF4-8C48-CCA9B4C7754E.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761115634.10927701</real>
+			<key>timeStoppedRecording</key>
+			<real>761115637.88960195</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>0A10ECC6-CA0E-4CF4-8C48-CCA9B4C7754E</string>
+		</dict>
+		<key>0BBCD446-6081-4909-B1ED-F657E7D7E68A</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>0BBCD446-6081-4909-B1ED-F657E7D7E68A.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761117170.87115395</real>
+			<key>timeStoppedRecording</key>
+			<real>761117179.64892197</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>0BBCD446-6081-4909-B1ED-F657E7D7E68A</string>
+		</dict>
+		<key>0DA4B2F7-78E6-4BD1-A28C-26C4A3590C6F</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>0DA4B2F7-78E6-4BD1-A28C-26C4A3590C6F.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761112878.10719395</real>
+			<key>timeStoppedRecording</key>
+			<real>761112883.78619099</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>0DA4B2F7-78E6-4BD1-A28C-26C4A3590C6F</string>
+		</dict>
+		<key>13E18D16-8CA6-4946-AB35-35AA217BD3C3</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>13E18D16-8CA6-4946-AB35-35AA217BD3C3.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761115671.91199601</real>
+			<key>timeStoppedRecording</key>
+			<real>761115674.77618599</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>13E18D16-8CA6-4946-AB35-35AA217BD3C3</string>
+		</dict>
+		<key>161B4D76-7430-448F-9853-07D378B68953</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>161B4D76-7430-448F-9853-07D378B68953.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761113392.17837703</real>
+			<key>timeStoppedRecording</key>
+			<real>761113396.74609494</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>161B4D76-7430-448F-9853-07D378B68953</string>
+		</dict>
+		<key>1BDE65BA-BC93-4D26-8BE8-1573754B6E93</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>1BDE65BA-BC93-4D26-8BE8-1573754B6E93.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761114156.01058495</real>
+			<key>timeStoppedRecording</key>
+			<real>761114159.83092904</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>1BDE65BA-BC93-4D26-8BE8-1573754B6E93</string>
+		</dict>
+		<key>1E675AF7-484B-4819-A18D-BE066C85D7EF</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>1E675AF7-484B-4819-A18D-BE066C85D7EF.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>13</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761119273.36289895</real>
+			<key>timeStoppedRecording</key>
+			<real>761119285.20613801</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>1E675AF7-484B-4819-A18D-BE066C85D7EF</string>
+		</dict>
+		<key>1F53C93D-EF10-4EA3-B30D-BBE55A828FBA</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>1F53C93D-EF10-4EA3-B30D-BBE55A828FBA.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761115579.41787302</real>
+			<key>timeStoppedRecording</key>
+			<real>761115583.28111804</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>1F53C93D-EF10-4EA3-B30D-BBE55A828FBA</string>
+		</dict>
+		<key>21FB4F23-F79C-44FD-BE29-37686B32C88D</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>21FB4F23-F79C-44FD-BE29-37686B32C88D.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761115425.60348797</real>
+			<key>timeStoppedRecording</key>
+			<real>761115428.68539596</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>21FB4F23-F79C-44FD-BE29-37686B32C88D</string>
+		</dict>
+		<key>2293DB38-9778-4622-A843-701EADCFF077</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>2293DB38-9778-4622-A843-701EADCFF077.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761164173.15310597</real>
+			<key>timeStoppedRecording</key>
+			<real>761164179.03623998</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>2293DB38-9778-4622-A843-701EADCFF077</string>
+		</dict>
+		<key>2733D7F1-05DF-4143-8BE4-74865E618B33</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>2733D7F1-05DF-4143-8BE4-74865E618B33.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761113720.401878</real>
+			<key>timeStoppedRecording</key>
+			<real>761113725.27537298</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>2733D7F1-05DF-4143-8BE4-74865E618B33</string>
+		</dict>
+		<key>29B043E7-6613-4B35-80C9-FAF65C06F691</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>29B043E7-6613-4B35-80C9-FAF65C06F691.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761114199.75315499</real>
+			<key>timeStoppedRecording</key>
+			<real>761114203.37042904</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>29B043E7-6613-4B35-80C9-FAF65C06F691</string>
+		</dict>
+		<key>371F9731-1EFC-4497-AE36-8D43FEB69111</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>371F9731-1EFC-4497-AE36-8D43FEB69111.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761111902.47173297</real>
+			<key>timeStoppedRecording</key>
+			<real>761111908.65126097</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>371F9731-1EFC-4497-AE36-8D43FEB69111</string>
+		</dict>
+		<key>39BDB382-1E5F-4828-BF68-05EFB900CC96</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>39BDB382-1E5F-4828-BF68-05EFB900CC96.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761119375.89689195</real>
+			<key>timeStoppedRecording</key>
+			<real>761119385.28958499</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>39BDB382-1E5F-4828-BF68-05EFB900CC96</string>
+		</dict>
+		<key>3A3BDCAB-5F0A-4091-AFD5-67AE49487E9C</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>3A3BDCAB-5F0A-4091-AFD5-67AE49487E9C.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761111708.97842503</real>
+			<key>timeStoppedRecording</key>
+			<real>761111715.809497</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>3A3BDCAB-5F0A-4091-AFD5-67AE49487E9C</string>
+		</dict>
+		<key>3F793C7F-84BE-4930-BDFB-3973802A74F8</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>3F793C7F-84BE-4930-BDFB-3973802A74F8.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761114923.49327505</real>
+			<key>timeStoppedRecording</key>
+			<real>761114927.20601201</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>3F793C7F-84BE-4930-BDFB-3973802A74F8</string>
+		</dict>
+		<key>3FAD5B28-98A7-4C6E-9322-4B3FA98716B9</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>3FAD5B28-98A7-4C6E-9322-4B3FA98716B9.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761114113.45023298</real>
+			<key>timeStoppedRecording</key>
+			<real>761114117.20311701</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>3FAD5B28-98A7-4C6E-9322-4B3FA98716B9</string>
+		</dict>
+		<key>41672A09-B953-4F46-9B3A-EBC2453029DB</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>41672A09-B953-4F46-9B3A-EBC2453029DB.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -40,15 +964,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761074636.73481297</real>
+			<real>761107876.36567295</real>
 			<key>timeStoppedRecording</key>
-			<real>761074642.71840799</real>
+			<real>761107894.34679604</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>0F555DC9-27EA-4142-9FC8-2A00DC8C82AD</string>
+			<string>41672A09-B953-4F46-9B3A-EBC2453029DB</string>
 		</dict>
-		<key>14281589-E1D1-4F3C-A366-C626892E353D</key>
+		<key>4437A8EF-A78E-412B-9502-35C4E46A2144</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -57,7 +981,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>14281589-E1D1-4F3C-A366-C626892E353D.xcactivitylog</string>
+			<string>4437A8EF-A78E-412B-9502-35C4E46A2144.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -82,15 +1006,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761080079.72973502</real>
+			<real>761110981.19142103</real>
 			<key>timeStoppedRecording</key>
-			<real>761080087.71795106</real>
+			<real>761110999.94200802</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>14281589-E1D1-4F3C-A366-C626892E353D</string>
+			<string>4437A8EF-A78E-412B-9502-35C4E46A2144</string>
 		</dict>
-		<key>15B9A538-EEB3-4410-AF16-6B6E55B65429</key>
+		<key>455E6DD0-71FD-406A-A25C-AB02E9569B0B</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -99,49 +1023,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>15B9A538-EEB3-4410-AF16-6B6E55B65429.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>E</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>4</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>0</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Calorie counter project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Calorie counter</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Calorie counter</string>
-			<key>timeStartedRecording</key>
-			<real>761086286.24929595</real>
-			<key>timeStoppedRecording</key>
-			<real>761086287.99195302</real>
-			<key>title</key>
-			<string>Build Calorie counter</string>
-			<key>uniqueIdentifier</key>
-			<string>15B9A538-EEB3-4410-AF16-6B6E55B65429</string>
-		</dict>
-		<key>16C5DCC1-0241-45A5-B2F9-6157B3A9208F</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>16C5DCC1-0241-45A5-B2F9-6157B3A9208F.xcactivitylog</string>
+			<string>455E6DD0-71FD-406A-A25C-AB02E9569B0B.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -166,15 +1048,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761086394.30343604</real>
+			<real>761163795.22327101</real>
 			<key>timeStoppedRecording</key>
-			<real>761086406.91314399</real>
+			<real>761163799.59511006</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>16C5DCC1-0241-45A5-B2F9-6157B3A9208F</string>
+			<string>455E6DD0-71FD-406A-A25C-AB02E9569B0B</string>
 		</dict>
-		<key>1E9B59A2-A41A-4A31-8066-438B8AFA392B</key>
+		<key>462D030D-A297-4DF4-ABA2-4732B52DEDAA</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -183,49 +1065,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>1E9B59A2-A41A-4A31-8066-438B8AFA392B.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>E</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>2</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>0</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Calorie counter project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Calorie counter</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Calorie counter</string>
-			<key>timeStartedRecording</key>
-			<real>761079905.44329906</real>
-			<key>timeStoppedRecording</key>
-			<real>761079914.12590802</real>
-			<key>title</key>
-			<string>Build Calorie counter</string>
-			<key>uniqueIdentifier</key>
-			<string>1E9B59A2-A41A-4A31-8066-438B8AFA392B</string>
-		</dict>
-		<key>27F29762-94E6-4728-8FB0-5330D30E1081</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>27F29762-94E6-4728-8FB0-5330D30E1081.xcactivitylog</string>
+			<string>462D030D-A297-4DF4-ABA2-4732B52DEDAA.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -250,15 +1090,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761081346.45903802</real>
+			<real>761164465.28087103</real>
 			<key>timeStoppedRecording</key>
-			<real>761081355.43712294</real>
+			<real>761164471.97997701</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>27F29762-94E6-4728-8FB0-5330D30E1081</string>
+			<string>462D030D-A297-4DF4-ABA2-4732B52DEDAA</string>
 		</dict>
-		<key>32F9E631-39DC-4E66-9337-552A5494F918</key>
+		<key>46C5698E-BDEA-49D7-80F6-6EEE72B0E65D</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -267,7 +1107,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>32F9E631-39DC-4E66-9337-552A5494F918.xcactivitylog</string>
+			<string>46C5698E-BDEA-49D7-80F6-6EEE72B0E65D.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -292,15 +1132,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761085032.62524998</real>
+			<real>761163830.15640795</real>
 			<key>timeStoppedRecording</key>
-			<real>761085041.53892398</real>
+			<real>761163833.46755195</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>32F9E631-39DC-4E66-9337-552A5494F918</string>
+			<string>46C5698E-BDEA-49D7-80F6-6EEE72B0E65D</string>
 		</dict>
-		<key>3AC004AC-DDE1-459E-B525-0A1CDADF9887</key>
+		<key>49BA2A9A-622A-40E5-879F-E55CAFDB6FEB</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -309,7 +1149,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>3AC004AC-DDE1-459E-B525-0A1CDADF9887.xcactivitylog</string>
+			<string>49BA2A9A-622A-40E5-879F-E55CAFDB6FEB.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -334,15 +1174,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761075498.22065401</real>
+			<real>761116246.83011103</real>
 			<key>timeStoppedRecording</key>
-			<real>761075520.22093701</real>
+			<real>761116253.15132594</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>3AC004AC-DDE1-459E-B525-0A1CDADF9887</string>
+			<string>49BA2A9A-622A-40E5-879F-E55CAFDB6FEB</string>
 		</dict>
-		<key>3CF0B970-E7FF-4E1E-8217-08C2AABE055C</key>
+		<key>4F6753F5-C01D-403C-BB37-C1211A12482D</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -351,7 +1191,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>3CF0B970-E7FF-4E1E-8217-08C2AABE055C.xcactivitylog</string>
+			<string>4F6753F5-C01D-403C-BB37-C1211A12482D.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -376,15 +1216,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761073668.90463698</real>
+			<real>761165153.12926495</real>
 			<key>timeStoppedRecording</key>
-			<real>761073683.89084196</real>
+			<real>761165159.77019095</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>3CF0B970-E7FF-4E1E-8217-08C2AABE055C</string>
+			<string>4F6753F5-C01D-403C-BB37-C1211A12482D</string>
 		</dict>
-		<key>3F0DE99A-4EDD-4E3D-A418-646ABFDD1D5A</key>
+		<key>4FED19B0-03C5-4F17-9F46-4CD728EF2891</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -393,7 +1233,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>3F0DE99A-4EDD-4E3D-A418-646ABFDD1D5A.xcactivitylog</string>
+			<string>4FED19B0-03C5-4F17-9F46-4CD728EF2891.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -418,15 +1258,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761085746.47993195</real>
+			<real>761114259.30183601</real>
 			<key>timeStoppedRecording</key>
-			<real>761085758.12062395</real>
+			<real>761114263.12384403</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>3F0DE99A-4EDD-4E3D-A418-646ABFDD1D5A</string>
+			<string>4FED19B0-03C5-4F17-9F46-4CD728EF2891</string>
 		</dict>
-		<key>403463FF-6EE9-4AB3-818A-9A38F18840A6</key>
+		<key>50058966-A7AD-4D64-944D-D14C1F3EA553</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -435,7 +1275,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>403463FF-6EE9-4AB3-818A-9A38F18840A6.xcactivitylog</string>
+			<string>50058966-A7AD-4D64-944D-D14C1F3EA553.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -460,15 +1300,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761073420.00119305</real>
+			<real>761107902.37894702</real>
 			<key>timeStoppedRecording</key>
-			<real>761073448.55537796</real>
+			<real>761107911.94472098</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>403463FF-6EE9-4AB3-818A-9A38F18840A6</string>
+			<string>50058966-A7AD-4D64-944D-D14C1F3EA553</string>
 		</dict>
-		<key>44054CA2-7136-4610-8EF4-5464155EDE55</key>
+		<key>5088958D-8B48-42E1-ADEC-7A9AAA964C05</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -477,7 +1317,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>44054CA2-7136-4610-8EF4-5464155EDE55.xcactivitylog</string>
+			<string>5088958D-8B48-42E1-ADEC-7A9AAA964C05.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -502,15 +1342,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761075591.373842</real>
+			<real>761114543.00039899</real>
 			<key>timeStoppedRecording</key>
-			<real>761075601.40693295</real>
+			<real>761114543.24916196</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>44054CA2-7136-4610-8EF4-5464155EDE55</string>
+			<string>5088958D-8B48-42E1-ADEC-7A9AAA964C05</string>
 		</dict>
-		<key>48293AE1-1413-4A71-BF2E-4CDC7768AF04</key>
+		<key>51BA2BC1-50F5-4F65-80C3-9BAF1D799608</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -519,91 +1359,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>48293AE1-1413-4A71-BF2E-4CDC7768AF04.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>0</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>2</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Calorie counter project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Calorie counter</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Calorie counter</string>
-			<key>timeStartedRecording</key>
-			<real>761085695.83368802</real>
-			<key>timeStoppedRecording</key>
-			<real>761085704.35956502</real>
-			<key>title</key>
-			<string>Build Calorie counter</string>
-			<key>uniqueIdentifier</key>
-			<string>48293AE1-1413-4A71-BF2E-4CDC7768AF04</string>
-		</dict>
-		<key>4D742A75-CEF6-4DEE-9CDA-60BB83D92D32</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>4D742A75-CEF6-4DEE-9CDA-60BB83D92D32.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>E</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>1</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>1</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Calorie counter project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Calorie counter</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Calorie counter</string>
-			<key>timeStartedRecording</key>
-			<real>761074589.693434</real>
-			<key>timeStoppedRecording</key>
-			<real>761074598.93829799</real>
-			<key>title</key>
-			<string>Build Calorie counter</string>
-			<key>uniqueIdentifier</key>
-			<string>4D742A75-CEF6-4DEE-9CDA-60BB83D92D32</string>
-		</dict>
-		<key>4EF45AAD-87D1-4C95-B63E-BCA8571056CF</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>4EF45AAD-87D1-4C95-B63E-BCA8571056CF.xcactivitylog</string>
+			<string>51BA2BC1-50F5-4F65-80C3-9BAF1D799608.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -628,15 +1384,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761080392.49902797</real>
+			<real>761116757.07400894</real>
 			<key>timeStoppedRecording</key>
-			<real>761080399.93675697</real>
+			<real>761116765.98039806</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>4EF45AAD-87D1-4C95-B63E-BCA8571056CF</string>
+			<string>51BA2BC1-50F5-4F65-80C3-9BAF1D799608</string>
 		</dict>
-		<key>5508302A-F49C-411C-A4E6-B2DCB5441BC8</key>
+		<key>58D68243-EB04-4BDE-B91B-D71F2AAC6AD4</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -645,7 +1401,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>5508302A-F49C-411C-A4E6-B2DCB5441BC8.xcactivitylog</string>
+			<string>58D68243-EB04-4BDE-B91B-D71F2AAC6AD4.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -670,15 +1426,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761085398.16635096</real>
+			<real>761164280.22168696</real>
 			<key>timeStoppedRecording</key>
-			<real>761085406.47679698</real>
+			<real>761164286.13746798</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>5508302A-F49C-411C-A4E6-B2DCB5441BC8</string>
+			<string>58D68243-EB04-4BDE-B91B-D71F2AAC6AD4</string>
 		</dict>
-		<key>5CA5FCBA-6E39-4675-8DBC-CD9977DA8F48</key>
+		<key>593AF8FC-8D2F-4A5B-9308-F1CEC0156CAA</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -687,133 +1443,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>5CA5FCBA-6E39-4675-8DBC-CD9977DA8F48.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>E</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>1</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>0</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Calorie counter project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Calorie counter</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Calorie counter</string>
-			<key>timeStartedRecording</key>
-			<real>761079802.64263296</real>
-			<key>timeStoppedRecording</key>
-			<real>761079807.97684801</real>
-			<key>title</key>
-			<string>Build Calorie counter</string>
-			<key>uniqueIdentifier</key>
-			<string>5CA5FCBA-6E39-4675-8DBC-CD9977DA8F48</string>
-		</dict>
-		<key>6243BDD9-8D4E-418C-B386-430D4873C46D</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>6243BDD9-8D4E-418C-B386-430D4873C46D.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>E</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>6</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>1</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Calorie counter project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Calorie counter</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Calorie counter</string>
-			<key>timeStartedRecording</key>
-			<real>761079915.83605695</real>
-			<key>timeStoppedRecording</key>
-			<real>761079920.58891797</real>
-			<key>title</key>
-			<string>Build Calorie counter</string>
-			<key>uniqueIdentifier</key>
-			<string>6243BDD9-8D4E-418C-B386-430D4873C46D</string>
-		</dict>
-		<key>6FC55923-28B1-4019-B0F1-6A2963849BC2</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>6FC55923-28B1-4019-B0F1-6A2963849BC2.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>E</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>1</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>0</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Calorie counter project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Calorie counter</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Calorie counter</string>
-			<key>timeStartedRecording</key>
-			<real>761075457.93611002</real>
-			<key>timeStoppedRecording</key>
-			<real>761075462.721187</real>
-			<key>title</key>
-			<string>Build Calorie counter</string>
-			<key>uniqueIdentifier</key>
-			<string>6FC55923-28B1-4019-B0F1-6A2963849BC2</string>
-		</dict>
-		<key>7750BC06-9A96-4F7D-803A-078F45A89B9E</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>7750BC06-9A96-4F7D-803A-078F45A89B9E.xcactivitylog</string>
+			<string>593AF8FC-8D2F-4A5B-9308-F1CEC0156CAA.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -838,15 +1468,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761083530.82860994</real>
+			<real>761114228.07679105</real>
 			<key>timeStoppedRecording</key>
-			<real>761083542.87444198</real>
+			<real>761114233.35515201</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>7750BC06-9A96-4F7D-803A-078F45A89B9E</string>
+			<string>593AF8FC-8D2F-4A5B-9308-F1CEC0156CAA</string>
 		</dict>
-		<key>7960D88C-AEDE-4C5D-998F-E5AA25DC699A</key>
+		<key>5AD7D625-EA77-4306-89C6-082376DA1E8D</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -855,133 +1485,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>7960D88C-AEDE-4C5D-998F-E5AA25DC699A.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>E</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>4</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>0</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Calorie counter project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Calorie counter</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Calorie counter</string>
-			<key>timeStartedRecording</key>
-			<real>761086223.711169</real>
-			<key>timeStoppedRecording</key>
-			<real>761086227.18281901</real>
-			<key>title</key>
-			<string>Build Calorie counter</string>
-			<key>uniqueIdentifier</key>
-			<string>7960D88C-AEDE-4C5D-998F-E5AA25DC699A</string>
-		</dict>
-		<key>8557FD7B-0F15-4888-8306-F4A79D7604F5</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>8557FD7B-0F15-4888-8306-F4A79D7604F5.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>E</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>1</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>0</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Calorie counter project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Calorie counter</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Calorie counter</string>
-			<key>timeStartedRecording</key>
-			<real>761078322.17744505</real>
-			<key>timeStoppedRecording</key>
-			<real>761078329.52308095</real>
-			<key>title</key>
-			<string>Build Calorie counter</string>
-			<key>uniqueIdentifier</key>
-			<string>8557FD7B-0F15-4888-8306-F4A79D7604F5</string>
-		</dict>
-		<key>860480F8-59E9-4016-A035-20B798ECAB20</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>860480F8-59E9-4016-A035-20B798ECAB20.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>0</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>2</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Calorie counter project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Calorie counter</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Calorie counter</string>
-			<key>timeStartedRecording</key>
-			<real>761081722.42292595</real>
-			<key>timeStoppedRecording</key>
-			<real>761081732.457775</real>
-			<key>title</key>
-			<string>Build Calorie counter</string>
-			<key>uniqueIdentifier</key>
-			<string>860480F8-59E9-4016-A035-20B798ECAB20</string>
-		</dict>
-		<key>8E2B7A0F-CC10-496E-A174-55B4F839BBFC</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>8E2B7A0F-CC10-496E-A174-55B4F839BBFC.xcactivitylog</string>
+			<string>5AD7D625-EA77-4306-89C6-082376DA1E8D.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -1006,15 +1510,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761082372.77891803</real>
+			<real>761164527.31821704</real>
 			<key>timeStoppedRecording</key>
-			<real>761082381.59057701</real>
+			<real>761164531.70793605</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>8E2B7A0F-CC10-496E-A174-55B4F839BBFC</string>
+			<string>5AD7D625-EA77-4306-89C6-082376DA1E8D</string>
 		</dict>
-		<key>8F81EC5B-A358-4360-B7EC-0639B6BA19A0</key>
+		<key>5F3CE501-85A0-4C33-8E30-C5507A9670A9</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -1023,7 +1527,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>8F81EC5B-A358-4360-B7EC-0639B6BA19A0.xcactivitylog</string>
+			<string>5F3CE501-85A0-4C33-8E30-C5507A9670A9.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -1048,15 +1552,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761088066.51677001</real>
+			<real>761113851.06097698</real>
 			<key>timeStoppedRecording</key>
-			<real>761088079.08304</real>
+			<real>761113856.41366804</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>8F81EC5B-A358-4360-B7EC-0639B6BA19A0</string>
+			<string>5F3CE501-85A0-4C33-8E30-C5507A9670A9</string>
 		</dict>
-		<key>9385E80C-91E3-4911-940D-02C336C5BCFC</key>
+		<key>607C558C-3B00-4067-B52A-036D6C9871CB</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -1065,49 +1569,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>9385E80C-91E3-4911-940D-02C336C5BCFC.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>E</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>1</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>0</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Calorie counter project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Calorie counter</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Calorie counter</string>
-			<key>timeStartedRecording</key>
-			<real>761075924.09013295</real>
-			<key>timeStoppedRecording</key>
-			<real>761075926.37847602</real>
-			<key>title</key>
-			<string>Build Calorie counter</string>
-			<key>uniqueIdentifier</key>
-			<string>9385E80C-91E3-4911-940D-02C336C5BCFC</string>
-		</dict>
-		<key>9397F372-5907-432E-99B5-1A4871A948DA</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>9397F372-5907-432E-99B5-1A4871A948DA.xcactivitylog</string>
+			<string>607C558C-3B00-4067-B52A-036D6C9871CB.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -1132,15 +1594,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761087723.87950695</real>
+			<real>761108160.29371798</real>
 			<key>timeStoppedRecording</key>
-			<real>761087737.259835</real>
+			<real>761108179.14310706</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>9397F372-5907-432E-99B5-1A4871A948DA</string>
+			<string>607C558C-3B00-4067-B52A-036D6C9871CB</string>
 		</dict>
-		<key>9E4F892B-7618-40A0-9308-EBCC07EB9586</key>
+		<key>60E2F61F-9AD5-43F6-BFBC-83B4C1D1DA79</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -1149,49 +1611,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>9E4F892B-7618-40A0-9308-EBCC07EB9586.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>E</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>1</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>0</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Calorie counter project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Calorie counter</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Calorie counter</string>
-			<key>timeStartedRecording</key>
-			<real>761074666.94269598</real>
-			<key>timeStoppedRecording</key>
-			<real>761074669.31905496</real>
-			<key>title</key>
-			<string>Build Calorie counter</string>
-			<key>uniqueIdentifier</key>
-			<string>9E4F892B-7618-40A0-9308-EBCC07EB9586</string>
-		</dict>
-		<key>A18AB2D5-463A-4B9F-9135-01EE2685DDB2</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>A18AB2D5-463A-4B9F-9135-01EE2685DDB2.xcactivitylog</string>
+			<string>60E2F61F-9AD5-43F6-BFBC-83B4C1D1DA79.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -1216,15 +1636,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761082763.03228605</real>
+			<real>761112603.73464203</real>
 			<key>timeStoppedRecording</key>
-			<real>761082771.56423998</real>
+			<real>761112608.92282498</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>A18AB2D5-463A-4B9F-9135-01EE2685DDB2</string>
+			<string>60E2F61F-9AD5-43F6-BFBC-83B4C1D1DA79</string>
 		</dict>
-		<key>A37988FE-8946-42E4-AD36-FCED3E2B6C67</key>
+		<key>60F68113-718D-42F9-8740-22EF17470919</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -1233,49 +1653,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>A37988FE-8946-42E4-AD36-FCED3E2B6C67.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>E</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>1</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>0</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Calorie counter project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Calorie counter</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Calorie counter</string>
-			<key>timeStartedRecording</key>
-			<real>761079793.73036695</real>
-			<key>timeStoppedRecording</key>
-			<real>761079798.57926404</real>
-			<key>title</key>
-			<string>Build Calorie counter</string>
-			<key>uniqueIdentifier</key>
-			<string>A37988FE-8946-42E4-AD36-FCED3E2B6C67</string>
-		</dict>
-		<key>A5D930C2-4017-425E-AA16-385502A33402</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>A5D930C2-4017-425E-AA16-385502A33402.xcactivitylog</string>
+			<string>60F68113-718D-42F9-8740-22EF17470919.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -1300,15 +1678,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761082627.27285099</real>
+			<real>761114965.87425697</real>
 			<key>timeStoppedRecording</key>
-			<real>761082636.41194606</real>
+			<real>761114969.50906897</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>A5D930C2-4017-425E-AA16-385502A33402</string>
+			<string>60F68113-718D-42F9-8740-22EF17470919</string>
 		</dict>
-		<key>AB6B82F9-9092-49C9-A99C-3141CFEB3CAE</key>
+		<key>64B964D8-AD2F-4D6D-AC05-DDB8D9B32470</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -1317,7 +1695,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>AB6B82F9-9092-49C9-A99C-3141CFEB3CAE.xcactivitylog</string>
+			<string>64B964D8-AD2F-4D6D-AC05-DDB8D9B32470.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -1342,15 +1720,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761030976.72193003</real>
+			<real>761110476.43293798</real>
 			<key>timeStoppedRecording</key>
-			<real>761030993.989182</real>
+			<real>761110482.820364</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>AB6B82F9-9092-49C9-A99C-3141CFEB3CAE</string>
+			<string>64B964D8-AD2F-4D6D-AC05-DDB8D9B32470</string>
 		</dict>
-		<key>AB9A10A1-90DF-43B9-8033-BE56A85BA789</key>
+		<key>64E2A527-6056-4202-A848-5D70A180E95C</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -1359,133 +1737,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>AB9A10A1-90DF-43B9-8033-BE56A85BA789.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>0</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>1</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Calorie counter project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Calorie counter</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Calorie counter</string>
-			<key>timeStartedRecording</key>
-			<real>761074089.10404205</real>
-			<key>timeStoppedRecording</key>
-			<real>761074097.25862598</real>
-			<key>title</key>
-			<string>Build Calorie counter</string>
-			<key>uniqueIdentifier</key>
-			<string>AB9A10A1-90DF-43B9-8033-BE56A85BA789</string>
-		</dict>
-		<key>AD6E13F2-2ABD-429E-9C70-EFBA5D7592D1</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>AD6E13F2-2ABD-429E-9C70-EFBA5D7592D1.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>0</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>1</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Calorie counter project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Calorie counter</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Calorie counter</string>
-			<key>timeStartedRecording</key>
-			<real>761082909.02546895</real>
-			<key>timeStoppedRecording</key>
-			<real>761082917.41664398</real>
-			<key>title</key>
-			<string>Build Calorie counter</string>
-			<key>uniqueIdentifier</key>
-			<string>AD6E13F2-2ABD-429E-9C70-EFBA5D7592D1</string>
-		</dict>
-		<key>B8A57F9B-E055-45B8-AB88-06371C914D03</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>B8A57F9B-E055-45B8-AB88-06371C914D03.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>0</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>2</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Calorie counter project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Calorie counter</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Calorie counter</string>
-			<key>timeStartedRecording</key>
-			<real>761073956.69032097</real>
-			<key>timeStoppedRecording</key>
-			<real>761073962.89470196</real>
-			<key>title</key>
-			<string>Build Calorie counter</string>
-			<key>uniqueIdentifier</key>
-			<string>B8A57F9B-E055-45B8-AB88-06371C914D03</string>
-		</dict>
-		<key>BCC15CFE-1151-430B-96AB-F9D1512735F9</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>BCC15CFE-1151-430B-96AB-F9D1512735F9.xcactivitylog</string>
+			<string>64E2A527-6056-4202-A848-5D70A180E95C.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -1510,15 +1762,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761082611.18002903</real>
+			<real>761117109.81788003</real>
 			<key>timeStoppedRecording</key>
-			<real>761082615.91202796</real>
+			<real>761117112.14439702</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>BCC15CFE-1151-430B-96AB-F9D1512735F9</string>
+			<string>64E2A527-6056-4202-A848-5D70A180E95C</string>
 		</dict>
-		<key>BE1E6A2C-2D78-461C-ABFA-358954968C24</key>
+		<key>65B53E73-70A9-4C4B-9AE8-BD05612D4139</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -1527,7 +1779,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>BE1E6A2C-2D78-461C-ABFA-358954968C24.xcactivitylog</string>
+			<string>65B53E73-70A9-4C4B-9AE8-BD05612D4139.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -1552,15 +1804,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761080321.68056905</real>
+			<real>761112079.65336394</real>
 			<key>timeStoppedRecording</key>
-			<real>761080330.21466398</real>
+			<real>761112085.32132399</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>BE1E6A2C-2D78-461C-ABFA-358954968C24</string>
+			<string>65B53E73-70A9-4C4B-9AE8-BD05612D4139</string>
 		</dict>
-		<key>C306A1CC-FD49-4F29-8B7D-295199091627</key>
+		<key>6A7AEC32-F9B1-48AF-AF34-250E36F3E4F8</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -1569,7 +1821,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>C306A1CC-FD49-4F29-8B7D-295199091627.xcactivitylog</string>
+			<string>6A7AEC32-F9B1-48AF-AF34-250E36F3E4F8.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -1594,15 +1846,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761083001.23558104</real>
+			<real>761112404.24841499</real>
 			<key>timeStoppedRecording</key>
-			<real>761083009.55912399</real>
+			<real>761112410.02126396</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>C306A1CC-FD49-4F29-8B7D-295199091627</string>
+			<string>6A7AEC32-F9B1-48AF-AF34-250E36F3E4F8</string>
 		</dict>
-		<key>CA9EE608-F0D7-4562-8F08-1FC6299CF248</key>
+		<key>6BA10946-6B69-449B-BEB3-A29C669DBD16</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -1611,7 +1863,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>CA9EE608-F0D7-4562-8F08-1FC6299CF248.xcactivitylog</string>
+			<string>6BA10946-6B69-449B-BEB3-A29C669DBD16.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -1636,15 +1888,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761085501.21379602</real>
+			<real>761114664.81124794</real>
 			<key>timeStoppedRecording</key>
-			<real>761085509.51090002</real>
+			<real>761114669.94665003</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>CA9EE608-F0D7-4562-8F08-1FC6299CF248</string>
+			<string>6BA10946-6B69-449B-BEB3-A29C669DBD16</string>
 		</dict>
-		<key>D44AC390-02EB-436D-9CD9-8C218DDF2C8D</key>
+		<key>723A25CF-017C-40D7-9424-6D5210D5A40F</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -1653,7 +1905,553 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>D44AC390-02EB-436D-9CD9-8C218DDF2C8D.xcactivitylog</string>
+			<string>723A25CF-017C-40D7-9424-6D5210D5A40F.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761111533.33598804</real>
+			<key>timeStoppedRecording</key>
+			<real>761111539.08031702</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>723A25CF-017C-40D7-9424-6D5210D5A40F</string>
+		</dict>
+		<key>72EB13DB-885B-473C-9898-7D73315D4B78</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>72EB13DB-885B-473C-9898-7D73315D4B78.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761115391.96904302</real>
+			<key>timeStoppedRecording</key>
+			<real>761115395.67389405</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>72EB13DB-885B-473C-9898-7D73315D4B78</string>
+		</dict>
+		<key>73DF33DC-CC83-4E69-97DD-FD36BCAA870C</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>73DF33DC-CC83-4E69-97DD-FD36BCAA870C.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761112708.8671</real>
+			<key>timeStoppedRecording</key>
+			<real>761112715.591066</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>73DF33DC-CC83-4E69-97DD-FD36BCAA870C</string>
+		</dict>
+		<key>74C53330-411E-48E2-B510-9134BB270772</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>74C53330-411E-48E2-B510-9134BB270772.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761116516.88152897</real>
+			<key>timeStoppedRecording</key>
+			<real>761116523.15715599</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>74C53330-411E-48E2-B510-9134BB270772</string>
+		</dict>
+		<key>74FE6533-CCCC-4B37-BE79-A97C7F4B3A14</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>74FE6533-CCCC-4B37-BE79-A97C7F4B3A14.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761112269.56553602</real>
+			<key>timeStoppedRecording</key>
+			<real>761112275.29035604</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>74FE6533-CCCC-4B37-BE79-A97C7F4B3A14</string>
+		</dict>
+		<key>751123BB-2C01-457F-972D-9E56C48DEF1E</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>751123BB-2C01-457F-972D-9E56C48DEF1E.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761113280.32502699</real>
+			<key>timeStoppedRecording</key>
+			<real>761113286.15046</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>751123BB-2C01-457F-972D-9E56C48DEF1E</string>
+		</dict>
+		<key>767F8837-10DC-44E9-8DAA-738706E09A14</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>767F8837-10DC-44E9-8DAA-738706E09A14.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761113209.08576095</real>
+			<key>timeStoppedRecording</key>
+			<real>761113215.17212498</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>767F8837-10DC-44E9-8DAA-738706E09A14</string>
+		</dict>
+		<key>7DCF75DF-C102-4A96-8FE4-2CD2B88B6928</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>7DCF75DF-C102-4A96-8FE4-2CD2B88B6928.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761115333.22563004</real>
+			<key>timeStoppedRecording</key>
+			<real>761115336.94412303</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>7DCF75DF-C102-4A96-8FE4-2CD2B88B6928</string>
+		</dict>
+		<key>7E53D036-494C-4291-B700-8ED028E8BC8B</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>7E53D036-494C-4291-B700-8ED028E8BC8B.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761111769.04666305</real>
+			<key>timeStoppedRecording</key>
+			<real>761111773.28823102</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>7E53D036-494C-4291-B700-8ED028E8BC8B</string>
+		</dict>
+		<key>7E612AD0-C93C-4C1D-9499-71C317B52195</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>7E612AD0-C93C-4C1D-9499-71C317B52195.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761115151.73445594</real>
+			<key>timeStoppedRecording</key>
+			<real>761115157.55695498</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>7E612AD0-C93C-4C1D-9499-71C317B52195</string>
+		</dict>
+		<key>865CFBC3-50FF-4DEB-9C32-ACC7A0D176A2</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>865CFBC3-50FF-4DEB-9C32-ACC7A0D176A2.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761113637.832232</real>
+			<key>timeStoppedRecording</key>
+			<real>761113643.162938</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>865CFBC3-50FF-4DEB-9C32-ACC7A0D176A2</string>
+		</dict>
+		<key>87D6E029-C877-44E8-8B85-6D0E448251C2</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>87D6E029-C877-44E8-8B85-6D0E448251C2.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761163756.59978294</real>
+			<key>timeStoppedRecording</key>
+			<real>761163763.30139506</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>87D6E029-C877-44E8-8B85-6D0E448251C2</string>
+		</dict>
+		<key>8B6410E4-5D05-4B0E-920F-6BFE66084BC2</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>8B6410E4-5D05-4B0E-920F-6BFE66084BC2.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761113157.01636505</real>
+			<key>timeStoppedRecording</key>
+			<real>761113161.73206902</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>8B6410E4-5D05-4B0E-920F-6BFE66084BC2</string>
+		</dict>
+		<key>8BBA47DA-05F7-46AD-B4CB-A621C9B50725</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>8BBA47DA-05F7-46AD-B4CB-A621C9B50725.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -1678,15 +2476,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761077667.00599301</real>
+			<real>761116653.83621204</real>
 			<key>timeStoppedRecording</key>
-			<real>761077674.36178696</real>
+			<real>761116662.54155397</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>D44AC390-02EB-436D-9CD9-8C218DDF2C8D</string>
+			<string>8BBA47DA-05F7-46AD-B4CB-A621C9B50725</string>
 		</dict>
-		<key>D4B8196A-1AF9-4EE5-B642-FF6B060ABD19</key>
+		<key>8C8B2D27-201A-49AE-987D-BA6208F7960A</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -1695,7 +2493,763 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>D4B8196A-1AF9-4EE5-B642-FF6B060ABD19.xcactivitylog</string>
+			<string>8C8B2D27-201A-49AE-987D-BA6208F7960A.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761163647.68199897</real>
+			<key>timeStoppedRecording</key>
+			<real>761163657.48325503</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>8C8B2D27-201A-49AE-987D-BA6208F7960A</string>
+		</dict>
+		<key>8D7FD760-9A42-4BA3-B19A-37A460BA020B</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>8D7FD760-9A42-4BA3-B19A-37A460BA020B.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761116188.95345795</real>
+			<key>timeStoppedRecording</key>
+			<real>761116199.29065502</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>8D7FD760-9A42-4BA3-B19A-37A460BA020B</string>
+		</dict>
+		<key>9533E121-9CC0-42A3-95F4-D4A6C32674F0</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>9533E121-9CC0-42A3-95F4-D4A6C32674F0.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761115359.13053596</real>
+			<key>timeStoppedRecording</key>
+			<real>761115362.84570897</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>9533E121-9CC0-42A3-95F4-D4A6C32674F0</string>
+		</dict>
+		<key>9CF94877-B894-47D9-A288-E0D2A1013A96</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>9CF94877-B894-47D9-A288-E0D2A1013A96.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>13</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761119296.65307295</real>
+			<key>timeStoppedRecording</key>
+			<real>761119297.74358296</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>9CF94877-B894-47D9-A288-E0D2A1013A96</string>
+		</dict>
+		<key>A1902DB6-64FB-4CA7-ADE1-8F0DF9D3F617</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>A1902DB6-64FB-4CA7-ADE1-8F0DF9D3F617.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>2</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761114518.16462004</real>
+			<key>timeStoppedRecording</key>
+			<real>761114520.81477702</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>A1902DB6-64FB-4CA7-ADE1-8F0DF9D3F617</string>
+		</dict>
+		<key>A404CE97-BDE7-4A35-B67F-2EBD8C0F78DD</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>A404CE97-BDE7-4A35-B67F-2EBD8C0F78DD.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761091955.18536496</real>
+			<key>timeStoppedRecording</key>
+			<real>761091969.97723305</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>A404CE97-BDE7-4A35-B67F-2EBD8C0F78DD</string>
+		</dict>
+		<key>A5A80BE2-A4A9-4327-A716-AD92E0BA0026</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>A5A80BE2-A4A9-4327-A716-AD92E0BA0026.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761113522.45973897</real>
+			<key>timeStoppedRecording</key>
+			<real>761113528.07638502</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>A5A80BE2-A4A9-4327-A716-AD92E0BA0026</string>
+		</dict>
+		<key>A9669E7E-0259-4E70-816C-9A5200DB2070</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>A9669E7E-0259-4E70-816C-9A5200DB2070.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>9</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761113259.90274405</real>
+			<key>timeStoppedRecording</key>
+			<real>761113262.95051599</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>A9669E7E-0259-4E70-816C-9A5200DB2070</string>
+		</dict>
+		<key>AD345201-C954-4234-B0C4-9F0F5D0F20DB</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>AD345201-C954-4234-B0C4-9F0F5D0F20DB.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761114286.18368804</real>
+			<key>timeStoppedRecording</key>
+			<real>761114289.15053296</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>AD345201-C954-4234-B0C4-9F0F5D0F20DB</string>
+		</dict>
+		<key>ADCBF871-DC09-4468-8C9C-014819634163</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>ADCBF871-DC09-4468-8C9C-014819634163.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761111947.44402206</real>
+			<key>timeStoppedRecording</key>
+			<real>761111951.37555301</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>ADCBF871-DC09-4468-8C9C-014819634163</string>
+		</dict>
+		<key>B3600C26-D68C-4653-88BE-B6E037ADD8FF</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>B3600C26-D68C-4653-88BE-B6E037ADD8FF.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761116662.85587704</real>
+			<key>timeStoppedRecording</key>
+			<real>761116679.30600905</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>B3600C26-D68C-4653-88BE-B6E037ADD8FF</string>
+		</dict>
+		<key>B89F8DD5-B76F-49AE-96D7-25CDDDF6C49A</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>B89F8DD5-B76F-49AE-96D7-25CDDDF6C49A.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761164737.43914199</real>
+			<key>timeStoppedRecording</key>
+			<real>761164745.63809502</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>B89F8DD5-B76F-49AE-96D7-25CDDDF6C49A</string>
+		</dict>
+		<key>B98103E1-F8AB-4131-A7E6-ACD3995D2D89</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>B98103E1-F8AB-4131-A7E6-ACD3995D2D89.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>3</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761116008.19994998</real>
+			<key>timeStoppedRecording</key>
+			<real>761116011.23633099</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>B98103E1-F8AB-4131-A7E6-ACD3995D2D89</string>
+		</dict>
+		<key>BDAD59F8-C5CE-4705-BD46-AEAAF63F288A</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>BDAD59F8-C5CE-4705-BD46-AEAAF63F288A.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761114537.24912202</real>
+			<key>timeStoppedRecording</key>
+			<real>761114541.30516803</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>BDAD59F8-C5CE-4705-BD46-AEAAF63F288A</string>
+		</dict>
+		<key>BE06DF0B-A25D-44FA-953C-90235F144879</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>BE06DF0B-A25D-44FA-953C-90235F144879.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761110357.06057</real>
+			<key>timeStoppedRecording</key>
+			<real>761110368.45596194</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>BE06DF0B-A25D-44FA-953C-90235F144879</string>
+		</dict>
+		<key>C2992646-98B8-45C6-BC95-E4FB7A9D2F89</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>C2992646-98B8-45C6-BC95-E4FB7A9D2F89.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761111392.084723</real>
+			<key>timeStoppedRecording</key>
+			<real>761111397.94081497</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>C2992646-98B8-45C6-BC95-E4FB7A9D2F89</string>
+		</dict>
+		<key>C43D4C28-F2B5-446D-89F0-32D8783635D1</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>C43D4C28-F2B5-446D-89F0-32D8783635D1.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761116294.35684299</real>
+			<key>timeStoppedRecording</key>
+			<real>761116299.03677404</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>C43D4C28-F2B5-446D-89F0-32D8783635D1</string>
+		</dict>
+		<key>C7DE54D8-E651-4921-953F-06318CDED740</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>C7DE54D8-E651-4921-953F-06318CDED740.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761163971.63360798</real>
+			<key>timeStoppedRecording</key>
+			<real>761163977.86914206</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>C7DE54D8-E651-4921-953F-06318CDED740</string>
+		</dict>
+		<key>CFBAF60B-B2EC-48E5-9F43-8090B87337FF</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>CFBAF60B-B2EC-48E5-9F43-8090B87337FF.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -1720,15 +3274,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761075222.66305494</real>
+			<real>761119308.63057101</real>
 			<key>timeStoppedRecording</key>
-			<real>761075226.21737301</real>
+			<real>761119314.19675803</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>D4B8196A-1AF9-4EE5-B642-FF6B060ABD19</string>
+			<string>CFBAF60B-B2EC-48E5-9F43-8090B87337FF</string>
 		</dict>
-		<key>D6FA487A-E6F0-41A9-8981-BCAE23FAE749</key>
+		<key>D323870E-D279-4968-8F64-03F2F7F47697</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -1737,49 +3291,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>D6FA487A-E6F0-41A9-8981-BCAE23FAE749.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>E</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>1</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>0</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Calorie counter project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Calorie counter</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Calorie counter</string>
-			<key>timeStartedRecording</key>
-			<real>761079933.01580596</real>
-			<key>timeStoppedRecording</key>
-			<real>761079940.77056599</real>
-			<key>title</key>
-			<string>Build Calorie counter</string>
-			<key>uniqueIdentifier</key>
-			<string>D6FA487A-E6F0-41A9-8981-BCAE23FAE749</string>
-		</dict>
-		<key>DED26D47-027D-4F91-8641-4CF5A36FDB49</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>DED26D47-027D-4F91-8641-4CF5A36FDB49.xcactivitylog</string>
+			<string>D323870E-D279-4968-8F64-03F2F7F47697.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -1804,15 +3316,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761083978.93233895</real>
+			<real>761115005.52028501</real>
 			<key>timeStoppedRecording</key>
-			<real>761083986.93520701</real>
+			<real>761115009.56871605</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>DED26D47-027D-4F91-8641-4CF5A36FDB49</string>
+			<string>D323870E-D279-4968-8F64-03F2F7F47697</string>
 		</dict>
-		<key>DF6210CE-67B9-47BC-8B0E-12587F3353B5</key>
+		<key>D45161BA-EB31-408A-871F-04EDE42273E9</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -1821,7 +3333,49 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>DF6210CE-67B9-47BC-8B0E-12587F3353B5.xcactivitylog</string>
+			<string>D45161BA-EB31-408A-871F-04EDE42273E9.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761116587.77773201</real>
+			<key>timeStoppedRecording</key>
+			<real>761116653.51968706</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>D45161BA-EB31-408A-871F-04EDE42273E9</string>
+		</dict>
+		<key>D99EF275-280A-40C3-952B-38551F398F58</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>D99EF275-280A-40C3-952B-38551F398F58.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -1846,15 +3400,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761084826.39989305</real>
+			<real>761115287.23097706</real>
 			<key>timeStoppedRecording</key>
-			<real>761084834.464275</real>
+			<real>761115290.964926</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>DF6210CE-67B9-47BC-8B0E-12587F3353B5</string>
+			<string>D99EF275-280A-40C3-952B-38551F398F58</string>
 		</dict>
-		<key>DFFCE5C5-3987-4A93-B0AC-F78982C0DCEB</key>
+		<key>DB5B17ED-3C38-48A3-B2D9-FF74E8C068C8</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -1863,7 +3417,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>DFFCE5C5-3987-4A93-B0AC-F78982C0DCEB.xcactivitylog</string>
+			<string>DB5B17ED-3C38-48A3-B2D9-FF74E8C068C8.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -1888,15 +3442,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761075969.30681205</real>
+			<real>761111805.56484401</real>
 			<key>timeStoppedRecording</key>
-			<real>761075979.53033102</real>
+			<real>761111809.00536001</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>DFFCE5C5-3987-4A93-B0AC-F78982C0DCEB</string>
+			<string>DB5B17ED-3C38-48A3-B2D9-FF74E8C068C8</string>
 		</dict>
-		<key>E1614934-B7BF-441A-B2D0-7B938197FBBC</key>
+		<key>DF5AD6FA-93E8-4980-A538-20B2B6446222</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -1905,7 +3459,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>E1614934-B7BF-441A-B2D0-7B938197FBBC.xcactivitylog</string>
+			<string>DF5AD6FA-93E8-4980-A538-20B2B6446222.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -1930,15 +3484,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761088367.984074</real>
+			<real>761114070.80758905</real>
 			<key>timeStoppedRecording</key>
-			<real>761088424.22579396</real>
+			<real>761114076.652578</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>E1614934-B7BF-441A-B2D0-7B938197FBBC</string>
+			<string>DF5AD6FA-93E8-4980-A538-20B2B6446222</string>
 		</dict>
-		<key>E1CF1352-E8B9-4654-B204-7C6199EC1448</key>
+		<key>E487CEBE-9B58-407A-A8C2-65A8E2A8ECE1</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -1947,7 +3501,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>E1CF1352-E8B9-4654-B204-7C6199EC1448.xcactivitylog</string>
+			<string>E487CEBE-9B58-407A-A8C2-65A8E2A8ECE1.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -1972,15 +3526,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761082017.46422005</real>
+			<real>761164321.16065395</real>
 			<key>timeStoppedRecording</key>
-			<real>761082026.79091895</real>
+			<real>761164325.70187497</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>E1CF1352-E8B9-4654-B204-7C6199EC1448</string>
+			<string>E487CEBE-9B58-407A-A8C2-65A8E2A8ECE1</string>
 		</dict>
-		<key>ED8A0FDC-8F8F-4FC1-9382-E1CB63357205</key>
+		<key>E7FA669E-9008-484A-BF56-FB7363E9A1A5</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -1989,7 +3543,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>ED8A0FDC-8F8F-4FC1-9382-E1CB63357205.xcactivitylog</string>
+			<string>E7FA669E-9008-484A-BF56-FB7363E9A1A5.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -2014,15 +3568,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761077674.77024496</real>
+			<real>761165035.51886594</real>
 			<key>timeStoppedRecording</key>
-			<real>761077683.30178106</real>
+			<real>761165041.98212099</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>ED8A0FDC-8F8F-4FC1-9382-E1CB63357205</string>
+			<string>E7FA669E-9008-484A-BF56-FB7363E9A1A5</string>
 		</dict>
-		<key>F53C109A-B692-495E-B400-6C53A1EF90B0</key>
+		<key>E80C32B7-863A-4B3F-8C94-F8388E91B884</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -2031,7 +3585,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>F53C109A-B692-495E-B400-6C53A1EF90B0.xcactivitylog</string>
+			<string>E80C32B7-863A-4B3F-8C94-F8388E91B884.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -2056,15 +3610,15 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761074718.62948203</real>
+			<real>761116889.70209897</real>
 			<key>timeStoppedRecording</key>
-			<real>761074725.44258106</real>
+			<real>761116895.19452405</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>F53C109A-B692-495E-B400-6C53A1EF90B0</string>
+			<string>E80C32B7-863A-4B3F-8C94-F8388E91B884</string>
 		</dict>
-		<key>FB240E32-0A41-4041-9051-13C5D0875817</key>
+		<key>E8DB34F4-74C1-4016-B536-6389F9861911</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -2073,7 +3627,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>FB240E32-0A41-4041-9051-13C5D0875817.xcactivitylog</string>
+			<string>E8DB34F4-74C1-4016-B536-6389F9861911.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -2098,13 +3652,223 @@
 			<key>signature</key>
 			<string>Build Calorie counter</string>
 			<key>timeStartedRecording</key>
-			<real>761087363.72091997</real>
+			<real>761108042.54820895</real>
 			<key>timeStoppedRecording</key>
-			<real>761087373.08692706</real>
+			<real>761108051.37274206</real>
 			<key>title</key>
 			<string>Build Calorie counter</string>
 			<key>uniqueIdentifier</key>
-			<string>FB240E32-0A41-4041-9051-13C5D0875817</string>
+			<string>E8DB34F4-74C1-4016-B536-6389F9861911</string>
+		</dict>
+		<key>E968DA71-0600-4080-9908-9D148BF0C1E4</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>E968DA71-0600-4080-9908-9D148BF0C1E4.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761112807.39820397</real>
+			<key>timeStoppedRecording</key>
+			<real>761112812.95265198</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>E968DA71-0600-4080-9908-9D148BF0C1E4</string>
+		</dict>
+		<key>EC0F9517-0134-4547-A0EB-1C309831BB39</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>EC0F9517-0134-4547-A0EB-1C309831BB39.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761116694.976439</real>
+			<key>timeStoppedRecording</key>
+			<real>761116704.56557906</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>EC0F9517-0134-4547-A0EB-1C309831BB39</string>
+		</dict>
+		<key>F528E9A6-92F9-4ED7-9F19-9DABF7BD56E6</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>F528E9A6-92F9-4ED7-9F19-9DABF7BD56E6.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761113360.85801196</real>
+			<key>timeStoppedRecording</key>
+			<real>761113364.40967405</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>F528E9A6-92F9-4ED7-9F19-9DABF7BD56E6</string>
+		</dict>
+		<key>F8A1A314-51EB-47C3-8660-D74F89931553</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>F8A1A314-51EB-47C3-8660-D74F89931553.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761164966.67258406</real>
+			<key>timeStoppedRecording</key>
+			<real>761164973.56477702</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>F8A1A314-51EB-47C3-8660-D74F89931553</string>
+		</dict>
+		<key>FB6E2DD9-C70B-4BDD-A7AD-F0AD0E1630AA</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>FB6E2DD9-C70B-4BDD-A7AD-F0AD0E1630AA.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Calorie counter project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Calorie counter</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Calorie counter</string>
+			<key>timeStartedRecording</key>
+			<real>761114820.69397104</real>
+			<key>timeStoppedRecording</key>
+			<real>761114824.57249403</real>
+			<key>title</key>
+			<string>Build Calorie counter</string>
+			<key>uniqueIdentifier</key>
+			<string>FB6E2DD9-C70B-4BDD-A7AD-F0AD0E1630AA</string>
 		</dict>
 	</dict>
 </dict>

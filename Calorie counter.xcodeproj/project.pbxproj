@@ -22,7 +22,7 @@
 		01425DC82D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01425DC62D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift */; };
 		01466C742D30E33D008648A6 /* GoalSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01466C732D30E33D008648A6 /* GoalSummaryView.swift */; };
 		015B6C8B2D4D264F0095CB7F /* PersonalGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015B6C8A2D4D264F0095CB7F /* PersonalGoalView.swift */; };
-		015EF3332D5AA31F00902E42 /* DiaryEntriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015EF3322D5AA31F00902E42 /* DiaryEntriesView.swift */; };
+		015EF3332D5AA31F00902E42 /* DailyDBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015EF3322D5AA31F00902E42 /* DailyDBView.swift */; };
 		016E52712D4A919F00105B8E /* PersonalDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016E52702D4A919F00105B8E /* PersonalDetailsView.swift */; };
 		016E52732D4A92BE00105B8E /* PersonalStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016E52722D4A92BE00105B8E /* PersonalStatsView.swift */; };
 		016E52752D4A93B200105B8E /* SharedComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016E52742D4A93B200105B8E /* SharedComponents.swift */; };
@@ -45,7 +45,13 @@
 		01BF361A2D2E4878002D1E51 /* Calorie_counterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF36192D2E4878002D1E51 /* Calorie_counterUITests.swift */; };
 		01BF361C2D2E4878002D1E51 /* Calorie_counterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF361B2D2E4878002D1E51 /* Calorie_counterUITestsLaunchTests.swift */; };
 		01C7727A2D40374000402083 /* UserSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C772792D40374000402083 /* UserSetupView.swift */; };
-		01E0F0EF2D5D54F4002D8E5D /* WaterTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0F0EE2D5D54F4002D8E5D /* WaterTracker.swift */; };
+		01D0B0632D5D9462004BC63E /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0622D5D9462004BC63E /* DiaryView.swift */; };
+		01D0B0652D5D9524004BC63E /* DiaryEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0642D5D9524004BC63E /* DiaryEntryView.swift */; };
+		01D0B0682D5DBC1E004BC63E /* WeighInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0672D5DBC1E004BC63E /* WeighInView.swift */; };
+		01D0B06A2D5DBC32004BC63E /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0692D5DBC32004BC63E /* AddFoodView.swift */; };
+		01D0B06C2D5DBC47004BC63E /* AddWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B06B2D5DBC47004BC63E /* AddWorkoutView.swift */; };
+		01D0B06E2D5DBC61004BC63E /* AddWaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B06D2D5DBC61004BC63E /* AddWaterView.swift */; };
+		01E0F0EF2D5D54F4002D8E5D /* WaterTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0F0EE2D5D54F4002D8E5D /* WaterTrackerView.swift */; };
 		01E507722D5988E700CFBE40 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E507712D5988E700CFBE40 /* TodayView.swift */; };
 		01E507742D5989C100CFBE40 /* PastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E507732D5989C100CFBE40 /* PastView.swift */; };
 		01E507762D5989DA00CFBE40 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E507752D5989DA00CFBE40 /* ProgressView.swift */; };
@@ -85,7 +91,7 @@
 		01425DC62D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyProgress+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		01466C732D30E33D008648A6 /* GoalSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSummaryView.swift; sourceTree = "<group>"; };
 		015B6C8A2D4D264F0095CB7F /* PersonalGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalGoalView.swift; sourceTree = "<group>"; };
-		015EF3322D5AA31F00902E42 /* DiaryEntriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntriesView.swift; sourceTree = "<group>"; };
+		015EF3322D5AA31F00902E42 /* DailyDBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDBView.swift; sourceTree = "<group>"; };
 		016E52702D4A919F00105B8E /* PersonalDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDetailsView.swift; sourceTree = "<group>"; };
 		016E52722D4A92BE00105B8E /* PersonalStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalStatsView.swift; sourceTree = "<group>"; };
 		016E52742D4A93B200105B8E /* SharedComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedComponents.swift; sourceTree = "<group>"; };
@@ -112,7 +118,13 @@
 		01BF36192D2E4878002D1E51 /* Calorie_counterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calorie_counterUITests.swift; sourceTree = "<group>"; };
 		01BF361B2D2E4878002D1E51 /* Calorie_counterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calorie_counterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		01C772792D40374000402083 /* UserSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupView.swift; sourceTree = "<group>"; };
-		01E0F0EE2D5D54F4002D8E5D /* WaterTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterTracker.swift; sourceTree = "<group>"; };
+		01D0B0622D5D9462004BC63E /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
+		01D0B0642D5D9524004BC63E /* DiaryEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntryView.swift; sourceTree = "<group>"; };
+		01D0B0672D5DBC1E004BC63E /* WeighInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeighInView.swift; sourceTree = "<group>"; };
+		01D0B0692D5DBC32004BC63E /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
+		01D0B06B2D5DBC47004BC63E /* AddWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutView.swift; sourceTree = "<group>"; };
+		01D0B06D2D5DBC61004BC63E /* AddWaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWaterView.swift; sourceTree = "<group>"; };
+		01E0F0EE2D5D54F4002D8E5D /* WaterTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterTrackerView.swift; sourceTree = "<group>"; };
 		01E507712D5988E700CFBE40 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		01E507732D5989C100CFBE40 /* PastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastView.swift; sourceTree = "<group>"; };
 		01E507752D5989DA00CFBE40 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
@@ -172,9 +184,12 @@
 		015EF3312D5A930100902E42 /* TodayVIew */ = {
 			isa = PBXGroup;
 			children = (
+				01D0B0662D5DBA66004BC63E /* AddingData */,
+				01E0F0EE2D5D54F4002D8E5D /* WaterTrackerView.swift */,
 				01E507712D5988E700CFBE40 /* TodayView.swift */,
-				015EF3322D5AA31F00902E42 /* DiaryEntriesView.swift */,
-				01E0F0EE2D5D54F4002D8E5D /* WaterTracker.swift */,
+				01D0B0622D5D9462004BC63E /* DiaryView.swift */,
+				015EF3322D5AA31F00902E42 /* DailyDBView.swift */,
+				01D0B0642D5D9524004BC63E /* DiaryEntryView.swift */,
 			);
 			path = TodayVIew;
 			sourceTree = "<group>";
@@ -259,6 +274,17 @@
 				01BF361B2D2E4878002D1E51 /* Calorie_counterUITestsLaunchTests.swift */,
 			);
 			path = "Calorie counterUITests";
+			sourceTree = "<group>";
+		};
+		01D0B0662D5DBA66004BC63E /* AddingData */ = {
+			isa = PBXGroup;
+			children = (
+				01D0B0672D5DBC1E004BC63E /* WeighInView.swift */,
+				01D0B0692D5DBC32004BC63E /* AddFoodView.swift */,
+				01D0B06B2D5DBC47004BC63E /* AddWorkoutView.swift */,
+				01D0B06D2D5DBC61004BC63E /* AddWaterView.swift */,
+			);
+			path = AddingData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,6 +418,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0173856C2D3856AC00379FD5 /* LedgerEntry+CoreDataClass.swift in Sources */,
+				01D0B06E2D5DBC61004BC63E /* AddWaterView.swift in Sources */,
+				01D0B0682D5DBC1E004BC63E /* WeighInView.swift in Sources */,
 				012AF0D62D337F35005D03B1 /* CalorieCounterModel.xcdatamodeld in Sources */,
 				012AF0FE2D3484A3005D03B1 /* DailyProgressView.swift in Sources */,
 				0107C8582D56877E00AF12A0 /* UserProfile+CoreDataProperties.swift in Sources */,
@@ -400,8 +428,10 @@
 				017385662D3856AC00379FD5 /* ProgressPicture+CoreDataClass.swift in Sources */,
 				01323EE22D526BF9005C025A /* UserOverviewView.swift in Sources */,
 				016E52752D4A93B200105B8E /* SharedComponents.swift in Sources */,
+				01D0B06C2D5DBC47004BC63E /* AddWorkoutView.swift in Sources */,
 				0190ECF32D30B7F5003AA451 /* SummaryView.swift in Sources */,
 				017384D62D35BE3700379FD5 /* PastLedgerView.swift in Sources */,
+				01D0B0632D5D9462004BC63E /* DiaryView.swift in Sources */,
 				01C7727A2D40374000402083 /* UserSetupView.swift in Sources */,
 				01323EE42D529022005C025A /* Styles.swift in Sources */,
 				019C9CCE2D31A17500E0F608 /* ChangeDateView.swift in Sources */,
@@ -409,9 +439,9 @@
 				0107C8572D56877E00AF12A0 /* UserProfile+CoreDataClass.swift in Sources */,
 				01466C742D30E33D008648A6 /* GoalSummaryView.swift in Sources */,
 				0173850D2D36F3AC00379FD5 /* AddProgressPictureView.swift in Sources */,
-				01E0F0EF2D5D54F4002D8E5D /* WaterTracker.swift in Sources */,
+				01E0F0EF2D5D54F4002D8E5D /* WaterTrackerView.swift in Sources */,
 				017385112D36F6AF00379FD5 /* ProgressImage.swift in Sources */,
-				015EF3332D5AA31F00902E42 /* DiaryEntriesView.swift in Sources */,
+				015EF3332D5AA31F00902E42 /* DailyDBView.swift in Sources */,
 				017384D82D35BECD00379FD5 /* PastDailyLedgerView.swift in Sources */,
 				01BF35FC2D2E486F002D1E51 /* Calorie_counterApp.swift in Sources */,
 				01E507782D598A1A00CFBE40 /* SettingsView.swift in Sources */,
@@ -426,7 +456,9 @@
 				012AF0F22D342658005D03B1 /* DashboardView.swift in Sources */,
 				012AF0D82D3384AD005D03B1 /* PersistenceController.swift in Sources */,
 				01425DBC2D398D9800A98F2E /* DailyDataTracker.swift in Sources */,
+				01D0B06A2D5DBC32004BC63E /* AddFoodView.swift in Sources */,
 				01E507762D5989DA00CFBE40 /* ProgressView.swift in Sources */,
+				01D0B0652D5D9524004BC63E /* DiaryEntryView.swift in Sources */,
 				01425DC82D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift in Sources */,
 				0173856D2D3856AC00379FD5 /* LedgerEntry+CoreDataProperties.swift in Sources */,
 			);
