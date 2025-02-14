@@ -64,14 +64,26 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "BMR" asset catalog image resource.
     static let BMR = DeveloperToolsSupport.ImageResource(name: "BMR", bundle: resourceBundle)
 
+    /// The "BarCode" asset catalog image resource.
+    static let barCode = DeveloperToolsSupport.ImageResource(name: "BarCode", bundle: resourceBundle)
+
     /// The "CalW" asset catalog image resource.
     static let calW = DeveloperToolsSupport.ImageResource(name: "CalW", bundle: resourceBundle)
+
+    /// The "DefaultFood" asset catalog image resource.
+    static let defaultFood = DeveloperToolsSupport.ImageResource(name: "DefaultFood", bundle: resourceBundle)
 
     /// The "Empty man PP" asset catalog image resource.
     static let emptyManPP = DeveloperToolsSupport.ImageResource(name: "Empty man PP", bundle: resourceBundle)
 
     /// The "Empty woman PP" asset catalog image resource.
     static let emptyWomanPP = DeveloperToolsSupport.ImageResource(name: "Empty woman PP", bundle: resourceBundle)
+
+    /// The "LeftFoot" asset catalog image resource.
+    static let leftFoot = DeveloperToolsSupport.ImageResource(name: "LeftFoot", bundle: resourceBundle)
+
+    /// The "RightFoot" asset catalog image resource.
+    static let rightFoot = DeveloperToolsSupport.ImageResource(name: "RightFoot", bundle: resourceBundle)
 
     /// The "SliderIcon" asset catalog image resource.
     static let sliderIcon = DeveloperToolsSupport.ImageResource(name: "SliderIcon", bundle: resourceBundle)
@@ -280,10 +292,28 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "BarCode" asset catalog image.
+    static var barCode: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .barCode)
+#else
+        .init()
+#endif
+    }
+
     /// The "CalW" asset catalog image.
     static var calW: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .calW)
+#else
+        .init()
+#endif
+    }
+
+    /// The "DefaultFood" asset catalog image.
+    static var defaultFood: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .defaultFood)
 #else
         .init()
 #endif
@@ -302,6 +332,24 @@ extension AppKit.NSImage {
     static var emptyWomanPP: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .emptyWomanPP)
+#else
+        .init()
+#endif
+    }
+
+    /// The "LeftFoot" asset catalog image.
+    static var leftFoot: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .leftFoot)
+#else
+        .init()
+#endif
+    }
+
+    /// The "RightFoot" asset catalog image.
+    static var rightFoot: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .rightFoot)
 #else
         .init()
 #endif
@@ -621,10 +669,28 @@ extension UIKit.UIImage {
 #endif
     }
 
+    /// The "BarCode" asset catalog image.
+    static var barCode: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .barCode)
+#else
+        .init()
+#endif
+    }
+
     /// The "CalW" asset catalog image.
     static var calW: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .calW)
+#else
+        .init()
+#endif
+    }
+
+    /// The "DefaultFood" asset catalog image.
+    static var defaultFood: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .defaultFood)
 #else
         .init()
 #endif
@@ -643,6 +709,24 @@ extension UIKit.UIImage {
     static var emptyWomanPP: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .emptyWomanPP)
+#else
+        .init()
+#endif
+    }
+
+    /// The "LeftFoot" asset catalog image.
+    static var leftFoot: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .leftFoot)
+#else
+        .init()
+#endif
+    }
+
+    /// The "RightFoot" asset catalog image.
+    static var rightFoot: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .rightFoot)
 #else
         .init()
 #endif

@@ -313,11 +313,7 @@ func presentAlert(alert: UIAlertController) {
     }
 }
 
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
+
 // MARK: - Horizontal Wheel Picker
 
 struct HorizontalWheelPicker: View {

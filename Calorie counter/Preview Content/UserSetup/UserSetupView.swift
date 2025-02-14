@@ -244,16 +244,7 @@ struct UserSetupView: View {
             .background(Styles.primaryBackground) // Apply primary background to the whole view
             .focused($isKeyboardActive) // Ensures focus tracking
             .ignoresSafeArea(.keyboard) // Make sure keyboard floats on top without affecting layout
-            .toolbar {
-                ToolbarItemGroup(placement: .keyboard) {
-                    Spacer()
-                    Button("Done") {
-                        isKeyboardActive = false
-                        hideKeyboard()
-                    }
-                    .foregroundColor(Styles.accent) // Accent color for toolbar button
-                }
-            }
+            
         }
         .ignoresSafeArea(.keyboard) // Make sure keyboard floats on top without affecting layout
         // DATE PICKER OVERLAY (Works Like Before)

@@ -111,16 +111,19 @@ struct DashboardView: View {
                     .offset(y: -10)
 
                     // ✅ Center "+" Button
+                    // ✅ Center "+" Button with Rotation & Color Transition
                     VStack {
                         ZStack {
                             Circle()
-                                .fill(isPlusButtonPressed ? Styles.secondaryText : Styles.primaryText)
+                                .fill(showSemiCircle ? Color.red : Styles.primaryText) // 🔥 Changes color based on state
                                 .frame(width: 80, height: 80)
                                 .shadow(radius: 5)
 
                             Image(systemName: "plus")
                                 .font(.largeTitle)
                                 .foregroundColor(Styles.secondaryBackground)
+                                .rotationEffect(.degrees(showSemiCircle ? 45 : 0)) // 🔥 Rotates when expanded
+                                .animation(.spring(response: 0.4, dampingFraction: 0.6), value: showSemiCircle) // 🔥 Smooth transition
                         }
                         .onTapGesture {
                             withAnimation {
@@ -131,6 +134,7 @@ struct DashboardView: View {
                         }
                         .offset(y: -36)
                     }
+
                 }
                 .frame(height: 96)
             }

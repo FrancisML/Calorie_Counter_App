@@ -15,6 +15,7 @@
 		012AF0F22D342658005D03B1 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0F12D342658005D03B1 /* DashboardView.swift */; };
 		012AF0F42D3426B0005D03B1 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0F32D3426B0005D03B1 /* ImagePicker.swift */; };
 		012AF0FE2D3484A3005D03B1 /* DailyProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0FD2D3484A3005D03B1 /* DailyProgressView.swift */; };
+		012E0BC32D5FC6EF00DEBDB5 /* DS-DIGII.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 012E0BC22D5FC6EF00DEBDB5 /* DS-DIGII.TTF */; };
 		01323EE22D526BF9005C025A /* UserOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01323EE12D526BF9005C025A /* UserOverviewView.swift */; };
 		01323EE42D529022005C025A /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01323EE32D529022005C025A /* Styles.swift */; };
 		01425DBC2D398D9800A98F2E /* DailyDataTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01425DBB2D398D9800A98F2E /* DailyDataTracker.swift */; };
@@ -51,6 +52,9 @@
 		01D0B06A2D5DBC32004BC63E /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0692D5DBC32004BC63E /* AddFoodView.swift */; };
 		01D0B06C2D5DBC47004BC63E /* AddWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B06B2D5DBC47004BC63E /* AddWorkoutView.swift */; };
 		01D0B06E2D5DBC61004BC63E /* AddWaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B06D2D5DBC61004BC63E /* AddWaterView.swift */; };
+		01D0B0712D5E888B004BC63E /* QuickAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0702D5E888B004BC63E /* QuickAddView.swift */; };
+		01D0B0732D5E889F004BC63E /* AdvancedAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0722D5E889F004BC63E /* AdvancedAddView.swift */; };
+		01D0B0752D5EABC8004BC63E /* KeyboardDismissModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0742D5EABC8004BC63E /* KeyboardDismissModifier.swift */; };
 		01E0F0EF2D5D54F4002D8E5D /* WaterTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0F0EE2D5D54F4002D8E5D /* WaterTrackerView.swift */; };
 		01E507722D5988E700CFBE40 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E507712D5988E700CFBE40 /* TodayView.swift */; };
 		01E507742D5989C100CFBE40 /* PastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E507732D5989C100CFBE40 /* PastView.swift */; };
@@ -84,6 +88,8 @@
 		012AF0F12D342658005D03B1 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		012AF0F32D3426B0005D03B1 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		012AF0FD2D3484A3005D03B1 /* DailyProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyProgressView.swift; sourceTree = "<group>"; };
+		012E0BC22D5FC6EF00DEBDB5 /* DS-DIGII.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DS-DIGII.TTF"; path = "../../../../Downloads/ds_digital/DS-DIGII.TTF"; sourceTree = "<group>"; };
+		012E0BC42D5FC70B00DEBDB5 /* Calorie-counter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Calorie-counter-Info.plist"; sourceTree = SOURCE_ROOT; };
 		01323EE12D526BF9005C025A /* UserOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOverviewView.swift; sourceTree = "<group>"; };
 		01323EE32D529022005C025A /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		01425DBB2D398D9800A98F2E /* DailyDataTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDataTracker.swift; sourceTree = "<group>"; };
@@ -124,6 +130,9 @@
 		01D0B0692D5DBC32004BC63E /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
 		01D0B06B2D5DBC47004BC63E /* AddWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutView.swift; sourceTree = "<group>"; };
 		01D0B06D2D5DBC61004BC63E /* AddWaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWaterView.swift; sourceTree = "<group>"; };
+		01D0B0702D5E888B004BC63E /* QuickAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddView.swift; sourceTree = "<group>"; };
+		01D0B0722D5E889F004BC63E /* AdvancedAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedAddView.swift; sourceTree = "<group>"; };
+		01D0B0742D5EABC8004BC63E /* KeyboardDismissModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissModifier.swift; sourceTree = "<group>"; };
 		01E0F0EE2D5D54F4002D8E5D /* WaterTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterTrackerView.swift; sourceTree = "<group>"; };
 		01E507712D5988E700CFBE40 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		01E507732D5989C100CFBE40 /* PastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastView.swift; sourceTree = "<group>"; };
@@ -225,8 +234,11 @@
 		01BF35FA2D2E486F002D1E51 /* Calorie counter */ = {
 			isa = PBXGroup;
 			children = (
+				012E0BC42D5FC70B00DEBDB5 /* Calorie-counter-Info.plist */,
 				01BF35FB2D2E486F002D1E51 /* Calorie_counterApp.swift */,
+				01D0B0742D5EABC8004BC63E /* KeyboardDismissModifier.swift */,
 				012AF0D42D337F35005D03B1 /* CalorieCounterModel.xcdatamodeld */,
+				012E0BC22D5FC6EF00DEBDB5 /* DS-DIGII.TTF */,
 				01BF36012D2E4877002D1E51 /* Assets.xcassets */,
 				01BF36042D2E4877002D1E51 /* Preview Content */,
 				0190ECF22D30B7F4003AA451 /* SummaryView.swift */,
@@ -280,11 +292,21 @@
 			isa = PBXGroup;
 			children = (
 				01D0B0672D5DBC1E004BC63E /* WeighInView.swift */,
-				01D0B0692D5DBC32004BC63E /* AddFoodView.swift */,
+				01D0B06F2D5E8861004BC63E /* AddFood */,
 				01D0B06B2D5DBC47004BC63E /* AddWorkoutView.swift */,
 				01D0B06D2D5DBC61004BC63E /* AddWaterView.swift */,
 			);
 			path = AddingData;
+			sourceTree = "<group>";
+		};
+		01D0B06F2D5E8861004BC63E /* AddFood */ = {
+			isa = PBXGroup;
+			children = (
+				01D0B0692D5DBC32004BC63E /* AddFoodView.swift */,
+				01D0B0722D5E889F004BC63E /* AdvancedAddView.swift */,
+				01D0B0702D5E888B004BC63E /* QuickAddView.swift */,
+			);
+			path = AddFood;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01BF36062D2E4877002D1E51 /* Preview Assets.xcassets in Resources */,
+				012E0BC32D5FC6EF00DEBDB5 /* DS-DIGII.TTF in Resources */,
 				01BF36022D2E4877002D1E51 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,6 +450,7 @@
 				015B6C8B2D4D264F0095CB7F /* PersonalGoalView.swift in Sources */,
 				017385662D3856AC00379FD5 /* ProgressPicture+CoreDataClass.swift in Sources */,
 				01323EE22D526BF9005C025A /* UserOverviewView.swift in Sources */,
+				01D0B0712D5E888B004BC63E /* QuickAddView.swift in Sources */,
 				016E52752D4A93B200105B8E /* SharedComponents.swift in Sources */,
 				01D0B06C2D5DBC47004BC63E /* AddWorkoutView.swift in Sources */,
 				0190ECF32D30B7F5003AA451 /* SummaryView.swift in Sources */,
@@ -460,6 +484,8 @@
 				01E507762D5989DA00CFBE40 /* ProgressView.swift in Sources */,
 				01D0B0652D5D9524004BC63E /* DiaryEntryView.swift in Sources */,
 				01425DC82D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift in Sources */,
+				01D0B0732D5E889F004BC63E /* AdvancedAddView.swift in Sources */,
+				01D0B0752D5EABC8004BC63E /* KeyboardDismissModifier.swift in Sources */,
 				0173856D2D3856AC00379FD5 /* LedgerEntry+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -629,6 +655,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Calorie-counter-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take profile pictures.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -676,6 +703,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Calorie-counter-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take profile pictures.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;

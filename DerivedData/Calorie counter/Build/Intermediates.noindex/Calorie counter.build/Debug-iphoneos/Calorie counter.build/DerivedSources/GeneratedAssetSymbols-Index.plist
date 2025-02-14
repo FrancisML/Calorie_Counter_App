@@ -120,11 +120,31 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameBarCode</string>
+			<key>relativePath</key>
+			<string>./BarCode.imageset</string>
+			<key>swiftSymbol</key>
+			<string>barCode</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameCalW</string>
 			<key>relativePath</key>
 			<string>./CalW.imageset</string>
 			<key>swiftSymbol</key>
 			<string>calW</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameDefaultFood</string>
+			<key>relativePath</key>
+			<string>./DefaultFood.imageset</string>
+			<key>swiftSymbol</key>
+			<string>defaultFood</string>
 		</dict>
 		<dict>
 			<key>catalogPath</key>
@@ -145,6 +165,26 @@
 			<string>./Empty woman PP.imageset</string>
 			<key>swiftSymbol</key>
 			<string>emptyWomanPP</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameLeftFoot</string>
+			<key>relativePath</key>
+			<string>./LeftFoot.imageset</string>
+			<key>swiftSymbol</key>
+			<string>leftFoot</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameRightFoot</string>
+			<key>relativePath</key>
+			<string>./RightFoot.imageset</string>
+			<key>swiftSymbol</key>
+			<string>rightFoot</string>
 		</dict>
 		<dict>
 			<key>catalogPath</key>

@@ -39,14 +39,26 @@ static NSString * const ACImageNameAddWeight AC_SWIFT_PRIVATE = @"AddWeight";
 /// The "BMR" asset catalog image resource.
 static NSString * const ACImageNameBMR AC_SWIFT_PRIVATE = @"BMR";
 
+/// The "BarCode" asset catalog image resource.
+static NSString * const ACImageNameBarCode AC_SWIFT_PRIVATE = @"BarCode";
+
 /// The "CalW" asset catalog image resource.
 static NSString * const ACImageNameCalW AC_SWIFT_PRIVATE = @"CalW";
+
+/// The "DefaultFood" asset catalog image resource.
+static NSString * const ACImageNameDefaultFood AC_SWIFT_PRIVATE = @"DefaultFood";
 
 /// The "Empty man PP" asset catalog image resource.
 static NSString * const ACImageNameEmptyManPP AC_SWIFT_PRIVATE = @"Empty man PP";
 
 /// The "Empty woman PP" asset catalog image resource.
 static NSString * const ACImageNameEmptyWomanPP AC_SWIFT_PRIVATE = @"Empty woman PP";
+
+/// The "LeftFoot" asset catalog image resource.
+static NSString * const ACImageNameLeftFoot AC_SWIFT_PRIVATE = @"LeftFoot";
+
+/// The "RightFoot" asset catalog image resource.
+static NSString * const ACImageNameRightFoot AC_SWIFT_PRIVATE = @"RightFoot";
 
 /// The "SliderIcon" asset catalog image resource.
 static NSString * const ACImageNameSliderIcon AC_SWIFT_PRIVATE = @"SliderIcon";

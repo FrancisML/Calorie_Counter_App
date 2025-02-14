@@ -24,6 +24,7 @@ struct CalorieCounterApp: App {
                 .environment(\.managedObjectContext, persistenceController.context)
                     .environmentObject(tracker) // Pass tracker to environment
                     .environmentObject(themeManager)
+                    .withKeyboardDismiss()
             
         }
     }
