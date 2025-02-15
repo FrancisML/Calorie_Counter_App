@@ -18,6 +18,10 @@ struct TodayView: View {
     @State private var dailyCalorieGoal: Int = 2000
     @State private var isWaterPickerPresented: Bool = false // ✅ Controls picker visibility
     @State private var selectedUnit: String = "fl oz"
+    
+    @Binding var weighIns: [(time: String, weight: String)] // ✅ Accept weigh-ins as Binding
+
+
 
    
 
@@ -76,12 +80,11 @@ struct TodayView: View {
                 selectedDate: $selectedDate,
                 diaryEntries: diaryEntries,
                 highestStreak: highestStreak,
-                
                 calorieGoal: CGFloat(dailyCalorieGoal),
-         
-
-                useMetric: useMetric
+                useMetric: useMetric,
+                weighIns: $weighIns // ✅ Pass weighIns as a binding
             )
+
             .sheet(isPresented: $isWaterPickerPresented) {
                 WaterGoalPicker(
                     useMetric: useMetric,

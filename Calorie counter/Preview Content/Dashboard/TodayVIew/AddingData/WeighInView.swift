@@ -1,22 +1,24 @@
-//
-//  WeighIn.swift
-//  Calorie counter
-//
-//  Created by frank lasalvia on 2/13/25.
-//
-
 import SwiftUI
 
 struct WeighInView: View {
     var closeAction: () -> Void
-    
-    @State private var weight: String // ✅ Now a String to allow manual entry
-    @State private var isEditing: Bool = false // ✅ Track if user is editing
-    @FocusState private var isKeyboardActive: Bool // ✅ FocusState to control keyboard
+    var saveWeighIn: (String, String) -> Void
+    @Binding var fadeOut: Bool // ✅ Accept fadeOut as a Binding
 
-    init(closeAction: @escaping () -> Void, userWeight: Double = 200.0) {
+    @State private var weight: String
+    @State private var isSaving: Bool = false
+    @FocusState private var isKeyboardActive: Bool
+
+    init(
+        closeAction: @escaping () -> Void,
+        saveWeighIn: @escaping (String, String) -> Void,
+        fadeOut: Binding<Bool>, // ✅ Corrected to accept fadeOut as a Binding
+        userWeight: Double = 200.0
+    ) {
         self.closeAction = closeAction
-        _weight = State(initialValue: String(format: "%.1f", userWeight)) // ✅ Start with user's weight
+        self.saveWeighIn = saveWeighIn
+        self._fadeOut = fadeOut // ✅ Bind fadeOut correctly
+        _weight = State(initialValue: String(format: "%.1f", userWeight))
     }
 
     var body: some View {
@@ -39,80 +41,64 @@ struct WeighInView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.top, safeAreaTopInset)
 
-                Spacer().frame(height: 20) // 🔥 Space below title
+                Spacer().frame(height: 20)
 
                 // ✅ Digital Scale Style Input
                 HStack {
-                    Spacer(minLength: 0) // 🔥 Ensures equal spacing on both sides
+                    Spacer()
 
                     // 🔽 Decrease Button
-                    Button(action: {
-                        adjustWeight(by: -0.1)
-                    }) {
+                    Button(action: { adjustWeight(by: -0.1) }) {
                         Image(systemName: "triangle.fill")
-                            .font(.system(size: 35)) // 🔥 Slightly smaller for balance
+                            .font(.system(size: 35))
                             .foregroundColor(Styles.primaryText)
-                            .rotationEffect(.degrees(180)) // 🔽 Rotates down
+                            .rotationEffect(.degrees(180))
                             .opacity(0.7)
                     }
-                    
-                    // 🏆 Digital Weight Display (Editable)
-                    TextField("", text: $weight, onEditingChanged: { editing in
-                        isEditing = editing
-                    })
-                    .keyboardType(.decimalPad)
-                    .focused($isKeyboardActive)
-                    .multilineTextAlignment(.center)
-                    .font(.custom("DS-Digital-Italic", size: 75)) // ✅ Custom digital font
-                    .foregroundColor(Styles.primaryText)
-                    .frame(width: 280) // 🔥 Adjust width for balance
-                    .background(Color.black.opacity(0.1))
-                    .cornerRadius(10)
-                    .onChange(of: weight) { _ in
-                        validateWeightInput()
-                    }
-                    .onSubmit {
-                        formatWeight()
-                    }
+                    .disabled(isSaving)
+
+                    // ✅ Digital Weight Display (Switches to "SAVE" in Green)
+                    Text(isSaving ? "SAVE" : weight)
+                        .font(.custom("DS-Digital-Italic", size: 75))
+                        .foregroundColor(isSaving ? .green : Styles.primaryText) // ✅ Turns green when saving
+                        .frame(width: 280)
+                        .background(Color.black.opacity(0.1))
+                        .cornerRadius(10)
+                        .opacity(fadeOut ? 0 : 1)
 
                     // 🔼 Increase Button
-                    Button(action: {
-                        adjustWeight(by: 0.1)
-                    }) {
+                    Button(action: { adjustWeight(by: 0.1) }) {
                         Image(systemName: "triangle.fill")
-                            .font(.system(size: 35)) // 🔥 Matches left button size
+                            .font(.system(size: 35))
                             .foregroundColor(Styles.primaryText)
                             .opacity(0.7)
                     }
+                    .disabled(isSaving)
 
-                    Spacer(minLength: 0) // 🔥 Ensures equal spacing on both sides
+                    Spacer()
                 }
-                .padding(.horizontal, 10) // 🔥 Keeps everything inside the screen
-                .padding(.vertical, 40)   // Maintains good vertical balance
+                .padding(.horizontal, 10)
+                .padding(.vertical, 40)
 
-                
-                Divider()// 🔥 Pushes foot images down
+                Divider()
                 Spacer()
 
-                // 🦶 Foot Images (Centered in Remaining Space)
-                // 🦶 Foot Images (Centered in Remaining Space)
-                HStack(spacing: 50) { // 🔥 Reduced spacing for closer images
+                // ✅ Foot Images
+                HStack(spacing: 50) {
                     Image("LeftFoot")
                         .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 100, height: 250) // 🔥 Increased size
+                        .frame(width: 100, height: 250)
                         .foregroundColor(Styles.primaryText)
 
                     Image("RightFoot")
                         .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 100, height: 250) // 🔥 Increased size
+                        .frame(width: 100, height: 250)
                         .foregroundColor(Styles.primaryText)
                 }
-
-
 
                 Spacer()
 
@@ -135,16 +121,15 @@ struct WeighInView: View {
                                 .font(.largeTitle)
                                 .foregroundColor(.white)
                         }
-                        .onTapGesture {
-                            closeAction()
-                        }
+                        .onTapGesture { closeAction() }
+                        .disabled(isSaving)
 
                         Spacer().frame(width: 100)
 
-                        // ➕ "+" Button (Same Style as Dashboard, But No Functionality)
+                        // ✅ Save Button (Triggers Fade & Close)
                         ZStack {
                             Circle()
-                                .fill(Styles.primaryText)
+                                .fill(isSaving ? Color.green : Styles.primaryText)
                                 .frame(width: 80, height: 80)
                                 .shadow(radius: 5)
 
@@ -152,6 +137,12 @@ struct WeighInView: View {
                                 .font(.largeTitle)
                                 .foregroundColor(Styles.secondaryBackground)
                         }
+                        .onTapGesture {
+                            if !isSaving {
+                                startSaveProcess()
+                            }
+                        }
+                        .disabled(isSaving)
                     }
                     .padding(.horizontal, 30)
                     .frame(maxWidth: .infinity)
@@ -161,10 +152,28 @@ struct WeighInView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Styles.secondaryBackground)
+            .opacity(fadeOut ? 0 : 1) // ✅ Apply fade-out animation
+            .animation(.easeOut(duration: 0.7), value: fadeOut) // ✅ Smooth fade effect
             .onTapGesture {
-                isKeyboardActive = false // ✅ Dismiss keyboard when tapping outside
+                isKeyboardActive = false
             }
             .edgesIgnoringSafeArea(.all)
+        }
+    }
+
+    // ✅ Function to Handle Save with Delay & Fade Animation
+    private func startSaveProcess() {
+        isSaving = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+            withAnimation(.easeOut(duration: 0.5)) {
+                fadeOut = true // ✅ Fade out both WeighInView and Overlay
+            }
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.9) {
+            saveWeighIn(formattedCurrentTime(), weight)
+            closeAction()
         }
     }
 
@@ -176,30 +185,11 @@ struct WeighInView: View {
         }
     }
 
-    // ✅ Validates input (only allows numbers & one decimal)
-    private func validateWeightInput() {
-        let filtered = weight.filter { "0123456789.".contains($0) } // ✅ Keep only numbers & "."
-        let components = filtered.split(separator: ".")
-
-        if components.count > 2 {
-            // ✅ Remove extra decimals (Keep only first one)
-            if let lastDotIndex = filtered.lastIndex(of: ".") {
-                let prefixIndex = filtered.distance(from: filtered.startIndex, to: lastDotIndex)
-                weight = String(filtered.prefix(prefixIndex)) // ✅ Convert index to Int
-            }
-        } else if let dotIndex = filtered.firstIndex(of: "."), let decimalPart = components.last, decimalPart.count > 1 {
-            // ✅ Limit to 1 decimal place
-            let prefixIndex = filtered.distance(from: filtered.startIndex, to: dotIndex) + 2
-            weight = String(filtered.prefix(prefixIndex)) // ✅ Convert index to Int
-        } else {
-            weight = filtered
-        }
-    }
-
-    // ✅ Formats weight to always display 1 decimal place
-    private func formatWeight() {
-        if let value = Double(weight) {
-            weight = String(format: "%.1f", value)
-        }
+    // ✅ Returns formatted time (8:00 AM/PM)
+    private func formattedCurrentTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        return formatter.string(from: Date())
     }
 }
+

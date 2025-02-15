@@ -6,7 +6,8 @@ struct DashboardView: View {
     @State private var showSemiCircle: Bool = false // Tracks visibility of the semi-circle
     @State private var currentRadius: CGFloat = 10 // Starts collapsed
     @State private var activeView: ActiveView? = nil // Tracks which view is active
-
+    @State private var weighIns: [(time: String, weight: String)] = [] // ✅ Store Weigh-Ins
+    @State private var fadeOut: Bool = false // ✅ Added fadeOut state
     private let maxRadius: CGFloat = 160 // Max expansion
     private let minRadius: CGFloat = 10  // Min expansion
 
@@ -20,13 +21,12 @@ struct DashboardView: View {
 
     var body: some View {
         ZStack {
-            // ✅ Main Dashboard View
             VStack(spacing: 0) {
-                // MAIN CONTENT AREA
+                // ✅ MAIN CONTENT AREA
                 ZStack {
                     switch selectedTab {
                     case .today:
-                        TodayView()
+                        TodayView(weighIns: $weighIns) // ✅ Pass delete function
                     case .past:
                         PastView()
                     case .progress:
@@ -83,10 +83,19 @@ struct DashboardView: View {
                             .opacity(showSemiCircle ? 1 : 0)
                             .animation(.spring(response: 0.4, dampingFraction: 0.7), value: currentRadius)
                             .onTapGesture {
+                                withAnimation {
+                                    // ✅ Close the semi-circle when a button is clicked
+                                    showSemiCircle = false
+                                    isPlusButtonPressed = false
+                                    currentRadius = minRadius
+                                }
+
+                                // ✅ Set the active view based on button selection
                                 activeView = buttonData[index].view
                             }
                         }
-                    } // Closing GeometryReader
+
+                    }
                     .frame(height: 96)
 
                     // ✅ Navigation Bar
@@ -96,13 +105,11 @@ struct DashboardView: View {
                         .shadow(radius: 5)
 
                     HStack {
-                        // Left-side buttons
                         navButton(icon: "book", label: "Today", tab: .today)
                         navButton(icon: "clock", label: "Past", tab: .past)
 
                         Spacer().frame(width: 80) // Space for "+" button
 
-                        // Right-side buttons
                         navButton(icon: "chart.bar", label: "Progress", tab: .progress)
                         navButton(icon: "gear", label: "Settings", tab: .settings)
                     }
@@ -110,20 +117,19 @@ struct DashboardView: View {
                     .frame(maxWidth: .infinity)
                     .offset(y: -10)
 
-                    // ✅ Center "+" Button
                     // ✅ Center "+" Button with Rotation & Color Transition
                     VStack {
                         ZStack {
                             Circle()
-                                .fill(showSemiCircle ? Color.red : Styles.primaryText) // 🔥 Changes color based on state
+                                .fill(showSemiCircle ? Color.red : Styles.primaryText)
                                 .frame(width: 80, height: 80)
                                 .shadow(radius: 5)
 
                             Image(systemName: "plus")
                                 .font(.largeTitle)
                                 .foregroundColor(Styles.secondaryBackground)
-                                .rotationEffect(.degrees(showSemiCircle ? 45 : 0)) // 🔥 Rotates when expanded
-                                .animation(.spring(response: 0.4, dampingFraction: 0.6), value: showSemiCircle) // 🔥 Smooth transition
+                                .rotationEffect(.degrees(showSemiCircle ? 45 : 0))
+                                .animation(.spring(response: 0.4, dampingFraction: 0.6), value: showSemiCircle)
                         }
                         .onTapGesture {
                             withAnimation {
@@ -134,26 +140,35 @@ struct DashboardView: View {
                         }
                         .offset(y: -36)
                     }
-
                 }
                 .frame(height: 96)
             }
 
             // ✅ Full-Screen Views
-            if let activeView = activeView {
-                FullScreenOverlay(activeView: activeView, closeAction: {
-                    withAnimation {
-                        self.activeView = nil
-                    }
-                })
+            if let _ = activeView { // ✅ Only show overlay if activeView is set
+                FullScreenOverlay(
+                    closeAction: {
+                        withAnimation {
+                            self.activeView = nil
+                        }
+                    },
+                    saveWeighIn: saveWeighIn,
+                    isPlusButtonPressed: $isPlusButtonPressed,
+                    showSemiCircle: $showSemiCircle,
+                    currentRadius: $currentRadius,
+                    fadeOut: $fadeOut,
+                    activeView: $activeView // ✅ Pass as a binding (Fix)
+                )
             }
+
+
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Styles.primaryBackground)
         .ignoresSafeArea(edges: .bottom)
     }
 
-    // ✅ Navigation Button View
+    // ✅ Navigation Button View (FULLY RESTORED)
     private func navButton(icon: String, label: String, tab: Tab) -> some View {
         VStack(spacing: 2) {
             Image(systemName: icon)
@@ -170,30 +185,84 @@ struct DashboardView: View {
             selectedTab = tab
         }
     }
+
+    
+    // ✅ Function to Save Weigh-Ins & Close Semi-Circle
+    private func saveWeighIn(time: String, weight: String) {
+        DispatchQueue.main.async {
+            weighIns.append((time: time, weight: weight)) // ✅ Add new entry
+
+        }
+    }
+
+
+
+    // ✅ Function to Delete Weigh-Ins
+    private func deleteWeighIn(index: Int) {
+        DispatchQueue.main.async {
+            if index >= 0 && index < weighIns.count {
+                weighIns.remove(at: index) // ✅ Fully working delete function
+            }
+        }
+    }
 }
 
 // ✅ Full-Screen Overlay View for Add Food, Add Water, Weigh In, Add Workout
+// ✅ Full-Screen Overlay View for Add Food, Add Water, Weigh In, Add Workout
+// ✅ Full-Screen Overlay View for Add Food, Add Water, Weigh In, Add Workout
 struct FullScreenOverlay: View {
-    let activeView: DashboardView.ActiveView
     let closeAction: () -> Void
+    let saveWeighIn: (String, String) -> Void
+
+    @Binding var isPlusButtonPressed: Bool
+    @Binding var showSemiCircle: Bool
+    @Binding var currentRadius: CGFloat
+    @Binding var fadeOut: Bool
+    @Binding var activeView: DashboardView.ActiveView? // ✅ Make it optional to handle closing properly
 
     var body: some View {
         ZStack {
-            Color.black.opacity(0.5)
+            Color.black.opacity(fadeOut ? 0 : 0.5) // ✅ Sync fade with WeighInView
+                .animation(.easeOut(duration: 0.5), value: fadeOut)
                 .edgesIgnoringSafeArea(.all)
 
-            VStack(spacing: 0) {
-                // ✅ Load the Correct Full-Screen View and Pass `closeAction`
-                switch activeView {
-                case .addFood:
-                    AddFoodView(closeAction: closeAction)
-                case .addWater:
-                    AddWaterView(closeAction: closeAction)
-                case .weighIn:
-                    WeighInView(closeAction: closeAction)
-                case .addWorkout:
-                    WorkoutView(closeAction: closeAction)
+            if let activeView = activeView { // ✅ Ensure it only shows when non-nil
+                VStack(spacing: 0) {
+                    switch activeView {
+                    case .addFood:
+                        AddFoodView(closeAction: closeWithAnimation)
+                    case .addWater:
+                        AddWaterView(closeAction: closeWithAnimation)
+                    case .weighIn:
+                        WeighInView(
+                            closeAction: closeWithAnimation,
+                            saveWeighIn: { time, weight in
+                                saveWeighIn(time, weight)
+
+                                // ✅ Close the semi-circle after saving
+                                isPlusButtonPressed = false
+                                showSemiCircle = false
+                                currentRadius = 10
+                            },
+                            fadeOut: $fadeOut
+                        )
+                    case .addWorkout:
+                        WorkoutView(closeAction: closeWithAnimation)
+                    }
                 }
+            }
+        }
+    }
+
+    private func closeWithAnimation() {
+        withAnimation {
+            fadeOut = true // ✅ Start fade-out animation
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            withAnimation {
+                activeView = nil // ✅ Reset active view AFTER fade completes
+                fadeOut = false  // ✅ Reset fade state for next opening
             }
         }
     }
