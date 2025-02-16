@@ -67,6 +67,7 @@ struct WaterTrackerView: View {
         }
         .contentShape(Rectangle())
         .onTapGesture {
+            print("🚀 Water progress bar tapped!")
             isWaterPickerPresented = true
         }
     }

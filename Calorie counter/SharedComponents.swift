@@ -639,6 +639,7 @@ struct WaterGoalPicker: View {
         }
         .onAppear {
             selectedValue = Double(selectedGoal)
+            print("🚀 WaterGoalPicker is now visible!")
         }
     }
 

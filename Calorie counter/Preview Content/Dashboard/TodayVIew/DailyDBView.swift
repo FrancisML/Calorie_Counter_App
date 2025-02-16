@@ -217,6 +217,19 @@ struct DailyDBView: View {
             // ✅ Diary Section
             DiaryView(diaryEntries: diaryEntries)
         }
+        .overlay(
+            isWaterPickerPresented ? WaterGoalPicker(
+                useMetric: useMetric,
+                selectedGoal: $waterGoal,
+                isWaterPickerPresented: $isWaterPickerPresented,
+                selectedUnit: $selectedUnit
+            )
+            .background(Color.clear) // ✅ Prevents dark background
+            .zIndex(10) // ✅ Ensures it appears on top
+            : nil
+        )
+        .animation(nil, value: isWaterPickerPresented) // ✅ Prevents transition effect
+
         .onAppear {
             loadWeighInsForDate(selectedDate)
         }

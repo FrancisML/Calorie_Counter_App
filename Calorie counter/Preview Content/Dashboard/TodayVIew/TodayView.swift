@@ -85,14 +85,7 @@ struct TodayView: View {
                 weighIns: $weighIns // ✅ Pass weighIns as a binding
             )
 
-            .sheet(isPresented: $isWaterPickerPresented) {
-                WaterGoalPicker(
-                    useMetric: useMetric,
-                    selectedGoal: $waterGoal,
-                    isWaterPickerPresented: $isWaterPickerPresented,
-                    selectedUnit: $selectedUnit // ✅ Correctly passed as a binding!
-                )
-            }
+            
 
 
 
