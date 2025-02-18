@@ -1,20 +1,18 @@
-//
-//  AddWater.swift
-//  Calorie counter
-//
-//  Created by frank lasalvia on 2/13/25.
-//
 import SwiftUI
 
 struct AddWaterView: View {
     var closeAction: () -> Void
-    
+    @Binding var diaryEntries: [DiaryEntry]
+
+    @State private var selectedUnit: String = "fl oz"
+    @State private var selectedAmount: String = "8"
+
     var body: some View {
         GeometryReader { geometry in
-            let safeAreaTopInset = geometry.safeAreaInsets.top // ✅ Get the top safe area size
+            let safeAreaTopInset = geometry.safeAreaInsets.top
             
             VStack(spacing: 0) {
-                // ✅ Title Bar (Now Adjusts for Notch)
+                // ✅ Title Bar
                 ZStack {
                     Rectangle()
                         .fill(Styles.secondaryBackground)
@@ -27,31 +25,70 @@ struct AddWaterView: View {
                         .foregroundColor(Styles.primaryText)
                 }
                 .frame(maxWidth: .infinity)
-                .padding(.top, safeAreaTopInset) // ✅ Pushes title bar below notch
+                .padding(.top, safeAreaTopInset)
 
-                Spacer().frame(height: 20) // 🔥 Additional spacing if needed
+                Spacer().frame(height: 20)
 
-                // ✅ Placeholder Content (Replace with actual UI)
-                VStack {
-                    Text("Add Water Content Goes Here")
+                // ✅ Inline Water Picker
+                VStack(spacing: 20) {
+                    Text("Select Water Intake")
                         .font(.title)
                         .foregroundColor(Styles.primaryText)
-                        .padding()
-                    
-                    Spacer()
+
+                    HStack {
+                        // Amount Picker
+                        Picker("Amount", selection: $selectedAmount) {
+                            ForEach(amountsForSelectedUnit(), id: \.self) { amount in
+                                Text(amount)
+                                    .foregroundColor(Styles.primaryText)
+                                    .font(.system(size: 36, weight: .medium))
+                                    .frame(height: 60)
+                                    .tag(amount)
+                            }
+                        }
+                        .pickerStyle(WheelPickerStyle())
+                        .frame(maxWidth: .infinity)
+
+                        // Unit Picker
+                        Picker("Unit", selection: $selectedUnit) {
+                            ForEach(["Gallons", "Liters", "Milliliters", "fl oz"], id: \.self) { unit in
+                                Text(unit)
+                                    .foregroundColor(Styles.primaryText)
+                                    .font(.system(size: 36, weight: .medium))
+                                    .frame(height: 60)
+                                    .tag(unit)
+                            }
+                        }
+                        .pickerStyle(WheelPickerStyle())
+                        .frame(maxWidth: .infinity)
+                    }
+                    .frame(height: 200)
+                    .padding(.horizontal, 20)
+                    .onChange(of: selectedUnit) { newUnit in
+                        // ✅ When unit changes, update selectedAmount to the first valid option
+                        selectedAmount = amountsForSelectedUnit().first ?? "8"
+                    }
+
+                    // ✅ Added WaterInput Image Below Picker
+                    Image("WaterInput")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: geometry.size.width * 0.8)
+                        .padding(.top, 20)
+                        .shadow(radius: 5)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .frame(maxWidth: .infinity)
+
+                Spacer()
 
                 // ✅ Bottom Navigation Bar
                 ZStack {
-                    // Background Bar (Same as Dashboard)
                     Rectangle()
                         .fill(Styles.secondaryBackground)
                         .frame(height: 96)
                         .shadow(radius: 5)
 
                     HStack {
-                        // Red X Button (Closes View)
                         ZStack {
                             Circle()
                                 .fill(Color.red)
@@ -62,33 +99,71 @@ struct AddWaterView: View {
                                 .font(.largeTitle)
                                 .foregroundColor(.white)
                         }
-                        .onTapGesture {
-                            closeAction()
-                        }
+                        .onTapGesture { closeAction() }
 
-                        Spacer().frame(width: 100) // 🔥 Adjusted spacing
+                        Spacer().frame(width: 100)
 
-                        // "+" Button (Same Size & Position as Dashboard, But No Functionality)
                         ZStack {
                             Circle()
                                 .fill(Styles.primaryText)
                                 .frame(width: 80, height: 80)
                                 .shadow(radius: 5)
 
-                            Image(systemName: "plus")
+                            Image(systemName: "plus") // ✅ "+" button now saves entry
                                 .font(.largeTitle)
                                 .foregroundColor(Styles.secondaryBackground)
                         }
+                        .onTapGesture {
+                            saveWaterEntry()
+                        }
                     }
-                    .padding(.horizontal, 30) // 🔥 Reduced padding from 40 → 30
+                    .padding(.horizontal, 30)
                     .frame(maxWidth: .infinity)
-                    .offset(y: -36) // Matches dashboard "+" button's position
+                    .offset(y: -36)
                 }
                 .frame(height: 96)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Styles.secondaryBackground) // ✅ Sets the entire background color
+            .background(Styles.secondaryBackground)
             .edgesIgnoringSafeArea(.all)
         }
+    }
+
+    // ✅ Function to Save Water Entry
+    private func saveWaterEntry() {
+        let newEntry = DiaryEntry(
+            time: formattedCurrentTime(),
+            iconName: "water",
+            description: "Water",
+            detail: "\(selectedAmount) \(selectedUnit)", // ✅ Always correct now
+            calories: 0,
+            type: "Water"
+        )
+
+        diaryEntries.append(newEntry) // ✅ Adds entry to diary
+        closeAction() // ✅ Closes the view after saving
+    }
+
+    // ✅ Returns available amounts based on selected unit
+    private func amountsForSelectedUnit() -> [String] {
+        switch selectedUnit {
+        case "Gallons":
+            return ["1/4", "1/2", "3/4", "1"]
+        case "Liters":
+            return stride(from: 0.25, through: 4.0, by: 0.25).map { String(format: "%.2f", $0) }
+        case "Milliliters":
+            return stride(from: 30, through: 3750, by: 30).map { "\($0)" }
+        case "fl oz":
+            return (1...128).map { "\($0)" }
+        default:
+            return []
+        }
+    }
+
+    // ✅ Function to get the current time in "h:mm a" format
+    private func formattedCurrentTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        return formatter.string(from: Date())
     }
 }

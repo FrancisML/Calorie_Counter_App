@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DailyDBView: View {
     @Binding var selectedDate: Date
-    var diaryEntries: [DiaryEntry]
+    @Binding var diaryEntries: [DiaryEntry]
     var highestStreak: Int32
     
     var calorieProgress: CGFloat {
@@ -215,7 +215,7 @@ struct DailyDBView: View {
             .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 3)
             
             // ✅ Diary Section
-            DiaryView(diaryEntries: diaryEntries)
+            DiaryView(diaryEntries: $diaryEntries)
         }
         .overlay(
             isWaterPickerPresented ? WaterGoalPicker(

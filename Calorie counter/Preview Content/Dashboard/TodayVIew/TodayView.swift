@@ -27,12 +27,9 @@ struct TodayView: View {
 
 
 
-    @State private var diaryEntries: [DiaryEntry] = [
-        DiaryEntry(time: "8:00 AM", iconName: "food", description: "Eggs", detail: "2 eggs", calories: 250, type: "Food"),
-        DiaryEntry(time: "10:00 AM", iconName: "workout", description: "Cycling", detail: "30 min", calories: 300, type: "Workout"),
-        DiaryEntry(time: "12:30 PM", iconName: "food", description: "Chicken Salad", detail: "1 bowl", calories: 500, type: "Food"),
-        DiaryEntry(time: "2:00 PM", iconName: "water", description: "Water", detail: "500ml", calories: 0, type: "Water")
-    ]
+    @Binding var diaryEntries: [DiaryEntry]
+     
+    
 
     @State private var calorieProgress: CGFloat = 0
     @State private var calorieGoal: CGFloat = 100
@@ -78,7 +75,7 @@ struct TodayView: View {
 
             DailyDBView(
                 selectedDate: $selectedDate,
-                diaryEntries: diaryEntries,
+                diaryEntries: $diaryEntries,
                 highestStreak: highestStreak,
                 calorieGoal: CGFloat(dailyCalorieGoal),
                 useMetric: useMetric,

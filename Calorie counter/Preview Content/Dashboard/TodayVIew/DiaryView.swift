@@ -15,7 +15,7 @@
 import SwiftUI
 
 struct DiaryView: View {
-    var diaryEntries: [DiaryEntry]
+    @Binding var diaryEntries: [DiaryEntry] // ✅ Make it editable
 
     var body: some View {
         VStack(spacing: 0) {
@@ -58,4 +58,3 @@ struct DiaryView: View {
         }
     }
 }
-

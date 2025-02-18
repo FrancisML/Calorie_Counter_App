@@ -10,6 +10,7 @@ struct DashboardView: View {
     @State private var fadeOut: Bool = false // ✅ Added fadeOut state
     private let maxRadius: CGFloat = 160 // Max expansion
     private let minRadius: CGFloat = 10  // Min expansion
+    @State private var diaryEntries: [DiaryEntry] = []
 
     enum Tab {
         case today, past, progress, settings
@@ -26,7 +27,8 @@ struct DashboardView: View {
                 ZStack {
                     switch selectedTab {
                     case .today:
-                        TodayView(weighIns: $weighIns) // ✅ Pass delete function
+                        TodayView(weighIns: $weighIns, diaryEntries: $diaryEntries) // ✅ Pass diaryEntries as a binding
+ // ✅ Pass delete function
                     case .past:
                         PastView()
                     case .progress:
@@ -157,8 +159,8 @@ struct DashboardView: View {
                     showSemiCircle: $showSemiCircle,
                     currentRadius: $currentRadius,
                     fadeOut: $fadeOut,
-                    activeView: $activeView // ✅ Pass as a binding (Fix)
-                )
+                    activeView: $activeView, // ✅ Pass as a binding (Fix)
+                    diaryEntries: $diaryEntries                )
             }
 
 
@@ -219,6 +221,7 @@ struct FullScreenOverlay: View {
     @Binding var currentRadius: CGFloat
     @Binding var fadeOut: Bool
     @Binding var activeView: DashboardView.ActiveView? // ✅ Make it optional to handle closing properly
+    @Binding var diaryEntries: [DiaryEntry]
 
     var body: some View {
         ZStack {
@@ -232,7 +235,11 @@ struct FullScreenOverlay: View {
                     case .addFood:
                         AddFoodView(closeAction: closeWithAnimation)
                     case .addWater:
-                        AddWaterView(closeAction: closeWithAnimation)
+                        AddWaterView(
+                            closeAction: closeWithAnimation,
+                            diaryEntries: $diaryEntries // ✅ Pass the binding
+                        )
+
                     case .weighIn:
                         WeighInView(
                             closeAction: closeWithAnimation,

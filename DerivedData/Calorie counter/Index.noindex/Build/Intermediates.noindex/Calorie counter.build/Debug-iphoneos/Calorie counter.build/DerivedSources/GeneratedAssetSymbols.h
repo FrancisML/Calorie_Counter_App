@@ -66,6 +66,9 @@ static NSString * const ACImageNameSliderIcon AC_SWIFT_PRIVATE = @"SliderIcon";
 /// The "SliderIconDark" asset catalog image resource.
 static NSString * const ACImageNameSliderIconDark AC_SWIFT_PRIVATE = @"SliderIconDark";
 
+/// The "WaterInput" asset catalog image resource.
+static NSString * const ACImageNameWaterInput AC_SWIFT_PRIVATE = @"WaterInput";
+
 /// The "age" asset catalog image resource.
 static NSString * const ACImageNameAge AC_SWIFT_PRIVATE = @"age";
 

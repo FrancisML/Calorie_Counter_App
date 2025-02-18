@@ -5,6 +5,7 @@
 //  Created by frank lasalvia on 2/12/25.
 //
 
+
 import SwiftUI
 
 struct WaterTrackerView: View {
@@ -14,7 +15,7 @@ struct WaterTrackerView: View {
     @Binding var isWaterPickerPresented: Bool
     
     var totalDailyWater: CGFloat {
-        convertWaterUnit(amount: totalWaterIntake(), from: "fl oz", to: selectedUnit)
+        totalWaterIntake()
     }
     
     var body: some View {
@@ -32,17 +33,10 @@ struct WaterTrackerView: View {
                         .foregroundColor(Styles.primaryText)
                     Spacer()
 
-                    // ✅ Display logic for text
-                    Text(waterGoal == 0 ?
-                        (selectedUnit == "Gallons" ? String(format: "%.2f", totalDailyWater) + " \(selectedUnit)" :
-                        "\(Int(totalDailyWater)) \(selectedUnit)") :
-                        (selectedUnit == "Gallons" ?
-                            String(format: "%.2f", totalDailyWater) + " / " + formattedGallonGoal(waterGoal) + " \(selectedUnit)" :
-                            "\(Int(totalDailyWater)) / \(Int(waterGoal)) \(selectedUnit)"
-                        )
-                    )
-                    .font(.subheadline)
-                    .foregroundColor(Styles.secondaryText)
+                    // ✅ Display text with shortened unit names
+                    Text(displayWaterText())
+                        .font(.subheadline)
+                        .foregroundColor(Styles.secondaryText)
                 }
 
                 // ✅ Progress Bar
@@ -52,14 +46,15 @@ struct WaterTrackerView: View {
                             .fill(Styles.primaryText.opacity(0.2))
                             .frame(height: 20)
 
-                        Rectangle()
-                            .fill(Styles.primaryText)
-                            .frame(
-                                width: waterGoal == 0 ? geometry.size.width : // ✅ Full bar if no goal
-                                    min((totalDailyWater / max(waterGoal, 0.01)) * geometry.size.width, geometry.size.width),
-                                height: 20
-                            )
-                            .animation(.easeInOut(duration: 0.3), value: totalDailyWater)
+                        if shouldShowProgressBar() {
+                            Rectangle()
+                                .fill(Styles.primaryText)
+                                .frame(
+                                    width: min((totalDailyWater / max(waterGoal, 0.01)) * geometry.size.width, geometry.size.width),
+                                    height: 20
+                                )
+                                .animation(.easeInOut(duration: 0.3), value: totalDailyWater)
+                        }
                     }
                 }
                 .frame(height: 20)
@@ -72,42 +67,74 @@ struct WaterTrackerView: View {
         }
     }
     
-    // ✅ Convert total water intake to fl oz for calculations
+    // ✅ Fix for progress bar being full at app launch
+    private func shouldShowProgressBar() -> Bool {
+        return waterGoal > 0 || totalDailyWater > 0
+    }
+
+    // ✅ Convert total water intake to match the user’s selected unit
     private func totalWaterIntake() -> CGFloat {
         var totalIntake: CGFloat = 0
         for entry in diaryEntries where entry.type == "Water" {
-            let amount = extractWaterAmount(entry.detail)
-            let unit = extractWaterUnit(entry.detail)
-            let convertedAmount = convertWaterUnit(amount: amount, from: unit, to: "fl oz")
+            let (amount, unit) = extractWaterAmountAndUnit(entry.detail)
+            let convertedAmount = convertWaterUnit(amount: amount, from: unit, to: selectedUnit)
             totalIntake += convertedAmount
         }
         return totalIntake
     }
     
-    // ✅ Extract numeric value from entry detail
-    private func extractWaterAmount(_ detail: String) -> CGFloat {
-        let numberString = detail.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-        return CGFloat(Double(numberString) ?? 0)
-    }
-
-    // ✅ Extract unit from water entry
-    private func extractWaterUnit(_ detail: String) -> String {
-        if detail.contains("ml") { return "ml" }
-        if detail.contains("L") { return "L" }
-        if detail.contains("gal") { return "gal" }
-        if detail.contains("fl oz") { return "fl oz" }
-        return "ml" // Default to ml if no unit found
-    }
-
-    // ✅ Format gallon goals as fractions
-    private func formattedGallonGoal(_ goal: CGFloat) -> String {
-        let fractionMap: [CGFloat: String] = [
-            0.25: "1/4",
-            0.5: "1/2",
-            0.75: "3/4",
-            1.0: "1"
+    // ✅ Extract numeric value and unit from entry detail (Handles Fractions & fl oz)
+    private func extractWaterAmountAndUnit(_ detail: String) -> (CGFloat, String) {
+        let fractionMap: [String: CGFloat] = [
+            "1/4": 0.25,
+            "1/2": 0.5,
+            "3/4": 0.75,
+            "1": 1.0
         ]
-        return fractionMap[goal] ?? String(format: "%.2f", goal)
+        
+        let components = detail.split(separator: " ")
+        if components.count == 2 {
+            let amountString = String(components[0])
+            let unit = String(components[1])
+
+            if let fractionValue = fractionMap[amountString] {
+                return (fractionValue, unit)
+            } else if let amount = Double(amountString) {
+                return (CGFloat(amount), unit)
+            }
+        } else if detail.contains("fl oz") {
+            let numberString = detail.replacingOccurrences(of: "fl oz", with: "").trimmingCharacters(in: .whitespaces)
+            if let amount = Double(numberString) {
+                return (CGFloat(amount), "fl oz")
+            }
+        }
+
+        return (0, "ml") // Default to ml if extraction fails
+    }
+
+    // ✅ Format number display for water amounts
+    private func formattedAmount(_ amount: CGFloat) -> String {
+        return selectedUnit == "Gallons" ? String(format: "%.2f", amount) : "\(Int(amount))"
+    }
+
+    // ✅ Convert unit names for display in the progress bar & diary entries
+    private func shortenUnit(_ unit: String) -> String {
+        switch unit {
+        case "Gallons": return "gal"
+        case "Liters": return "L"
+        case "Milliliters": return "ml"
+        default: return unit // "fl oz" remains unchanged
+        }
+    }
+
+    // ✅ Display text logic for Water Progress Bar
+    private func displayWaterText() -> String {
+        if waterGoal == 0 && totalDailyWater == 0 {
+            return "0 \(shortenUnit(selectedUnit))" // ✅ Empty when there's no data
+        }
+        return waterGoal == 0
+            ? "\(formattedAmount(totalDailyWater)) \(shortenUnit(selectedUnit))"
+            : "\(formattedAmount(totalDailyWater)) / \(formattedAmount(waterGoal)) \(shortenUnit(selectedUnit))"
     }
 
     // ✅ Convert between different water units
@@ -117,19 +144,19 @@ struct WaterTrackerView: View {
         let mlPerLiter: CGFloat = 1000
 
         var amountInMl: CGFloat
-        switch fromUnit {
-        case "Milliliters", "ml": amountInMl = amount
-        case "Liters", "L": amountInMl = amount * mlPerLiter
-        case "Gallons", "gal": amountInMl = amount * mlPerGallon
-        case "fl oz": amountInMl = amount * mlPerFlOz
+        switch fromUnit.lowercased() {
+        case "milliliters", "ml": amountInMl = amount
+        case "liters", "l": amountInMl = amount * mlPerLiter
+        case "gallons", "gal": amountInMl = amount * mlPerGallon
+        case "fl", "fl oz": amountInMl = amount * mlPerFlOz
         default: return amount
         }
 
-        switch toUnit {
-        case "Milliliters", "ml": return amountInMl
-        case "Liters", "L": return amountInMl / mlPerLiter
-        case "Gallons", "gal": return amountInMl / mlPerGallon
-        case "fl oz": return amountInMl / mlPerFlOz
+        switch toUnit.lowercased() {
+        case "milliliters", "ml": return amountInMl
+        case "liters", "l": return amountInMl / mlPerLiter
+        case "gallons", "gal": return amountInMl / mlPerGallon
+        case "fl", "fl oz": return amountInMl / mlPerFlOz
         default: return amount
         }
     }

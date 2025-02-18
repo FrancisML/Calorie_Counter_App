@@ -210,6 +210,16 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameWaterInput</string>
+			<key>relativePath</key>
+			<string>./WaterInput.imageset</string>
+			<key>swiftSymbol</key>
+			<string>waterInput</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameAge</string>
 			<key>relativePath</key>
 			<string>./age.imageset</string>

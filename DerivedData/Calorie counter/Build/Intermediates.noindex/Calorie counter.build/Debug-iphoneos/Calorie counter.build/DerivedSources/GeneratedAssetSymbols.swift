@@ -91,6 +91,9 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "SliderIconDark" asset catalog image resource.
     static let sliderIconDark = DeveloperToolsSupport.ImageResource(name: "SliderIconDark", bundle: resourceBundle)
 
+    /// The "WaterInput" asset catalog image resource.
+    static let waterInput = DeveloperToolsSupport.ImageResource(name: "WaterInput", bundle: resourceBundle)
+
     /// The "age" asset catalog image resource.
     static let age = DeveloperToolsSupport.ImageResource(name: "age", bundle: resourceBundle)
 
@@ -368,6 +371,15 @@ extension AppKit.NSImage {
     static var sliderIconDark: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .sliderIconDark)
+#else
+        .init()
+#endif
+    }
+
+    /// The "WaterInput" asset catalog image.
+    static var waterInput: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .waterInput)
 #else
         .init()
 #endif
@@ -745,6 +757,15 @@ extension UIKit.UIImage {
     static var sliderIconDark: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .sliderIconDark)
+#else
+        .init()
+#endif
+    }
+
+    /// The "WaterInput" asset catalog image.
+    static var waterInput: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .waterInput)
 #else
         .init()
 #endif

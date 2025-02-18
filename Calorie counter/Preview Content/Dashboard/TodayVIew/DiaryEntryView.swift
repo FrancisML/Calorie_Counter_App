@@ -3,7 +3,7 @@
 //  Calorie counter
 //
 //  Created by frank lasalvia on 2/12/25.
-//
+
 import SwiftUI
 
 // 🔹 DIARY ENTRY ROW COMPONENT (With Timestamp & Alternating Colors)
@@ -28,20 +28,25 @@ struct DiaryEntryRow: View {
                     .font(.headline)
                     .foregroundColor(Styles.primaryText)
 
-                Text(entry.detail)
-                    .font(.subheadline)
-                    .foregroundColor(Styles.secondaryText)
             }
 
             Spacer()
 
-            Text(entry.type == "Water" ? entry.detail : entry.type == "Workout" ? "-\(entry.calories)" : "+\(entry.calories)")
-            // ✅ Ensures workouts are negative, water is 0
+            Text(entry.type == "Water" ? shortenWaterEntry(entry.detail) : entry.type == "Workout" ? "-\(entry.calories)" : "+\(entry.calories)")
+            // ✅ Ensures workouts are negative, food is positive, and water displays properly
                 .font(.subheadline)
                 .foregroundColor(entry.type == "Food" ? .green : entry.type == "Workout" ? .red : .blue)
                 .frame(width: 60, alignment: .trailing)
         }
         .padding(.vertical, 5)
+    }
+
+    // ✅ Function to shorten unit names inside diary water entries
+    private func shortenWaterEntry(_ detail: String) -> String {
+        return detail
+            .replacingOccurrences(of: "Gallons", with: "gal")
+            .replacingOccurrences(of: "Liters", with: "L")
+            .replacingOccurrences(of: "Milliliters", with: "ml")
     }
 }
 
@@ -56,11 +61,5 @@ struct DiaryEntry: Identifiable {
     let type: String
 }
 
-// 🔹 SAMPLE DATA FOR TESTING
-let sampleDiaryEntries = [
-    DiaryEntry(time: "8:00 AM", iconName: "food", description: "Oatmeal", detail: "1 cup", calories: 250, type: "Food"),
-    DiaryEntry(time: "10:00 AM", iconName: "workout", description: "Cycling", detail: "30 min", calories: 300, type: "Workout"),
-    DiaryEntry(time: "12:30 PM", iconName: "food", description: "Chicken Breast", detail: "200g", calories: 500, type: "Food"),
-    DiaryEntry(time: "2:00 PM", iconName: "water", description: "Water", detail: "500ml", calories: 0, type: "Water")
-]
+
 
