@@ -5,9 +5,14 @@
 //  Created by frank lasalvia on 2/18/25.
 //
 
+
 import SwiftUI
 
 struct QuickWKAddView: View {
+    @Binding var diaryEntries: [DiaryEntry] // ✅ Binding to update the diary
+    var saveWorkout: (String, String, String, String, UIImage?) -> Void // ✅ Function to save workout
+    var closeAction: () -> Void // ✅ Function to close the view
+
     @State private var workoutImage: UIImage? = UIImage(named: "DefaultWorkout") // ✅ Default image
     @State private var workoutName: String = ""
     @State private var duration: String = ""
@@ -111,6 +116,9 @@ struct QuickWKAddView: View {
             .padding(.horizontal)
 
             Spacer()
+
+            // ✅ Bottom Navigation Bar (Ensures Save & Close Work Properly)
+            bottomNavBar()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Styles.secondaryBackground)
@@ -139,6 +147,95 @@ struct QuickWKAddView: View {
         return "\(selectedHour):\(String(format: "%02d", selectedMinute)) \(selectedPeriod)"
     }
 
+    // ✅ Save Workout to Diary (Fixes Missing Data Issue)
+    func saveWorkoutToDiary() {
+        let trimmedName = workoutName.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimmedDuration = duration.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimmedCalories = calories.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        guard !trimmedName.isEmpty, !trimmedDuration.isEmpty, !trimmedCalories.isEmpty else {
+            print("⚠️ Missing required fields")
+            return
+        }
+
+        let durationText = formatDuration(trimmedDuration)
+        let caloriesValue = Int(trimmedCalories) ?? 0
+        
+        let newEntry = DiaryEntry(
+            time: formattedTime,
+            iconName: "CustomWorkout", // Default if no image
+            description: trimmedName,
+            detail: durationText,
+            calories: -caloriesValue,
+            type: "Workout",
+            imageData: workoutImage?.jpegData(compressionQuality: 0.8) // ✅ Convert UIImage to Data
+        )
+
+        DispatchQueue.main.async {
+            diaryEntries.append(newEntry)
+        }
+
+        closeAction()
+    }
+ 
+    private func formatDuration(_ duration: String) -> String {
+        if let minutes = Int(duration), minutes >= 60 {
+            let hours = minutes / 60
+            let remainingMinutes = minutes % 60
+            return remainingMinutes == 0 ? "\(hours) hr" : "\(hours) hr \(remainingMinutes) min"
+        }
+        return "\(duration) min"
+    }
+
+
+    // ✅ Bottom Navigation Bar
+    private func bottomNavBar() -> some View {
+        ZStack {
+            Rectangle()
+                .fill(Styles.secondaryBackground)
+                .frame(height: 96)
+                .shadow(radius: 5)
+
+            HStack {
+                // 🔴 X Button (Closes View)
+                ZStack {
+                    Circle()
+                        .fill(Color.red)
+                        .frame(width: 80, height: 80)
+                        .shadow(radius: 5)
+
+                    Image(systemName: "xmark")
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                }
+                .onTapGesture {
+                    closeAction() // ✅ Closes view when tapped
+                }
+
+                Spacer().frame(width: 100) // ✅ Adjusted spacing
+
+                // ➕ "+" Button (Saves Workout & Closes)
+                ZStack {
+                    Circle()
+                        .fill(Styles.primaryText)
+                        .frame(width: 80, height: 80)
+                        .shadow(radius: 5)
+
+                    Image(systemName: "plus")
+                        .font(.largeTitle)
+                        .foregroundColor(Styles.secondaryBackground)
+                }
+                .onTapGesture {
+                    saveWorkoutToDiary() // ✅ Saves workout and closes view
+                }
+            }
+            .padding(.horizontal, 30)
+            .frame(maxWidth: .infinity)
+            .offset(y: -36)
+        }
+        .frame(height: 96)
+    }
+
     // ✅ Time Picker Overlay
     private var timePickerOverlay: some View {
         ZStack {
@@ -150,60 +247,25 @@ struct QuickWKAddView: View {
                     .font(.headline)
                     .foregroundColor(Styles.primaryText)
 
-                timePicker
-                    .padding(.horizontal)
+                FloatingInputWithAction(
+                    placeholder: " Time ",
+                    displayedText: formattedTime,
+                    action: { showTimePicker = true },
+                    hasPickedValue: .constant(true) // ✅ Added missing argument
+                )
 
-                HStack {
-                    Button("Cancel") {
-                        showTimePicker = false
-                    }
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(Styles.primaryText)
+                    .padding()
 
-                    Button("Save") {
-                        showTimePicker = false
-                    }
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.blue)
+                Button("Close") {
+                    showTimePicker = false
                 }
-                .padding(.horizontal)
+                .padding()
+                .foregroundColor(.blue)
             }
-            .padding(20)
+            .padding()
             .background(Styles.secondaryBackground)
-            .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
-            .frame(width: UIScreen.main.bounds.width * 0.9)
-        }
-    }
-
-    // ✅ Time Picker (3 Columns: Hours, Minutes, AM/PM)
-    private var timePicker: some View {
-        HStack {
-            Picker("Hour", selection: $selectedHour) {
-                ForEach(1...12, id: \.self) { hour in
-                    Text("\(hour)").tag(hour)
-                }
-            }
-            .pickerStyle(WheelPickerStyle())
-            .frame(width: UIScreen.main.bounds.width * 0.2)
-            .clipped()
-
-            Picker("Minutes", selection: $selectedMinute) {
-                ForEach(0..<60, id: \.self) { minute in
-                    Text("\(String(format: "%02d", minute))").tag(minute)
-                }
-            }
-            .pickerStyle(WheelPickerStyle())
-            .frame(width: UIScreen.main.bounds.width * 0.2)
-            .clipped()
-
-            Picker("AM/PM", selection: $selectedPeriod) {
-                Text("AM").tag("AM")
-                Text("PM").tag("PM")
-            }
-            .pickerStyle(WheelPickerStyle())
-            .frame(width: UIScreen.main.bounds.width * 0.2)
-            .clipped()
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .shadow(radius: 5)
         }
     }
 }
-

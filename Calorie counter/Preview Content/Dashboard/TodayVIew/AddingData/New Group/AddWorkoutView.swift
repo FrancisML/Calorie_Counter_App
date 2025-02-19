@@ -4,21 +4,30 @@
 //
 //  Created by frank lasalvia on 2/13/25.
 //
+
+//
+//  AddWorkout.swift
+//  Calorie counter
+//
+//  Created by frank lasalvia on 2/13/25.
+//
+
 import SwiftUI
 
 struct WorkoutView: View {
     var closeAction: () -> Void
     @State private var searchText: String = "" // ✅ Search text state
     @State private var selectedTab: WorkoutTab = .quickAdd // ✅ Default to Quick Add
-
+    @Binding var diaryEntries: [DiaryEntry] // ✅ Make sure this is a binding
+    
     enum WorkoutTab {
         case quickAdd, advancedAdd
     }
-
+    
     var body: some View {
         GeometryReader { geometry in
             let safeAreaTopInset = geometry.safeAreaInsets.top
-
+            
             VStack(spacing: 0) {
                 // ✅ Title Bar
                 ZStack {
@@ -26,7 +35,7 @@ struct WorkoutView: View {
                         .fill(Styles.secondaryBackground)
                         .frame(height: 80)
                         .shadow(color: Color.black.opacity(0.2), radius: 4, y: 4)
-
+                    
                     Text("Add Workout")
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -34,12 +43,12 @@ struct WorkoutView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.top, safeAreaTopInset)
-
+                
                 // ✅ Search Bar
                 HStack {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(Styles.secondaryText)
-
+                    
                     TextField("Search workouts...", text: $searchText)
                         .textFieldStyle(PlainTextFieldStyle())
                         .foregroundColor(Styles.primaryText)
@@ -51,14 +60,14 @@ struct WorkoutView: View {
                 .padding(.horizontal, 20)
                 .padding(.top, 16)
                 .padding(.bottom, 16)
-
+                
                 // ✅ Tabs Section
                 ZStack {
                     Rectangle()
                         .fill(Styles.secondaryBackground)
                         .frame(width: geometry.size.width, height: 50)
                         .shadow(radius: 2)
-
+                    
                     HStack(spacing: 0) {
                         tabButton(title: "Quick Add", selected: selectedTab == .quickAdd) {
                             selectedTab = .quickAdd
@@ -69,26 +78,25 @@ struct WorkoutView: View {
                     }
                     .frame(width: geometry.size.width, height: 50)
                 }
-
+                
                 // ✅ Content Area
                 VStack {
                     if selectedTab == .quickAdd {
-                        QuickWKAddView()
+                        QuickWKAddView(diaryEntries: $diaryEntries, saveWorkout: saveWorkoutToDiary, closeAction: closeAction)
                     } else {
                         ADVWorkoutAddView()
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-
-                // ✅ Final Fixed Bottom Navigation Bar
-                bottomNavBar()
+                
+                
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Styles.secondaryBackground)
             .edgesIgnoringSafeArea(.all)
         }
     }
-
+    
     // ✅ Tab Button Component
     private func tabButton(title: String, selected: Bool, action: @escaping () -> Void) -> some View {
         Text(title)
@@ -102,49 +110,46 @@ struct WorkoutView: View {
                 }
             }
     }
-
-    // ✅ Bottom Navigation Bar with Perfected Spacing
-    private func bottomNavBar() -> some View {
-        ZStack {
-            Rectangle()
-                .fill(Styles.secondaryBackground)
-                .frame(height: 96)
-                .shadow(radius: 5)
-
-            HStack {
-                // 🔴 X Button (Closes View)
-                ZStack {
-                    Circle()
-                        .fill(Color.red)
-                        .frame(width: 80, height: 80)
-                        .shadow(radius: 5)
-
-                    Image(systemName: "xmark")
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                }
-                .onTapGesture {
-                    closeAction()
-                }
-
-                Spacer().frame(width: 100) // ✅ Adjusted spacing to a sweet spot
-
-                // ➕ "+" Button (Matches Dashboard)
-                ZStack {
-                    Circle()
-                        .fill(Styles.primaryText)
-                        .frame(width: 80, height: 80)
-                        .shadow(radius: 5)
-
-                    Image(systemName: "plus")
-                        .font(.largeTitle)
-                        .foregroundColor(Styles.secondaryBackground)
-                }
-            }
-            .padding(.horizontal, 30) // ✅ Ensures balanced button spacing
-            .frame(maxWidth: .infinity)
-            .offset(y: -36) // ✅ Matches dashboard "+" button's position
+    
+    // ✅ Save Workout Entry to Diary
+    private func saveWorkoutToDiary(workoutName: String, duration: String, calories: String, time: String, image: UIImage?) {
+        guard !workoutName.isEmpty, !duration.isEmpty, !calories.isEmpty else {
+            print("⚠️ Missing required fields") // ✅ Prevents saving incomplete workouts
+            return
         }
-        .frame(height: 96)
+
+        let durationText = formatDuration(duration)
+        let caloriesValue = Int(calories) ?? 0 // ✅ Safely unwrap optional
+
+        let newEntry = DiaryEntry(
+            time: time,
+            iconName: image != nil ? "CustomWorkout" : "DefaultWorkout",
+            description: workoutName,
+            detail: durationText,
+            calories: -caloriesValue, // ✅ Ensure workouts show negative calories
+            type: "Workout",
+            imageData: image?.jpegData(compressionQuality: 0.8) // ✅ Convert UIImage to Data
+        )
+
+        DispatchQueue.main.async {
+            diaryEntries.append(newEntry) // ✅ Update the diary entry list
+        }
+
+        print("✅ Workout Saved: \(newEntry)") // ✅ Log saved workout
+        closeAction() // ✅ Closes the view after saving
     }
+
+    
+    // ✅ Helper Function to Format Duration Correctly
+    private func formatDuration(_ duration: String) -> String {
+        if let minutes = Int(duration), minutes >= 60 {
+            let hours = minutes / 60
+            let remainingMinutes = minutes % 60
+            return remainingMinutes == 0 ? "\(hours) hr" : "\(hours) hr \(remainingMinutes) min"
+        }
+        return "\(duration) min"
+    }
+    
+    // ✅ Bottom Navigation Bar
+    
 }

@@ -133,16 +133,22 @@ struct AddWaterView: View {
     private func saveWaterEntry() {
         let newEntry = DiaryEntry(
             time: formattedCurrentTime(),
-            iconName: "water",
+            iconName: "water", // ✅ Always use the "water" image
             description: "Water",
-            detail: "\(selectedAmount) \(selectedUnit)", // ✅ Always correct now
+            detail: "\(selectedAmount) \(selectedUnit)", // ✅ Correctly formatted detail
             calories: 0,
-            type: "Water"
+            type: "Water",
+            imageData: nil // ✅ Water entries don't need a custom image
         )
 
-        diaryEntries.append(newEntry) // ✅ Adds entry to diary
-        closeAction() // ✅ Closes the view after saving
+        DispatchQueue.main.async {
+            diaryEntries.append(newEntry) // ✅ Works properly
+            print("✅ Water Entry Added: \(diaryEntries.count) total entries")
+        }
+
+        closeAction()
     }
+
 
     // ✅ Returns available amounts based on selected unit
     private func amountsForSelectedUnit() -> [String] {

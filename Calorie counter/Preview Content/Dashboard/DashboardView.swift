@@ -254,7 +254,7 @@ struct FullScreenOverlay: View {
                             fadeOut: $fadeOut
                         )
                     case .addWorkout:
-                        WorkoutView(closeAction: closeWithAnimation)
+                        WorkoutView(closeAction: closeWithAnimation, diaryEntries: $diaryEntries)
                     }
                 }
             }

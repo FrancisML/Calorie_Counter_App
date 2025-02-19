@@ -8,6 +8,7 @@ import SwiftUI
 
 struct ADVWorkoutAddView: View {
     @State private var selectedCategory: WorkoutCategory? = nil // ✅ Tracks selected category
+    
 
     enum WorkoutCategory {
         case sports, exercise, outdoors, custom
