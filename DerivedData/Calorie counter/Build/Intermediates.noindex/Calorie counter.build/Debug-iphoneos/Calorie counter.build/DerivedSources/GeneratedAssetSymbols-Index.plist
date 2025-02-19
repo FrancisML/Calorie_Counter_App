@@ -150,6 +150,16 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameDefaultWorkout</string>
+			<key>relativePath</key>
+			<string>./DefaultWorkout.imageset</string>
+			<key>swiftSymbol</key>
+			<string>defaultWorkout</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameEmptyManPP</string>
 			<key>relativePath</key>
 			<string>./Empty man PP.imageset</string>

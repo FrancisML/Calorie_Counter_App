@@ -39,6 +39,8 @@
 		0173856D2D3856AC00379FD5 /* LedgerEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017385652D3856AC00379FD5 /* LedgerEntry+CoreDataProperties.swift */; };
 		0190ECF32D30B7F5003AA451 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0190ECF22D30B7F4003AA451 /* SummaryView.swift */; };
 		019C9CCE2D31A17500E0F608 /* ChangeDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019C9CCD2D31A17500E0F608 /* ChangeDateView.swift */; };
+		01BEF2FA2D651BF500B74744 /* ADVWorkoutAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BEF2F92D651BF500B74744 /* ADVWorkoutAdd.swift */; };
+		01BEF2FC2D651C0500B74744 /* QuickWKAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BEF2FB2D651C0500B74744 /* QuickWKAdd.swift */; };
 		01BF35FC2D2E486F002D1E51 /* Calorie_counterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF35FB2D2E486F002D1E51 /* Calorie_counterApp.swift */; };
 		01BF36022D2E4877002D1E51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01BF36012D2E4877002D1E51 /* Assets.xcassets */; };
 		01BF36062D2E4877002D1E51 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01BF36052D2E4877002D1E51 /* Preview Assets.xcassets */; };
@@ -113,6 +115,8 @@
 		017385652D3856AC00379FD5 /* LedgerEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LedgerEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0190ECF22D30B7F4003AA451 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		019C9CCD2D31A17500E0F608 /* ChangeDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDateView.swift; sourceTree = "<group>"; };
+		01BEF2F92D651BF500B74744 /* ADVWorkoutAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADVWorkoutAdd.swift; sourceTree = "<group>"; };
+		01BEF2FB2D651C0500B74744 /* QuickWKAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickWKAdd.swift; sourceTree = "<group>"; };
 		01BF35F82D2E486F002D1E51 /* Calorie counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calorie counter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01BF35FB2D2E486F002D1E51 /* Calorie_counterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calorie_counterApp.swift; sourceTree = "<group>"; };
 		01BF36012D2E4877002D1E51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,7 +132,7 @@
 		01D0B0642D5D9524004BC63E /* DiaryEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntryView.swift; sourceTree = "<group>"; };
 		01D0B0672D5DBC1E004BC63E /* WeighInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeighInView.swift; sourceTree = "<group>"; };
 		01D0B0692D5DBC32004BC63E /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
-		01D0B06B2D5DBC47004BC63E /* AddWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutView.swift; sourceTree = "<group>"; };
+		01D0B06B2D5DBC47004BC63E /* AddWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddWorkoutView.swift; path = "../New Group/AddWorkoutView.swift"; sourceTree = "<group>"; };
 		01D0B06D2D5DBC61004BC63E /* AddWaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWaterView.swift; sourceTree = "<group>"; };
 		01D0B0702D5E888B004BC63E /* QuickAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddView.swift; sourceTree = "<group>"; };
 		01D0B0722D5E889F004BC63E /* AdvancedAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedAddView.swift; sourceTree = "<group>"; };
@@ -201,6 +205,16 @@
 				01D0B0642D5D9524004BC63E /* DiaryEntryView.swift */,
 			);
 			path = TodayVIew;
+			sourceTree = "<group>";
+		};
+		01BEF2F82D651BC100B74744 /* AddWorkout */ = {
+			isa = PBXGroup;
+			children = (
+				01D0B06B2D5DBC47004BC63E /* AddWorkoutView.swift */,
+				01BEF2FB2D651C0500B74744 /* QuickWKAdd.swift */,
+				01BEF2F92D651BF500B74744 /* ADVWorkoutAdd.swift */,
+			);
+			path = AddWorkout;
 			sourceTree = "<group>";
 		};
 		01BF35EF2D2E486E002D1E51 = {
@@ -292,8 +306,8 @@
 			isa = PBXGroup;
 			children = (
 				01D0B0672D5DBC1E004BC63E /* WeighInView.swift */,
+				01BEF2F82D651BC100B74744 /* AddWorkout */,
 				01D0B06F2D5E8861004BC63E /* AddFood */,
-				01D0B06B2D5DBC47004BC63E /* AddWorkoutView.swift */,
 				01D0B06D2D5DBC61004BC63E /* AddWaterView.swift */,
 			);
 			path = AddingData;
@@ -453,6 +467,8 @@
 				01D0B0712D5E888B004BC63E /* QuickAddView.swift in Sources */,
 				016E52752D4A93B200105B8E /* SharedComponents.swift in Sources */,
 				01D0B06C2D5DBC47004BC63E /* AddWorkoutView.swift in Sources */,
+				01BEF2FA2D651BF500B74744 /* ADVWorkoutAdd.swift in Sources */,
+				01BEF2FC2D651C0500B74744 /* QuickWKAdd.swift in Sources */,
 				0190ECF32D30B7F5003AA451 /* SummaryView.swift in Sources */,
 				017384D62D35BE3700379FD5 /* PastLedgerView.swift in Sources */,
 				01D0B0632D5D9462004BC63E /* DiaryView.swift in Sources */,

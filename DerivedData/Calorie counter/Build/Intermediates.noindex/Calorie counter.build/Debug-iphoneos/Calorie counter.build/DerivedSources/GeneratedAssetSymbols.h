@@ -48,6 +48,9 @@ static NSString * const ACImageNameCalW AC_SWIFT_PRIVATE = @"CalW";
 /// The "DefaultFood" asset catalog image resource.
 static NSString * const ACImageNameDefaultFood AC_SWIFT_PRIVATE = @"DefaultFood";
 
+/// The "DefaultWorkout" asset catalog image resource.
+static NSString * const ACImageNameDefaultWorkout AC_SWIFT_PRIVATE = @"DefaultWorkout";
+
 /// The "Empty man PP" asset catalog image resource.
 static NSString * const ACImageNameEmptyManPP AC_SWIFT_PRIVATE = @"Empty man PP";
 

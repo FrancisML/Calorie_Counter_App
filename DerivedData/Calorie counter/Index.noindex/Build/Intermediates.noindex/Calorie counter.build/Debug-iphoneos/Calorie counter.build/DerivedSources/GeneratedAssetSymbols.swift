@@ -73,6 +73,9 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "DefaultFood" asset catalog image resource.
     static let defaultFood = DeveloperToolsSupport.ImageResource(name: "DefaultFood", bundle: resourceBundle)
 
+    /// The "DefaultWorkout" asset catalog image resource.
+    static let defaultWorkout = DeveloperToolsSupport.ImageResource(name: "DefaultWorkout", bundle: resourceBundle)
+
     /// The "Empty man PP" asset catalog image resource.
     static let emptyManPP = DeveloperToolsSupport.ImageResource(name: "Empty man PP", bundle: resourceBundle)
 
@@ -317,6 +320,15 @@ extension AppKit.NSImage {
     static var defaultFood: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .defaultFood)
+#else
+        .init()
+#endif
+    }
+
+    /// The "DefaultWorkout" asset catalog image.
+    static var defaultWorkout: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .defaultWorkout)
 #else
         .init()
 #endif
@@ -703,6 +715,15 @@ extension UIKit.UIImage {
     static var defaultFood: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .defaultFood)
+#else
+        .init()
+#endif
+    }
+
+    /// The "DefaultWorkout" asset catalog image.
+    static var defaultWorkout: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .defaultWorkout)
 #else
         .init()
 #endif
