@@ -233,7 +233,8 @@ struct FullScreenOverlay: View {
                 VStack(spacing: 0) {
                     switch activeView {
                     case .addFood:
-                        AddFoodView(closeAction: closeWithAnimation)
+                        AddFoodView(closeAction: closeWithAnimation, diaryEntries: $diaryEntries) // ✅ FIXED
+
                     case .addWater:
                         AddWaterView(
                             closeAction: closeWithAnimation,

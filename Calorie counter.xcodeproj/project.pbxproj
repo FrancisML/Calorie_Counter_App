@@ -54,8 +54,8 @@
 		01D0B06A2D5DBC32004BC63E /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0692D5DBC32004BC63E /* AddFoodView.swift */; };
 		01D0B06C2D5DBC47004BC63E /* AddWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B06B2D5DBC47004BC63E /* AddWorkoutView.swift */; };
 		01D0B06E2D5DBC61004BC63E /* AddWaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B06D2D5DBC61004BC63E /* AddWaterView.swift */; };
-		01D0B0712D5E888B004BC63E /* QuickAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0702D5E888B004BC63E /* QuickAddView.swift */; };
-		01D0B0732D5E889F004BC63E /* AdvancedAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0722D5E889F004BC63E /* AdvancedAddView.swift */; };
+		01D0B0712D5E888B004BC63E /* QuickFoodAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0702D5E888B004BC63E /* QuickFoodAddView.swift */; };
+		01D0B0732D5E889F004BC63E /* AdvancedFoodAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0722D5E889F004BC63E /* AdvancedFoodAddView.swift */; };
 		01D0B0752D5EABC8004BC63E /* KeyboardDismissModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0742D5EABC8004BC63E /* KeyboardDismissModifier.swift */; };
 		01E0F0EF2D5D54F4002D8E5D /* WaterTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0F0EE2D5D54F4002D8E5D /* WaterTrackerView.swift */; };
 		01E507722D5988E700CFBE40 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E507712D5988E700CFBE40 /* TodayView.swift */; };
@@ -134,8 +134,8 @@
 		01D0B0692D5DBC32004BC63E /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
 		01D0B06B2D5DBC47004BC63E /* AddWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddWorkoutView.swift; path = "../New Group/AddWorkoutView.swift"; sourceTree = "<group>"; };
 		01D0B06D2D5DBC61004BC63E /* AddWaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWaterView.swift; sourceTree = "<group>"; };
-		01D0B0702D5E888B004BC63E /* QuickAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddView.swift; sourceTree = "<group>"; };
-		01D0B0722D5E889F004BC63E /* AdvancedAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedAddView.swift; sourceTree = "<group>"; };
+		01D0B0702D5E888B004BC63E /* QuickFoodAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickFoodAddView.swift; sourceTree = "<group>"; };
+		01D0B0722D5E889F004BC63E /* AdvancedFoodAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedFoodAddView.swift; sourceTree = "<group>"; };
 		01D0B0742D5EABC8004BC63E /* KeyboardDismissModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissModifier.swift; sourceTree = "<group>"; };
 		01E0F0EE2D5D54F4002D8E5D /* WaterTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterTrackerView.swift; sourceTree = "<group>"; };
 		01E507712D5988E700CFBE40 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
@@ -317,8 +317,8 @@
 			isa = PBXGroup;
 			children = (
 				01D0B0692D5DBC32004BC63E /* AddFoodView.swift */,
-				01D0B0722D5E889F004BC63E /* AdvancedAddView.swift */,
-				01D0B0702D5E888B004BC63E /* QuickAddView.swift */,
+				01D0B0722D5E889F004BC63E /* AdvancedFoodAddView.swift */,
+				01D0B0702D5E888B004BC63E /* QuickFoodAddView.swift */,
 			);
 			path = AddFood;
 			sourceTree = "<group>";
@@ -464,7 +464,7 @@
 				015B6C8B2D4D264F0095CB7F /* PersonalGoalView.swift in Sources */,
 				017385662D3856AC00379FD5 /* ProgressPicture+CoreDataClass.swift in Sources */,
 				01323EE22D526BF9005C025A /* UserOverviewView.swift in Sources */,
-				01D0B0712D5E888B004BC63E /* QuickAddView.swift in Sources */,
+				01D0B0712D5E888B004BC63E /* QuickFoodAddView.swift in Sources */,
 				016E52752D4A93B200105B8E /* SharedComponents.swift in Sources */,
 				01D0B06C2D5DBC47004BC63E /* AddWorkoutView.swift in Sources */,
 				01BEF2FA2D651BF500B74744 /* ADVWorkoutAdd.swift in Sources */,
@@ -500,7 +500,7 @@
 				01E507762D5989DA00CFBE40 /* ProgressView.swift in Sources */,
 				01D0B0652D5D9524004BC63E /* DiaryEntryView.swift in Sources */,
 				01425DC82D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift in Sources */,
-				01D0B0732D5E889F004BC63E /* AdvancedAddView.swift in Sources */,
+				01D0B0732D5E889F004BC63E /* AdvancedFoodAddView.swift in Sources */,
 				01D0B0752D5EABC8004BC63E /* KeyboardDismissModifier.swift in Sources */,
 				0173856D2D3856AC00379FD5 /* LedgerEntry+CoreDataProperties.swift in Sources */,
 			);

@@ -13,9 +13,17 @@ struct DailyDBView: View {
     var highestStreak: Int32
     
     var calorieProgress: CGFloat {
-        CGFloat(diaryEntries.reduce(0) { $0 + ($1.type == "Workout" ? -$1.calories : ($1.type == "Food" ? $1.calories : 0)) }) // ✅ Water excluded
+        CGFloat(diaryEntries.reduce(0) { total, entry in
+            switch entry.type {
+            case "Workout":
+                return total + entry.calories // ✅ Workouts are already negative
+            case "Food":
+                return total + entry.calories // ✅ Food calories are positive
+            default:
+                return total // ✅ Water is ignored
+            }
+        })
     }
-    
     var calorieGoal: CGFloat
     var useMetric: Bool
     

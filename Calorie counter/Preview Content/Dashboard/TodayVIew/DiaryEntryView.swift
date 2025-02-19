@@ -1,8 +1,9 @@
 //
 //  DiaryEntryView.swift
-//  Calorie counter
+//  Calorie Counter
 //
-//  Created by frank lasalvia on 2/12/25.
+//  Created by Frank LaSalvia on 2/12/25.
+//
 
 import SwiftUI
 
@@ -17,13 +18,13 @@ struct DiaryEntryRow: View {
                 .foregroundColor(Styles.secondaryText)
                 .frame(width: 70, alignment: .leading)
 
-            // ✅ Workout images scale to fill while maintaining aspect ratio
+            // ✅ Entry Image (Resizes Properly)
             getImage(for: entry)
                 .resizable()
-                .scaledToFill() // ✅ Ensures the image fills the square
+                .scaledToFill() // ✅ Ensures image fills square while maintaining aspect ratio
                 .frame(width: 50, height: 50)
                 .clipShape(RoundedRectangle(cornerRadius: 5))
-                .clipped() // ✅ Ensures no overflow beyond the frame
+                .clipped() // ✅ Prevents overflow beyond the frame
 
             // ✅ VStack for Description & Detail (if needed)
             VStack(alignment: .leading, spacing: 2) {
@@ -31,8 +32,8 @@ struct DiaryEntryRow: View {
                     .font(.headline)
                     .foregroundColor(Styles.primaryText)
 
-                // ✅ Only show duration for workouts, not water
-                if entry.type == "Workout" {
+                // ✅ Only show serving size for food & duration for workouts
+                if entry.type == "Workout" || entry.type == "Food" {
                     Text(entry.detail)
                         .font(.subheadline)
                         .foregroundColor(Styles.secondaryText)
@@ -41,7 +42,7 @@ struct DiaryEntryRow: View {
 
             Spacer()
 
-            // ✅ Ensure Calories Show Correctly (No Extra "-")
+            // ✅ Ensure Calories Display Correctly (No Extra "-")
             Text(entry.type == "Workout" ? "-\(abs(entry.calories))" : entry.type == "Food" ? "+\(entry.calories)" : shortenWaterEntry(entry.detail))
                 .font(.subheadline)
                 .foregroundColor(entry.type == "Food" ? .green : entry.type == "Workout" ? .red : .blue)
@@ -55,9 +56,11 @@ struct DiaryEntryRow: View {
         if entry.type == "Water" {
             return Image("water") // ✅ Always use "water" for water entries
         } else if let imageData = entry.imageData, let uiImage = UIImage(data: imageData) {
-            return Image(uiImage: uiImage) // ✅ Returns UIImage as SwiftUI Image
+            return Image(uiImage: uiImage) // ✅ Use user-selected image if available
+        } else if entry.type == "Food" {
+            return Image("DefaultFood") // ✅ Default food image
         }
-        return Image("DefaultWorkout") // ✅ Fallback for workouts without an image
+        return Image("DefaultWorkout") // ✅ Default workout image
     }
 
     // ✅ Function to Shorten Unit Names Inside Water Entries
@@ -69,7 +72,6 @@ struct DiaryEntryRow: View {
     }
 }
 
-
 // 🔹 DIARY ENTRY MODEL
 struct DiaryEntry: Identifiable {
     let id = UUID()
@@ -79,9 +81,5 @@ struct DiaryEntry: Identifiable {
     let detail: String
     let calories: Int
     let type: String
-    let imageData: Data? // ✅ Stores the image
+    let imageData: Data? // ✅ Stores the image (for food & workout)
 }
-
-
-
-
