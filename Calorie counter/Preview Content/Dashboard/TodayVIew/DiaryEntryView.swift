@@ -21,8 +21,10 @@ struct DiaryEntryRow: View {
             // ✅ Entry Image (Resizes Properly)
             getImage(for: entry)
                 .resizable()
-                .scaledToFill() // ✅ Ensures image fills square while maintaining aspect ratio
+                .renderingMode(.original) // ✅ Ensures transparency in PNGs
+                .scaledToFit() // ✅ Ensures the image fits without being cut off
                 .frame(width: 50, height: 50)
+                .background(Color.clear) // ✅ No background for transparent images
                 .clipShape(RoundedRectangle(cornerRadius: 5))
                 .clipped() // ✅ Prevents overflow beyond the frame
 
@@ -32,7 +34,7 @@ struct DiaryEntryRow: View {
                     .font(.headline)
                     .foregroundColor(Styles.primaryText)
 
-                // ✅ Only show serving size for food & duration for workouts
+                // ✅ Only show duration for workouts & serving size for food
                 if entry.type == "Workout" || entry.type == "Food" {
                     Text(entry.detail)
                         .font(.subheadline)
@@ -57,10 +59,25 @@ struct DiaryEntryRow: View {
             return Image("water") // ✅ Always use "water" for water entries
         } else if let imageData = entry.imageData, let uiImage = UIImage(data: imageData) {
             return Image(uiImage: uiImage) // ✅ Use user-selected image if available
+        } else if let imageName = entry.imageName, isADVWorkoutImage(imageName) {
+            return Image(imageName) // ✅ Handles ADVWorkout images correctly
         } else if entry.type == "Food" {
             return Image("DefaultFood") // ✅ Default food image
         }
         return Image("DefaultWorkout") // ✅ Default workout image
+    }
+
+    // ✅ Checks if the image comes from ADVWorkoutAddView
+    private func isADVWorkoutImage(_ imageName: String) -> Bool {
+        let workoutImages = [
+            "ABS", "ShuttleCock", "Baseball", "Basketball", "Boxing", "calisthenics",
+            "XSkiing", "Bikeing", "Eliptical", "Golf", "Hiking", "Hockey",
+            "Running", "MountainBike", "Paddle", "Pickle", "Pilates",
+            "racquetball", "Rockclimbing", "Rowing", "Running", "scuba",
+            "Skiing", "Snowboarding", "Soccer", "Spining", "Squash", "Swiming",
+            "tennis", "volley", "Walking", "Weights", "Yoga", "Zumba"
+        ]
+        return workoutImages.contains(imageName)
     }
 
     // ✅ Function to Shorten Unit Names Inside Water Entries
@@ -72,7 +89,8 @@ struct DiaryEntryRow: View {
     }
 }
 
-// 🔹 DIARY ENTRY MODEL
+import Foundation
+
 struct DiaryEntry: Identifiable {
     let id = UUID()
     let time: String
@@ -81,5 +99,7 @@ struct DiaryEntry: Identifiable {
     let detail: String
     let calories: Int
     let type: String
-    let imageData: Data? // ✅ Stores the image (for food & workout)
+    let imageName: String? // ✅ Stores filename for pre-defined workouts
+    let imageData: Data? // ✅ Stores user-selected images from Quick Add
 }
+

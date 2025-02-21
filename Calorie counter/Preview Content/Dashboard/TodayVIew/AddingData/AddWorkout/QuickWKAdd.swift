@@ -6,11 +6,17 @@
 //
 
 
+//
+//  QuickWKAdd.swift
+//  Calorie Counter
+//
+//  Created by Frank LaSalvia on 2/18/25.
+//
+
 import SwiftUI
 
 struct QuickWKAddView: View {
     @Binding var diaryEntries: [DiaryEntry] // ✅ Binding to update the diary
-    var saveWorkout: (String, String, String, String, UIImage?) -> Void // ✅ Function to save workout
     var closeAction: () -> Void // ✅ Function to close the view
 
     @State private var workoutImage: UIImage? = UIImage(named: "DefaultWorkout") // ✅ Default image
@@ -21,7 +27,7 @@ struct QuickWKAddView: View {
     @State private var selectedHour: Int = Calendar.current.component(.hour, from: Date()) % 12
     @State private var selectedMinute: Int = Calendar.current.component(.minute, from: Date())
     @State private var selectedPeriod: String = Calendar.current.component(.hour, from: Date()) >= 12 ? "PM" : "AM"
-    @State private var showTimePicker: Bool = false // ✅ Toggles picker visibility
+    @State private var showTimePicker: Bool = false // ✅ Toggles time picker visibility
 
     @State private var showImagePicker: Bool = false
     @State private var imagePickerSourceType: UIImagePickerController.SourceType = .photoLibrary
@@ -37,13 +43,12 @@ struct QuickWKAddView: View {
                         .stroke(workoutImage != UIImage(named: "DefaultWorkout") ? Color.green : Styles.primaryText, lineWidth: 3)
                         .frame(width: 100, height: 100)
 
-                    Image(uiImage: workoutImage ?? UIImage(named: "DefaultWorkout")!) // ✅ Always displays valid image
+                    Image(uiImage: workoutImage ?? UIImage(named: "DefaultWorkout")!)
                         .resizable()
                         .scaledToFill()
                         .frame(width: 100, height: 100)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
 
-                    // ✅ Overlay for "Add" Button
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.black.opacity(0.1))
                         .frame(width: 100, height: 100)
@@ -96,16 +101,14 @@ struct QuickWKAddView: View {
                 FloatingTextField(placeholder: " Duration (mins) ", text: $duration)
                     .keyboardType(.numberPad)
 
-                // ✅ Calories Input (Only Accepts Integers)
                 FloatingTextField(placeholder: " Calories Burned ", text: $calories)
                     .keyboardType(.numberPad)
                     .onReceive(calories.publisher.collect()) { newValue in
                         let filtered = newValue.filter { $0.isNumber }
-                        let trimmed = String(filtered.prefix(4)) // ✅ Limit to 4 digits (9999 max)
+                        let trimmed = String(filtered.prefix(4))
                         if calories != trimmed { calories = trimmed }
                     }
 
-                // ✅ Time Input with Picker
                 FloatingInputWithAction(
                     placeholder: " Time ",
                     displayedText: formattedTime,
@@ -117,13 +120,13 @@ struct QuickWKAddView: View {
 
             Spacer()
 
-            // ✅ Bottom Navigation Bar (Ensures Save & Close Work Properly)
+            // ✅ Bottom Navigation Bar
             bottomNavBar()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Styles.secondaryBackground)
         .onAppear {
-            setCurrentTime() // ✅ Sets the time when the view appears
+            setCurrentTime()
         }
         .overlay(
             Group {
@@ -147,8 +150,8 @@ struct QuickWKAddView: View {
         return "\(selectedHour):\(String(format: "%02d", selectedMinute)) \(selectedPeriod)"
     }
 
-    // ✅ Save Workout to Diary (Fixes Missing Data Issue)
-    func saveWorkoutToDiary() {
+    // ✅ Save Workout to Diary
+    private func saveWorkoutToDiary() {
         let trimmedName = workoutName.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedDuration = duration.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedCalories = calories.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -160,15 +163,16 @@ struct QuickWKAddView: View {
 
         let durationText = formatDuration(trimmedDuration)
         let caloriesValue = Int(trimmedCalories) ?? 0
-        
+
         let newEntry = DiaryEntry(
             time: formattedTime,
-            iconName: "CustomWorkout", // Default if no image
+            iconName: "CustomWorkout",
             description: trimmedName,
             detail: durationText,
             calories: -caloriesValue,
             type: "Workout",
-            imageData: workoutImage?.jpegData(compressionQuality: 0.8) // ✅ Convert UIImage to Data
+            imageName: nil, // ✅ No filename since it's a user-selected image
+            imageData: workoutImage?.jpegData(compressionQuality: 0.8) // ✅ Store user-selected image
         )
 
         DispatchQueue.main.async {
@@ -177,7 +181,7 @@ struct QuickWKAddView: View {
 
         closeAction()
     }
- 
+
     private func formatDuration(_ duration: String) -> String {
         if let minutes = Int(duration), minutes >= 60 {
             let hours = minutes / 60
@@ -185,55 +189,6 @@ struct QuickWKAddView: View {
             return remainingMinutes == 0 ? "\(hours) hr" : "\(hours) hr \(remainingMinutes) min"
         }
         return "\(duration) min"
-    }
-
-
-    // ✅ Bottom Navigation Bar
-    private func bottomNavBar() -> some View {
-        ZStack {
-            Rectangle()
-                .fill(Styles.secondaryBackground)
-                .frame(height: 96)
-                .shadow(radius: 5)
-
-            HStack {
-                // 🔴 X Button (Closes View)
-                ZStack {
-                    Circle()
-                        .fill(Color.red)
-                        .frame(width: 80, height: 80)
-                        .shadow(radius: 5)
-
-                    Image(systemName: "xmark")
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                }
-                .onTapGesture {
-                    closeAction() // ✅ Closes view when tapped
-                }
-
-                Spacer().frame(width: 100) // ✅ Adjusted spacing
-
-                // ➕ "+" Button (Saves Workout & Closes)
-                ZStack {
-                    Circle()
-                        .fill(Styles.primaryText)
-                        .frame(width: 80, height: 80)
-                        .shadow(radius: 5)
-
-                    Image(systemName: "plus")
-                        .font(.largeTitle)
-                        .foregroundColor(Styles.secondaryBackground)
-                }
-                .onTapGesture {
-                    saveWorkoutToDiary() // ✅ Saves workout and closes view
-                }
-            }
-            .padding(.horizontal, 30)
-            .frame(maxWidth: .infinity)
-            .offset(y: -36)
-        }
-        .frame(height: 96)
     }
 
     // ✅ Time Picker Overlay
@@ -251,10 +206,9 @@ struct QuickWKAddView: View {
                     placeholder: " Time ",
                     displayedText: formattedTime,
                     action: { showTimePicker = true },
-                    hasPickedValue: .constant(true) // ✅ Added missing argument
+                    hasPickedValue: .constant(true)
                 )
-
-                    .padding()
+                .padding()
 
                 Button("Close") {
                     showTimePicker = false
@@ -267,5 +221,51 @@ struct QuickWKAddView: View {
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .shadow(radius: 5)
         }
+    }
+
+    // ✅ Bottom Navigation Bar
+    private func bottomNavBar() -> some View {
+        ZStack {
+            Rectangle()
+                .fill(Styles.secondaryBackground)
+                .frame(height: 96)
+                .shadow(radius: 5)
+
+            HStack {
+                ZStack {
+                    Circle()
+                        .fill(Color.red)
+                        .frame(width: 80, height: 80)
+                        .shadow(radius: 5)
+
+                    Image(systemName: "xmark")
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                }
+                .onTapGesture {
+                    closeAction()
+                }
+
+                Spacer().frame(width: 100)
+
+                ZStack {
+                    Circle()
+                        .fill(Styles.primaryText)
+                        .frame(width: 80, height: 80)
+                        .shadow(radius: 5)
+
+                    Image(systemName: "plus")
+                        .font(.largeTitle)
+                        .foregroundColor(Styles.secondaryBackground)
+                }
+                .onTapGesture {
+                    saveWorkoutToDiary()
+                }
+            }
+            .padding(.horizontal, 30)
+            .frame(maxWidth: .infinity)
+            .offset(y: -36)
+        }
+        .frame(height: 96)
     }
 }

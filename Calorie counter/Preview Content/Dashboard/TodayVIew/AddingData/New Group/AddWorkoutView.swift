@@ -4,26 +4,20 @@
 //
 //  Created by frank lasalvia on 2/13/25.
 //
-
-//
-//  AddWorkout.swift
-//  Calorie counter
-//
-//  Created by frank lasalvia on 2/13/25.
-//
-
 import SwiftUI
 
 struct WorkoutView: View {
-    var closeAction: () -> Void
+    var closeAction: () -> Void // ✅ Function to close the entire WorkoutView
     @State private var searchText: String = "" // ✅ Search text state
     @State private var selectedTab: WorkoutTab = .quickAdd // ✅ Default to Quick Add
-    @Binding var diaryEntries: [DiaryEntry] // ✅ Make sure this is a binding
-    
+    @Binding var diaryEntries: [DiaryEntry] // ✅ Ensure this is a binding to update diary
+
+    @State private var isClosing: Bool = false // ✅ Tracks fade-out animation state
+
     enum WorkoutTab {
         case quickAdd, advancedAdd
     }
-    
+
     var body: some View {
         GeometryReader { geometry in
             let safeAreaTopInset = geometry.safeAreaInsets.top
@@ -78,25 +72,31 @@ struct WorkoutView: View {
                     }
                     .frame(width: geometry.size.width, height: 50)
                 }
-                
+
                 // ✅ Content Area
                 VStack {
                     if selectedTab == .quickAdd {
-                        QuickWKAddView(diaryEntries: $diaryEntries, saveWorkout: saveWorkoutToDiary, closeAction: closeAction)
+                        QuickWKAddView(
+                            diaryEntries: $diaryEntries,
+                            closeAction: triggerClose // ✅ Triggers fade-out before closing
+                        )
                     } else {
-                        ADVWorkoutAddView()
+                        ADVWorkoutAddView(
+                            diaryEntries: $diaryEntries,
+                            closeAction: triggerClose // ✅ Triggers fade-out before closing
+                        )
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                
-                
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Styles.secondaryBackground)
             .edgesIgnoringSafeArea(.all)
+            .opacity(isClosing ? 0 : 1) // ✅ Smooth fade-out effect
+            .animation(.easeOut(duration: 0.25), value: isClosing) // ✅ Faster fade transition
         }
     }
-    
+
     // ✅ Tab Button Component
     private func tabButton(title: String, selected: Bool, action: @escaping () -> Void) -> some View {
         Text(title)
@@ -110,36 +110,8 @@ struct WorkoutView: View {
                 }
             }
     }
-    
-    // ✅ Save Workout Entry to Diary
-    private func saveWorkoutToDiary(workoutName: String, duration: String, calories: String, time: String, image: UIImage?) {
-        guard !workoutName.isEmpty, !duration.isEmpty, !calories.isEmpty else {
-            print("⚠️ Missing required fields") // ✅ Prevents saving incomplete workouts
-            return
-        }
 
-        let durationText = formatDuration(duration)
-        let caloriesValue = Int(calories) ?? 0 // ✅ Safely unwrap optional
-
-        let newEntry = DiaryEntry(
-            time: time,
-            iconName: image != nil ? "CustomWorkout" : "DefaultWorkout",
-            description: workoutName,
-            detail: durationText,
-            calories: -caloriesValue, // ✅ Ensure workouts show negative calories
-            type: "Workout",
-            imageData: image?.jpegData(compressionQuality: 0.8) // ✅ Convert UIImage to Data
-        )
-
-        DispatchQueue.main.async {
-            diaryEntries.append(newEntry) // ✅ Update the diary entry list
-        }
-
-        print("✅ Workout Saved: \(newEntry)") // ✅ Log saved workout
-        closeAction() // ✅ Closes the view after saving
-    }
-
-    
+   
     // ✅ Helper Function to Format Duration Correctly
     private func formatDuration(_ duration: String) -> String {
         if let minutes = Int(duration), minutes >= 60 {
@@ -149,7 +121,14 @@ struct WorkoutView: View {
         }
         return "\(duration) min"
     }
-    
-    // ✅ Bottom Navigation Bar
-    
+
+    // ✅ Triggers a **Fast & Continuous Fade-Out** Before Closing
+    private func triggerClose() {
+        withAnimation {
+            isClosing = true
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { // ✅ Matches fade duration
+            closeAction() // ✅ Instantly disappears after fade
+        }
+    }
 }

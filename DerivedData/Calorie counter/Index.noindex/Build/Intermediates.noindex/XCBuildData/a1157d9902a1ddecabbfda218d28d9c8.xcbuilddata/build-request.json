@@ -1,0 +1,66 @@
+{
+  "buildCommand" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : true,
+    "targets" : null
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "b644061f614ae4c5009af17afe0536741623b0b715702ef7729832adc2199d9f"
+    }
+  ],
+  "containerPath" : "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter.xcodeproj",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "indexbuild",
+    "activeArchitecture" : "undefined_arch",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : true,
+      "platform" : "iphoneos",
+      "sdk" : "iphoneos17.2",
+      "sdkVariant" : "iphoneos",
+      "supportedArchitectures" : [
+        "armv4t",
+        "armv5",
+        "armv6",
+        "armv7",
+        "armv7f",
+        "armv7s",
+        "armv7k",
+        "arm64",
+        "arm64e"
+      ],
+      "targetArchitecture" : "undefined_arch"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Index.noindex/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Index.noindex/Build/Products",
+      "derivedDataPath" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Index.noindex/PrecompiledHeaders",
+      "indexRegularBuildIntermediatesPath" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex",
+      "indexRegularBuildProductsPath" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Products",
+      "pchPath" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Index.noindex/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO",
+          "ENABLE_XOJIT_PREVIEWS" : "NO",
+          "ONLY_ACTIVE_ARCH" : "YES"
+        }
+      }
+    }
+  },
+  "qos" : "default",
+  "schemeCommand" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

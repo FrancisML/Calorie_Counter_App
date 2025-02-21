@@ -41,6 +41,7 @@
 		019C9CCE2D31A17500E0F608 /* ChangeDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019C9CCD2D31A17500E0F608 /* ChangeDateView.swift */; };
 		01BEF2FA2D651BF500B74744 /* ADVWorkoutAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BEF2F92D651BF500B74744 /* ADVWorkoutAdd.swift */; };
 		01BEF2FC2D651C0500B74744 /* QuickWKAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BEF2FB2D651C0500B74744 /* QuickWKAdd.swift */; };
+		01BEF2FE2D67D8A900B74744 /* ActivityStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BEF2FD2D67D8A800B74744 /* ActivityStatsView.swift */; };
 		01BF35FC2D2E486F002D1E51 /* Calorie_counterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF35FB2D2E486F002D1E51 /* Calorie_counterApp.swift */; };
 		01BF36022D2E4877002D1E51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01BF36012D2E4877002D1E51 /* Assets.xcassets */; };
 		01BF36062D2E4877002D1E51 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01BF36052D2E4877002D1E51 /* Preview Assets.xcassets */; };
@@ -117,6 +118,7 @@
 		019C9CCD2D31A17500E0F608 /* ChangeDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDateView.swift; sourceTree = "<group>"; };
 		01BEF2F92D651BF500B74744 /* ADVWorkoutAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADVWorkoutAdd.swift; sourceTree = "<group>"; };
 		01BEF2FB2D651C0500B74744 /* QuickWKAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickWKAdd.swift; sourceTree = "<group>"; };
+		01BEF2FD2D67D8A800B74744 /* ActivityStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityStatsView.swift; sourceTree = "<group>"; };
 		01BF35F82D2E486F002D1E51 /* Calorie counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calorie counter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01BF35FB2D2E486F002D1E51 /* Calorie_counterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calorie_counterApp.swift; sourceTree = "<group>"; };
 		01BF36012D2E4877002D1E51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				01D0B06B2D5DBC47004BC63E /* AddWorkoutView.swift */,
 				01BEF2FB2D651C0500B74744 /* QuickWKAdd.swift */,
 				01BEF2F92D651BF500B74744 /* ADVWorkoutAdd.swift */,
+				01BEF2FD2D67D8A800B74744 /* ActivityStatsView.swift */,
 			);
 			path = AddWorkout;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				01425DC72D3A76C900A98F2E /* DailyProgress+CoreDataClass.swift in Sources */,
 				0173850B2D36F2ED00379FD5 /* ProgressPicsView.swift in Sources */,
 				01E507742D5989C100CFBE40 /* PastView.swift in Sources */,
+				01BEF2FE2D67D8A900B74744 /* ActivityStatsView.swift in Sources */,
 				016E52712D4A919F00105B8E /* PersonalDetailsView.swift in Sources */,
 				0107C8482D55617000AF12A0 /* WelcomeSequenceView.swift in Sources */,
 				016E52732D4A92BE00105B8E /* PersonalStatsView.swift in Sources */,

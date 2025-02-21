@@ -134,6 +134,7 @@ struct QuickFoodAddView: View {
             detail: servingSize,
             calories: caloriesValue, // ✅ Food calories should be positive
             type: "Food",
+            imageName: "DefaultFood", // ✅ **FIXED**: Added missing argument
             imageData: foodImage?.jpegData(compressionQuality: 0.8)
         )
 

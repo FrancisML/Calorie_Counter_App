@@ -138,6 +138,7 @@ struct AddWaterView: View {
             detail: "\(selectedAmount) \(selectedUnit)", // ✅ Correctly formatted detail
             calories: 0,
             type: "Water",
+            imageName: "water", // ✅ **FIXED**: Added missing argument
             imageData: nil // ✅ Water entries don't need a custom image
         )
 

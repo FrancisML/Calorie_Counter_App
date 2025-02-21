@@ -10,6 +10,16 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameABS</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/ABS.imageset</string>
+			<key>swiftSymbol</key>
+			<string>ABS</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageName_AL_0</string>
 			<key>relativePath</key>
 			<string>./AL-0.imageset</string>
@@ -130,6 +140,46 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameBaseball</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Baseball.imageset</string>
+			<key>swiftSymbol</key>
+			<string>baseball</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameBasketball</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Basketball.imageset</string>
+			<key>swiftSymbol</key>
+			<string>basketball</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameBikeing</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Bikeing.imageset</string>
+			<key>swiftSymbol</key>
+			<string>bikeing</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameBoxing</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Boxing.imageset</string>
+			<key>swiftSymbol</key>
+			<string>boxing</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameCalW</string>
 			<key>relativePath</key>
 			<string>./CalW.imageset</string>
@@ -160,6 +210,16 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameEliptical</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Eliptical.imageset</string>
+			<key>swiftSymbol</key>
+			<string>eliptical</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameEmptyManPP</string>
 			<key>relativePath</key>
 			<string>./Empty man PP.imageset</string>
@@ -180,6 +240,36 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameGolf</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Golf.imageset</string>
+			<key>swiftSymbol</key>
+			<string>golf</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameHiking</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Hiking.imageset</string>
+			<key>swiftSymbol</key>
+			<string>hiking</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameHockey</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Hockey.imageset</string>
+			<key>swiftSymbol</key>
+			<string>hockey</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameLeftFoot</string>
 			<key>relativePath</key>
 			<string>./LeftFoot.imageset</string>
@@ -190,11 +280,101 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameMountainBike</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/MountainBike.imageset</string>
+			<key>swiftSymbol</key>
+			<string>mountainBike</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNamePaddle</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Paddle.imageset</string>
+			<key>swiftSymbol</key>
+			<string>paddle</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNamePickle</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Pickle.imageset</string>
+			<key>swiftSymbol</key>
+			<string>pickle</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNamePilates</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Pilates.imageset</string>
+			<key>swiftSymbol</key>
+			<string>pilates</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameRightFoot</string>
 			<key>relativePath</key>
 			<string>./RightFoot.imageset</string>
 			<key>swiftSymbol</key>
 			<string>rightFoot</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameRockclimbing</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Rockclimbing.imageset</string>
+			<key>swiftSymbol</key>
+			<string>rockclimbing</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameRowing</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Rowing.imageset</string>
+			<key>swiftSymbol</key>
+			<string>rowing</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameRunning</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Running.imageset</string>
+			<key>swiftSymbol</key>
+			<string>running</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameShuttleCock</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/ShuttleCock.imageset</string>
+			<key>swiftSymbol</key>
+			<string>shuttleCock</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameSkiing</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Skiing.imageset</string>
+			<key>swiftSymbol</key>
+			<string>skiing</string>
 		</dict>
 		<dict>
 			<key>catalogPath</key>
@@ -220,11 +400,101 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameSnowboarding</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Snowboarding.imageset</string>
+			<key>swiftSymbol</key>
+			<string>snowboarding</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameSoccer</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Soccer.imageset</string>
+			<key>swiftSymbol</key>
+			<string>soccer</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameSpining</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Spining.imageset</string>
+			<key>swiftSymbol</key>
+			<string>spining</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameSwiming</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Swiming.imageset</string>
+			<key>swiftSymbol</key>
+			<string>swiming</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameWalking</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Walking.imageset</string>
+			<key>swiftSymbol</key>
+			<string>walking</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameWaterInput</string>
 			<key>relativePath</key>
 			<string>./WaterInput.imageset</string>
 			<key>swiftSymbol</key>
 			<string>waterInput</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameWeights</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Weights.imageset</string>
+			<key>swiftSymbol</key>
+			<string>weights</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameXSkiing</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/XSkiing.imageset</string>
+			<key>swiftSymbol</key>
+			<string>xSkiing</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameYoga</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Yoga.imageset</string>
+			<key>swiftSymbol</key>
+			<string>yoga</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameZumba</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/Zumba.imageset</string>
+			<key>swiftSymbol</key>
+			<string>zumba</string>
 		</dict>
 		<dict>
 			<key>catalogPath</key>
@@ -265,6 +535,16 @@
 			<string>./calender.imageset</string>
 			<key>swiftSymbol</key>
 			<string>calender</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameCalisthenics</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/calisthenics.imageset</string>
+			<key>swiftSymbol</key>
+			<string>calisthenics</string>
 		</dict>
 		<dict>
 			<key>catalogPath</key>
@@ -360,6 +640,16 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameRacquetball</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/racquetball.imageset</string>
+			<key>swiftSymbol</key>
+			<string>racquetball</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameScale</string>
 			<key>relativePath</key>
 			<string>./scale.imageset</string>
@@ -375,6 +665,16 @@
 			<string>./scaleIndicator.imageset</string>
 			<key>swiftSymbol</key>
 			<string>scaleIndicator</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameScuba</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/scuba.imageset</string>
+			<key>swiftSymbol</key>
+			<string>scuba</string>
 		</dict>
 		<dict>
 			<key>catalogPath</key>
@@ -410,11 +710,31 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameTennis</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/tennis.imageset</string>
+			<key>swiftSymbol</key>
+			<string>tennis</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameTrophy</string>
 			<key>relativePath</key>
 			<string>./trophy.imageset</string>
 			<key>swiftSymbol</key>
 			<string>trophy</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameVolley</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/volley.imageset</string>
+			<key>swiftSymbol</key>
+			<string>volley</string>
 		</dict>
 		<dict>
 			<key>catalogPath</key>
