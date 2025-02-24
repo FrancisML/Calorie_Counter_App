@@ -63,6 +63,8 @@
 		01E507742D5989C100CFBE40 /* PastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E507732D5989C100CFBE40 /* PastView.swift */; };
 		01E507762D5989DA00CFBE40 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E507752D5989DA00CFBE40 /* ProgressView.swift */; };
 		01E507782D598A1A00CFBE40 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E507772D598A1A00CFBE40 /* SettingsView.swift */; };
+		01ECE42D2D68F35B0056FF34 /* ActivityModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ECE42B2D68F35B0056FF34 /* ActivityModel+CoreDataClass.swift */; };
+		01ECE42E2D68F35B0056FF34 /* ActivityModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ECE42C2D68F35B0056FF34 /* ActivityModel+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +146,8 @@
 		01E507732D5989C100CFBE40 /* PastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastView.swift; sourceTree = "<group>"; };
 		01E507752D5989DA00CFBE40 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		01E507772D598A1A00CFBE40 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		01ECE42B2D68F35B0056FF34 /* ActivityModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		01ECE42C2D68F35B0056FF34 /* ActivityModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +227,8 @@
 		01BF35EF2D2E486E002D1E51 = {
 			isa = PBXGroup;
 			children = (
+				01ECE42B2D68F35B0056FF34 /* ActivityModel+CoreDataClass.swift */,
+				01ECE42C2D68F35B0056FF34 /* ActivityModel+CoreDataProperties.swift */,
 				0107C8552D56877E00AF12A0 /* UserProfile+CoreDataClass.swift */,
 				0107C8562D56877E00AF12A0 /* UserProfile+CoreDataProperties.swift */,
 				01425DC52D3A76C900A98F2E /* DailyProgress+CoreDataClass.swift */,
@@ -463,6 +469,7 @@
 				012AF0D62D337F35005D03B1 /* CalorieCounterModel.xcdatamodeld in Sources */,
 				012AF0FE2D3484A3005D03B1 /* DailyProgressView.swift in Sources */,
 				0107C8582D56877E00AF12A0 /* UserProfile+CoreDataProperties.swift in Sources */,
+				01ECE42E2D68F35B0056FF34 /* ActivityModel+CoreDataProperties.swift in Sources */,
 				01E507722D5988E700CFBE40 /* TodayView.swift in Sources */,
 				015B6C8B2D4D264F0095CB7F /* PersonalGoalView.swift in Sources */,
 				017385662D3856AC00379FD5 /* ProgressPicture+CoreDataClass.swift in Sources */,
@@ -478,6 +485,7 @@
 				01C7727A2D40374000402083 /* UserSetupView.swift in Sources */,
 				01323EE42D529022005C025A /* Styles.swift in Sources */,
 				019C9CCE2D31A17500E0F608 /* ChangeDateView.swift in Sources */,
+				01ECE42D2D68F35B0056FF34 /* ActivityModel+CoreDataClass.swift in Sources */,
 				0173850F2D36F43900379FD5 /* ProgressPictureDetailView.swift in Sources */,
 				0107C8572D56877E00AF12A0 /* UserProfile+CoreDataClass.swift in Sources */,
 				01466C742D30E33D008648A6 /* GoalSummaryView.swift in Sources */,

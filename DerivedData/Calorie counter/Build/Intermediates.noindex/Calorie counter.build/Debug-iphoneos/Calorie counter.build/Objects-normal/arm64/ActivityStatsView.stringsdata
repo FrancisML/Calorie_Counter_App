@@ -4,6 +4,34 @@
     "Localizable": [
       {
         "comment": "",
+        "key": "Based on your weight of %lld %@"
+      },
+      {
+        "comment": "",
+        "key": "Favorite"
+      },
+      {
+        "comment": "",
+        "key": "Calories Burned"
+      },
+      {
+        "comment": "",
+        "key": "%lld"
+      },
+      {
+        "comment": "",
+        "key": "Duration"
+      },
+      {
+        "comment": "",
+        "key": "min"
+      },
+      {
+        "comment": "",
+        "key": ""
+      },
+      {
+        "comment": "",
         "key": "Select Time"
       },
       {
@@ -25,10 +53,6 @@
       {
         "comment": "",
         "key": "AM/PM"
-      },
-      {
-        "comment": "",
-        "key": "%lld"
       },
       {
         "comment": "",

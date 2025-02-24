@@ -301,6 +301,29 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @class NSEntityDescription;
 @class NSManagedObjectContext;
 
+SWIFT_CLASS("_TtC15Calorie_counter13ActivityModel")
+@interface ActivityModel : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@class NSData;
+@class NSUUID;
+@class NSString;
+@class NSDate;
+
+@interface ActivityModel (SWIFT_EXTENSION(Calorie_counter))
+@property (nonatomic, copy) NSData * _Nullable activityImage;
+@property (nonatomic, copy) NSUUID * _Nullable id;
+@property (nonatomic, copy) NSString * _Nullable imageName;
+@property (nonatomic) BOOL isCustom;
+@property (nonatomic) BOOL isFavorite;
+@property (nonatomic, copy) NSDate * _Nullable lastUsed;
+@property (nonatomic) double metValue;
+@property (nonatomic, copy) NSString * _Nullable name;
+@end
+
+
 SWIFT_CLASS_NAMED("DailyProgress")
 @interface DailyProgress : NSManagedObject
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
@@ -317,8 +340,6 @@ SWIFT_CLASS_NAMED("DailyProgress")
 - (void)removeLedgerEntries:(NSSet * _Nonnull)values;
 @end
 
-@class NSDate;
-@class NSString;
 @class UserProfile;
 
 @interface DailyProgress (SWIFT_EXTENSION(Calorie_counter))
@@ -355,8 +376,6 @@ SWIFT_CLASS_NAMED("ProgressPicture")
 @end
 
 
-@class NSUUID;
-@class NSData;
 
 @interface ProgressPicture (SWIFT_EXTENSION(Calorie_counter))
 @property (nonatomic, copy) NSUUID * _Nullable uuid;
