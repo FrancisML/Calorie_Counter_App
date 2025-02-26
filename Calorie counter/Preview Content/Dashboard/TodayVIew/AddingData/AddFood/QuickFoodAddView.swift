@@ -121,29 +121,29 @@ struct QuickFoodAddView: View {
     // ✅ Save Food Entry to Diary
     private func saveFoodToDiary() {
         guard !foodName.isEmpty, !servingSize.isEmpty, !calories.isEmpty else {
-            print("⚠️ Missing required fields") // ✅ Prevents saving incomplete food entries
+            print("⚠️ Missing required fields")
             return
         }
-
+        
         let caloriesValue = Int(calories) ?? 0
-
+        
         let newEntry = DiaryEntry(
             time: formattedTime,
             iconName: foodImage != UIImage(named: "DefaultFood") ? "CustomFood" : "DefaultFood",
             description: foodName,
             detail: servingSize,
-            calories: caloriesValue, // ✅ Food calories should be positive
+            calories: caloriesValue,
             type: "Food",
-            imageName: "DefaultFood", // ✅ **FIXED**: Added missing argument
+            imageName: "DefaultFood",
             imageData: foodImage?.jpegData(compressionQuality: 0.8)
         )
-
+        
         DispatchQueue.main.async {
             diaryEntries.append(newEntry)
         }
-
-        print("✅ Food Saved: \(newEntry)") // ✅ Debugging
-        closeAction() // ✅ Close the view after saving
+        
+        print("✅ Food Saved: \(newEntry)")
+        closeAction()
     }
 
     // ✅ Automatically sets the current time

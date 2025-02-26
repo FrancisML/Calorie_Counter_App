@@ -15,6 +15,20 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="CoreDiaryEntry" representedClassName="CoreDiaryEntry" syncable="YES">
+        <attribute name="calories" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="carbs" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="detail" optional="YES" attributeType="String"/>
+        <attribute name="entryDescription" optional="YES" attributeType="String"/>
+        <attribute name="fats" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="iconName" optional="YES" attributeType="String"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary"/>
+        <attribute name="imageName" optional="YES" attributeType="String"/>
+        <attribute name="protein" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="time" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="dailyRecord" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyRecord" inverseName="diaryEntries" inverseEntity="DailyRecord"/>
+    </entity>
     <entity name="DailyProgress" representedClassName="DailyProgress" syncable="YES">
         <attribute name="calorieIntake" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="dailyCalDeficit" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -25,6 +39,15 @@
         <attribute name="passOrFail" optional="YES" attributeType="String"/>
         <relationship name="ledgerEntries" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LedgerEntry" inverseName="dailyProgress" inverseEntity="LedgerEntry"/>
         <relationship name="userProfile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserProfile" inverseName="dailyProgress" inverseEntity="UserProfile"/>
+    </entity>
+    <entity name="DailyRecord" representedClassName="DailyRecord" syncable="YES">
+        <attribute name="calorieIntake" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="passFail" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="waterGoal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="waterIntake" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="waterUnit" optional="YES" attributeType="String"/>
+        <relationship name="diaryEntries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDiaryEntry" inverseName="dailyRecord" inverseEntity="CoreDiaryEntry"/>
     </entity>
     <entity name="LedgerEntry" representedClassName="LedgerEntry" syncable="YES">
         <attribute name="calories" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -67,6 +90,8 @@
         <attribute name="tempDayNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="useMetric" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="userBMR" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="waterGoal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="waterUnit" optional="YES" attributeType="String"/>
         <attribute name="weekGoal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="weightDifference" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="dailyProgress" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DailyProgress" inverseName="userProfile" inverseEntity="DailyProgress"/>

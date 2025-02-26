@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0107C8482D55617000AF12A0 /* WelcomeSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0107C8472D55617000AF12A0 /* WelcomeSequenceView.swift */; };
-		0107C8572D56877E00AF12A0 /* UserProfile+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0107C8552D56877E00AF12A0 /* UserProfile+CoreDataClass.swift */; };
-		0107C8582D56877E00AF12A0 /* UserProfile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0107C8562D56877E00AF12A0 /* UserProfile+CoreDataProperties.swift */; };
 		012AF0D62D337F35005D03B1 /* CalorieCounterModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0D42D337F35005D03B1 /* CalorieCounterModel.xcdatamodeld */; };
 		012AF0D82D3384AD005D03B1 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0D72D3384AD005D03B1 /* PersistenceController.swift */; };
 		012AF0F22D342658005D03B1 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0F12D342658005D03B1 /* DashboardView.swift */; };
@@ -49,6 +47,12 @@
 		01BF361A2D2E4878002D1E51 /* Calorie_counterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF36192D2E4878002D1E51 /* Calorie_counterUITests.swift */; };
 		01BF361C2D2E4878002D1E51 /* Calorie_counterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF361B2D2E4878002D1E51 /* Calorie_counterUITestsLaunchTests.swift */; };
 		01C7727A2D40374000402083 /* UserSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C772792D40374000402083 /* UserSetupView.swift */; };
+		01CEA49B2D6E34110083174B /* UserProfile+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CEA4952D6E34110083174B /* UserProfile+CoreDataClass.swift */; };
+		01CEA49C2D6E34110083174B /* UserProfile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CEA4962D6E34110083174B /* UserProfile+CoreDataProperties.swift */; };
+		01CEA4A52D6E6CC50083174B /* DailyRecord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CEA4A12D6E6CC50083174B /* DailyRecord+CoreDataClass.swift */; };
+		01CEA4A62D6E6CC50083174B /* DailyRecord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CEA4A22D6E6CC50083174B /* DailyRecord+CoreDataProperties.swift */; };
+		01CEA4AB2D6E71510083174B /* CoreDiaryEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CEA4A92D6E71510083174B /* CoreDiaryEntry+CoreDataClass.swift */; };
+		01CEA4AC2D6E71510083174B /* CoreDiaryEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CEA4AA2D6E71510083174B /* CoreDiaryEntry+CoreDataProperties.swift */; };
 		01D0B0632D5D9462004BC63E /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0622D5D9462004BC63E /* DiaryView.swift */; };
 		01D0B0652D5D9524004BC63E /* DiaryEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0642D5D9524004BC63E /* DiaryEntryView.swift */; };
 		01D0B0682D5DBC1E004BC63E /* WeighInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0672D5DBC1E004BC63E /* WeighInView.swift */; };
@@ -86,8 +90,6 @@
 
 /* Begin PBXFileReference section */
 		0107C8472D55617000AF12A0 /* WelcomeSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeSequenceView.swift; sourceTree = "<group>"; };
-		0107C8552D56877E00AF12A0 /* UserProfile+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataClass.swift"; sourceTree = "<group>"; };
-		0107C8562D56877E00AF12A0 /* UserProfile+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		012AF0D52D337F35005D03B1 /* CalorieCounterModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CalorieCounterModel.xcdatamodel; sourceTree = "<group>"; };
 		012AF0D72D3384AD005D03B1 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		012AF0F12D342658005D03B1 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
@@ -132,6 +134,12 @@
 		01BF36192D2E4878002D1E51 /* Calorie_counterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calorie_counterUITests.swift; sourceTree = "<group>"; };
 		01BF361B2D2E4878002D1E51 /* Calorie_counterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calorie_counterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		01C772792D40374000402083 /* UserSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupView.swift; sourceTree = "<group>"; };
+		01CEA4952D6E34110083174B /* UserProfile+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataClass.swift"; sourceTree = "<group>"; };
+		01CEA4962D6E34110083174B /* UserProfile+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		01CEA4A12D6E6CC50083174B /* DailyRecord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyRecord+CoreDataClass.swift"; sourceTree = "<group>"; };
+		01CEA4A22D6E6CC50083174B /* DailyRecord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyRecord+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		01CEA4A92D6E71510083174B /* CoreDiaryEntry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDiaryEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
+		01CEA4AA2D6E71510083174B /* CoreDiaryEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDiaryEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		01D0B0622D5D9462004BC63E /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
 		01D0B0642D5D9524004BC63E /* DiaryEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntryView.swift; sourceTree = "<group>"; };
 		01D0B0672D5DBC1E004BC63E /* WeighInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeighInView.swift; sourceTree = "<group>"; };
@@ -227,10 +235,14 @@
 		01BF35EF2D2E486E002D1E51 = {
 			isa = PBXGroup;
 			children = (
+				01CEA4A92D6E71510083174B /* CoreDiaryEntry+CoreDataClass.swift */,
+				01CEA4AA2D6E71510083174B /* CoreDiaryEntry+CoreDataProperties.swift */,
+				01CEA4A12D6E6CC50083174B /* DailyRecord+CoreDataClass.swift */,
+				01CEA4A22D6E6CC50083174B /* DailyRecord+CoreDataProperties.swift */,
+				01CEA4952D6E34110083174B /* UserProfile+CoreDataClass.swift */,
+				01CEA4962D6E34110083174B /* UserProfile+CoreDataProperties.swift */,
 				01ECE42B2D68F35B0056FF34 /* ActivityModel+CoreDataClass.swift */,
 				01ECE42C2D68F35B0056FF34 /* ActivityModel+CoreDataProperties.swift */,
-				0107C8552D56877E00AF12A0 /* UserProfile+CoreDataClass.swift */,
-				0107C8562D56877E00AF12A0 /* UserProfile+CoreDataProperties.swift */,
 				01425DC52D3A76C900A98F2E /* DailyProgress+CoreDataClass.swift */,
 				01425DC62D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift */,
 				0173855E2D3856AC00379FD5 /* ProgressPicture+CoreDataClass.swift */,
@@ -464,11 +476,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0173856C2D3856AC00379FD5 /* LedgerEntry+CoreDataClass.swift in Sources */,
+				01CEA4AC2D6E71510083174B /* CoreDiaryEntry+CoreDataProperties.swift in Sources */,
 				01D0B06E2D5DBC61004BC63E /* AddWaterView.swift in Sources */,
 				01D0B0682D5DBC1E004BC63E /* WeighInView.swift in Sources */,
 				012AF0D62D337F35005D03B1 /* CalorieCounterModel.xcdatamodeld in Sources */,
 				012AF0FE2D3484A3005D03B1 /* DailyProgressView.swift in Sources */,
-				0107C8582D56877E00AF12A0 /* UserProfile+CoreDataProperties.swift in Sources */,
 				01ECE42E2D68F35B0056FF34 /* ActivityModel+CoreDataProperties.swift in Sources */,
 				01E507722D5988E700CFBE40 /* TodayView.swift in Sources */,
 				015B6C8B2D4D264F0095CB7F /* PersonalGoalView.swift in Sources */,
@@ -478,6 +490,8 @@
 				016E52752D4A93B200105B8E /* SharedComponents.swift in Sources */,
 				01D0B06C2D5DBC47004BC63E /* AddWorkoutView.swift in Sources */,
 				01BEF2FA2D651BF500B74744 /* ADVWorkoutAdd.swift in Sources */,
+				01CEA4A62D6E6CC50083174B /* DailyRecord+CoreDataProperties.swift in Sources */,
+				01CEA49C2D6E34110083174B /* UserProfile+CoreDataProperties.swift in Sources */,
 				01BEF2FC2D651C0500B74744 /* QuickWKAdd.swift in Sources */,
 				0190ECF32D30B7F5003AA451 /* SummaryView.swift in Sources */,
 				017384D62D35BE3700379FD5 /* PastLedgerView.swift in Sources */,
@@ -487,15 +501,17 @@
 				019C9CCE2D31A17500E0F608 /* ChangeDateView.swift in Sources */,
 				01ECE42D2D68F35B0056FF34 /* ActivityModel+CoreDataClass.swift in Sources */,
 				0173850F2D36F43900379FD5 /* ProgressPictureDetailView.swift in Sources */,
-				0107C8572D56877E00AF12A0 /* UserProfile+CoreDataClass.swift in Sources */,
 				01466C742D30E33D008648A6 /* GoalSummaryView.swift in Sources */,
+				01CEA4A52D6E6CC50083174B /* DailyRecord+CoreDataClass.swift in Sources */,
 				0173850D2D36F3AC00379FD5 /* AddProgressPictureView.swift in Sources */,
 				01E0F0EF2D5D54F4002D8E5D /* WaterTrackerView.swift in Sources */,
 				017385112D36F6AF00379FD5 /* ProgressImage.swift in Sources */,
 				015EF3332D5AA31F00902E42 /* DailyDBView.swift in Sources */,
 				017384D82D35BECD00379FD5 /* PastDailyLedgerView.swift in Sources */,
+				01CEA4AB2D6E71510083174B /* CoreDiaryEntry+CoreDataClass.swift in Sources */,
 				01BF35FC2D2E486F002D1E51 /* Calorie_counterApp.swift in Sources */,
 				01E507782D598A1A00CFBE40 /* SettingsView.swift in Sources */,
+				01CEA49B2D6E34110083174B /* UserProfile+CoreDataClass.swift in Sources */,
 				017385672D3856AC00379FD5 /* ProgressPicture+CoreDataProperties.swift in Sources */,
 				01425DC72D3A76C900A98F2E /* DailyProgress+CoreDataClass.swift in Sources */,
 				0173850B2D36F2ED00379FD5 /* ProgressPicsView.swift in Sources */,

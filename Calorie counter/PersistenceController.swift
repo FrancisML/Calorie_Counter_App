@@ -5,7 +5,6 @@
 //  Created by frank lasalvia on 1/12/25.
 //
 
-
 import CoreData
 
 struct PersistenceController {
@@ -14,32 +13,31 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init() {
-        // Ensure this matches your .xcdatamodeld file name
         container = NSPersistentContainer(name: "CalorieCounterModel")
+        
+        let description = container.persistentStoreDescriptions.first
+        description?.setOption(true as NSNumber, forKey: NSMigratePersistentStoresAutomaticallyOption)
+        description?.setOption(true as NSNumber, forKey: NSInferMappingModelAutomaticallyOption)
+
         container.loadPersistentStores { description, error in
             if let error = error as NSError? {
-                // Log and handle error in a user-friendly way
-                fatalError("❌ Unresolved error \(error), \(error.userInfo)")
+                print("❌ Failed to load persistent store: \(error), \(error.userInfo)")
             } else {
                 print("✅ Core Data stack initialized at: \(description.url?.absoluteString ?? "Unknown Location")")
             }
         }
 
-        // Configure the viewContext for better performance
         container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         container.viewContext.automaticallyMergesChangesFromParent = true
-        container.viewContext.undoManager = nil // Improves performance for write-heavy operations
+        container.viewContext.undoManager = nil
 
-        // Preload activities only if needed
         preloadActivitiesIfNeeded()
     }
 
-    /// Returns the main context for the app
     var context: NSManagedObjectContext {
         container.viewContext
     }
 
-    /// Saves the context, with error handling
     func saveContext() {
         let context = container.viewContext
         if context.hasChanges {
@@ -53,7 +51,6 @@ struct PersistenceController {
         }
     }
 
-    /// Fetches all entities of a given type
     func fetch<T: NSManagedObject>(_ entity: T.Type, with sortDescriptors: [NSSortDescriptor] = []) -> [T] {
         let request = T.fetchRequest()
         request.sortDescriptors = sortDescriptors
@@ -66,7 +63,6 @@ struct PersistenceController {
         }
     }
 
-    /// Deletes all objects of a given entity
     func deleteAll<T: NSManagedObject>(_ entity: T.Type) {
         let request = T.fetchRequest()
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: request)
@@ -79,14 +75,13 @@ struct PersistenceController {
         }
     }
 
-    /// Preloads activities if they don’t exist already
     private func preloadActivitiesIfNeeded() {
         let context = container.viewContext
         let fetchRequest: NSFetchRequest<ActivityModel> = ActivityModel.fetchRequest()
 
         do {
             let count = try context.count(for: fetchRequest)
-            if count == 0 { // ✅ Only populate if no activities exist
+            if count == 0 {
                 let activities = [
                     ("Abs", 2.8, "ABS"), ("Badminton", 4.5, "ShuttleCock"), ("Baseball", 5.0, "Baseball"),
                     ("Basketball", 6.5, "Basketball"), ("Boxing", 12.0, "Boxing"), ("Calisthenics", 8.0, "calisthenics"),
@@ -104,11 +99,10 @@ struct PersistenceController {
 
                 for (name, metValue, imageName) in activities {
                     let newActivity = ActivityModel(context: context)
-                    newActivity.id = UUID() // ✅ Unique ID
+                    newActivity.id = UUID()
                     newActivity.name = name
                     newActivity.metValue = metValue
                     newActivity.imageName = imageName
-                    // No need to set isFavorite and isCustom since they default to false
                 }
 
                 try context.save()

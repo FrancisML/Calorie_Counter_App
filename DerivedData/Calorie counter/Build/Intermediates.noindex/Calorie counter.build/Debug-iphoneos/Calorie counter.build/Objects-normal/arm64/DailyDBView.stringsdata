@@ -4,14 +4,6 @@
     "Localizable": [
       {
         "comment": "",
-        "key": "Today"
-      },
-      {
-        "comment": "",
-        "key": "Streak: %d"
-      },
-      {
-        "comment": "",
         "key": "Calories"
       },
       {
@@ -24,19 +16,11 @@
       },
       {
         "comment": "",
-        "key": " %@ %@"
+        "key": "%@ %@"
       },
       {
         "comment": "",
         "key": "0 %@"
-      },
-      {
-        "comment": "",
-        "key": "%.1f %@"
-      },
-      {
-        "comment": "",
-        "key": "%@ %@"
       }
     ]
   },

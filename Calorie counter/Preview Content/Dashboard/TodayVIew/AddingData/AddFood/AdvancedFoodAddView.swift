@@ -1126,18 +1126,21 @@ struct AdvancedFoodAddView: View {
             print("⚠️ Missing required fields")
             return
         }
-
+        
         let newEntry = DiaryEntry(
             time: formattedTime,
             iconName: foodImage != UIImage(named: "DefaultFood") ? "CustomFood" : "DefaultFood",
             description: foodName,
-            detail: "\(servingConsumedAmount) \(servingSizeUnit)", // Only serving consumed
+            detail: "\(servingConsumedAmount) \(servingSizeUnit)",
             calories: Int(calories),
             type: "Food",
             imageName: "DefaultFood",
-            imageData: foodImage?.jpegData(compressionQuality: 0.8)
+            imageData: foodImage?.jpegData(compressionQuality: 0.8),
+            fats: fats,
+            carbs: carbohydrates,
+            protein: protein
         )
-
+        
         DispatchQueue.main.async {
             diaryEntries.append(newEntry)
         }

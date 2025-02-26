@@ -4,11 +4,11 @@
 <array>
 	<string>XCTest</string>
 	<string>SwiftUI</string>
-	<string>Charts</string>
-	<string>CoreData</string>
-	<string>AVFoundation</string>
 	<string>Combine</string>
+	<string>CoreData</string>
+	<string>Charts</string>
 	<string>UIKit</string>
+	<string>AVFoundation</string>
 	<string>Foundation</string>
 </array>
 </plist>

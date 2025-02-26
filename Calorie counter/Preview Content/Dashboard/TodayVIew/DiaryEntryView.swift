@@ -99,7 +99,24 @@ struct DiaryEntry: Identifiable {
     let detail: String
     let calories: Int
     let type: String
-    let imageName: String? // ✅ Stores filename for pre-defined workouts
-    let imageData: Data? // ✅ Stores user-selected images from Quick Add
+    let imageName: String?
+    let imageData: Data?
+    let fats: Double // New: grams of fat
+    let carbs: Double // New: grams of carbs
+    let protein: Double // New: grams of protein
+    
+    init(time: String, iconName: String, description: String, detail: String, calories: Int, type: String, imageName: String?, imageData: Data?, fats: Double = 0, carbs: Double = 0, protein: Double = 0) {
+        self.time = time
+        self.iconName = iconName
+        self.description = description
+        self.detail = detail
+        self.calories = calories
+        self.type = type
+        self.imageName = imageName
+        self.imageData = imageData
+        self.fats = fats
+        self.carbs = carbs
+        self.protein = protein
+    }
 }
 
