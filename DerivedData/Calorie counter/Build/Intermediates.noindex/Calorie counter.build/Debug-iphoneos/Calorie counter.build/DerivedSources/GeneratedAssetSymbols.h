@@ -39,8 +39,32 @@ static NSString * const ACImageNameAddWater AC_SWIFT_PRIVATE = @"AddWater";
 /// The "AddWeight" asset catalog image resource.
 static NSString * const ACImageNameAddWeight AC_SWIFT_PRIVATE = @"AddWeight";
 
+/// The "BMChest" asset catalog image resource.
+static NSString * const ACImageNameBMChest AC_SWIFT_PRIVATE = @"BMChest";
+
+/// The "BMDefault" asset catalog image resource.
+static NSString * const ACImageNameBMDefault AC_SWIFT_PRIVATE = @"BMDefault";
+
+/// The "BMHips" asset catalog image resource.
+static NSString * const ACImageNameBMHips AC_SWIFT_PRIVATE = @"BMHips";
+
+/// The "BMLArm" asset catalog image resource.
+static NSString * const ACImageNameBMLArm AC_SWIFT_PRIVATE = @"BMLArm";
+
+/// The "BMLThigh" asset catalog image resource.
+static NSString * const ACImageNameBMLThigh AC_SWIFT_PRIVATE = @"BMLThigh";
+
 /// The "BMR" asset catalog image resource.
 static NSString * const ACImageNameBMR AC_SWIFT_PRIVATE = @"BMR";
+
+/// The "BMRArm" asset catalog image resource.
+static NSString * const ACImageNameBMRArm AC_SWIFT_PRIVATE = @"BMRArm";
+
+/// The "BMRThigh" asset catalog image resource.
+static NSString * const ACImageNameBMRThigh AC_SWIFT_PRIVATE = @"BMRThigh";
+
+/// The "BMWaist" asset catalog image resource.
+static NSString * const ACImageNameBMWaist AC_SWIFT_PRIVATE = @"BMWaist";
 
 /// The "BarCode" asset catalog image resource.
 static NSString * const ACImageNameBarCode AC_SWIFT_PRIVATE = @"BarCode";

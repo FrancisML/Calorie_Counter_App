@@ -322,6 +322,27 @@ SWIFT_CLASS("_TtC15Calorie_counter13ActivityModel")
 @end
 
 
+SWIFT_CLASS_NAMED("BodyMeasurement")
+@interface BodyMeasurement : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@class UserProfile;
+
+@interface BodyMeasurement (SWIFT_EXTENSION(Calorie_counter))
+@property (nonatomic) double chest;
+@property (nonatomic) double waist;
+@property (nonatomic) double hips;
+@property (nonatomic) double leftArm;
+@property (nonatomic) double rightArm;
+@property (nonatomic) double leftThigh;
+@property (nonatomic) double rightThigh;
+@property (nonatomic, copy) NSDate * _Nullable date;
+@property (nonatomic, strong) UserProfile * _Nullable userProfile;
+@end
+
+
 SWIFT_CLASS_NAMED("CoreDiaryEntry")
 @interface CoreDiaryEntry : NSManagedObject
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
@@ -346,43 +367,13 @@ SWIFT_CLASS_NAMED("CoreDiaryEntry")
 @end
 
 
-SWIFT_CLASS_NAMED("DailyProgress")
-@interface DailyProgress : NSManagedObject
-- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-@class LedgerEntry;
-@class NSSet;
-
-@interface DailyProgress (SWIFT_EXTENSION(Calorie_counter))
-- (void)addLedgerEntriesObject:(LedgerEntry * _Nonnull)value;
-- (void)removeLedgerEntriesObject:(LedgerEntry * _Nonnull)value;
-- (void)addLedgerEntries:(NSSet * _Nonnull)values;
-- (void)removeLedgerEntries:(NSSet * _Nonnull)values;
-@end
-
-@class UserProfile;
-
-@interface DailyProgress (SWIFT_EXTENSION(Calorie_counter))
-@property (nonatomic) int32_t calorieIntake;
-@property (nonatomic) int32_t dailyLimit;
-@property (nonatomic) int32_t dailyWeight;
-@property (nonatomic, copy) NSDate * _Nullable date;
-@property (nonatomic) int32_t dayNumber;
-@property (nonatomic, copy) NSString * _Nullable passOrFail;
-@property (nonatomic) int32_t dailyCalDeficit;
-@property (nonatomic, strong) NSSet * _Nullable ledgerEntries;
-@property (nonatomic, strong) UserProfile * _Nullable userProfile;
-@end
-
-
 SWIFT_CLASS_NAMED("DailyRecord")
 @interface DailyRecord : NSManagedObject
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
+@class NSSet;
 
 @interface DailyRecord (SWIFT_EXTENSION(Calorie_counter))
 - (void)addDiaryEntriesObject:(CoreDiaryEntry * _Nonnull)value;
@@ -393,29 +384,16 @@ SWIFT_CLASS_NAMED("DailyRecord")
 
 
 @interface DailyRecord (SWIFT_EXTENSION(Calorie_counter))
-@property (nonatomic, copy) NSDate * _Nullable date;
 @property (nonatomic) double calorieIntake;
-@property (nonatomic) double waterIntake;
-@property (nonatomic, copy) NSString * _Nullable waterUnit;
+@property (nonatomic, copy) NSDate * _Nullable date;
 @property (nonatomic) BOOL passFail;
 @property (nonatomic) double waterGoal;
+@property (nonatomic) double waterIntake;
+@property (nonatomic, copy) NSString * _Nullable waterUnit;
+@property (nonatomic) double weighIn;
 @property (nonatomic, strong) NSSet * _Nullable diaryEntries;
 @end
 
-
-SWIFT_CLASS_NAMED("LedgerEntry")
-@interface LedgerEntry : NSManagedObject
-- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-@interface LedgerEntry (SWIFT_EXTENSION(Calorie_counter))
-@property (nonatomic) int32_t calories;
-@property (nonatomic, copy) NSString * _Nullable name;
-@property (nonatomic, copy) NSString * _Nullable type;
-@property (nonatomic, strong) DailyProgress * _Nullable dailyProgress;
-@end
 
 
 SWIFT_CLASS_NAMED("ProgressPicture")
@@ -426,11 +404,10 @@ SWIFT_CLASS_NAMED("ProgressPicture")
 
 
 @interface ProgressPicture (SWIFT_EXTENSION(Calorie_counter))
-@property (nonatomic, copy) NSUUID * _Nullable uuid;
 @property (nonatomic, copy) NSData * _Nullable imageData;
 @property (nonatomic, copy) NSDate * _Nullable date;
-@property (nonatomic) int32_t weight;
-@property (nonatomic, strong) UserProfile * _Nullable relationship;
+@property (nonatomic) double weight;
+@property (nonatomic, strong) UserProfile * _Nullable userProfile;
 @end
 
 
@@ -454,10 +431,10 @@ SWIFT_CLASS("_TtC15Calorie_counter11UserProfile")
 
 
 @interface UserProfile (SWIFT_EXTENSION(Calorie_counter))
-- (void)addDailyProgressObject:(DailyProgress * _Nonnull)value;
-- (void)removeDailyProgressObject:(DailyProgress * _Nonnull)value;
-- (void)addDailyProgress:(NSSet * _Nonnull)values;
-- (void)removeDailyProgress:(NSSet * _Nonnull)values;
+- (void)addBodyMeasurementObject:(BodyMeasurement * _Nonnull)value;
+- (void)removeBodyMeasurementObject:(BodyMeasurement * _Nonnull)value;
+- (void)addBodyMeasurement:(NSSet * _Nonnull)values;
+- (void)removeBodyMeasurement:(NSSet * _Nonnull)values;
 @end
 
 
@@ -466,7 +443,7 @@ SWIFT_CLASS("_TtC15Calorie_counter11UserProfile")
 @property (nonatomic) int32_t age;
 @property (nonatomic, copy) NSDate * _Nullable birthdate;
 @property (nonatomic) int32_t calorieDeficit;
-@property (nonatomic) int32_t currentWeight;
+@property (nonatomic) double currentWeight;
 @property (nonatomic) int32_t customCals;
 @property (nonatomic) int32_t dailyCalorieDif;
 @property (nonatomic) int32_t dailyCalorieGoal;
@@ -475,7 +452,7 @@ SWIFT_CLASS("_TtC15Calorie_counter11UserProfile")
 @property (nonatomic, copy) NSString * _Nullable gender;
 @property (nonatomic) int32_t goalCalories;
 @property (nonatomic) int32_t goalId;
-@property (nonatomic) int32_t goalWeight;
+@property (nonatomic) double goalWeight;
 @property (nonatomic) int32_t heightCm;
 @property (nonatomic) int32_t heightFt;
 @property (nonatomic) int32_t heightIn;
@@ -484,17 +461,17 @@ SWIFT_CLASS("_TtC15Calorie_counter11UserProfile")
 @property (nonatomic, copy) NSData * _Nullable profilePicture;
 @property (nonatomic, copy) NSDate * _Nullable startDate;
 @property (nonatomic, copy) NSData * _Nullable startPicture;
-@property (nonatomic) int32_t startWeight;
+@property (nonatomic) double startWeight;
 @property (nonatomic, copy) NSDate * _Nullable targetDate;
 @property (nonatomic) int32_t tempDayNumber;
 @property (nonatomic) BOOL useMetric;
 @property (nonatomic) int32_t userBMR;
-@property (nonatomic) double weekGoal;
-@property (nonatomic) int32_t weightDifference;
 @property (nonatomic) double waterGoal;
 @property (nonatomic, copy) NSString * _Nullable waterUnit;
-@property (nonatomic, strong) NSSet * _Nullable dailyProgress;
+@property (nonatomic) double weekGoal;
+@property (nonatomic) double weightDifference;
 @property (nonatomic, strong) NSSet * _Nullable progressPicture;
+@property (nonatomic, strong) NSSet * _Nullable bodyMeasurement;
 @end
 
 #endif

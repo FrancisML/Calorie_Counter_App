@@ -2,7 +2,7 @@
 //  DailyRecord+CoreDataProperties.swift
 //  Calorie counter
 //
-//  Created by frank lasalvia on 2/25/25.
+//  Created by frank lasalvia on 2/26/25.
 //
 //
 
@@ -16,12 +16,13 @@ extension DailyRecord {
         return NSFetchRequest<DailyRecord>(entityName: "DailyRecord")
     }
 
-    @NSManaged public var date: Date?
     @NSManaged public var calorieIntake: Double
-    @NSManaged public var waterIntake: Double
-    @NSManaged public var waterUnit: String?
+    @NSManaged public var date: Date?
     @NSManaged public var passFail: Bool
     @NSManaged public var waterGoal: Double
+    @NSManaged public var waterIntake: Double
+    @NSManaged public var waterUnit: String?
+    @NSManaged public var weighIn: Double
     @NSManaged public var diaryEntries: NSSet?
 
 }

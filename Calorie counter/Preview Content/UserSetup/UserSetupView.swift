@@ -1,3 +1,4 @@
+//
 //  UserSetupView.swift
 //  Calorie counter
 //
@@ -24,8 +25,6 @@ struct UserSetupView: View {
     @State private var isWeightTargetDateGoalSelected: Bool = true
     @State private var isCustomCalorieGoalSelected: Bool = false
     @State private var temporaryBirthDate: Date = Date()
-
-
     
     // Personal Stats Variables
     @State private var weight: String = ""
@@ -34,8 +33,8 @@ struct UserSetupView: View {
     @State private var heightInches: Int = 0
     @State private var useMetric: Bool = false
     @State private var activityLevel: Int = 0
-    @State private var temporaryDate: Date? = nil  // TEMPORARY DATE FOR PICKER
-    @FocusState private var isKeyboardActive: Bool // Added to track keyboard focus
+    @State private var temporaryDate: Date? = nil
+    @FocusState private var isKeyboardActive: Bool
     
     // New Variables from PersonalGoalsView
     @State private var customCals: String = ""
@@ -55,7 +54,6 @@ struct UserSetupView: View {
         return !weight.isEmpty && hasEnteredHeight
     }
     
-    // Helper for checking if height is entered (works for both metric and imperial)
     private var hasEnteredHeight: Bool {
         if useMetric {
             return heightCm > 0
@@ -64,23 +62,21 @@ struct UserSetupView: View {
         }
     }
     
-    // Enable the Next button only if validation passes or not on Step 1
     private var isNextButtonEnabled: Bool {
         switch currentStep {
         case 1:
-            return isPersonalDetailsComplete  // Validate Personal Details
+            return isPersonalDetailsComplete
         case 2:
-            return isPersonalStatsComplete    // Validate Personal Stats
+            return isPersonalStatsComplete
         default:
-            return true  // Enable by default for other steps
+            return true
         }
     }
-    
     
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                // HEADER (Always at the Top)
+                // HEADER
                 HStack {
                     Spacer()
                     Image("logo")
@@ -91,13 +87,13 @@ struct UserSetupView: View {
                     Text("Calorie Counter")
                         .font(.title)
                         .fontWeight(.bold)
-                        .foregroundColor(Styles.primaryText)  // Apply primary text color
+                        .foregroundColor(Styles.primaryText)
                     
                     Spacer()
                 }
                 .padding()
                 
-                // ZStack for Swipe Transition (Views Below Header)
+                // ZStack for Swipe Transition
                 ZStack {
                     PersonalDetailsView(
                         name: $name,
@@ -133,13 +129,12 @@ struct UserSetupView: View {
                         isWeightTargetDateGoalSelected: $isWeightTargetDateGoalSelected,
                         isCustomCalorieGoalSelected: $isCustomCalorieGoalSelected
                     )
-                    
                     .offset(x: currentStep == 3 ? 0 : (currentStep < 3 ? geometry.size.width : -geometry.size.width))
                     
                     UserOverviewView(
                         name: name,
                         profilePicture: profilePicture,
-                        gender: gender,
+                        gender: gender.isEmpty ? "" : gender, // Safely unwrap
                         birthDate: birthDate,
                         weight: weight,
                         heightFeet: heightFeet,
@@ -155,21 +150,16 @@ struct UserSetupView: View {
                     .offset(x: currentStep == 4 ? 0 : geometry.size.width)
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height * 0.7)
-                
                 .animation(.easeInOut(duration: 0.4), value: currentStep)
                 
                 Spacer()
                 
-                
-                // BACK, DARK MODE TOGGLE, AND NEXT BUTTONS
                 // BACK, DARK MODE TOGGLE, AND NEXT BUTTONS
                 HStack {
-                    // BACK BUTTON (Styled)
-                    // BACK BUTTON (Prevents Going Below Step 1)
                     if currentStep > 1 {
                         Button(action: {
                             withAnimation(.easeInOut(duration: 0.4)) {
-                                if currentStep > 1 {  // Prevents going below 1
+                                if currentStep > 1 {
                                     currentStep -= 1
                                 }
                             }
@@ -187,10 +177,8 @@ struct UserSetupView: View {
                         }
                     }
                     
-                    
                     Spacer()
                     
-                    // DARK MODE TOGGLE BUTTON (Unchanged)
                     Button(action: {
                         themeManager.isDarkMode.toggle()
                     }) {
@@ -205,73 +193,65 @@ struct UserSetupView: View {
                     
                     Spacer()
                     
-                    // NEXT BUTTON (Styled and Conditional)
                     Button(action: {
-                        if isNextButtonEnabled {  // Prevents navigation if button is disabled
+                        if isNextButtonEnabled {
                             withAnimation(.easeInOut(duration: 0.4)) {
                                 if currentStep < 4 {
                                     currentStep += 1
                                 } else {
-                                    saveUserProfile()  // Call function to save user data on "Finish"
-                                    showWelcomeSequence = true  // Trigger the welcome transition view
+                                    saveUserProfile()
+                                    showWelcomeSequence = true
                                 }
                             }
                         }
                     }) {
                         Text(currentStep < 4 ? "Next >" : "Finish")
                             .font(.title2)
-                            .foregroundColor(isNextButtonEnabled ? Styles.primaryText : Styles.secondaryBackground)  // Text changes when disabled
+                            .foregroundColor(isNextButtonEnabled ? Styles.primaryText : Styles.secondaryBackground)
                             .padding()
                             .frame(width: 120, height: 50)
-                            .background(isNextButtonEnabled ? Styles.secondaryBackground : Color.gray.opacity(0.3))  // Background stays light gray when disabled
+                            .background(isNextButtonEnabled ? Styles.secondaryBackground : Color.gray.opacity(0.3))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 4)
-                                    .stroke(isNextButtonEnabled ? Styles.primaryText : Styles.secondaryBackground, lineWidth: 1)  // Border changes when disabled
+                                    .stroke(isNextButtonEnabled ? Styles.primaryText : Styles.secondaryBackground, lineWidth: 1)
                             )
                     }
                     .disabled(!isNextButtonEnabled)
                     .fullScreenCover(isPresented: $showWelcomeSequence) {
                         WelcomeSequenceView()
                     }
-                    
-                    
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 30)
-                
-                
             }
-            .background(Styles.primaryBackground) // Apply primary background to the whole view
-            .focused($isKeyboardActive) // Ensures focus tracking
-            .ignoresSafeArea(.keyboard) // Make sure keyboard floats on top without affecting layout
-            
+            .background(Styles.primaryBackground)
+            .focused($isKeyboardActive)
+            .ignoresSafeArea(.keyboard)
         }
-        .ignoresSafeArea(.keyboard) // Make sure keyboard floats on top without affecting layout
-        // DATE PICKER OVERLAY (Works Like Before)
+        .ignoresSafeArea(.keyboard)
         .overlay(
             Group {
                 if showDatePicker {
                     ZStack {
-                        Color.black.opacity(0.3) // ✅ Adds background dimming (optional)
+                        Color.black.opacity(0.3)
                             .ignoresSafeArea()
-
+                        
                         VStack(spacing: 20) {
                             Text("Select Your Birthday")
                                 .font(.headline)
                                 .foregroundColor(Styles.primaryText)
-
-                            // ✅ Custom Date Picker Styled Like Height Picker
+                            
                             CustomDatePicker(selectedDate: $temporaryBirthDate, minimumDate: nil)
                                 .frame(height: 200)
                                 .clipped()
-
+                            
                             HStack {
                                 Button("Cancel") {
                                     showDatePicker = false
                                 }
                                 .frame(maxWidth: .infinity)
                                 .foregroundColor(Styles.primaryText)
-
+                                
                                 Button("Save") {
                                     birthDate = temporaryBirthDate
                                     hasPickedDate = true
@@ -284,101 +264,126 @@ struct UserSetupView: View {
                         }
                         .padding(20)
                         .background(RoundedRectangle(cornerRadius: 0).fill(Styles.secondaryBackground))
-                
                         .frame(width: UIScreen.main.bounds.width * 0.9)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center) // ✅ Centers the Date Picker
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                 }
             }
         )
-
-
     }
-        private func saveUserProfile() {
-            let userProfile = UserProfile(context: viewContext)
-            
-            userProfile.name = name
-            userProfile.gender = gender
-            userProfile.birthdate = birthDate
-            userProfile.profilePicture = profilePicture?.pngData()
-            userProfile.startWeight = Int32(weight) ?? 0
-            userProfile.currentWeight = Int32(weight) ?? 0
-            userProfile.goalWeight = Int32(goalWeight) ?? 0
-            userProfile.targetDate = goalDate
-            userProfile.weekGoal = weekGoal
-            userProfile.customCals = Int32(customCals) ?? 0
-            userProfile.useMetric = useMetric
-            
-            userProfile.heightCm = Int32(heightCm)
-            userProfile.heightFt = Int32(heightFeet)
-            userProfile.heightIn = Int32(heightInches)
-            
-            if let birthDate = userProfile.birthdate {
-                let calendar = Calendar.current
-                let ageComponents = calendar.dateComponents([.year], from: birthDate, to: Date())
-                userProfile.age = Int32(ageComponents.year ?? 0)
-            } else {
-                userProfile.age = 0
-            }
-            
-            userProfile.activityInt = Int32(activityLevel)
-            
-            userProfile.userBMR = calculateBMR(
-                weight: userProfile.currentWeight,
-                heightCm: userProfile.heightCm,
-                heightFt: userProfile.heightFt,
-                heightIn: userProfile.heightIn,
-                age: userProfile.age,
-                gender: userProfile.gender,
-                activityInt: userProfile.activityInt,
-                useMetric: userProfile.useMetric
-            )
-            
-            let calorieFactor: Int32 = useMetric ? 7000 : 3500
-            userProfile.dailyCalorieDif = Int32((Double(calorieFactor) * weekGoal) / 7)
-            
-            // ✅ Calculate weight difference if goal weight is set
-            if let goalWeightInt = Int32(goalWeight), goalWeightInt > 0 {
-                userProfile.weightDifference = abs(userProfile.currentWeight - goalWeightInt)
-            } else {
-                userProfile.weightDifference = 0
-            }
-            
-            // ✅ Ensure `goalId` is set properly
-            if isWeightTargetDateGoalSelected {
-                if weekGoal != 0 && (goalWeight.isEmpty || goalWeight == "0") {
-                    userProfile.goalId = 1  // Scenario: User set weekly goal but no goal weight
-                } else if !goalWeight.isEmpty && goalDate == nil {
-                    userProfile.goalId = 2  // Scenario: User entered a goal weight but no date
-                } else if !goalWeight.isEmpty && goalDate != nil {
-                    userProfile.goalId = 3  // Scenario: User entered both goal weight and target date
-                } else if weekGoal == 0 {
-                    userProfile.goalId = 4  // Scenario: User did not set a week goal
-                }
-            } else if isCustomCalorieGoalSelected && !customCals.isEmpty && customCals != "0" {
-                userProfile.goalId = 5  // Scenario: User set a custom calorie goal
-            }
-            
-            // ✅ Update the last saved date
-            userProfile.lastSavedDate = Date()
-            
-            print("---- SAVING TO CORE DATA ----")
-            print("Week Goal: \(weekGoal)")
-            print("User BMR: \(userProfile.userBMR)")
-            print("Goal ID: \(userProfile.goalId)")
-            print("Use Metric: \(useMetric)")
-            print("Daily Calorie Difference: \(userProfile.dailyCalorieDif)")
-            print("Weight Difference: \(userProfile.weightDifference)")
-            print("-----------------------------")
-            
-            do {
-                try viewContext.save()
-                print("✅ User Profile Saved Successfully!")
-            } catch {
-                print("❌ ERROR: Failed to save user profile: \(error.localizedDescription)")
-            }
+    
+    private func saveUserProfile() {
+        let userProfile = UserProfile(context: viewContext)
+        
+        userProfile.name = name
+        userProfile.gender = gender
+        userProfile.birthdate = birthDate
+        userProfile.profilePicture = profilePicture?.pngData()
+        userProfile.startWeight = Double(weight) ?? 0.0
+        userProfile.currentWeight = Double(weight) ?? 0.0
+        userProfile.goalWeight = Double(goalWeight) ?? 0.0
+        userProfile.targetDate = goalDate
+        userProfile.weekGoal = weekGoal
+        userProfile.customCals = Int32(customCals) ?? 0
+        userProfile.useMetric = useMetric
+        
+        userProfile.heightCm = Int32(heightCm)
+        userProfile.heightFt = Int32(heightFeet)
+        userProfile.heightIn = Int32(heightInches)
+        
+        if let birthDate = userProfile.birthdate {
+            let calendar = Calendar.current
+            let ageComponents = calendar.dateComponents([.year], from: birthDate, to: Date())
+            userProfile.age = Int32(ageComponents.year ?? 0)
+        } else {
+            userProfile.age = 0
         }
         
+        userProfile.activityInt = Int32(activityLevel)
         
+        userProfile.userBMR = calculateBMR(
+            weight: userProfile.currentWeight,
+            heightCm: userProfile.heightCm,
+            heightFt: userProfile.heightFt,
+            heightIn: userProfile.heightIn,
+            age: userProfile.age,
+            gender: userProfile.gender ?? "", // Safely unwrap
+            activityInt: userProfile.activityInt,
+            useMetric: userProfile.useMetric
+        )
+        
+        let calorieFactor: Double = useMetric ? 7000.0 : 3500.0
+        userProfile.dailyCalorieDif = Int32((calorieFactor * weekGoal) / 7)
+        
+        // Calculate weight difference if goal weight is set
+        if userProfile.goalWeight > 0 {
+            userProfile.weightDifference = abs(userProfile.currentWeight - userProfile.goalWeight)
+        } else {
+            userProfile.weightDifference = 0.0
+        }
+        
+        // Set goalId based on user input
+        if isWeightTargetDateGoalSelected {
+            if weekGoal != 0 && (goalWeight.isEmpty || goalWeight == "0") {
+                userProfile.goalId = 1
+            } else if !goalWeight.isEmpty && goalDate == nil {
+                userProfile.goalId = 2
+            } else if !goalWeight.isEmpty && goalDate != nil {
+                userProfile.goalId = 3
+            } else if weekGoal == 0 {
+                userProfile.goalId = 4
+            }
+        } else if isCustomCalorieGoalSelected && !customCals.isEmpty && customCals != "0" {
+            userProfile.goalId = 5
+        }
+        
+        userProfile.lastSavedDate = Date()
+        
+        print("---- SAVING TO CORE DATA ----")
+        print("Week Goal: \(weekGoal)")
+        print("User BMR: \(userProfile.userBMR)")
+        print("Goal ID: \(userProfile.goalId)")
+        print("Use Metric: \(useMetric)")
+        print("Daily Calorie Difference: \(userProfile.dailyCalorieDif)")
+        print("Weight Difference: \(userProfile.weightDifference)")
+        print("-----------------------------")
+        
+        do {
+            try viewContext.save()
+            print("✅ User Profile Saved Successfully!")
+        } catch {
+            print("❌ ERROR: Failed to save user profile: \(error.localizedDescription)")
+        }
     }
+    
+    private func calculateBMR(weight: Double, heightCm: Int32, heightFt: Int32, heightIn: Int32, age: Int32, gender: String, activityInt: Int32, useMetric: Bool) -> Int32 {
+        var bmr: Double = 0.0
+        
+        let weightKg = useMetric ? weight : weight * 0.453592
+        let heightCmDouble: Double
+        if useMetric {
+            heightCmDouble = Double(heightCm)
+        } else {
+            heightCmDouble = Double(heightFt * 12 + heightIn) * 2.54
+        }
+        
+        if gender.lowercased() == "male" {
+            bmr = 88.362 + (13.397 * weightKg) + (4.799 * heightCmDouble) - (5.677 * Double(age))
+        } else {
+            bmr = 447.593 + (9.247 * weightKg) + (3.098 * heightCmDouble) - (4.330 * Double(age))
+        }
+        
+        let activityMultipliers: [Double] = [1.2, 1.375, 1.55, 1.725, 1.9]
+        let activityIndex = min(max(Int(activityInt), 0), activityMultipliers.count - 1)
+        bmr *= activityMultipliers[activityIndex]
+        
+        return Int32(bmr.rounded())
+    }
+}
 
+struct UserSetupView_Previews: PreviewProvider {
+    static var previews: some View {
+        UserSetupView()
+            .environmentObject(ThemeManager())
+    }
+}

@@ -98,28 +98,28 @@ struct TodayView: View {
     private func fetchUserData() {
         let fetchRequest: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastSavedDate", ascending: false)]
-
+        
         do {
             if let userProfile = try viewContext.fetch(fetchRequest).first {
                 self.userName = userProfile.name ?? "User"
-
+                
                 if let imageData = userProfile.profilePicture, let uiImage = UIImage(data: imageData) {
                     self.profilePicture = uiImage
                 }
-
+                
                 self.goalMessage = generateGoalMessage(userProfile: userProfile)
                 self.highestStreak = 1
                 self.useMetric = userProfile.useMetric
-                self.dailyCalorieGoal = Int(userProfile.dailyCalorieGoal) // ✅ Fetch dailyCalorieGoal
+                self.dailyCalorieGoal = Int(userProfile.dailyCalorieGoal)
             }
         } catch {
             print("⚠️ ERROR: Failed to fetch user profile: \(error.localizedDescription)")
         }
     }
 
-
+    // No change needed here since currentWeight is only used in generateGoalMessage
     private func generateGoalMessage(userProfile: UserProfile) -> String {
-        let weightDifference = abs(userProfile.goalWeight - userProfile.currentWeight)
+        let weightDifference = abs(userProfile.goalWeight - userProfile.currentWeight) // Now a Double
         let formattedDifference = userProfile.useMetric ? "\(weightDifference) kg" : "\(weightDifference) lbs"
         
         if userProfile.weekGoal == 0 {

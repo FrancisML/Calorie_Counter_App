@@ -15,6 +15,17 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="BodyMeasurement" representedClassName="BodyMeasurement" syncable="YES">
+        <attribute name="chest" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="hips" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="leftArm" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="leftThigh" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="rightArm" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="rightThigh" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="waist" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="userProfile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserProfile" inverseName="bodyMeasurement" inverseEntity="UserProfile"/>
+    </entity>
     <entity name="CoreDiaryEntry" representedClassName="CoreDiaryEntry" syncable="YES">
         <attribute name="calories" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="carbs" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -29,17 +40,6 @@
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="dailyRecord" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyRecord" inverseName="diaryEntries" inverseEntity="DailyRecord"/>
     </entity>
-    <entity name="DailyProgress" representedClassName="DailyProgress" syncable="YES">
-        <attribute name="calorieIntake" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="dailyCalDeficit" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="dailyLimit" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="dailyWeight" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="dayNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="passOrFail" optional="YES" attributeType="String"/>
-        <relationship name="ledgerEntries" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LedgerEntry" inverseName="dailyProgress" inverseEntity="LedgerEntry"/>
-        <relationship name="userProfile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserProfile" inverseName="dailyProgress" inverseEntity="UserProfile"/>
-    </entity>
     <entity name="DailyRecord" representedClassName="DailyRecord" syncable="YES">
         <attribute name="calorieIntake" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
@@ -47,27 +47,21 @@
         <attribute name="waterGoal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="waterIntake" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="waterUnit" optional="YES" attributeType="String"/>
+        <attribute name="weighIn" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="diaryEntries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDiaryEntry" inverseName="dailyRecord" inverseEntity="CoreDiaryEntry"/>
-    </entity>
-    <entity name="LedgerEntry" representedClassName="LedgerEntry" syncable="YES">
-        <attribute name="calories" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="type" optional="YES" attributeType="String"/>
-        <relationship name="dailyProgress" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyProgress" inverseName="ledgerEntries" inverseEntity="DailyProgress"/>
     </entity>
     <entity name="ProgressPicture" representedClassName="ProgressPicture" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="imageData" optional="YES" attributeType="Binary"/>
-        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="weight" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserProfile" inverseName="progressPicture" inverseEntity="UserProfile"/>
+        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="userProfile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserProfile" inverseName="progressPicture" inverseEntity="UserProfile"/>
     </entity>
     <entity name="UserProfile" representedClassName=".UserProfile" syncable="YES">
         <attribute name="activityInt" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="age" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="birthdate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="calorieDeficit" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="currentWeight" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="currentWeight" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="customCals" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="dailyCalorieDif" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="dailyCalorieGoal" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -76,7 +70,7 @@
         <attribute name="gender" attributeType="String"/>
         <attribute name="goalCalories" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="goalId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="goalWeight" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="goalWeight" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="heightCm" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="heightFt" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="heightIn" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -85,7 +79,7 @@
         <attribute name="profilePicture" optional="YES" attributeType="Binary"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="startPicture" optional="YES" attributeType="Binary"/>
-        <attribute name="startWeight" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="startWeight" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="targetDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="tempDayNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="useMetric" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -93,8 +87,8 @@
         <attribute name="waterGoal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="waterUnit" optional="YES" attributeType="String"/>
         <attribute name="weekGoal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="weightDifference" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="dailyProgress" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DailyProgress" inverseName="userProfile" inverseEntity="DailyProgress"/>
-        <relationship name="progressPicture" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProgressPicture" inverseName="relationship" inverseEntity="ProgressPicture"/>
+        <attribute name="weightDifference" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="bodyMeasurement" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BodyMeasurement" inverseName="userProfile" inverseEntity="BodyMeasurement"/>
+        <relationship name="progressPicture" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProgressPicture" inverseName="userProfile" inverseEntity="ProgressPicture"/>
     </entity>
 </model>

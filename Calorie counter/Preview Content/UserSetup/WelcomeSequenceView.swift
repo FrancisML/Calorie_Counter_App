@@ -9,13 +9,13 @@ struct WelcomeSequenceView: View {
     @AppStorage("appState") private var appState: String = "setup"
 
     @State private var weekGoal: Double = 0.0
-    @State private var userBMR: Int32 = 0
-    @State private var dailyCalorieDif: Int32 = 0
+    @State private var userBMR: Int32 = 0 // Assuming this remains Int32 in Core Data
+    @State private var dailyCalorieDif: Int32 = 0 // Assuming this remains Int32
     @State private var goalId: Int32 = 0
     @State private var useMetric: Bool = false
-    @State private var weightDifference: Int32 = 0
+    @State private var weightDifference: Double = 0.0 // Changed to Double
     @State private var goalDate: Date? = nil
-    @State private var customCals: Int32 = 0
+    @State private var customCals: Int32 = 0 // Assuming this remains Int32
     
     var body: some View {
         VStack {
@@ -36,7 +36,7 @@ struct WelcomeSequenceView: View {
 
             if currentStep == messages.count - 1 {
                 Button(action: {
-                    setStartDate() // Set startDate before dismissing
+                    setStartDate()
                     appState = "dashboard"
                     dismiss()
                 }) {
@@ -76,14 +76,15 @@ struct WelcomeSequenceView: View {
                 viewContext.refresh(userProfile, mergeChanges: true)
 
                 self.weekGoal = userProfile.weekGoal
-                self.userBMR = userProfile.userBMR
+                self.userBMR = userProfile.userBMR // Int32
                 self.goalId = userProfile.goalId
                 self.useMetric = userProfile.useMetric
-                self.weightDifference = userProfile.weightDifference
-                self.customCals = userProfile.customCals
+                self.weightDifference = userProfile.weightDifference // Now Double
+                self.customCals = userProfile.customCals // Int32
+                self.goalDate = userProfile.targetDate
 
-                let calorieFactor: Int32 = self.useMetric ? 7000 : 3500
-                self.dailyCalorieDif = Int32((Double(calorieFactor) * self.weekGoal) / 7)
+                let calorieFactor: Double = self.useMetric ? 7000.0 : 3500.0
+                self.dailyCalorieDif = Int32((calorieFactor * self.weekGoal) / 7)
                 userProfile.dailyCalorieDif = self.dailyCalorieDif
 
                 try viewContext.save()
@@ -96,6 +97,7 @@ struct WelcomeSequenceView: View {
                 print("Daily Calorie Difference: \(self.dailyCalorieDif)")
                 print("Weight Difference: \(self.weightDifference)")
                 print("Custom Calories: \(self.customCals)")
+                print("Goal Date: \(self.goalDate?.description ?? "nil")")
                 print("-------------------------------")
 
                 self.startMessageSequence()
@@ -136,7 +138,6 @@ struct WelcomeSequenceView: View {
         let goalType = weekGoal < 0 ? "lose" : "gain"
         let absWeekGoal = abs(weekGoal)
         let unit = useMetric ? "kg" : "lbs"
-        _ = weekGoal < 0 ? "limit" : "reach"
         let progressWord = weekGoal < 0 ? "losing" : "gaining"
 
         var messageList: [String] = []
@@ -153,7 +154,7 @@ struct WelcomeSequenceView: View {
             messageList.append(finalMessage)
           
         } else if goalId == 2 {
-            let estimatedFinishDate = calculateFinishDate(weightDifference: Double(weightDifference), weekGoal: absWeekGoal)
+            let estimatedFinishDate = calculateFinishDate(weightDifference: weightDifference, weekGoal: absWeekGoal)
 
             messageList.append("You want to \(goalType) \(weightDifference) \(unit) by \(progressWord) \(absWeekGoal) \(unit) per week.")
             messageList.append("Based on your information, your BMR is \(userBMR).")
@@ -167,7 +168,7 @@ struct WelcomeSequenceView: View {
             
         } else if goalId == 3 {
             let formattedDate = goalDate != nil ? formattedGoalDate : "Not Provided"
-            let adjustedCaloriesByDate = calculateCaloriesByDate(weightDifference: Double(weightDifference), userBMR: userBMR, targetDate: goalDate)
+            let adjustedCaloriesByDate = calculateCaloriesByDate(weightDifference: weightDifference, userBMR: userBMR, targetDate: goalDate)
 
             messageList.append("Your goal is to \(goalType) \(weightDifference) \(unit) by \(formattedDate).")
             messageList.append("Based on your information, your BMR is \(userBMR).")
@@ -182,10 +183,9 @@ struct WelcomeSequenceView: View {
             messageList.append("In order to maintain your current weight, you need to keep your calorie intake at \(userBMR) calories daily.")
         } else if goalId == 5 {
             let calorieDifference = userBMR - customCals
-            let calorieFactor = useMetric ? 7000 : 3500
-            let calculatedWeight = abs(Double(calorieDifference * 7) / Double(calorieFactor))
+            let calorieFactor = useMetric ? 7000.0 : 3500.0
+            let calculatedWeight = abs(Double(calorieDifference * 7) / calorieFactor)
             let weightChange = String(format: "%.1f", calculatedWeight)
-            _ = calorieDifference < 0 ? "lose" : "gain"
 
             messageList.append("You want to keep your calorie intake to \(customCals) calories per day.")
             messageList.append("Based on your information, your BMR is \(userBMR).")
@@ -197,8 +197,6 @@ struct WelcomeSequenceView: View {
 
         return messageList
     }
-
-
 
     /// Calculates the estimated finish date based on weight difference and weekly goal
     private func calculateFinishDate(weightDifference: Double, weekGoal: Double) -> String {
@@ -220,7 +218,7 @@ struct WelcomeSequenceView: View {
     private func calculateCaloriesByDate(weightDifference: Double, userBMR: Int32, targetDate: Date?) -> Int32 {
         guard let targetDate = targetDate else { return userBMR }
 
-        let calorieFactor: Double = useMetric ? 7000 : 3500
+        let calorieFactor: Double = useMetric ? 7000.0 : 3500.0
         let daysUntilTarget = Calendar.current.dateComponents([.day], from: Date(), to: targetDate).day ?? 0
 
         guard daysUntilTarget > 0 else { return userBMR }
@@ -282,7 +280,7 @@ struct WelcomeSequenceView: View {
             let absCalorieDifference = abs(dailyCalorieDif)
             newCalorieGoal = weekGoal < 0 ? userBMR - absCalorieDifference : userBMR + absCalorieDifference
         } else if goalId == 3 {
-            newCalorieGoal = calculateCaloriesByDate(weightDifference: Double(weightDifference), userBMR: userBMR, targetDate: goalDate)
+            newCalorieGoal = calculateCaloriesByDate(weightDifference: weightDifference, userBMR: userBMR, targetDate: goalDate)
         } else if goalId == 5 {
             newCalorieGoal = customCals
         }
@@ -290,4 +288,3 @@ struct WelcomeSequenceView: View {
         updateDailyCalorieGoal(newCalorieGoal)
     }
 }
-

@@ -657,3 +657,114 @@ struct WaterGoalPicker: View {
     }
     
 }
+
+struct HorizontalTapeMeasurePicker: View {
+    @Binding var selectedValue: Double // Value in inches
+    let useMetric: Bool
+    
+    private let totalInches: Double = 120.0
+    private let increment: Double = 0.25 // 1/4 inch resolution
+    private let totalTicks: Int = Int(120.0 / 0.25) + 1 // 481 ticks (0 to 120 inclusive)
+    
+    private let tickSpacing: CGFloat = 24
+    private let largeTickHeight: CGFloat = 40
+    private let mediumTickHeight: CGFloat = 25
+    private let smallTickHeight: CGFloat = 15
+    private let tickWidth: CGFloat = 3
+    private let indicatorWidth: CGFloat = 4
+    
+    @State private var dragOffset: CGFloat = 0
+    @State private var liveValue: Double = 0
+    @State private var initialOffset: CGFloat = 0
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                Styles.secondaryBackground
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
+                Rectangle()
+                    .fill(Color.red)
+                    .frame(width: indicatorWidth, height: geometry.size.height)
+                    .zIndex(1)
+                
+                HStack(spacing: 0) {
+                    ForEach(0..<totalTicks, id: \.self) { index in
+                        let value = Double(index) * increment
+                        let tickIndexWithinInch = Int((value * 4).rounded()) % 4
+                        let isInch = tickIndexWithinInch == 0
+                        let isHalfInch = tickIndexWithinInch == 2
+                        let isQuarterInch = tickIndexWithinInch == 1 || tickIndexWithinInch == 3
+                        
+                        let tickHeight = isInch ? largeTickHeight : (isHalfInch ? mediumTickHeight : smallTickHeight)
+                        
+                        VStack(spacing: 0) {
+                            Rectangle()
+                                .fill(Styles.primaryText)
+                                .frame(width: tickWidth, height: tickHeight)
+                                .frame(maxHeight: .infinity, alignment: .top)
+                            
+                            if isInch {
+                                Text("\(Int(value))")
+                                    .font(.system(size: 24))
+                                    .foregroundColor(Styles.primaryText)
+                                    .fixedSize()
+                                    .frame(height: 30)
+                            } else {
+                                Spacer()
+                                    .frame(height: 30)
+                            }
+                            
+                            Rectangle()
+                                .fill(Styles.primaryText)
+                                .frame(width: tickWidth, height: tickHeight)
+                                .frame(maxHeight: .infinity, alignment: .bottom)
+                        }
+                        .frame(width: tickSpacing)
+                    }
+                }
+                .offset(x: dragOffset)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .frame(width: geometry.size.width)
+            .clipped()
+            .contentShape(Rectangle())
+            .gesture(
+                DragGesture()
+                    .onChanged { gesture in
+                        let maxOffset = CGFloat(totalTicks - 1) * tickSpacing / 2
+                        let newOffset = min(max(gesture.translation.width + initialOffset, -maxOffset), maxOffset)
+                        dragOffset = newOffset
+                        liveValue = closestValue(for: dragOffset)
+                        selectedValue = liveValue
+                    }
+                    .onEnded { _ in
+                        let newValue = closestValue(for: dragOffset)
+                        selectedValue = newValue
+                        dragOffset = positionForValue(newValue)
+                        initialOffset = dragOffset
+                    }
+            )
+        }
+        .frame(height: largeTickHeight * 2 + 30)
+        .background(Styles.secondaryBackground)
+        .onAppear {
+            dragOffset = positionForValue(selectedValue)
+            liveValue = selectedValue
+        }
+    }
+    
+    private func positionForValue(_ value: Double) -> CGFloat {
+        let tickIndex = value / increment
+        let centerOffset = CGFloat(totalTicks - 1) * tickSpacing / 2
+        return centerOffset - CGFloat(tickIndex) * tickSpacing
+    }
+    
+    private func closestValue(for offset: CGFloat) -> Double {
+        let centerOffset = CGFloat(totalTicks - 1) * tickSpacing / 2
+        let tickIndex = (centerOffset - offset) / tickSpacing
+        let snappedIndex = round(tickIndex)
+        let value = snappedIndex * increment
+        return min(max(value, 0), totalInches)
+    }
+}

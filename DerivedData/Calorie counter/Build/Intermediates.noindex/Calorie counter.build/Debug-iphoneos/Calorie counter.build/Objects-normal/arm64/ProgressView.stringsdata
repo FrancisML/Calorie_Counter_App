@@ -1,10 +1,62 @@
 {
-  "source": "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/ProgressView.swift",
+  "source": "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/New Group/ProgressView.swift",
   "tables": {
     "Localizable": [
       {
         "comment": "",
         "key": "Progress"
+      },
+      {
+        "comment": "",
+        "key": "Progress Pics"
+      },
+      {
+        "comment": "",
+        "key": "Weight"
+      },
+      {
+        "comment": "",
+        "key": "Goal: %@"
+      },
+      {
+        "comment": "",
+        "key": "No weight data available"
+      },
+      {
+        "comment": "",
+        "key": "Date"
+      },
+      {
+        "comment": "",
+        "key": "Progress to Goal: %lld%%"
+      },
+      {
+        "comment": "",
+        "key": "Set a start and goal weight to track progress"
+      },
+      {
+        "comment": "",
+        "key": "Body Measurements"
+      },
+      {
+        "comment": "",
+        "key": "Chest"
+      },
+      {
+        "comment": "",
+        "key": "Waist"
+      },
+      {
+        "comment": "",
+        "key": "Hips"
+      },
+      {
+        "comment": "",
+        "key": "Arms (L/R)"
+      },
+      {
+        "comment": "",
+        "key": "Thighs (L/R)"
       }
     ]
   },

@@ -162,6 +162,15 @@ struct DailyDBView: View {
         dailyRecord.passFail = totalCalories <= Double(calorieGoal)
         dailyRecord.waterGoal = Double(waterGoal)
 
+        // Calculate and save the average weight to weighIn
+        let avgWeightString = averageWeight() // Get the average weight as a String
+        if let avgWeight = Double(avgWeightString) {
+            dailyRecord.weighIn = avgWeight // Save to DailyRecord.weighIn (Double)
+        } else {
+            dailyRecord.weighIn = 0.0 // Fallback if conversion fails
+            print("DEBUG: Failed to convert averageWeight '\(avgWeightString)' to Double")
+        }
+
         // Add new CoreDiaryEntry objects, avoiding duplicates
         for entry in diaryEntries {
             let entryFetch: NSFetchRequest<CoreDiaryEntry> = CoreDiaryEntry.fetchRequest()
@@ -187,6 +196,18 @@ struct DailyDBView: View {
             } else {
                 print("DEBUG: Skipping duplicate entry - Description: \(entry.description)")
             }
+        }
+
+        // Update UserProfile.currentWeight with the average weight
+        do {
+            let userFetch: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
+            userFetch.fetchLimit = 1
+            if let userProfile = try viewContext.fetch(userFetch).first, let avgWeight = Double(averageWeight()) {
+                userProfile.currentWeight = avgWeight // Now a Double, no need for Int32 conversion
+                print("DEBUG: Updated UserProfile.currentWeight to \(userProfile.currentWeight)")
+            }
+        } catch {
+            print("❌ Error updating UserProfile.currentWeight: \(error.localizedDescription)")
         }
 
         do {

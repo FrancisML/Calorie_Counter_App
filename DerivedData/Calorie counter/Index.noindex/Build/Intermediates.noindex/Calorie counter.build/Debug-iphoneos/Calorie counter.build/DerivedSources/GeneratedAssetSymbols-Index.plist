@@ -120,11 +120,91 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameBMChest</string>
+			<key>relativePath</key>
+			<string>./BodyMeasurments/BMChest.imageset</string>
+			<key>swiftSymbol</key>
+			<string>bmChest</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameBMDefault</string>
+			<key>relativePath</key>
+			<string>./BodyMeasurments/BMDefault.imageset</string>
+			<key>swiftSymbol</key>
+			<string>bmDefault</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameBMHips</string>
+			<key>relativePath</key>
+			<string>./BodyMeasurments/BMHips.imageset</string>
+			<key>swiftSymbol</key>
+			<string>bmHips</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameBMLArm</string>
+			<key>relativePath</key>
+			<string>./BodyMeasurments/BMLArm.imageset</string>
+			<key>swiftSymbol</key>
+			<string>bmlArm</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameBMLThigh</string>
+			<key>relativePath</key>
+			<string>./BodyMeasurments/BMLThigh.imageset</string>
+			<key>swiftSymbol</key>
+			<string>bmlThigh</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameBMR</string>
 			<key>relativePath</key>
 			<string>./BMR.imageset</string>
 			<key>swiftSymbol</key>
 			<string>BMR</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameBMRArm</string>
+			<key>relativePath</key>
+			<string>./BodyMeasurments/BMRArm.imageset</string>
+			<key>swiftSymbol</key>
+			<string>bmrArm</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameBMRThigh</string>
+			<key>relativePath</key>
+			<string>./BodyMeasurments/BMRThigh.imageset</string>
+			<key>swiftSymbol</key>
+			<string>bmrThigh</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameBMWaist</string>
+			<key>relativePath</key>
+			<string>./BodyMeasurments/BMWaist.imageset</string>
+			<key>swiftSymbol</key>
+			<string>bmWaist</string>
 		</dict>
 		<dict>
 			<key>catalogPath</key>

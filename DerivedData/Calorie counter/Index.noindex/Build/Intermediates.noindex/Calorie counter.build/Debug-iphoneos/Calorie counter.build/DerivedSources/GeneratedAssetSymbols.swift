@@ -64,8 +64,32 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "AddWeight" asset catalog image resource.
     static let addWeight = DeveloperToolsSupport.ImageResource(name: "AddWeight", bundle: resourceBundle)
 
+    /// The "BMChest" asset catalog image resource.
+    static let bmChest = DeveloperToolsSupport.ImageResource(name: "BMChest", bundle: resourceBundle)
+
+    /// The "BMDefault" asset catalog image resource.
+    static let bmDefault = DeveloperToolsSupport.ImageResource(name: "BMDefault", bundle: resourceBundle)
+
+    /// The "BMHips" asset catalog image resource.
+    static let bmHips = DeveloperToolsSupport.ImageResource(name: "BMHips", bundle: resourceBundle)
+
+    /// The "BMLArm" asset catalog image resource.
+    static let bmlArm = DeveloperToolsSupport.ImageResource(name: "BMLArm", bundle: resourceBundle)
+
+    /// The "BMLThigh" asset catalog image resource.
+    static let bmlThigh = DeveloperToolsSupport.ImageResource(name: "BMLThigh", bundle: resourceBundle)
+
     /// The "BMR" asset catalog image resource.
     static let BMR = DeveloperToolsSupport.ImageResource(name: "BMR", bundle: resourceBundle)
+
+    /// The "BMRArm" asset catalog image resource.
+    static let bmrArm = DeveloperToolsSupport.ImageResource(name: "BMRArm", bundle: resourceBundle)
+
+    /// The "BMRThigh" asset catalog image resource.
+    static let bmrThigh = DeveloperToolsSupport.ImageResource(name: "BMRThigh", bundle: resourceBundle)
+
+    /// The "BMWaist" asset catalog image resource.
+    static let bmWaist = DeveloperToolsSupport.ImageResource(name: "BMWaist", bundle: resourceBundle)
 
     /// The "BarCode" asset catalog image resource.
     static let barCode = DeveloperToolsSupport.ImageResource(name: "BarCode", bundle: resourceBundle)
@@ -394,10 +418,82 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "BMChest" asset catalog image.
+    static var bmChest: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .bmChest)
+#else
+        .init()
+#endif
+    }
+
+    /// The "BMDefault" asset catalog image.
+    static var bmDefault: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .bmDefault)
+#else
+        .init()
+#endif
+    }
+
+    /// The "BMHips" asset catalog image.
+    static var bmHips: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .bmHips)
+#else
+        .init()
+#endif
+    }
+
+    /// The "BMLArm" asset catalog image.
+    static var bmlArm: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .bmlArm)
+#else
+        .init()
+#endif
+    }
+
+    /// The "BMLThigh" asset catalog image.
+    static var bmlThigh: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .bmlThigh)
+#else
+        .init()
+#endif
+    }
+
     /// The "BMR" asset catalog image.
     static var BMR: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .BMR)
+#else
+        .init()
+#endif
+    }
+
+    /// The "BMRArm" asset catalog image.
+    static var bmrArm: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .bmrArm)
+#else
+        .init()
+#endif
+    }
+
+    /// The "BMRThigh" asset catalog image.
+    static var bmrThigh: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .bmrThigh)
+#else
+        .init()
+#endif
+    }
+
+    /// The "BMWaist" asset catalog image.
+    static var bmWaist: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .bmWaist)
 #else
         .init()
 #endif
@@ -1077,10 +1173,82 @@ extension UIKit.UIImage {
 #endif
     }
 
+    /// The "BMChest" asset catalog image.
+    static var bmChest: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .bmChest)
+#else
+        .init()
+#endif
+    }
+
+    /// The "BMDefault" asset catalog image.
+    static var bmDefault: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .bmDefault)
+#else
+        .init()
+#endif
+    }
+
+    /// The "BMHips" asset catalog image.
+    static var bmHips: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .bmHips)
+#else
+        .init()
+#endif
+    }
+
+    /// The "BMLArm" asset catalog image.
+    static var bmlArm: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .bmlArm)
+#else
+        .init()
+#endif
+    }
+
+    /// The "BMLThigh" asset catalog image.
+    static var bmlThigh: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .bmlThigh)
+#else
+        .init()
+#endif
+    }
+
     /// The "BMR" asset catalog image.
     static var BMR: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .BMR)
+#else
+        .init()
+#endif
+    }
+
+    /// The "BMRArm" asset catalog image.
+    static var bmrArm: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .bmrArm)
+#else
+        .init()
+#endif
+    }
+
+    /// The "BMRThigh" asset catalog image.
+    static var bmrThigh: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .bmrThigh)
+#else
+        .init()
+#endif
+    }
+
+    /// The "BMWaist" asset catalog image.
+    static var bmWaist: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .bmWaist)
 #else
         .init()
 #endif

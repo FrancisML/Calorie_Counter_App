@@ -2,7 +2,7 @@
 //  ProgressPicture+CoreDataProperties.swift
 //  Calorie counter
 //
-//  Created by frank lasalvia on 1/15/25.
+//  Created by frank lasalvia on 2/26/25.
 //
 //
 
@@ -16,11 +16,10 @@ extension ProgressPicture {
         return NSFetchRequest<ProgressPicture>(entityName: "ProgressPicture")
     }
 
-    @NSManaged public var uuid: UUID?
     @NSManaged public var imageData: Data?
     @NSManaged public var date: Date?
-    @NSManaged public var weight: Int32
-    @NSManaged public var relationship: UserProfile?
+    @NSManaged public var weight: Double
+    @NSManaged public var userProfile: UserProfile?
 
 }
 

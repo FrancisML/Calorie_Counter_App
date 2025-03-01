@@ -17,26 +17,26 @@
 		01323EE22D526BF9005C025A /* UserOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01323EE12D526BF9005C025A /* UserOverviewView.swift */; };
 		01323EE42D529022005C025A /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01323EE32D529022005C025A /* Styles.swift */; };
 		01425DBC2D398D9800A98F2E /* DailyDataTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01425DBB2D398D9800A98F2E /* DailyDataTracker.swift */; };
-		01425DC72D3A76C900A98F2E /* DailyProgress+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01425DC52D3A76C900A98F2E /* DailyProgress+CoreDataClass.swift */; };
-		01425DC82D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01425DC62D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift */; };
 		01466C742D30E33D008648A6 /* GoalSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01466C732D30E33D008648A6 /* GoalSummaryView.swift */; };
 		015B6C8B2D4D264F0095CB7F /* PersonalGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015B6C8A2D4D264F0095CB7F /* PersonalGoalView.swift */; };
 		015EF3332D5AA31F00902E42 /* DailyDBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015EF3322D5AA31F00902E42 /* DailyDBView.swift */; };
 		016E52712D4A919F00105B8E /* PersonalDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016E52702D4A919F00105B8E /* PersonalDetailsView.swift */; };
 		016E52732D4A92BE00105B8E /* PersonalStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016E52722D4A92BE00105B8E /* PersonalStatsView.swift */; };
 		016E52752D4A93B200105B8E /* SharedComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016E52742D4A93B200105B8E /* SharedComponents.swift */; };
-		017384D62D35BE3700379FD5 /* PastLedgerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017384D52D35BE3700379FD5 /* PastLedgerView.swift */; };
-		017384D82D35BECD00379FD5 /* PastDailyLedgerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017384D72D35BECD00379FD5 /* PastDailyLedgerView.swift */; };
 		0173850B2D36F2ED00379FD5 /* ProgressPicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0173850A2D36F2ED00379FD5 /* ProgressPicsView.swift */; };
-		0173850D2D36F3AC00379FD5 /* AddProgressPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0173850C2D36F3AC00379FD5 /* AddProgressPictureView.swift */; };
 		0173850F2D36F43900379FD5 /* ProgressPictureDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0173850E2D36F43900379FD5 /* ProgressPictureDetailView.swift */; };
 		017385112D36F6AF00379FD5 /* ProgressImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017385102D36F6AF00379FD5 /* ProgressImage.swift */; };
-		017385662D3856AC00379FD5 /* ProgressPicture+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0173855E2D3856AC00379FD5 /* ProgressPicture+CoreDataClass.swift */; };
-		017385672D3856AC00379FD5 /* ProgressPicture+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0173855F2D3856AC00379FD5 /* ProgressPicture+CoreDataProperties.swift */; };
-		0173856C2D3856AC00379FD5 /* LedgerEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017385642D3856AC00379FD5 /* LedgerEntry+CoreDataClass.swift */; };
-		0173856D2D3856AC00379FD5 /* LedgerEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017385652D3856AC00379FD5 /* LedgerEntry+CoreDataProperties.swift */; };
 		0190ECF32D30B7F5003AA451 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0190ECF22D30B7F4003AA451 /* SummaryView.swift */; };
 		019C9CCE2D31A17500E0F608 /* ChangeDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019C9CCD2D31A17500E0F608 /* ChangeDateView.swift */; };
+		01BE26C52D6FB772007156A4 /* DailyRecord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE26C32D6FB772007156A4 /* DailyRecord+CoreDataClass.swift */; };
+		01BE26C62D6FB772007156A4 /* DailyRecord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE26C42D6FB772007156A4 /* DailyRecord+CoreDataProperties.swift */; };
+		01BE26D52D6FCB36007156A4 /* ProgressPicture+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE26D32D6FCB36007156A4 /* ProgressPicture+CoreDataClass.swift */; };
+		01BE26D62D6FCB36007156A4 /* ProgressPicture+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE26D42D6FCB36007156A4 /* ProgressPicture+CoreDataProperties.swift */; };
+		01BE26DF2D700C27007156A4 /* UserProfile+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE26DB2D700C27007156A4 /* UserProfile+CoreDataClass.swift */; };
+		01BE26E02D700C27007156A4 /* UserProfile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE26DC2D700C27007156A4 /* UserProfile+CoreDataProperties.swift */; };
+		01BE26E52D700C8B007156A4 /* BodyMeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE26E42D700C8B007156A4 /* BodyMeasurementView.swift */; };
+		01BE26E82D701007007156A4 /* BodyMeasurement+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE26E62D701007007156A4 /* BodyMeasurement+CoreDataClass.swift */; };
+		01BE26E92D701007007156A4 /* BodyMeasurement+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE26E72D701007007156A4 /* BodyMeasurement+CoreDataProperties.swift */; };
 		01BEF2FA2D651BF500B74744 /* ADVWorkoutAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BEF2F92D651BF500B74744 /* ADVWorkoutAdd.swift */; };
 		01BEF2FC2D651C0500B74744 /* QuickWKAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BEF2FB2D651C0500B74744 /* QuickWKAdd.swift */; };
 		01BEF2FE2D67D8A900B74744 /* ActivityStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BEF2FD2D67D8A800B74744 /* ActivityStatsView.swift */; };
@@ -47,10 +47,6 @@
 		01BF361A2D2E4878002D1E51 /* Calorie_counterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF36192D2E4878002D1E51 /* Calorie_counterUITests.swift */; };
 		01BF361C2D2E4878002D1E51 /* Calorie_counterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF361B2D2E4878002D1E51 /* Calorie_counterUITestsLaunchTests.swift */; };
 		01C7727A2D40374000402083 /* UserSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C772792D40374000402083 /* UserSetupView.swift */; };
-		01CEA49B2D6E34110083174B /* UserProfile+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CEA4952D6E34110083174B /* UserProfile+CoreDataClass.swift */; };
-		01CEA49C2D6E34110083174B /* UserProfile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CEA4962D6E34110083174B /* UserProfile+CoreDataProperties.swift */; };
-		01CEA4A52D6E6CC50083174B /* DailyRecord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CEA4A12D6E6CC50083174B /* DailyRecord+CoreDataClass.swift */; };
-		01CEA4A62D6E6CC50083174B /* DailyRecord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CEA4A22D6E6CC50083174B /* DailyRecord+CoreDataProperties.swift */; };
 		01CEA4AB2D6E71510083174B /* CoreDiaryEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CEA4A92D6E71510083174B /* CoreDiaryEntry+CoreDataClass.swift */; };
 		01CEA4AC2D6E71510083174B /* CoreDiaryEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CEA4AA2D6E71510083174B /* CoreDiaryEntry+CoreDataProperties.swift */; };
 		01D0B0632D5D9462004BC63E /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0622D5D9462004BC63E /* DiaryView.swift */; };
@@ -100,26 +96,26 @@
 		01323EE12D526BF9005C025A /* UserOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOverviewView.swift; sourceTree = "<group>"; };
 		01323EE32D529022005C025A /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		01425DBB2D398D9800A98F2E /* DailyDataTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDataTracker.swift; sourceTree = "<group>"; };
-		01425DC52D3A76C900A98F2E /* DailyProgress+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyProgress+CoreDataClass.swift"; sourceTree = "<group>"; };
-		01425DC62D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyProgress+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		01466C732D30E33D008648A6 /* GoalSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSummaryView.swift; sourceTree = "<group>"; };
 		015B6C8A2D4D264F0095CB7F /* PersonalGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalGoalView.swift; sourceTree = "<group>"; };
 		015EF3322D5AA31F00902E42 /* DailyDBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDBView.swift; sourceTree = "<group>"; };
 		016E52702D4A919F00105B8E /* PersonalDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDetailsView.swift; sourceTree = "<group>"; };
 		016E52722D4A92BE00105B8E /* PersonalStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalStatsView.swift; sourceTree = "<group>"; };
 		016E52742D4A93B200105B8E /* SharedComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedComponents.swift; sourceTree = "<group>"; };
-		017384D52D35BE3700379FD5 /* PastLedgerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastLedgerView.swift; sourceTree = "<group>"; };
-		017384D72D35BECD00379FD5 /* PastDailyLedgerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastDailyLedgerView.swift; sourceTree = "<group>"; };
 		0173850A2D36F2ED00379FD5 /* ProgressPicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPicsView.swift; sourceTree = "<group>"; };
-		0173850C2D36F3AC00379FD5 /* AddProgressPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProgressPictureView.swift; sourceTree = "<group>"; };
 		0173850E2D36F43900379FD5 /* ProgressPictureDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPictureDetailView.swift; sourceTree = "<group>"; };
 		017385102D36F6AF00379FD5 /* ProgressImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressImage.swift; sourceTree = "<group>"; };
-		0173855E2D3856AC00379FD5 /* ProgressPicture+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressPicture+CoreDataClass.swift"; sourceTree = "<group>"; };
-		0173855F2D3856AC00379FD5 /* ProgressPicture+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressPicture+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		017385642D3856AC00379FD5 /* LedgerEntry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LedgerEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
-		017385652D3856AC00379FD5 /* LedgerEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LedgerEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0190ECF22D30B7F4003AA451 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		019C9CCD2D31A17500E0F608 /* ChangeDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDateView.swift; sourceTree = "<group>"; };
+		01BE26C32D6FB772007156A4 /* DailyRecord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyRecord+CoreDataClass.swift"; sourceTree = "<group>"; };
+		01BE26C42D6FB772007156A4 /* DailyRecord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyRecord+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		01BE26D32D6FCB36007156A4 /* ProgressPicture+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressPicture+CoreDataClass.swift"; sourceTree = "<group>"; };
+		01BE26D42D6FCB36007156A4 /* ProgressPicture+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressPicture+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		01BE26DB2D700C27007156A4 /* UserProfile+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataClass.swift"; sourceTree = "<group>"; };
+		01BE26DC2D700C27007156A4 /* UserProfile+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		01BE26E42D700C8B007156A4 /* BodyMeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMeasurementView.swift; sourceTree = "<group>"; };
+		01BE26E62D701007007156A4 /* BodyMeasurement+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BodyMeasurement+CoreDataClass.swift"; sourceTree = "<group>"; };
+		01BE26E72D701007007156A4 /* BodyMeasurement+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BodyMeasurement+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		01BEF2F92D651BF500B74744 /* ADVWorkoutAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADVWorkoutAdd.swift; sourceTree = "<group>"; };
 		01BEF2FB2D651C0500B74744 /* QuickWKAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickWKAdd.swift; sourceTree = "<group>"; };
 		01BEF2FD2D67D8A800B74744 /* ActivityStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityStatsView.swift; sourceTree = "<group>"; };
@@ -134,10 +130,6 @@
 		01BF36192D2E4878002D1E51 /* Calorie_counterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calorie_counterUITests.swift; sourceTree = "<group>"; };
 		01BF361B2D2E4878002D1E51 /* Calorie_counterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calorie_counterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		01C772792D40374000402083 /* UserSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupView.swift; sourceTree = "<group>"; };
-		01CEA4952D6E34110083174B /* UserProfile+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataClass.swift"; sourceTree = "<group>"; };
-		01CEA4962D6E34110083174B /* UserProfile+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		01CEA4A12D6E6CC50083174B /* DailyRecord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyRecord+CoreDataClass.swift"; sourceTree = "<group>"; };
-		01CEA4A22D6E6CC50083174B /* DailyRecord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyRecord+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		01CEA4A92D6E71510083174B /* CoreDiaryEntry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDiaryEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
 		01CEA4AA2D6E71510083174B /* CoreDiaryEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDiaryEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		01D0B0622D5D9462004BC63E /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
@@ -152,7 +144,7 @@
 		01E0F0EE2D5D54F4002D8E5D /* WaterTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterTrackerView.swift; sourceTree = "<group>"; };
 		01E507712D5988E700CFBE40 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		01E507732D5989C100CFBE40 /* PastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastView.swift; sourceTree = "<group>"; };
-		01E507752D5989DA00CFBE40 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		01E507752D5989DA00CFBE40 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProgressView.swift; path = "../New Group/ProgressView.swift"; sourceTree = "<group>"; };
 		01E507772D598A1A00CFBE40 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		01ECE42B2D68F35B0056FF34 /* ActivityModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		01ECE42C2D68F35B0056FF34 /* ActivityModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -203,7 +195,7 @@
 				012AF0F12D342658005D03B1 /* DashboardView.swift */,
 				01E507772D598A1A00CFBE40 /* SettingsView.swift */,
 				01E507732D5989C100CFBE40 /* PastView.swift */,
-				01E507752D5989DA00CFBE40 /* ProgressView.swift */,
+				01BE26E32D700C65007156A4 /* ProgressView */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -221,6 +213,15 @@
 			path = TodayVIew;
 			sourceTree = "<group>";
 		};
+		01BE26E32D700C65007156A4 /* ProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				01E507752D5989DA00CFBE40 /* ProgressView.swift */,
+				01BE26E42D700C8B007156A4 /* BodyMeasurementView.swift */,
+			);
+			path = ProgressView;
+			sourceTree = "<group>";
+		};
 		01BEF2F82D651BC100B74744 /* AddWorkout */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,20 +236,18 @@
 		01BF35EF2D2E486E002D1E51 = {
 			isa = PBXGroup;
 			children = (
+				01BE26E62D701007007156A4 /* BodyMeasurement+CoreDataClass.swift */,
+				01BE26E72D701007007156A4 /* BodyMeasurement+CoreDataProperties.swift */,
+				01BE26DB2D700C27007156A4 /* UserProfile+CoreDataClass.swift */,
+				01BE26DC2D700C27007156A4 /* UserProfile+CoreDataProperties.swift */,
+				01BE26D32D6FCB36007156A4 /* ProgressPicture+CoreDataClass.swift */,
+				01BE26D42D6FCB36007156A4 /* ProgressPicture+CoreDataProperties.swift */,
+				01BE26C32D6FB772007156A4 /* DailyRecord+CoreDataClass.swift */,
+				01BE26C42D6FB772007156A4 /* DailyRecord+CoreDataProperties.swift */,
 				01CEA4A92D6E71510083174B /* CoreDiaryEntry+CoreDataClass.swift */,
 				01CEA4AA2D6E71510083174B /* CoreDiaryEntry+CoreDataProperties.swift */,
-				01CEA4A12D6E6CC50083174B /* DailyRecord+CoreDataClass.swift */,
-				01CEA4A22D6E6CC50083174B /* DailyRecord+CoreDataProperties.swift */,
-				01CEA4952D6E34110083174B /* UserProfile+CoreDataClass.swift */,
-				01CEA4962D6E34110083174B /* UserProfile+CoreDataProperties.swift */,
 				01ECE42B2D68F35B0056FF34 /* ActivityModel+CoreDataClass.swift */,
 				01ECE42C2D68F35B0056FF34 /* ActivityModel+CoreDataProperties.swift */,
-				01425DC52D3A76C900A98F2E /* DailyProgress+CoreDataClass.swift */,
-				01425DC62D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift */,
-				0173855E2D3856AC00379FD5 /* ProgressPicture+CoreDataClass.swift */,
-				0173855F2D3856AC00379FD5 /* ProgressPicture+CoreDataProperties.swift */,
-				017385642D3856AC00379FD5 /* LedgerEntry+CoreDataClass.swift */,
-				017385652D3856AC00379FD5 /* LedgerEntry+CoreDataProperties.swift */,
 				01BF35FA2D2E486F002D1E51 /* Calorie counter */,
 				01BF360E2D2E4878002D1E51 /* Calorie counterTests */,
 				01BF36182D2E4878002D1E51 /* Calorie counterUITests */,
@@ -281,13 +280,10 @@
 				017385102D36F6AF00379FD5 /* ProgressImage.swift */,
 				0173850A2D36F2ED00379FD5 /* ProgressPicsView.swift */,
 				0173850E2D36F43900379FD5 /* ProgressPictureDetailView.swift */,
-				0173850C2D36F3AC00379FD5 /* AddProgressPictureView.swift */,
 				01466C732D30E33D008648A6 /* GoalSummaryView.swift */,
 				019C9CCD2D31A17500E0F608 /* ChangeDateView.swift */,
 				012AF0F32D3426B0005D03B1 /* ImagePicker.swift */,
 				012AF0FD2D3484A3005D03B1 /* DailyProgressView.swift */,
-				017384D52D35BE3700379FD5 /* PastLedgerView.swift */,
-				017384D72D35BECD00379FD5 /* PastDailyLedgerView.swift */,
 				01425DBB2D398D9800A98F2E /* DailyDataTracker.swift */,
 				016E52742D4A93B200105B8E /* SharedComponents.swift */,
 				01323EE32D529022005C025A /* Styles.swift */,
@@ -475,26 +471,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0173856C2D3856AC00379FD5 /* LedgerEntry+CoreDataClass.swift in Sources */,
 				01CEA4AC2D6E71510083174B /* CoreDiaryEntry+CoreDataProperties.swift in Sources */,
 				01D0B06E2D5DBC61004BC63E /* AddWaterView.swift in Sources */,
 				01D0B0682D5DBC1E004BC63E /* WeighInView.swift in Sources */,
 				012AF0D62D337F35005D03B1 /* CalorieCounterModel.xcdatamodeld in Sources */,
 				012AF0FE2D3484A3005D03B1 /* DailyProgressView.swift in Sources */,
+				01BE26E82D701007007156A4 /* BodyMeasurement+CoreDataClass.swift in Sources */,
 				01ECE42E2D68F35B0056FF34 /* ActivityModel+CoreDataProperties.swift in Sources */,
 				01E507722D5988E700CFBE40 /* TodayView.swift in Sources */,
 				015B6C8B2D4D264F0095CB7F /* PersonalGoalView.swift in Sources */,
-				017385662D3856AC00379FD5 /* ProgressPicture+CoreDataClass.swift in Sources */,
 				01323EE22D526BF9005C025A /* UserOverviewView.swift in Sources */,
 				01D0B0712D5E888B004BC63E /* QuickFoodAddView.swift in Sources */,
 				016E52752D4A93B200105B8E /* SharedComponents.swift in Sources */,
 				01D0B06C2D5DBC47004BC63E /* AddWorkoutView.swift in Sources */,
 				01BEF2FA2D651BF500B74744 /* ADVWorkoutAdd.swift in Sources */,
-				01CEA4A62D6E6CC50083174B /* DailyRecord+CoreDataProperties.swift in Sources */,
-				01CEA49C2D6E34110083174B /* UserProfile+CoreDataProperties.swift in Sources */,
 				01BEF2FC2D651C0500B74744 /* QuickWKAdd.swift in Sources */,
 				0190ECF32D30B7F5003AA451 /* SummaryView.swift in Sources */,
-				017384D62D35BE3700379FD5 /* PastLedgerView.swift in Sources */,
 				01D0B0632D5D9462004BC63E /* DiaryView.swift in Sources */,
 				01C7727A2D40374000402083 /* UserSetupView.swift in Sources */,
 				01323EE42D529022005C025A /* Styles.swift in Sources */,
@@ -502,35 +494,35 @@
 				01ECE42D2D68F35B0056FF34 /* ActivityModel+CoreDataClass.swift in Sources */,
 				0173850F2D36F43900379FD5 /* ProgressPictureDetailView.swift in Sources */,
 				01466C742D30E33D008648A6 /* GoalSummaryView.swift in Sources */,
-				01CEA4A52D6E6CC50083174B /* DailyRecord+CoreDataClass.swift in Sources */,
-				0173850D2D36F3AC00379FD5 /* AddProgressPictureView.swift in Sources */,
 				01E0F0EF2D5D54F4002D8E5D /* WaterTrackerView.swift in Sources */,
 				017385112D36F6AF00379FD5 /* ProgressImage.swift in Sources */,
 				015EF3332D5AA31F00902E42 /* DailyDBView.swift in Sources */,
-				017384D82D35BECD00379FD5 /* PastDailyLedgerView.swift in Sources */,
+				01BE26D62D6FCB36007156A4 /* ProgressPicture+CoreDataProperties.swift in Sources */,
+				01BE26C52D6FB772007156A4 /* DailyRecord+CoreDataClass.swift in Sources */,
+				01BE26C62D6FB772007156A4 /* DailyRecord+CoreDataProperties.swift in Sources */,
+				01BE26E02D700C27007156A4 /* UserProfile+CoreDataProperties.swift in Sources */,
+				01BE26D52D6FCB36007156A4 /* ProgressPicture+CoreDataClass.swift in Sources */,
 				01CEA4AB2D6E71510083174B /* CoreDiaryEntry+CoreDataClass.swift in Sources */,
 				01BF35FC2D2E486F002D1E51 /* Calorie_counterApp.swift in Sources */,
 				01E507782D598A1A00CFBE40 /* SettingsView.swift in Sources */,
-				01CEA49B2D6E34110083174B /* UserProfile+CoreDataClass.swift in Sources */,
-				017385672D3856AC00379FD5 /* ProgressPicture+CoreDataProperties.swift in Sources */,
-				01425DC72D3A76C900A98F2E /* DailyProgress+CoreDataClass.swift in Sources */,
 				0173850B2D36F2ED00379FD5 /* ProgressPicsView.swift in Sources */,
+				01BE26E52D700C8B007156A4 /* BodyMeasurementView.swift in Sources */,
 				01E507742D5989C100CFBE40 /* PastView.swift in Sources */,
 				01BEF2FE2D67D8A900B74744 /* ActivityStatsView.swift in Sources */,
 				016E52712D4A919F00105B8E /* PersonalDetailsView.swift in Sources */,
 				0107C8482D55617000AF12A0 /* WelcomeSequenceView.swift in Sources */,
 				016E52732D4A92BE00105B8E /* PersonalStatsView.swift in Sources */,
 				012AF0F42D3426B0005D03B1 /* ImagePicker.swift in Sources */,
+				01BE26E92D701007007156A4 /* BodyMeasurement+CoreDataProperties.swift in Sources */,
 				012AF0F22D342658005D03B1 /* DashboardView.swift in Sources */,
 				012AF0D82D3384AD005D03B1 /* PersistenceController.swift in Sources */,
 				01425DBC2D398D9800A98F2E /* DailyDataTracker.swift in Sources */,
 				01D0B06A2D5DBC32004BC63E /* AddFoodView.swift in Sources */,
 				01E507762D5989DA00CFBE40 /* ProgressView.swift in Sources */,
 				01D0B0652D5D9524004BC63E /* DiaryEntryView.swift in Sources */,
-				01425DC82D3A76C900A98F2E /* DailyProgress+CoreDataProperties.swift in Sources */,
 				01D0B0732D5E889F004BC63E /* AdvancedFoodAddView.swift in Sources */,
+				01BE26DF2D700C27007156A4 /* UserProfile+CoreDataClass.swift in Sources */,
 				01D0B0752D5EABC8004BC63E /* KeyboardDismissModifier.swift in Sources */,
-				0173856D2D3856AC00379FD5 /* LedgerEntry+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
