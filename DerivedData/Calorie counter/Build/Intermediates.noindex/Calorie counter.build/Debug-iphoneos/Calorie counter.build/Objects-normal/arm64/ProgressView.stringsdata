@@ -12,15 +12,27 @@
       },
       {
         "comment": "",
-        "key": "Weight"
-      },
-      {
-        "comment": "",
         "key": "Goal: %@"
       },
       {
         "comment": "",
-        "key": "No weight data available"
+        "key": "%@"
+      },
+      {
+        "comment": "",
+        "key": "Weight"
+      },
+      {
+        "comment": "",
+        "key": "%@%@ %@"
+      },
+      {
+        "comment": "",
+        "key": "Goal"
+      },
+      {
+        "comment": "",
+        "key": "Current"
       },
       {
         "comment": "",
@@ -28,11 +40,7 @@
       },
       {
         "comment": "",
-        "key": "Progress to Goal: %lld%%"
-      },
-      {
-        "comment": "",
-        "key": "Set a start and goal weight to track progress"
+        "key": "Current: %@"
       },
       {
         "comment": "",
@@ -41,6 +49,14 @@
       {
         "comment": "",
         "key": "Body Measurements"
+      },
+      {
+        "comment": "",
+        "key": "No workouts recorded yet"
+      },
+      {
+        "comment": "",
+        "key": "Exercise Overview"
       }
     ]
   },
