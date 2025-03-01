@@ -215,6 +215,9 @@ struct BodyMeasurementView: View {
             return
         }
         
+        print("DEBUG: Saving for user: \(userProfile.name ?? "unknown"), ID: \(userProfile.objectID.uriRepresentation())")
+        print("DEBUG: Input values - Chest: \(chest), Waist: \(waist), Hips: \(hips), LeftArm: \(leftArm), RightArm: \(rightArm), LeftThigh: \(leftThigh), RightThigh: \(rightThigh)")
+        
         let measurement = BodyMeasurement(context: viewContext)
         measurement.chest = userProfile.useMetric ? chest * 2.54 : chest
         measurement.waist = userProfile.useMetric ? waist * 2.54 : waist
@@ -229,9 +232,9 @@ struct BodyMeasurementView: View {
         do {
             try viewContext.save()
             let unit = userProfile.useMetric ? "cm" : "in"
-            print("✅ Body Measurements Saved: Chest: \(measurement.chest) \(unit), Waist: \(measurement.waist) \(unit), etc.")
+            print("✅ Saved BodyMeasurement - Chest: \(measurement.chest) \(unit), Date: \(measurement.date?.description ?? "nil"), ObjectID: \(measurement.objectID.uriRepresentation())")
         } catch {
-            print("❌ Error saving body measurements: \(error.localizedDescription)")
+            print("❌ Save error: \(error.localizedDescription)")
         }
     }
 }

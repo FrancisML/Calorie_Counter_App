@@ -16,6 +16,7 @@ struct ProgressView: View {
     @State private var userProfile: UserProfile?
     @State private var progressPictures: [ProgressPicture] = []
     @State private var dailyRecords: [DailyRecord] = []
+    @State private var bodyMeasurements: [BodyMeasurement] = []
     @State private var isPhotoPickerPresented = false
     @State private var selectedPhoto: PhotosPickerItem? = nil
     @State private var isExpanded = false
@@ -100,10 +101,14 @@ struct ProgressView: View {
         .onAppear {
             fetchUserProfile()
             fetchDailyRecords()
+            fetchBodyMeasurements()
         }
         .sheet(isPresented: $showBodyMeasurementView) {
             BodyMeasurementView(userProfile: userProfile)
                 .environment(\.managedObjectContext, viewContext)
+                .onDisappear {
+                    fetchBodyMeasurements()
+                }
         }
     }
     
@@ -307,44 +312,139 @@ struct ProgressView: View {
     }
     
     private var bodyMeasurementSection: some View {
-        VStack(spacing: 15) {
-            Text("Body Measurements")
-                .font(.headline)
-                .foregroundColor(Styles.primaryText)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-            HStack(spacing: 10) {
-                Image("Running")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 100, height: 100)
+        ZStack(alignment: .top) {
+            // Measurements Content (lower z-index)
+            VStack(spacing: 15) {
+                let hasMultipleEntries = bodyMeasurements.count > 1
+                let latestMeasurement = bodyMeasurements.last
+                let earliestMeasurement = bodyMeasurements.first
                 
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("Chest")
+                let allZero = latestMeasurement.map { measurement in
+                    measurement.chest == 0 && measurement.waist == 0 && measurement.hips == 0 &&
+                    measurement.leftArm == 0 && measurement.rightArm == 0 &&
+                    measurement.leftThigh == 0 && measurement.rightThigh == 0
+                } ?? true
+                
+                HStack(spacing: 15) {
+                    Spacer() // Center content horizontally
+                    
+                    Image("BMDefault")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 263)
+                    
+                    VStack(alignment: .leading, spacing: 8) {
+                        MeasurementRow(label: "Chest", value: latestMeasurement?.chest ?? 0, difference: calculateDifference(earliest: earliestMeasurement?.chest, latest: latestMeasurement?.chest), showDifference: hasMultipleEntries, useMetric: userProfile?.useMetric ?? false)
+                        MeasurementRow(label: "Waist", value: latestMeasurement?.waist ?? 0, difference: calculateDifference(earliest: earliestMeasurement?.waist, latest: latestMeasurement?.waist), showDifference: hasMultipleEntries, useMetric: userProfile?.useMetric ?? false)
+                        MeasurementRow(label: "Hips", value: latestMeasurement?.hips ?? 0, difference: calculateDifference(earliest: earliestMeasurement?.hips, latest: latestMeasurement?.hips), showDifference: hasMultipleEntries, useMetric: userProfile?.useMetric ?? false)
+                        MeasurementRow(label: "Arms (L)", value: latestMeasurement?.leftArm ?? 0, difference: calculateDifference(earliest: earliestMeasurement?.leftArm, latest: latestMeasurement?.leftArm), showDifference: hasMultipleEntries, useMetric: userProfile?.useMetric ?? false)
+                        MeasurementRow(label: "Arms (R)", value: latestMeasurement?.rightArm ?? 0, difference: calculateDifference(earliest: earliestMeasurement?.rightArm, latest: latestMeasurement?.rightArm), showDifference: hasMultipleEntries, useMetric: userProfile?.useMetric ?? false)
+                        MeasurementRow(label: "Thighs (L)", value: latestMeasurement?.leftThigh ?? 0, difference: calculateDifference(earliest: earliestMeasurement?.leftThigh, latest: latestMeasurement?.leftThigh), showDifference: hasMultipleEntries, useMetric: userProfile?.useMetric ?? false)
+                        MeasurementRow(label: "Thighs (R)", value: latestMeasurement?.rightThigh ?? 0, difference: calculateDifference(earliest: earliestMeasurement?.rightThigh, latest: latestMeasurement?.rightThigh), showDifference: hasMultipleEntries, useMetric: userProfile?.useMetric ?? false)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Spacer() // Center content horizontally
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Styles.tertiaryBackground)
+                .cornerRadius(8)
+                .onTapGesture {
+                    showBodyMeasurementView = true
+                }
+                
+                if allZero {
+                    Text("Enter your measurements")
                         .font(.subheadline)
                         .foregroundColor(Styles.secondaryText)
-                    Text("Waist")
-                        .font(.subheadline)
-                        .foregroundColor(Styles.secondaryText)
-                    Text("Hips")
-                        .font(.subheadline)
-                        .foregroundColor(Styles.secondaryText)
-                    Text("Arms (L/R)")
-                        .font(.subheadline)
-                        .foregroundColor(Styles.secondaryText)
-                    Text("Thighs (L/R)")
-                        .font(.subheadline)
-                        .foregroundColor(Styles.secondaryText)
+                        .padding(.bottom, 5)
                 }
             }
-            .padding()
-            .background(Styles.tertiaryBackground)
-            .cornerRadius(8)
-            .onTapGesture {
-                showBodyMeasurementView = true
+            .padding(.top, 40) // Offset content below label bar and shadow
+            
+            // Label Bar (higher z-index)
+            HStack {
+                Text("Body Measurements")
+                    .font(.headline)
+                    .foregroundColor(Styles.primaryText)
+                
+                Spacer()
+                
+                Button(action: {
+                    showBodyMeasurementView = true
+                }) {
+                    Image(systemName: "plus")
+                        .font(.title2)
+                        .foregroundColor(Styles.primaryText)
+                }
+            }
+            .padding(.vertical, 15)
+            .padding(.horizontal, 15)
+            .background(Styles.secondaryBackground)
+            .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 5)
+            .zIndex(1)
+        }
+    }
+    
+    // Helper view for each measurement row
+    struct MeasurementRow: View {
+        let label: String
+        let value: Double
+        let difference: Double?
+        let showDifference: Bool
+        let useMetric: Bool
+        
+        var body: some View {
+            HStack(spacing: 10) {
+                Text(label)
+                    .font(.subheadline)
+                    .foregroundColor(Styles.secondaryText)
+                    .frame(width: 80, alignment: .leading)
+                
+                Text(String(format: "%.1f%@", value, useMetric ? "cm" : "in"))
+                    .font(.subheadline)
+                    .foregroundColor(Styles.primaryText)
+                
+                if showDifference, let diff = difference {
+                    Text(diff > 0 ? "+\(String(format: "%.1f", diff))" : String(format: "%.1f", diff))
+                        .font(.subheadline)
+                        .foregroundColor(diff > 0 ? .red : .green)
+                }
             }
         }
-        .padding(.horizontal)
+    }
+    
+    // Fetch body measurements from Core Data
+    private func fetchBodyMeasurements() {
+        guard let userProfile = userProfile else {
+            print("❌ No user profile for fetching measurements")
+            return
+        }
+        
+        print("DEBUG: Fetching for user: \(userProfile.name ?? "unknown"), ID: \(userProfile.objectID.uriRepresentation())")
+        
+        let fetchRequest: NSFetchRequest<BodyMeasurement> = BodyMeasurement.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "userProfile == %@", userProfile)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        
+        do {
+            let measurements = try viewContext.fetch(fetchRequest)
+            print("DEBUG: Fetched \(measurements.count) body measurements")
+            for (index, measurement) in measurements.enumerated() {
+                print("DEBUG: Measurement \(index) - Chest: \(measurement.chest), Date: \(measurement.date?.description ?? "nil"), ObjectID: \(measurement.objectID.uriRepresentation())")
+            }
+            self.bodyMeasurements = measurements
+        } catch {
+            print("❌ Fetch error: \(error.localizedDescription)")
+            self.bodyMeasurements = []
+        }
+    }
+    
+    // Calculate difference between earliest and latest measurements
+    private func calculateDifference(earliest: Double?, latest: Double?) -> Double? {
+        guard let earliest = earliest, let latest = latest else { return nil }
+        return latest - earliest
     }
     
     // Fetch Functions
@@ -354,6 +454,7 @@ struct ProgressView: View {
         
         do {
             userProfile = try viewContext.fetch(fetchRequest).first
+            print("DEBUG: Fetched UserProfile - Name: \(userProfile?.name ?? "nil"), ID: \(userProfile?.objectID.uriRepresentation().description ?? "nil")")
         } catch {
             print("❌ Error fetching user profile: \(error.localizedDescription)")
             userProfile = nil
