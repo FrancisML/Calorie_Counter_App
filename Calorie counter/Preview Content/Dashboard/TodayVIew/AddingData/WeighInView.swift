@@ -2,8 +2,8 @@ import SwiftUI
 
 struct WeighInView: View {
     var closeAction: () -> Void
-    var saveWeighIn: (String, String) -> Void
-    @Binding var fadeOut: Bool
+        var saveWeighIn: (String, String) -> Void // Type remains the same, but matches DashboardView
+        @Binding var fadeOut: Bool
 
     @State private var weight: String
     @State private var isSaving: Bool = false

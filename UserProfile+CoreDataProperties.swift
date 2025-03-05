@@ -2,7 +2,7 @@
 //  UserProfile+CoreDataProperties.swift
 //  Calorie counter
 //
-//  Created by frank lasalvia on 2/26/25.
+//  Created by frank lasalvia on 3/4/25.
 //
 //
 
@@ -47,25 +47,9 @@ extension UserProfile {
     @NSManaged public var waterUnit: String?
     @NSManaged public var weekGoal: Double
     @NSManaged public var weightDifference: Double
-    @NSManaged public var progressPicture: NSSet?
+    @NSManaged public var highStreak: Int32
     @NSManaged public var bodyMeasurement: NSSet?
-
-}
-
-// MARK: Generated accessors for progressPicture
-extension UserProfile {
-
-    @objc(addProgressPictureObject:)
-    @NSManaged public func addToProgressPicture(_ value: ProgressPicture)
-
-    @objc(removeProgressPictureObject:)
-    @NSManaged public func removeFromProgressPicture(_ value: ProgressPicture)
-
-    @objc(addProgressPicture:)
-    @NSManaged public func addToProgressPicture(_ values: NSSet)
-
-    @objc(removeProgressPicture:)
-    @NSManaged public func removeFromProgressPicture(_ values: NSSet)
+    @NSManaged public var progressPicture: NSSet?
 
 }
 
@@ -83,6 +67,23 @@ extension UserProfile {
 
     @objc(removeBodyMeasurement:)
     @NSManaged public func removeFromBodyMeasurement(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for progressPicture
+extension UserProfile {
+
+    @objc(addProgressPictureObject:)
+    @NSManaged public func addToProgressPicture(_ value: ProgressPicture)
+
+    @objc(removeProgressPictureObject:)
+    @NSManaged public func removeFromProgressPicture(_ value: ProgressPicture)
+
+    @objc(addProgressPicture:)
+    @NSManaged public func addToProgressPicture(_ values: NSSet)
+
+    @objc(removeProgressPicture:)
+    @NSManaged public func removeFromProgressPicture(_ values: NSSet)
 
 }
 

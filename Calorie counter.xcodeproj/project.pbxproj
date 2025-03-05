@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		0107C8482D55617000AF12A0 /* WelcomeSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0107C8472D55617000AF12A0 /* WelcomeSequenceView.swift */; };
+		0114B39F2D77A2F900B2036A /* UserProfile+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114B39D2D77A2F900B2036A /* UserProfile+CoreDataClass.swift */; };
+		0114B3A02D77A2F900B2036A /* UserProfile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114B39E2D77A2F900B2036A /* UserProfile+CoreDataProperties.swift */; };
 		012AF0D62D337F35005D03B1 /* CalorieCounterModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0D42D337F35005D03B1 /* CalorieCounterModel.xcdatamodeld */; };
 		012AF0D82D3384AD005D03B1 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0D72D3384AD005D03B1 /* PersistenceController.swift */; };
 		012AF0F22D342658005D03B1 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0F12D342658005D03B1 /* DashboardView.swift */; };
 		012AF0F42D3426B0005D03B1 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0F32D3426B0005D03B1 /* ImagePicker.swift */; };
-		012AF0FE2D3484A3005D03B1 /* DailyProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012AF0FD2D3484A3005D03B1 /* DailyProgressView.swift */; };
 		012E0BC32D5FC6EF00DEBDB5 /* DS-DIGII.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 012E0BC22D5FC6EF00DEBDB5 /* DS-DIGII.TTF */; };
 		01323EE22D526BF9005C025A /* UserOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01323EE12D526BF9005C025A /* UserOverviewView.swift */; };
 		01323EE42D529022005C025A /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01323EE32D529022005C025A /* Styles.swift */; };
 		01425DBC2D398D9800A98F2E /* DailyDataTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01425DBB2D398D9800A98F2E /* DailyDataTracker.swift */; };
-		01466C742D30E33D008648A6 /* GoalSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01466C732D30E33D008648A6 /* GoalSummaryView.swift */; };
 		015B6C8B2D4D264F0095CB7F /* PersonalGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015B6C8A2D4D264F0095CB7F /* PersonalGoalView.swift */; };
 		015EF3332D5AA31F00902E42 /* DailyDBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015EF3322D5AA31F00902E42 /* DailyDBView.swift */; };
 		016E52712D4A919F00105B8E /* PersonalDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016E52702D4A919F00105B8E /* PersonalDetailsView.swift */; };
@@ -28,12 +28,8 @@
 		017385112D36F6AF00379FD5 /* ProgressImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017385102D36F6AF00379FD5 /* ProgressImage.swift */; };
 		0190ECF32D30B7F5003AA451 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0190ECF22D30B7F4003AA451 /* SummaryView.swift */; };
 		019C9CCE2D31A17500E0F608 /* ChangeDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019C9CCD2D31A17500E0F608 /* ChangeDateView.swift */; };
-		01BE26C52D6FB772007156A4 /* DailyRecord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE26C32D6FB772007156A4 /* DailyRecord+CoreDataClass.swift */; };
-		01BE26C62D6FB772007156A4 /* DailyRecord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE26C42D6FB772007156A4 /* DailyRecord+CoreDataProperties.swift */; };
 		01BE26D52D6FCB36007156A4 /* ProgressPicture+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE26D32D6FCB36007156A4 /* ProgressPicture+CoreDataClass.swift */; };
 		01BE26D62D6FCB36007156A4 /* ProgressPicture+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE26D42D6FCB36007156A4 /* ProgressPicture+CoreDataProperties.swift */; };
-		01BE26DF2D700C27007156A4 /* UserProfile+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE26DB2D700C27007156A4 /* UserProfile+CoreDataClass.swift */; };
-		01BE26E02D700C27007156A4 /* UserProfile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE26DC2D700C27007156A4 /* UserProfile+CoreDataProperties.swift */; };
 		01BE26E52D700C8B007156A4 /* BodyMeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE26E42D700C8B007156A4 /* BodyMeasurementView.swift */; };
 		01BE26E82D701007007156A4 /* BodyMeasurement+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE26E62D701007007156A4 /* BodyMeasurement+CoreDataClass.swift */; };
 		01BE26E92D701007007156A4 /* BodyMeasurement+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE26E72D701007007156A4 /* BodyMeasurement+CoreDataProperties.swift */; };
@@ -58,6 +54,8 @@
 		01D0B0712D5E888B004BC63E /* QuickFoodAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0702D5E888B004BC63E /* QuickFoodAddView.swift */; };
 		01D0B0732D5E889F004BC63E /* AdvancedFoodAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0722D5E889F004BC63E /* AdvancedFoodAddView.swift */; };
 		01D0B0752D5EABC8004BC63E /* KeyboardDismissModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B0742D5EABC8004BC63E /* KeyboardDismissModifier.swift */; };
+		01D13EA12D74EEC300912601 /* DailyRecord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D13E9F2D74EEC300912601 /* DailyRecord+CoreDataClass.swift */; };
+		01D13EA22D74EEC300912601 /* DailyRecord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D13EA02D74EEC300912601 /* DailyRecord+CoreDataProperties.swift */; };
 		01E0F0EF2D5D54F4002D8E5D /* WaterTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0F0EE2D5D54F4002D8E5D /* WaterTrackerView.swift */; };
 		01E507722D5988E700CFBE40 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E507712D5988E700CFBE40 /* TodayView.swift */; };
 		01E507742D5989C100CFBE40 /* PastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E507732D5989C100CFBE40 /* PastView.swift */; };
@@ -86,17 +84,17 @@
 
 /* Begin PBXFileReference section */
 		0107C8472D55617000AF12A0 /* WelcomeSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeSequenceView.swift; sourceTree = "<group>"; };
+		0114B39D2D77A2F900B2036A /* UserProfile+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0114B39E2D77A2F900B2036A /* UserProfile+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		012AF0D52D337F35005D03B1 /* CalorieCounterModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CalorieCounterModel.xcdatamodel; sourceTree = "<group>"; };
 		012AF0D72D3384AD005D03B1 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		012AF0F12D342658005D03B1 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		012AF0F32D3426B0005D03B1 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		012AF0FD2D3484A3005D03B1 /* DailyProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyProgressView.swift; sourceTree = "<group>"; };
 		012E0BC22D5FC6EF00DEBDB5 /* DS-DIGII.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DS-DIGII.TTF"; path = "../../../../Downloads/ds_digital/DS-DIGII.TTF"; sourceTree = "<group>"; };
 		012E0BC42D5FC70B00DEBDB5 /* Calorie-counter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Calorie-counter-Info.plist"; sourceTree = SOURCE_ROOT; };
 		01323EE12D526BF9005C025A /* UserOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOverviewView.swift; sourceTree = "<group>"; };
 		01323EE32D529022005C025A /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		01425DBB2D398D9800A98F2E /* DailyDataTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDataTracker.swift; sourceTree = "<group>"; };
-		01466C732D30E33D008648A6 /* GoalSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSummaryView.swift; sourceTree = "<group>"; };
 		015B6C8A2D4D264F0095CB7F /* PersonalGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalGoalView.swift; sourceTree = "<group>"; };
 		015EF3322D5AA31F00902E42 /* DailyDBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDBView.swift; sourceTree = "<group>"; };
 		016E52702D4A919F00105B8E /* PersonalDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDetailsView.swift; sourceTree = "<group>"; };
@@ -107,12 +105,8 @@
 		017385102D36F6AF00379FD5 /* ProgressImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressImage.swift; sourceTree = "<group>"; };
 		0190ECF22D30B7F4003AA451 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		019C9CCD2D31A17500E0F608 /* ChangeDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDateView.swift; sourceTree = "<group>"; };
-		01BE26C32D6FB772007156A4 /* DailyRecord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyRecord+CoreDataClass.swift"; sourceTree = "<group>"; };
-		01BE26C42D6FB772007156A4 /* DailyRecord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyRecord+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		01BE26D32D6FCB36007156A4 /* ProgressPicture+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressPicture+CoreDataClass.swift"; sourceTree = "<group>"; };
 		01BE26D42D6FCB36007156A4 /* ProgressPicture+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressPicture+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		01BE26DB2D700C27007156A4 /* UserProfile+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataClass.swift"; sourceTree = "<group>"; };
-		01BE26DC2D700C27007156A4 /* UserProfile+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		01BE26E42D700C8B007156A4 /* BodyMeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMeasurementView.swift; sourceTree = "<group>"; };
 		01BE26E62D701007007156A4 /* BodyMeasurement+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BodyMeasurement+CoreDataClass.swift"; sourceTree = "<group>"; };
 		01BE26E72D701007007156A4 /* BodyMeasurement+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BodyMeasurement+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -141,6 +135,8 @@
 		01D0B0702D5E888B004BC63E /* QuickFoodAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickFoodAddView.swift; sourceTree = "<group>"; };
 		01D0B0722D5E889F004BC63E /* AdvancedFoodAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedFoodAddView.swift; sourceTree = "<group>"; };
 		01D0B0742D5EABC8004BC63E /* KeyboardDismissModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissModifier.swift; sourceTree = "<group>"; };
+		01D13E9F2D74EEC300912601 /* DailyRecord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyRecord+CoreDataClass.swift"; sourceTree = "<group>"; };
+		01D13EA02D74EEC300912601 /* DailyRecord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyRecord+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		01E0F0EE2D5D54F4002D8E5D /* WaterTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterTrackerView.swift; sourceTree = "<group>"; };
 		01E507712D5988E700CFBE40 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		01E507732D5989C100CFBE40 /* PastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastView.swift; sourceTree = "<group>"; };
@@ -236,14 +232,14 @@
 		01BF35EF2D2E486E002D1E51 = {
 			isa = PBXGroup;
 			children = (
+				0114B39D2D77A2F900B2036A /* UserProfile+CoreDataClass.swift */,
+				0114B39E2D77A2F900B2036A /* UserProfile+CoreDataProperties.swift */,
+				01D13E9F2D74EEC300912601 /* DailyRecord+CoreDataClass.swift */,
+				01D13EA02D74EEC300912601 /* DailyRecord+CoreDataProperties.swift */,
 				01BE26E62D701007007156A4 /* BodyMeasurement+CoreDataClass.swift */,
 				01BE26E72D701007007156A4 /* BodyMeasurement+CoreDataProperties.swift */,
-				01BE26DB2D700C27007156A4 /* UserProfile+CoreDataClass.swift */,
-				01BE26DC2D700C27007156A4 /* UserProfile+CoreDataProperties.swift */,
 				01BE26D32D6FCB36007156A4 /* ProgressPicture+CoreDataClass.swift */,
 				01BE26D42D6FCB36007156A4 /* ProgressPicture+CoreDataProperties.swift */,
-				01BE26C32D6FB772007156A4 /* DailyRecord+CoreDataClass.swift */,
-				01BE26C42D6FB772007156A4 /* DailyRecord+CoreDataProperties.swift */,
 				01CEA4A92D6E71510083174B /* CoreDiaryEntry+CoreDataClass.swift */,
 				01CEA4AA2D6E71510083174B /* CoreDiaryEntry+CoreDataProperties.swift */,
 				01ECE42B2D68F35B0056FF34 /* ActivityModel+CoreDataClass.swift */,
@@ -280,10 +276,8 @@
 				017385102D36F6AF00379FD5 /* ProgressImage.swift */,
 				0173850A2D36F2ED00379FD5 /* ProgressPicsView.swift */,
 				0173850E2D36F43900379FD5 /* ProgressPictureDetailView.swift */,
-				01466C732D30E33D008648A6 /* GoalSummaryView.swift */,
 				019C9CCD2D31A17500E0F608 /* ChangeDateView.swift */,
 				012AF0F32D3426B0005D03B1 /* ImagePicker.swift */,
-				012AF0FD2D3484A3005D03B1 /* DailyProgressView.swift */,
 				01425DBB2D398D9800A98F2E /* DailyDataTracker.swift */,
 				016E52742D4A93B200105B8E /* SharedComponents.swift */,
 				01323EE32D529022005C025A /* Styles.swift */,
@@ -475,7 +469,6 @@
 				01D0B06E2D5DBC61004BC63E /* AddWaterView.swift in Sources */,
 				01D0B0682D5DBC1E004BC63E /* WeighInView.swift in Sources */,
 				012AF0D62D337F35005D03B1 /* CalorieCounterModel.xcdatamodeld in Sources */,
-				012AF0FE2D3484A3005D03B1 /* DailyProgressView.swift in Sources */,
 				01BE26E82D701007007156A4 /* BodyMeasurement+CoreDataClass.swift in Sources */,
 				01ECE42E2D68F35B0056FF34 /* ActivityModel+CoreDataProperties.swift in Sources */,
 				01E507722D5988E700CFBE40 /* TodayView.swift in Sources */,
@@ -483,30 +476,30 @@
 				01323EE22D526BF9005C025A /* UserOverviewView.swift in Sources */,
 				01D0B0712D5E888B004BC63E /* QuickFoodAddView.swift in Sources */,
 				016E52752D4A93B200105B8E /* SharedComponents.swift in Sources */,
+				0114B39F2D77A2F900B2036A /* UserProfile+CoreDataClass.swift in Sources */,
 				01D0B06C2D5DBC47004BC63E /* AddWorkoutView.swift in Sources */,
 				01BEF2FA2D651BF500B74744 /* ADVWorkoutAdd.swift in Sources */,
 				01BEF2FC2D651C0500B74744 /* QuickWKAdd.swift in Sources */,
+				01D13EA12D74EEC300912601 /* DailyRecord+CoreDataClass.swift in Sources */,
 				0190ECF32D30B7F5003AA451 /* SummaryView.swift in Sources */,
 				01D0B0632D5D9462004BC63E /* DiaryView.swift in Sources */,
 				01C7727A2D40374000402083 /* UserSetupView.swift in Sources */,
 				01323EE42D529022005C025A /* Styles.swift in Sources */,
+				01D13EA22D74EEC300912601 /* DailyRecord+CoreDataProperties.swift in Sources */,
 				019C9CCE2D31A17500E0F608 /* ChangeDateView.swift in Sources */,
 				01ECE42D2D68F35B0056FF34 /* ActivityModel+CoreDataClass.swift in Sources */,
 				0173850F2D36F43900379FD5 /* ProgressPictureDetailView.swift in Sources */,
-				01466C742D30E33D008648A6 /* GoalSummaryView.swift in Sources */,
 				01E0F0EF2D5D54F4002D8E5D /* WaterTrackerView.swift in Sources */,
 				017385112D36F6AF00379FD5 /* ProgressImage.swift in Sources */,
 				015EF3332D5AA31F00902E42 /* DailyDBView.swift in Sources */,
 				01BE26D62D6FCB36007156A4 /* ProgressPicture+CoreDataProperties.swift in Sources */,
-				01BE26C52D6FB772007156A4 /* DailyRecord+CoreDataClass.swift in Sources */,
-				01BE26C62D6FB772007156A4 /* DailyRecord+CoreDataProperties.swift in Sources */,
-				01BE26E02D700C27007156A4 /* UserProfile+CoreDataProperties.swift in Sources */,
 				01BE26D52D6FCB36007156A4 /* ProgressPicture+CoreDataClass.swift in Sources */,
 				01CEA4AB2D6E71510083174B /* CoreDiaryEntry+CoreDataClass.swift in Sources */,
 				01BF35FC2D2E486F002D1E51 /* Calorie_counterApp.swift in Sources */,
 				01E507782D598A1A00CFBE40 /* SettingsView.swift in Sources */,
 				0173850B2D36F2ED00379FD5 /* ProgressPicsView.swift in Sources */,
 				01BE26E52D700C8B007156A4 /* BodyMeasurementView.swift in Sources */,
+				0114B3A02D77A2F900B2036A /* UserProfile+CoreDataProperties.swift in Sources */,
 				01E507742D5989C100CFBE40 /* PastView.swift in Sources */,
 				01BEF2FE2D67D8A900B74744 /* ActivityStatsView.swift in Sources */,
 				016E52712D4A919F00105B8E /* PersonalDetailsView.swift in Sources */,
@@ -521,7 +514,6 @@
 				01E507762D5989DA00CFBE40 /* ProgressView.swift in Sources */,
 				01D0B0652D5D9524004BC63E /* DiaryEntryView.swift in Sources */,
 				01D0B0732D5E889F004BC63E /* AdvancedFoodAddView.swift in Sources */,
-				01BE26DF2D700C27007156A4 /* UserProfile+CoreDataClass.swift in Sources */,
 				01D0B0752D5EABC8004BC63E /* KeyboardDismissModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -217,12 +217,6 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "calisthenics" asset catalog image resource.
     static let calisthenics = DeveloperToolsSupport.ImageResource(name: "calisthenics", bundle: resourceBundle)
 
-    /// The "calx" asset catalog image resource.
-    static let calx = DeveloperToolsSupport.ImageResource(name: "calx", bundle: resourceBundle)
-
-    /// The "carrot" asset catalog image resource.
-    static let carrot = DeveloperToolsSupport.ImageResource(name: "carrot", bundle: resourceBundle)
-
     /// The "drop" asset catalog image resource.
     static let drop = DeveloperToolsSupport.ImageResource(name: "drop", bundle: resourceBundle)
 
@@ -872,24 +866,6 @@ extension AppKit.NSImage {
     static var calisthenics: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .calisthenics)
-#else
-        .init()
-#endif
-    }
-
-    /// The "calx" asset catalog image.
-    static var calx: AppKit.NSImage {
-#if !targetEnvironment(macCatalyst)
-        .init(resource: .calx)
-#else
-        .init()
-#endif
-    }
-
-    /// The "carrot" asset catalog image.
-    static var carrot: AppKit.NSImage {
-#if !targetEnvironment(macCatalyst)
-        .init(resource: .carrot)
 #else
         .init()
 #endif
@@ -1627,24 +1603,6 @@ extension UIKit.UIImage {
     static var calisthenics: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .calisthenics)
-#else
-        .init()
-#endif
-    }
-
-    /// The "calx" asset catalog image.
-    static var calx: UIKit.UIImage {
-#if !os(watchOS)
-        .init(resource: .calx)
-#else
-        .init()
-#endif
-    }
-
-    /// The "carrot" asset catalog image.
-    static var carrot: UIKit.UIImage {
-#if !os(watchOS)
-        .init(resource: .carrot)
 #else
         .init()
 #endif

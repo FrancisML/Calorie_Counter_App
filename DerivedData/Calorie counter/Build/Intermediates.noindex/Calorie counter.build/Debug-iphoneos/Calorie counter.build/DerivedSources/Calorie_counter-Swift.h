@@ -393,6 +393,7 @@ SWIFT_CLASS_NAMED("DailyRecord")
 @property (nonatomic) double waterIntake;
 @property (nonatomic, copy) NSString * _Nullable waterUnit;
 @property (nonatomic) double weighIn;
+@property (nonatomic) double calorieGoal;
 @property (nonatomic, strong) NSSet * _Nullable diaryEntries;
 @end
 
@@ -472,8 +473,9 @@ SWIFT_CLASS("_TtC15Calorie_counter11UserProfile")
 @property (nonatomic, copy) NSString * _Nullable waterUnit;
 @property (nonatomic) double weekGoal;
 @property (nonatomic) double weightDifference;
-@property (nonatomic, strong) NSSet * _Nullable progressPicture;
+@property (nonatomic) int32_t highStreak;
 @property (nonatomic, strong) NSSet * _Nullable bodyMeasurement;
+@property (nonatomic, strong) NSSet * _Nullable progressPicture;
 @end
 
 #endif

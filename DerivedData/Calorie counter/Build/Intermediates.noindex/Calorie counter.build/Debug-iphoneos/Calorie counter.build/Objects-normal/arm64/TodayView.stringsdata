@@ -1,5 +1,20 @@
 {
   "source": "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/TodayVIew/TodayView.swift",
-  "tables": {},
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Highest Streak: %d"
+      },
+      {
+        "comment": "",
+        "key": "Current Weight: %@"
+      },
+      {
+        "comment": "",
+        "key": "%@"
+      }
+    ]
+  },
   "version": 1
 }

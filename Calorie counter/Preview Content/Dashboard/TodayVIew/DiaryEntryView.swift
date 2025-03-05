@@ -91,7 +91,17 @@ struct DiaryEntryRow: View {
 
 import Foundation
 
-struct DiaryEntry: Identifiable {
+struct WeighIn: Equatable, Identifiable {
+    let id = UUID()
+    let time: String
+    let weight: String
+    
+    static func == (lhs: WeighIn, rhs: WeighIn) -> Bool {
+        return lhs.time == rhs.time && lhs.weight == rhs.weight
+    }
+}
+
+struct DiaryEntry: Identifiable, Equatable {
     let id = UUID()
     let time: String
     let iconName: String
@@ -101,9 +111,9 @@ struct DiaryEntry: Identifiable {
     let type: String
     let imageName: String?
     let imageData: Data?
-    let fats: Double // New: grams of fat
-    let carbs: Double // New: grams of carbs
-    let protein: Double // New: grams of protein
+    let fats: Double
+    let carbs: Double
+    let protein: Double
     
     init(time: String, iconName: String, description: String, detail: String, calories: Int, type: String, imageName: String?, imageData: Data?, fats: Double = 0, carbs: Double = 0, protein: Double = 0) {
         self.time = time
@@ -117,6 +127,21 @@ struct DiaryEntry: Identifiable {
         self.fats = fats
         self.carbs = carbs
         self.protein = protein
+    }
+    
+    static func == (lhs: DiaryEntry, rhs: DiaryEntry) -> Bool {
+        return lhs.id == rhs.id &&
+               lhs.time == rhs.time &&
+               lhs.iconName == rhs.iconName &&
+               lhs.description == rhs.description &&
+               lhs.detail == rhs.detail &&
+               lhs.calories == rhs.calories &&
+               lhs.type == rhs.type &&
+               lhs.imageName == rhs.imageName &&
+               lhs.imageData == rhs.imageData &&
+               lhs.fats == rhs.fats &&
+               lhs.carbs == rhs.carbs &&
+               lhs.protein == rhs.protein
     }
 }
 

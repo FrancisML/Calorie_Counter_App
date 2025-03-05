@@ -1,8 +1,8 @@
 //
-//  DiaryEntriesView.swift
-//  Calorie Counter
+//  DailyDBView.swift
+//  Calorie counter
 //
-//  Created by Frank LaSalvia on 2/10/25.
+//  Created by frank lasalvia on 2/12/25.
 //
 
 import SwiftUI
@@ -15,13 +15,18 @@ struct DailyDBView: View {
     var highestStreak: Int32
     var calorieGoal: CGFloat
     var useMetric: Bool
-    @Binding var weighIns: [(time: String, weight: String)]
+    @Binding var weighIns: [WeighIn]
     @State private var isWaterPickerPresented: Bool = false
     @State private var waterGoal: CGFloat = 0
     @State private var selectedUnit: String = "fl oz"
     @State private var isWeighInExpanded: Bool = false
     
-    @State private var simulatedCurrentDate: Date = Calendar.current.startOfDay(for: Date())
+    @State private var simulatedCurrentDate: Date = {
+        if let savedDate = UserDefaults.standard.object(forKey: "simulatedCurrentDate") as? Date {
+            return Calendar.current.startOfDay(for: savedDate)
+        }
+        return Calendar.current.startOfDay(for: Date())
+    }()
     @State private var simulateDayTrigger: Bool = false
 
     private var totalCalories: Double {
@@ -133,8 +138,7 @@ struct DailyDBView: View {
         return startOfSelectedDate < startOfSimulatedCurrent
     }
 
-    private func saveDailyRecord() {
-        // Fetch existing DailyRecord
+    private func saveOrUpdateDailyRecord() {
         let fetchRequest: NSFetchRequest<DailyRecord> = DailyRecord.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "date == %@", Calendar.current.startOfDay(for: selectedDate) as NSDate)
         fetchRequest.fetchLimit = 1
@@ -143,41 +147,45 @@ struct DailyDBView: View {
         do {
             if let existingRecord = try viewContext.fetch(fetchRequest).first {
                 dailyRecord = existingRecord
-                print("DEBUG: Found existing DailyRecord for \(formattedDate(selectedDate))")
+                print("DEBUG: Updating existing DailyRecord for \(formattedDate(selectedDate))")
             } else {
                 dailyRecord = DailyRecord(context: viewContext)
                 dailyRecord.date = Calendar.current.startOfDay(for: selectedDate)
                 print("DEBUG: Created new DailyRecord for \(formattedDate(selectedDate))")
             }
         } catch {
-            print("❌ Error fetching existing DailyRecord: \(error.localizedDescription)")
-            dailyRecord = DailyRecord(context: viewContext)
-            dailyRecord.date = Calendar.current.startOfDay(for: selectedDate)
+            print("❌ Error fetching DailyRecord: \(error.localizedDescription)")
+            return
         }
 
-        // Update DailyRecord properties
         dailyRecord.calorieIntake = totalCalories
         dailyRecord.waterIntake = Double(totalDailyWater)
         dailyRecord.waterUnit = selectedUnit
         dailyRecord.passFail = totalCalories <= Double(calorieGoal)
         dailyRecord.waterGoal = Double(waterGoal)
+        dailyRecord.calorieGoal = Double(calorieGoal)
 
-        // Calculate and save the average weight to weighIn
-        let avgWeightString = averageWeight() // Get the average weight as a String
+        let avgWeightString = averageWeight()
         if let avgWeight = Double(avgWeightString) {
-            dailyRecord.weighIn = avgWeight // Save to DailyRecord.weighIn (Double)
+            dailyRecord.weighIn = avgWeight
         } else {
-            dailyRecord.weighIn = 0.0 // Fallback if conversion fails
+            dailyRecord.weighIn = 0.0
             print("DEBUG: Failed to convert averageWeight '\(avgWeightString)' to Double")
         }
 
-        // Add new CoreDiaryEntry objects, avoiding duplicates
         for entry in diaryEntries {
             let entryFetch: NSFetchRequest<CoreDiaryEntry> = CoreDiaryEntry.fetchRequest()
             entryFetch.predicate = NSPredicate(format: "entryDescription == %@ AND time == %@ AND dailyRecord == %@", entry.description, entry.time, dailyRecord)
             entryFetch.fetchLimit = 1
             
-            if (try? viewContext.fetch(entryFetch).first) == nil {
+            if let existingEntry = try? viewContext.fetch(entryFetch).first {
+                existingEntry.detail = entry.detail
+                existingEntry.calories = Int32(entry.calories)
+                existingEntry.fats = entry.fats
+                existingEntry.carbs = entry.carbs
+                existingEntry.protein = entry.protein
+                print("DEBUG: Updated entry - Description: \(entry.description), Calories: \(entry.calories)")
+            } else {
                 let diaryEntity = CoreDiaryEntry(context: viewContext)
                 diaryEntity.time = entry.time
                 diaryEntity.iconName = entry.iconName
@@ -193,53 +201,39 @@ struct DailyDBView: View {
                 diaryEntity.dailyRecord = dailyRecord
                 dailyRecord.addToDiaryEntries(diaryEntity)
                 print("DEBUG: Saving entry - Description: \(entry.description), Calories: \(entry.calories)")
-            } else {
-                print("DEBUG: Skipping duplicate entry - Description: \(entry.description)")
             }
         }
 
-        // Update UserProfile.currentWeight with the average weight
-        do {
+        if isCurrentDay {
+            let currentStreak = Int32(calculateStreak())
             let userFetch: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
             userFetch.fetchLimit = 1
-            if let userProfile = try viewContext.fetch(userFetch).first, let avgWeight = Double(averageWeight()) {
-                userProfile.currentWeight = avgWeight // Now a Double, no need for Int32 conversion
-                print("DEBUG: Updated UserProfile.currentWeight to \(userProfile.currentWeight)")
+            do {
+                if let userProfile = try viewContext.fetch(userFetch).first {
+                    if currentStreak > userProfile.highStreak {
+                        userProfile.highStreak = currentStreak
+                        print("DEBUG: Updated highStreak to \(currentStreak)")
+                    }
+                }
+            } catch {
+                print("❌ Error updating highStreak: \(error.localizedDescription)")
             }
-        } catch {
-            print("❌ Error updating UserProfile.currentWeight: \(error.localizedDescription)")
         }
 
         do {
             try viewContext.save()
-            print("✅ Saved DailyRecord for \(formattedDate(selectedDate)) with \(diaryEntries.count) entries")
-            
-            // Verify the save
-            let verifyFetch: NSFetchRequest<DailyRecord> = DailyRecord.fetchRequest()
-            verifyFetch.predicate = NSPredicate(format: "date == %@", Calendar.current.startOfDay(for: selectedDate) as NSDate)
-            verifyFetch.relationshipKeyPathsForPrefetching = ["diaryEntries"]
-            if let savedRecord = try viewContext.fetch(verifyFetch).first {
-                let entryCount = (savedRecord.diaryEntries as? Set<CoreDiaryEntry>)?.count ?? 0
-                print("DEBUG: Verified save - Entries count: \(entryCount)")
-                debugDumpCoreData()
-                if entryCount > 0 {
-                    (savedRecord.diaryEntries as? Set<CoreDiaryEntry>)?.forEach { entry in
-                        print("DEBUG: Saved CoreDiaryEntry - Description: \(entry.entryDescription ?? "nil"), Calories: \(entry.calories)")
-                    }
-                }
-            } else {
-                print("DEBUG: No DailyRecord found after save!")
-            }
+            print("✅ Saved/Updated DailyRecord for \(formattedDate(selectedDate)) with \(diaryEntries.count) entries")
         } catch {
             print("❌ Error saving DailyRecord: \(error.localizedDescription)")
         }
     }
+
     private func loadDailyRecord(for date: Date) {
         let fetchRequest: NSFetchRequest<DailyRecord> = DailyRecord.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "date == %@", Calendar.current.startOfDay(for: date) as NSDate)
         fetchRequest.returnsObjectsAsFaults = false
         fetchRequest.relationshipKeyPathsForPrefetching = ["diaryEntries"]
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)] // Consistent ordering
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         
         do {
             let records = try viewContext.fetch(fetchRequest)
@@ -266,15 +260,14 @@ struct DailyDBView: View {
                     userFetch.fetchLimit = 1
                     if let userProfile = try viewContext.fetch(userFetch).first {
                         if weighIns.isEmpty && userProfile.currentWeight > 0 {
-                            weighIns = [(time: formattedCurrentTime(), weight: "\(userProfile.currentWeight)")]
+                            weighIns = [WeighIn(time: formattedCurrentTime(), weight: "\(userProfile.currentWeight)")]
                         }
                         waterGoal = CGFloat(userProfile.waterGoal)
                     }
                 } else {
                     weighIns = []
                 }
-                print("DEBUG: Loaded data for \(formattedDate(date)) - Entries: \(diaryEntries.count)")
-                debugDumpCoreData()
+                print("DEBUG: Loaded data for \(formattedDate(date)) - Entries: \(diaryEntries.count), Calorie Goal: \(record.calorieGoal)")
                 let rawCount = (record.diaryEntries as? Set<CoreDiaryEntry>)?.count ?? 0
                 print("DEBUG: Raw Core Data diaryEntries count: \(rawCount)")
                 if rawCount > 0 {
@@ -287,15 +280,17 @@ struct DailyDBView: View {
                 }
             } else {
                 resetDailyData()
+                if isCurrentDay {
+                    saveOrUpdateDailyRecord()
+                }
                 print("DEBUG: No record found for \(formattedDate(date)), resetting")
-                debugDumpCoreData()
             }
         } catch {
             print("❌ Error loading DailyRecord: \(error.localizedDescription)")
-            debugDumpCoreData()
             resetDailyData()
         }
     }
+
     private func resetDailyData() {
         weighIns = []
         diaryEntries = []
@@ -315,11 +310,11 @@ struct DailyDBView: View {
     }
 
     private func simulateDayPassing() {
-        saveDailyRecord() // Save current day's data
+        saveOrUpdateDailyRecord()
         simulatedCurrentDate = Calendar.current.date(byAdding: .day, value: 1, to: simulatedCurrentDate) ?? simulatedCurrentDate
+        UserDefaults.standard.set(simulatedCurrentDate, forKey: "simulatedCurrentDate")
         selectedDate = simulatedCurrentDate
-        UserDefaults.standard.set(simulatedCurrentDate, forKey: "lastOpenedDate")
-        resetDailyData() // Clear in-memory data for the new day
+        resetDailyData()
         simulateDayTrigger.toggle()
         print("DEBUG: Simulated day - New current: \(formattedDate(simulatedCurrentDate))")
     }
@@ -331,15 +326,15 @@ struct DailyDBView: View {
         } else if Calendar.current.isDate(selectedDate, inSameDayAs: Calendar.current.date(byAdding: .day, value: -1, to: today)!) {
             return "Yesterday"
         } else {
-            let fetchRequest: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
-            fetchRequest.fetchLimit = 1
+            let fetchRequest: NSFetchRequest<DailyRecord> = DailyRecord.fetchRequest()
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
             do {
-                if let userProfile = try viewContext.fetch(fetchRequest).first, let startDate = userProfile.startDate {
-                    let daysSinceStart = Calendar.current.dateComponents([.day], from: startDate, to: selectedDate).day! + 1
-                    return "Day \(daysSinceStart)"
+                let records = try viewContext.fetch(fetchRequest)
+                if let index = records.firstIndex(where: { Calendar.current.isDate($0.date ?? Date.distantFuture, inSameDayAs: selectedDate) }) {
+                    return "Day \(index + 1)"
                 }
             } catch {
-                print("❌ Error fetching startDate: \(error.localizedDescription)")
+                print("❌ Error fetching records for dayTitle: \(error.localizedDescription)")
             }
             return "Day X"
         }
@@ -355,20 +350,20 @@ struct DailyDBView: View {
             fetchRequest.fetchLimit = 1
             do {
                 if let record = try viewContext.fetch(fetchRequest).first {
-                    return record.passFail ? ("PASS", .green) : ("FAIL", .red)
+                    return record.passFail ? ("UNDER", .green) : ("OVER", .red)
                 }
             } catch {
                 print("❌ Error fetching passFail: \(error.localizedDescription)")
             }
-            return ("FAIL", .red)
+            return ("OVER", .red)
         }
     }
 
     private func calculateStreak() -> Int {
         let today = Calendar.current.startOfDay(for: simulatedCurrentDate)
         var streak = 0
-        var currentDate = today
-
+        var currentDate = Calendar.current.date(byAdding: .day, value: -1, to: today) ?? today
+        
         while true {
             let fetchRequest: NSFetchRequest<DailyRecord> = DailyRecord.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "date == %@", currentDate as NSDate)
@@ -398,266 +393,308 @@ struct DailyDBView: View {
         return String(format: "%.1f", totalWeight / Double(weighIns.count))
     }
 
-    var body: some View {
-        ZStack {
-            VStack(spacing: 0) {
-                HStack {
-                    Button(action: {
-                        selectedDate = Calendar.current.date(byAdding: .day, value: -1, to: selectedDate) ?? selectedDate
-                        loadDailyRecord(for: selectedDate)
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .font(.title2)
-                            .foregroundColor(canGoBack ? Styles.primaryText : Styles.secondaryText.opacity(0.5))
-                    }
-                    .disabled(!canGoBack)
-                    
-                    Spacer()
-                    
-                    VStack {
-                        Text(dayTitle())
-                            .font(.headline)
-                            .foregroundColor(Styles.secondaryText)
-                        Text(formattedDate(selectedDate))
-                            .font(.subheadline)
-                            .foregroundColor(Styles.primaryText)
-                    }
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: selectedDate) ?? selectedDate
-                        loadDailyRecord(for: selectedDate)
-                    }) {
-                        Image(systemName: "chevron.right")
-                            .font(.title2)
-                            .foregroundColor(canGoForward ? Styles.primaryText : Styles.secondaryText.opacity(0.5))
-                    }
-                    .disabled(!canGoForward)
-                    
-                    Spacer()
-                    
-                    HStack {
-                        if isCurrentDay {
-                            Image(systemName: "flame.fill")
-                                .foregroundColor(.orange)
-                        }
-                        let (text, color) = streakOrPassFail()
-                        Text(text)
-                            .font(.headline)
-                            .foregroundColor(color)
-                    }
-                }
-                .padding(.horizontal, 20)
-                .padding(.vertical, 10)
-                .background(Styles.secondaryBackground)
-                .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 3)
-                .zIndex(1)
+    // MARK: - Refactored Body Components
 
-                VStack(spacing: 15) {
-                    HStack(spacing: 10) {
-                        Image("bolt")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 30, height: 40)
-                            .padding(.trailing, 5)
-                        
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text("Calories")
-                                    .font(.headline)
-                                    .foregroundColor(totalCalories > Double(calorieGoal) ? .red : Styles.primaryText)
-                                Spacer()
-                                Text("\(Int(totalCalories))/\(Int(calorieGoal))")
-                                    .font(.subheadline)
-                                    .foregroundColor(totalCalories > Double(calorieGoal) ? .red : Styles.secondaryText)
-                            }
+    private func headerView() -> some View {
+        HStack {
+            Button(action: {
+                selectedDate = Calendar.current.date(byAdding: .day, value: -1, to: selectedDate) ?? selectedDate
+                loadDailyRecord(for: selectedDate)
+            }) {
+                Image(systemName: "chevron.left")
+                    .font(.title2)
+                    .foregroundColor(canGoBack ? Styles.primaryText : Styles.secondaryText.opacity(0.5))
+            }
+            .disabled(!canGoBack)
+            
+            Spacer()
+            
+            VStack {
+                Text(dayTitle())
+                    .font(.headline)
+                    .foregroundColor(Styles.secondaryText)
+                Text(formattedDate(selectedDate))
+                    .font(.subheadline)
+                    .foregroundColor(Styles.primaryText)
+            }
+            
+            Spacer()
+            
+            Button(action: {
+                selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: selectedDate) ?? selectedDate
+                loadDailyRecord(for: selectedDate)
+            }) {
+                Image(systemName: "chevron.right")
+                    .font(.title2)
+                    .foregroundColor(canGoForward ? Styles.primaryText : Styles.secondaryText.opacity(0.5))
+            }
+            .disabled(!canGoForward)
+            
+            Spacer()
+            
+            HStack {
+                if isCurrentDay {
+                    Image(systemName: "flame.fill")
+                        .foregroundColor(.orange)
+                }
+                let (text, color) = streakOrPassFail()
+                Text(text)
+                    .font(.headline)
+                    .foregroundColor(color)
+            }
+        }
+        .padding(.horizontal, 20)
+        .padding(.vertical, 10)
+        .background(Styles.secondaryBackground)
+        .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 3)
+        .zIndex(1)
+    }
+
+    private func mainContentView() -> some View {
+        VStack(spacing: 15) {
+            HStack(spacing: 10) {
+                Image("bolt")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30, height: 40)
+                    .padding(.trailing, 5)
+                
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text("Calories")
+                            .font(.headline)
+                            .foregroundColor(totalCalories > Double(calorieGoal) ? .red : Styles.primaryText)
+                        Spacer()
+                        Text("\(Int(totalCalories))/\(Int(calorieGoal))")
+                            .font(.subheadline)
+                            .foregroundColor(totalCalories > Double(calorieGoal) ? .red : Styles.secondaryText)
+                    }
+                    
+                    GeometryReader { geometry in
+                        ZStack(alignment: .leading) {
+                            Rectangle()
+                                .fill(Styles.primaryText.opacity(0.2))
+                                .frame(height: 20)
                             
-                            GeometryReader { geometry in
-                                ZStack(alignment: .leading) {
-                                    Rectangle()
-                                        .fill(Styles.primaryText.opacity(0.2))
-                                        .frame(height: 20)
-                                    
-                                    HStack(spacing: 0) {
-                                        if totalCalories > 0 {
-                                            let progressWidth = min(CGFloat(totalCalories / Double(calorieGoal)) * geometry.size.width, geometry.size.width)
-                                            if quickAddCalories > 0 {
-                                                Rectangle()
-                                                    .fill(Styles.primaryText)
-                                                    .frame(width: (quickAddCalories / totalCalories) * progressWidth)
-                                            }
-                                            if fatCalories > 0 {
-                                                Rectangle()
-                                                    .fill(Color.red)
-                                                    .frame(width: (fatCalories / totalCalories) * progressWidth)
-                                            }
-                                            if carbCalories > 0 {
-                                                Rectangle()
-                                                    .fill(Color.yellow)
-                                                    .frame(width: (carbCalories / totalCalories) * progressWidth)
-                                            }
-                                            if proteinCalories > 0 {
-                                                Rectangle()
-                                                    .fill(Color.green)
-                                                    .frame(width: (proteinCalories / totalCalories) * progressWidth)
-                                            }
-                                        }
+                            HStack(spacing: 0) {
+                                if totalCalories > 0 {
+                                    let progressWidth = min(CGFloat(totalCalories / Double(calorieGoal)) * geometry.size.width, geometry.size.width)
+                                    if quickAddCalories > 0 {
+                                        Rectangle()
+                                            .fill(Styles.primaryText)
+                                            .frame(width: (quickAddCalories / totalCalories) * progressWidth)
                                     }
-                                    .frame(height: 20)
+                                    if fatCalories > 0 {
+                                        Rectangle()
+                                            .fill(Color.red)
+                                            .frame(width: (fatCalories / totalCalories) * progressWidth)
+                                    }
+                                    if carbCalories > 0 {
+                                        Rectangle()
+                                            .fill(Color.yellow)
+                                            .frame(width: (carbCalories / totalCalories) * progressWidth)
+                                    }
+                                    if proteinCalories > 0 {
+                                        Rectangle()
+                                            .fill(Color.green)
+                                            .frame(width: (proteinCalories / totalCalories) * progressWidth)
+                                    }
                                 }
                             }
                             .frame(height: 20)
                         }
                     }
-                    
-                    Divider()
-                    
-                    WaterTrackerView(
-                        diaryEntries: diaryEntries,
-                        selectedUnit: $selectedUnit,
-                        waterGoal: $waterGoal,
-                        isWaterPickerPresented: $isWaterPickerPresented
-                    )
-                    .disabled(!isCurrentDay)
-                    
-                    Divider()
-                    
-                    VStack(alignment: .leading, spacing: 5) {
-                        HStack(spacing: 10) {
-                            Image("CalW")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 30, height: 40)
-                                .padding(.trailing, 5)
-                            
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    Text("Daily Weigh-In:")
-                                        .font(.headline)
-                                        .foregroundColor(Styles.primaryText)
-                                    
-                                    Spacer()
-                                    
-                                    if isCurrentDay {
-                                        if weighIns.count == 1, let latestWeighIn = weighIns.last {
-                                            Text("\(latestWeighIn.weight) \(useMetric ? "kg" : "lbs")")
-                                                .font(.subheadline)
-                                                .foregroundColor(Styles.secondaryText)
-                                        } else if weighIns.count > 1 {
-                                            Button(action: { withAnimation { isWeighInExpanded.toggle() } }) {
-                                                HStack {
-                                                    Text("\(averageWeight()) \(useMetric ? "kg" : "lbs")")
-                                                        .font(.subheadline)
-                                                        .foregroundColor(Styles.secondaryText)
-                                                    Image(systemName: "chevron.down")
-                                                        .rotationEffect(.degrees(isWeighInExpanded ? 180 : 0))
-                                                        .foregroundColor(Styles.secondaryText)
-                                                }
-                                            }
-                                        } else {
-                                            Text("0 \(useMetric ? "kg" : "lbs")")
-                                                .font(.subheadline)
-                                                .foregroundColor(Styles.secondaryText)
-                                        }
-                                    } else {
-                                        Text("\(averageWeight()) \(useMetric ? "kg" : "lbs")")
-                                            .font(.subheadline)
-                                            .foregroundColor(Styles.secondaryText)
-                                    }
-                                }
-                            }
-                        }
-                        
-                        if isCurrentDay && isWeighInExpanded && weighIns.count > 1 {
-                            VStack(spacing: 0) {
-                                ForEach(Array(weighIns.enumerated()), id: \.offset) { index, entry in
-                                    HStack {
-                                        Text(entry.time)
-                                            .font(.subheadline)
-                                            .foregroundColor(Styles.secondaryText)
-                                            .frame(width: 80, alignment: .leading)
-                                        
-                                        Text("\(entry.weight) \(useMetric ? "kg" : "lbs")")
-                                            .font(.subheadline)
-                                            .foregroundColor(Styles.primaryText)
-                                            .frame(maxWidth: .infinity, alignment: .center)
-                                        
-                                        Button(action: { deleteWeighIn(at: index) }) {
-                                            Image(systemName: "xmark.circle.fill")
-                                                .foregroundColor(.red)
-                                                .font(.title2)
-                                        }
-                                        .buttonStyle(BorderlessButtonStyle())
-                                    }
-                                    .padding()
-                                    .background(index % 2 == 0 ? Styles.secondaryBackground : Styles.tertiaryBackground)
-                                }
-                            }
-                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                        }
-                    }
+                    .frame(height: 20)
                 }
-                .padding(15)
-                .background(Styles.secondaryBackground)
-                .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 3)
-
-                DiaryView(diaryEntries: $diaryEntries)
             }
             
-            VStack {
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        simulateDayPassing()
-                    }) {
-                        Image(systemName: "clock.arrow.circlepath")
-                            .font(.title2)
-                            .foregroundColor(.white)
-                            .padding(10)
-                            .background(Color.blue)
-                            .clipShape(Circle())
-                            .shadow(radius: 5)
-                    }
-                    .padding(.top, 10)
-                    .padding(.trailing, 20)
-                }
-                Spacer()
-            }
-            .zIndex(2)
-        }
-        .overlay(
-            isCurrentDay && isWaterPickerPresented ? WaterGoalPicker(
-                useMetric: useMetric,
-                selectedGoal: $waterGoal,
-                isWaterPickerPresented: $isWaterPickerPresented,
-                selectedUnit: $selectedUnit
+            Divider()
+            
+            WaterTrackerView(
+                diaryEntries: diaryEntries,
+                selectedUnit: $selectedUnit,
+                waterGoal: $waterGoal,
+                isWaterPickerPresented: $isWaterPickerPresented
             )
-            .background(Color.clear)
-            .zIndex(10) : nil
-        )
+            .disabled(!isCurrentDay)
+            
+            Divider()
+            
+            VStack(alignment: .leading, spacing: 5) {
+                HStack(spacing: 10) {
+                    Image("CalW")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30, height: 40)
+                        .padding(.trailing, 5)
+                    
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("Daily Weigh-In:")
+                                .font(.headline)
+                                .foregroundColor(Styles.primaryText)
+                            
+                            Spacer()
+                            
+                            if isCurrentDay {
+                                if weighIns.count == 1, let latestWeighIn = weighIns.last {
+                                    Text("\(latestWeighIn.weight) \(useMetric ? "kg" : "lbs")")
+                                        .font(.subheadline)
+                                        .foregroundColor(Styles.secondaryText)
+                                } else if weighIns.count > 1 {
+                                    Button(action: { withAnimation { isWeighInExpanded.toggle() } }) {
+                                        HStack {
+                                            Text("\(averageWeight()) \(useMetric ? "kg" : "lbs")")
+                                                .font(.subheadline)
+                                                .foregroundColor(Styles.secondaryText)
+                                            Image(systemName: "chevron.down")
+                                                .rotationEffect(.degrees(isWeighInExpanded ? 180 : 0))
+                                                .foregroundColor(Styles.secondaryText)
+                                        }
+                                    }
+                                } else {
+                                    Text("0 \(useMetric ? "kg" : "lbs")")
+                                        .font(.subheadline)
+                                        .foregroundColor(Styles.secondaryText)
+                                }
+                            } else {
+                                Text("\(averageWeight()) \(useMetric ? "kg" : "lbs")")
+                                    .font(.subheadline)
+                                    .foregroundColor(Styles.secondaryText)
+                            }
+                        }
+                    }
+                }
+                
+                if isCurrentDay && isWeighInExpanded && weighIns.count > 1 {
+                    VStack(spacing: 0) {
+                        ForEach(Array(weighIns.enumerated()), id: \.element.id) { index, entry in
+                            HStack {
+                                Text(entry.time)
+                                    .font(.subheadline)
+                                    .foregroundColor(Styles.secondaryText)
+                                    .frame(width: 80, alignment: .leading)
+                                
+                                Text("\(entry.weight) \(useMetric ? "kg" : "lbs")")
+                                    .font(.subheadline)
+                                    .foregroundColor(Styles.primaryText)
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                
+                                Button(action: { deleteWeighIn(at: index) }) {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .foregroundColor(.red)
+                                        .font(.title2)
+                                }
+                                .buttonStyle(BorderlessButtonStyle())
+                            }
+                            .padding()
+                            .background(index % 2 == 0 ? Styles.secondaryBackground : Styles.tertiaryBackground)
+                        }
+                    }
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                }
+            }
+            .disabled(!isCurrentDay)
+        }
+        .padding(15)
+        .background(Styles.secondaryBackground)
+        .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 3)
+    }
+
+    private func simulationButtonView() -> some View {
+        VStack {
+            HStack {
+                Spacer()
+                Button(action: {
+                    simulateDayPassing()
+                }) {
+                    Image(systemName: "clock.arrow.circlepath")
+                        .font(.title2)
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .background(Color.blue)
+                        .clipShape(Circle())
+                        .shadow(radius: 5)
+                }
+                .padding(.top, 10)
+                .padding(.trailing, 20)
+            }
+            Spacer()
+        }
+        .zIndex(2)
+    }
+
+    private func overlayView() -> some View {
+        Group {
+            if isCurrentDay && isWaterPickerPresented {
+                WaterGoalPicker(
+                    useMetric: useMetric,
+                    selectedGoal: $waterGoal,
+                    isWaterPickerPresented: $isWaterPickerPresented,
+                    selectedUnit: $selectedUnit
+                )
+                .background(Color.clear)
+                .zIndex(10)
+            } else {
+                EmptyView()
+            }
+        }
+    }
+
+    var body: some View {
+        ZStack {
+            VStack(spacing: 0) {
+                headerView()
+                mainContentView()
+                DiaryView(diaryEntries: $diaryEntries)
+                    .disabled(!isCurrentDay)
+            }
+            simulationButtonView()
+        }
+        .overlay(overlayView())
         .animation(nil, value: isWaterPickerPresented)
         .onAppear {
-            let today = Calendar.current.startOfDay(for: simulatedCurrentDate)
-            if Calendar.current.isDate(selectedDate, inSameDayAs: today) {
-                let lastOpened = UserDefaults.standard.object(forKey: "lastOpenedDate") as? Date ?? Date.distantPast
-                if !Calendar.current.isDate(lastOpened, inSameDayAs: today) {
-                    // Load existing data first
-                    loadDailyRecord(for: today)
-                    // Only save if there are changes (e.g., new entries)
-                    if !diaryEntries.isEmpty || !weighIns.isEmpty {
-                        saveDailyRecord()
-                    }
-                    UserDefaults.standard.set(today, forKey: "lastOpenedDate")
-                } else {
-                    loadDailyRecord(for: today)
-                }
-            } else {
-                loadDailyRecord(for: selectedDate)
+            if let savedDate = UserDefaults.standard.object(forKey: "simulatedCurrentDate") as? Date {
+                simulatedCurrentDate = Calendar.current.startOfDay(for: savedDate)
+            }
+            selectedDate = simulatedCurrentDate
+            loadDailyRecord(for: selectedDate)
+            if isCurrentDay {
+                saveOrUpdateDailyRecord()
             }
         }
         .onChange(of: selectedDate) { newDate in
             loadDailyRecord(for: newDate)
+        }
+        .onChange(of: diaryEntries) { _ in
+            if isCurrentDay {
+                saveOrUpdateDailyRecord()
+            }
+        }
+        .onChange(of: weighIns) { _ in
+            if isCurrentDay {
+                saveOrUpdateDailyRecord()
+                // Update UserProfile.currentWeight with averageWeight
+                let avgWeightString = averageWeight()
+                if let avgWeight = Double(avgWeightString), !weighIns.isEmpty {
+                    let userFetch: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
+                    userFetch.fetchLimit = 1
+                    do {
+                        if let userProfile = try viewContext.fetch(userFetch).first {
+                            userProfile.currentWeight = avgWeight
+                            try viewContext.save()
+                            print("DEBUG: Updated UserProfile.currentWeight to \(avgWeight)")
+                        }
+                    } catch {
+                        print("❌ Error updating currentWeight: \(error.localizedDescription)")
+                    }
+                }
+            }
+        }
+        .onChange(of: totalDailyWater) { _ in
+            if isCurrentDay {
+                saveOrUpdateDailyRecord()
+            }
         }
         .id(simulateDayTrigger)
     }
@@ -681,6 +718,7 @@ struct DailyDBView: View {
         formatter.dateFormat = "h:mm a"
         return formatter.string(from: Date())
     }
+
     private func debugDumpCoreData() {
         let dailyFetch: NSFetchRequest<DailyRecord> = DailyRecord.fetchRequest()
         let diaryFetch: NSFetchRequest<CoreDiaryEntry> = CoreDiaryEntry.fetchRequest()
@@ -689,7 +727,7 @@ struct DailyDBView: View {
             print("DEBUG: Total DailyRecords: \(dailyRecords.count)")
             dailyRecords.forEach { record in
                 let entryCount = (record.diaryEntries as? Set<CoreDiaryEntry>)?.count ?? 0
-                print("DailyRecord - Date: \(record.date ?? Date()), Entries: \(entryCount)")
+                print("DailyRecord - Date: \(record.date ?? Date()), Entries: \(entryCount), Calorie Goal: \(record.calorieGoal)")
             }
             let diaryEntries = try viewContext.fetch(diaryFetch)
             print("DEBUG: Total CoreDiaryEntries: \(diaryEntries.count)")

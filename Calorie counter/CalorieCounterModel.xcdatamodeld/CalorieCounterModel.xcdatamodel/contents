@@ -41,6 +41,7 @@
         <relationship name="dailyRecord" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyRecord" inverseName="diaryEntries" inverseEntity="DailyRecord"/>
     </entity>
     <entity name="DailyRecord" representedClassName="DailyRecord" syncable="YES">
+        <attribute name="calorieGoal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="calorieIntake" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="passFail" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -74,6 +75,7 @@
         <attribute name="heightCm" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="heightFt" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="heightIn" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="highStreak" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lastSavedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="profilePicture" optional="YES" attributeType="Binary"/>

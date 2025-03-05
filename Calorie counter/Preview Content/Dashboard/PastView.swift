@@ -12,33 +12,85 @@ import CoreData
 struct PastView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    // State to hold past records
     @State private var pastRecords: [DailyRecord] = []
     @State private var userProfile: UserProfile?
+    @State private var selectedRecord: DailyRecord?
     
-    // Computed properties for graph data
-    private var calorieData: [(date: Date, intake: Double, goal: Double)] {
-        pastRecords.compactMap { record in
-            guard let date = record.date else { return nil }
-            let intake = record.calorieIntake
-            // Use dailyCalorieGoal from UserProfile as a fallback; ideally, this would be stored per day
-            let goal = Double(userProfile?.dailyCalorieGoal ?? 2000) // Default to 2000 if no profile
-            return (date: date, intake: intake, goal: goal)
-        }.sorted { $0.date < $1.date } // Sort by date
+    private var simulatedCurrentDate: Date {
+        if let savedDate = UserDefaults.standard.object(forKey: "simulatedCurrentDate") as? Date {
+            return Calendar.current.startOfDay(for: savedDate)
+        }
+        return Calendar.current.startOfDay(for: Date())
+    }
+    
+    private struct CaloriePoint: Identifiable {
+        let id = UUID()
+        let date: Date
+        let value: Double
+        let category: String
+    }
+    
+    private var chartData: [CaloriePoint] {
+        var data: [CaloriePoint] = []
+        let filteredRecords = pastRecords.filter { !Calendar.current.isDate($0.date ?? Date.distantFuture, inSameDayAs: simulatedCurrentDate) }
+        guard !filteredRecords.isEmpty else { return data }
+        
+        let sortedRecords = filteredRecords.sorted { $0.date ?? Date() < $1.date ?? Date() }
+        guard let firstDate = sortedRecords.first?.date,
+              let lastDate = sortedRecords.last?.date else { return data }
+        
+        for record in sortedRecords {
+            if let date = record.date {
+                data.append(CaloriePoint(date: date, value: record.calorieIntake, category: "Intake"))
+                data.append(CaloriePoint(date: date, value: record.calorieGoal, category: "Goal"))
+            }
+        }
+        
+        return data
+    }
+    
+    private var averageCalories: Double {
+        let filteredRecords = pastRecords.filter { !Calendar.current.isDate($0.date ?? Date.distantFuture, inSameDayAs: simulatedCurrentDate) }
+        guard !filteredRecords.isEmpty else { return 0.0 }
+        let total = filteredRecords.reduce(0) { $0 + $1.calorieIntake }
+        return total / Double(filteredRecords.count)
     }
     
     private var passPercentage: Double {
-        guard !pastRecords.isEmpty else { return 0.0 }
-        let passCount = pastRecords.filter { $0.passFail }.count
-        return (Double(passCount) / Double(pastRecords.count)) * 100
+        let filteredRecords = pastRecords.filter { !Calendar.current.isDate($0.date ?? Date.distantFuture, inSameDayAs: simulatedCurrentDate) }
+        guard !filteredRecords.isEmpty else { return 0.0 }
+        let passCount = filteredRecords.filter { $0.passFail }.count
+        return (Double(passCount) / Double(filteredRecords.count)) * 100
+    }
+    
+    private var xAxisDates: [Date] {
+        let filteredRecords = pastRecords.filter { !Calendar.current.isDate($0.date ?? Date.distantFuture, inSameDayAs: simulatedCurrentDate) }
+        guard !filteredRecords.isEmpty else { return [] }
+        let sortedRecords = filteredRecords.sorted { $0.date ?? Date() < $1.date ?? Date() }
+        guard let firstDate = sortedRecords.first?.date,
+              let lastDate = sortedRecords.last?.date else { return [] }
+        
+        let totalDays = Calendar.current.dateComponents([.day], from: firstDate, to: lastDate).day ?? 0
+        let maxLabels = 5
+        let step = max(1, totalDays / (maxLabels - 1))
+        
+        var dates: [Date] = []
+        for i in stride(from: 0, through: totalDays, by: step) {
+            if let date = Calendar.current.date(byAdding: .day, value: i, to: firstDate) {
+                dates.append(date)
+            }
+        }
+        if !dates.contains(where: { Calendar.current.isDate($0, inSameDayAs: lastDate) }) {
+            dates.append(lastDate)
+        }
+        return dates
     }
     
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                // Push the title down to avoid the notch
                 Spacer()
-                    .frame(height: 50) // Adjust this value based on your device's notch height
+                    .frame(height: 50)
                 
                 Text("Past Records")
                     .font(.largeTitle)
@@ -46,64 +98,153 @@ struct PastView: View {
                     .foregroundColor(Styles.primaryText)
                     .frame(maxWidth: .infinity, alignment: .center)
                 
-                // Line Graph for Calories Over Time
-                if !calorieData.isEmpty {
-                    Chart {
-                        // Line for Calorie Intake
-                        ForEach(calorieData, id: \.date) { data in
-                            LineMark(
-                                x: .value("Date", data.date),
-                                y: .value("Calories", data.intake)
+                if !pastRecords.filter({ !Calendar.current.isDate($0.date ?? Date.distantFuture, inSameDayAs: simulatedCurrentDate) }).isEmpty {
+                    VStack(spacing: 10) {
+                        Text("Calories per Day")
+                            .font(.headline)
+                            .foregroundColor(Styles.primaryText)
+                            .padding(.vertical, 16)
+                            .frame(maxWidth: .infinity)
+                            .background(Styles.secondaryBackground)
+                            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: -2)
+                            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
+                        
+                        Spacer()
+                            .frame(height: 20)
+                        
+                        Chart {
+                            ForEach(chartData) { point in
+                                LineMark(
+                                    x: .value("Date", point.date),
+                                    y: .value("Calories", point.value)
+                                )
+                                .foregroundStyle(by: .value("Category", point.category))
+                                .lineStyle(StrokeStyle(lineWidth: 2))
+                            }
+                            
+                            RuleMark(
+                                y: .value("Average", averageCalories)
                             )
-                            .foregroundStyle(.blue)
-                            .lineStyle(StrokeStyle(lineWidth: 2))
+                            .foregroundStyle(.purple)
+                            .lineStyle(StrokeStyle(lineWidth: 1, dash: [3, 3]))
+                        }
+                        .chartForegroundStyleScale([
+                            "Intake": Styles.primaryText,
+                            "Goal": .orange
+                        ])
+                        .chartLineStyleScale([
+                            "Intake": StrokeStyle(lineWidth: 2),
+                            "Goal": StrokeStyle(lineWidth: 2, dash: [5, 5])
+                        ])
+                        .chartLegend(.hidden)
+                        .chartXAxis {
+                            AxisMarks(values: xAxisDates) { value in
+                                AxisGridLine()
+                                    .foregroundStyle(Styles.primaryText)
+                                AxisTick()
+                                    .foregroundStyle(Styles.primaryText)
+                                AxisValueLabel(format: .dateTime.month(.defaultDigits).day())
+                                    .foregroundStyle(Styles.primaryText)
+                            }
+                        }
+                        .chartYAxis {
+                            AxisMarks(position: .leading, values: .automatic) { value in
+                                AxisGridLine()
+                                    .foregroundStyle(Styles.primaryText)
+                                AxisTick()
+                                    .foregroundStyle(Styles.primaryText)
+                                AxisValueLabel()
+                                    .foregroundStyle(Styles.primaryText)
+                            }
+                        }
+                        .frame(height: 250)
+                        .padding(.horizontal)
+                        .chartOverlay { proxy in
+                            GeometryReader { geometry in
+                                Rectangle().fill(.clear).contentShape(Rectangle())
+                                    .overlay(alignment: .leading) {
+                                        if let firstDate = pastRecords.filter({ !Calendar.current.isDate($0.date ?? Date.distantFuture, inSameDayAs: simulatedCurrentDate) }).min(by: { $0.date ?? Date() < $1.date ?? Date() })?.date,
+                                           let xPosition = proxy.position(forX: firstDate),
+                                           let yPosition = proxy.position(forY: averageCalories) {
+                                            Text("\(Int(averageCalories))")
+                                                .font(.caption)
+                                                .foregroundColor(.purple)
+                                                .position(x: xPosition + 30, y: yPosition)
+                                        }
+                                    }
+                            }
                         }
                         
-                        // Line for Calorie Goal
-                        ForEach(calorieData, id: \.date) { data in
-                            LineMark(
-                                x: .value("Date", data.date),
-                                y: .value("Goal", data.goal)
-                            )
-                            .foregroundStyle(.orange)
-                            .lineStyle(StrokeStyle(lineWidth: 2, dash: [5, 5])) // Dashed line for goal
+                        HStack(spacing: 20) {
+                            HStack {
+                                Rectangle()
+                                    .fill(Styles.primaryText)
+                                    .frame(width: 20, height: 2)
+                                Text("Intake")
+                                    .font(.caption)
+                                    .foregroundColor(Styles.secondaryText)
+                            }
+                            HStack {
+                                Rectangle()
+                                    .fill(.orange)
+                                    .frame(width: 20, height: 2)
+                                Text("Goal")
+                                    .font(.caption)
+                                    .foregroundColor(Styles.secondaryText)
+                            }
+                            HStack {
+                                Rectangle()
+                                    .fill(.purple)
+                                    .frame(width: 20, height: 2)
+                                Text("Average")
+                                    .font(.caption)
+                                    .foregroundColor(Styles.secondaryText)
+                            }
                         }
+                        .frame(maxWidth: .infinity)
+                        .padding(.top, 5)
                     }
-                    .frame(height: 250)
-                    .chartXAxis {
-                        AxisMarks(values: .stride(by: .day)) { value in
-                            AxisGridLine()
-                            AxisTick()
-                            AxisValueLabel(format: .dateTime.month(.defaultDigits).day())
+                    
+                    HStack {
+                        Text("Past Overview")
+                            .font(.headline)
+                            .foregroundColor(Styles.primaryText)
+                        Spacer()
+                        Text("Under Rate \(String(format: "%.1f", passPercentage))%")
+                            .font(.headline)
+                            .foregroundColor(Styles.primaryText)
+                    }
+                    .padding(.vertical, 16)
+                    .padding(.horizontal, 16)
+                    .frame(maxWidth: .infinity)
+                    .background(Styles.secondaryBackground)
+                    .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: -2)
+                    .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
+                    
+                    if let selectedRecord = selectedRecord {
+                        PastDailyDBView(
+                            record: selectedRecord,
+                            userProfile: userProfile,
+                            onBack: { withAnimation { self.selectedRecord = nil } }
+                        )
+                    } else {
+                        VStack(spacing: 10) {
+                            ForEach(Array(pastRecords.enumerated()).reversed().filter { !Calendar.current.isDate($0.element.date ?? Date.distantFuture, inSameDayAs: simulatedCurrentDate) }, id: \.element.objectID) { index, record in
+                                PastDayRow(record: record, userProfile: userProfile, dayNumber: index + 1)
+                                    .onTapGesture {
+                                        withAnimation {
+                                            selectedRecord = record
+                                        }
+                                    }
+                            }
                         }
+                        .padding(.horizontal)
                     }
-                    .chartYAxis {
-                        AxisMarks(position: .leading, values: .automatic) { value in
-                            AxisGridLine()
-                            AxisTick()
-                            AxisValueLabel()
-                        }
-                    }
-                    .padding(.horizontal)
                 } else {
                     Text("No past data available")
                         .foregroundColor(Styles.secondaryText)
                         .frame(height: 250)
                 }
-                
-                // Pass Percentage
-                Text("Pass Percentage: \(String(format: "%.1f", passPercentage))%")
-                    .font(.headline)
-                    .foregroundColor(Styles.primaryText)
-                
-                // List of Past Days
-                VStack(spacing: 10) {
-                    ForEach(pastRecords.indices, id: \.self) { index in
-                        let record = pastRecords[index]
-                        PastDayRow(record: record, userProfile: userProfile)
-                    }
-                }
-                .padding(.horizontal)
             }
             .padding(.bottom, 20)
         }
@@ -122,6 +263,10 @@ struct PastView: View {
         
         do {
             pastRecords = try viewContext.fetch(fetchRequest)
+            print("DEBUG: Fetched \(pastRecords.count) past records")
+            pastRecords.forEach { record in
+                print("Record - Date: \(record.date ?? Date()), Intake: \(record.calorieIntake), Goal: \(record.calorieGoal)")
+            }
         } catch {
             print("❌ Error fetching past records: \(error.localizedDescription)")
             pastRecords = []
@@ -141,16 +286,323 @@ struct PastView: View {
     }
 }
 
-// Subview for each past day row
+struct PastDailyDBView: View {
+    let record: DailyRecord
+    let userProfile: UserProfile?
+    let onBack: () -> Void
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    @State private var diaryEntries: [DiaryEntry] = []
+    @State private var weighIns: [WeighIn] = []
+    @State private var waterGoal: CGFloat = 0
+    @State private var selectedUnit: String = "fl oz"
+    @State private var isWaterPickerPresented: Bool = false
+    @State private var isWeighInExpanded: Bool = false
+    
+    private var selectedDate: Date { record.date ?? Date() }
+    private var dayNumber: Int {
+        let fetchRequest: NSFetchRequest<DailyRecord> = DailyRecord.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        do {
+            let records = try viewContext.fetch(fetchRequest)
+            if let index = records.firstIndex(where: { Calendar.current.isDate($0.date ?? Date.distantFuture, inSameDayAs: selectedDate) }) {
+                return index + 1
+            }
+        } catch {
+            print("❌ Error fetching records for dayNumber: \(error.localizedDescription)")
+        }
+        return 0
+    }
+    
+    private var totalCalories: Double {
+        let foodCalories = diaryEntries.filter { $0.type == "Food" }.reduce(0) { $0 + Double($1.calories) }
+        let workoutCalories = diaryEntries.filter { $0.type == "Workout" }.reduce(0) { $0 + Double(abs($1.calories)) }
+        return foodCalories - workoutCalories
+    }
+    
+    private var quickAddCalories: Double {
+        diaryEntries.filter { $0.type == "Food" && $0.fats == 0 && $0.carbs == 0 && $0.protein == 0 }
+            .reduce(0) { $0 + Double($1.calories) }
+    }
+    
+    private var fatCalories: Double {
+        diaryEntries.filter { $0.type == "Food" && $0.fats > 0 }
+            .reduce(0) { $0 + ($1.fats * 9) }
+    }
+    
+    private var carbCalories: Double {
+        diaryEntries.filter { $0.type == "Food" && $0.carbs > 0 }
+            .reduce(0) { $0 + ($1.carbs * 4) }
+    }
+    
+    private var proteinCalories: Double {
+        diaryEntries.filter { $0.type == "Food" && $0.protein > 0 }
+            .reduce(0) { $0 + ($1.protein * 4) }
+    }
+    
+    private var totalDailyWater: CGFloat {
+        var totalIntake: CGFloat = 0
+        for entry in diaryEntries where entry.type == "Water" {
+            let (amount, unit) = extractWaterAmountAndUnit(entry.detail)
+            let convertedAmount = convertWaterUnit(amount: amount, from: unit, to: selectedUnit)
+            totalIntake += convertedAmount
+        }
+        return totalIntake
+    }
+    
+    private func extractWaterAmountAndUnit(_ detail: String) -> (CGFloat, String) {
+        let fractionMap: [String: CGFloat] = ["1/4": 0.25, "1/2": 0.5, "3/4": 0.75, "1": 1.0]
+        let components = detail.split(separator: " ")
+        if components.count == 2 {
+            let amountString = String(components[0])
+            let unit = String(components[1])
+            if let fractionValue = fractionMap[amountString] {
+                return (fractionValue, unit)
+            } else if let amount = Double(amountString) {
+                return (CGFloat(amount), unit)
+            }
+        } else if detail.contains("fl oz") {
+            let numberString = detail.replacingOccurrences(of: "fl oz", with: "").trimmingCharacters(in: .whitespaces)
+            if let amount = Double(numberString) {
+                return (CGFloat(amount), "fl oz")
+            }
+        }
+        return (0, "ml")
+    }
+    
+    private func convertWaterUnit(amount: CGFloat, from fromUnit: String, to toUnit: String) -> CGFloat {
+        let mlPerFlOz: CGFloat = 29.5735
+        let mlPerGallon: CGFloat = 3785.41
+        let mlPerLiter: CGFloat = 1000
+        
+        var amountInMl: CGFloat
+        switch fromUnit.lowercased() {
+        case "milliliters", "ml": amountInMl = amount
+        case "liters", "l": amountInMl = amount * mlPerLiter
+        case "gallons", "gal": amountInMl = amount * mlPerGallon
+        case "fl", "fl oz": amountInMl = amount * mlPerFlOz
+        default: return amount
+        }
+        
+        switch toUnit.lowercased() {
+        case "milliliters", "ml": return amountInMl
+        case "liters", "l": return amountInMl / mlPerLiter
+        case "gallons", "gal": return amountInMl / mlPerGallon
+        case "fl", "fl oz": return amountInMl / mlPerFlOz
+        default: return amount
+        }
+    }
+    
+    private func formattedDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter.string(from: date)
+    }
+    
+    private func averageWeight() -> String {
+        guard !weighIns.isEmpty else { return "none" }
+        let totalWeight = weighIns.compactMap { Double($0.weight) }.reduce(0, +)
+        return String(format: "%.1f", totalWeight / Double(weighIns.count))
+    }
+    
+    var body: some View {
+        ZStack {
+            VStack(spacing: 0) {
+                HStack {
+                    Button(action: onBack) {
+                        Image(systemName: "chevron.left")
+                            .font(.title2)
+                            .foregroundColor(Styles.primaryText)
+                    }
+                    Spacer()
+                    VStack {
+                        Text("Day \(dayNumber)")
+                            .font(.headline)
+                            .foregroundColor(Styles.secondaryText)
+                        Text(formattedDate(selectedDate))
+                            .font(.subheadline)
+                            .foregroundColor(Styles.primaryText)
+                    }
+                    Spacer()
+                    // Changed PASS/FAIL to OVER/UNDER
+                    Text(totalCalories <= Double(record.calorieGoal) ? "UNDER" : "OVER")
+                        .font(.headline)
+                        .foregroundColor(totalCalories <= Double(record.calorieGoal) ? .green : .red)
+                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 10)
+                .background(Styles.secondaryBackground)
+                .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 3)
+                .zIndex(1)
+                
+                VStack(spacing: 15) {
+                    HStack(spacing: 10) {
+                        Image("bolt")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30, height: 40)
+                            .padding(.trailing, 5)
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text("Calories")
+                                    .font(.headline)
+                                    .foregroundColor(totalCalories > Double(record.calorieGoal) ? .red : Styles.primaryText)
+                                Spacer()
+                                Text("\(Int(totalCalories))/\(Int(record.calorieGoal))")
+                                    .font(.subheadline)
+                                    .foregroundColor(totalCalories > Double(record.calorieGoal) ? .red : Styles.secondaryText)
+                            }
+                            GeometryReader { geometry in
+                                ZStack(alignment: .leading) {
+                                    Rectangle()
+                                        .fill(Styles.primaryText.opacity(0.2))
+                                        .frame(height: 20)
+                                    HStack(spacing: 0) {
+                                        if totalCalories > 0 {
+                                            let progressWidth = min(CGFloat(totalCalories / Double(record.calorieGoal)) * geometry.size.width, geometry.size.width)
+                                            if quickAddCalories > 0 {
+                                                Rectangle()
+                                                    .fill(Styles.primaryText)
+                                                    .frame(width: (quickAddCalories / totalCalories) * progressWidth)
+                                            }
+                                            if fatCalories > 0 {
+                                                Rectangle()
+                                                    .fill(Color.red)
+                                                    .frame(width: (fatCalories / totalCalories) * progressWidth)
+                                            }
+                                            if carbCalories > 0 {
+                                                Rectangle()
+                                                    .fill(Color.yellow)
+                                                    .frame(width: (carbCalories / totalCalories) * progressWidth)
+                                            }
+                                            if proteinCalories > 0 {
+                                                Rectangle()
+                                                    .fill(Color.green)
+                                                    .frame(width: (proteinCalories / totalCalories) * progressWidth)
+                                            }
+                                        }
+                                    }
+                                    .frame(height: 20)
+                                }
+                            }
+                            .frame(height: 20)
+                        }
+                    }
+                    Divider()
+                    WaterTrackerView(
+                        diaryEntries: diaryEntries,
+                        selectedUnit: $selectedUnit,
+                        waterGoal: $waterGoal,
+                        isWaterPickerPresented: $isWaterPickerPresented
+                    )
+                    .disabled(true)
+                    Divider()
+                    VStack(alignment: .leading, spacing: 5) {
+                        HStack(spacing: 10) {
+                            Image("CalW")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 40)
+                                .padding(.trailing, 5)
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Text("Daily Weigh-In:")
+                                        .font(.headline)
+                                        .foregroundColor(Styles.primaryText)
+                                    Spacer()
+                                    if weighIns.count == 1, let latestWeighIn = weighIns.last {
+                                        Text("\(latestWeighIn.weight) \(userProfile?.useMetric ?? false ? "kg" : "lbs")")
+                                            .font(.subheadline)
+                                            .foregroundColor(Styles.secondaryText)
+                                    } else if weighIns.count > 1 {
+                                        Button(action: { withAnimation { isWeighInExpanded.toggle() } }) {
+                                            HStack {
+                                                Text("\(averageWeight()) \(userProfile?.useMetric ?? false ? "kg" : "lbs")")
+                                                    .font(.subheadline)
+                                                    .foregroundColor(Styles.secondaryText)
+                                                Image(systemName: "chevron.down")
+                                                    .rotationEffect(.degrees(isWeighInExpanded ? 180 : 0))
+                                                    .foregroundColor(Styles.secondaryText)
+                                            }
+                                        }
+                                    } else {
+                                        Text("\(averageWeight()) \(userProfile?.useMetric ?? false ? "kg" : "lbs")")
+                                            .font(.subheadline)
+                                            .foregroundColor(Styles.secondaryText)
+                                    }
+                                }
+                            }
+                        }
+                        if isWeighInExpanded && weighIns.count > 1 {
+                            VStack(spacing: 0) {
+                                ForEach(Array(weighIns.enumerated()), id: \.element.id) { index, entry in
+                                    HStack {
+                                        Text(entry.time)
+                                            .font(.subheadline)
+                                            .foregroundColor(Styles.secondaryText)
+                                            .frame(width: 80, alignment: .leading)
+                                        Text("\(entry.weight) \(userProfile?.useMetric ?? false ? "kg" : "lbs")")
+                                            .font(.subheadline)
+                                            .foregroundColor(Styles.primaryText)
+                                            .frame(maxWidth: .infinity, alignment: .center)
+                                    }
+                                    .padding()
+                                    .background(index % 2 == 0 ? Styles.secondaryBackground : Styles.tertiaryBackground)
+                                }
+                            }
+                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                        }
+                    }
+                    .disabled(true)
+                }
+                .padding(15)
+                .background(Styles.secondaryBackground)
+                .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 3)
+                
+                DiaryView(diaryEntries: $diaryEntries)
+                    .disabled(true)
+            }
+        }
+        .onAppear {
+            loadDailyRecord()
+        }
+    }
+    
+    private func loadDailyRecord() {
+        diaryEntries = (record.diaryEntries as? Set<CoreDiaryEntry>)?.map { entity in
+            DiaryEntry(
+                time: entity.time ?? "",
+                iconName: entity.iconName ?? "",
+                description: entity.entryDescription ?? "",
+                detail: entity.detail ?? "",
+                calories: Int(entity.calories),
+                type: entity.type ?? "",
+                imageName: entity.imageName,
+                imageData: entity.imageData,
+                fats: entity.fats,
+                carbs: entity.carbs,
+                protein: entity.protein
+            )
+        } ?? []
+        waterGoal = CGFloat(record.waterGoal)
+        selectedUnit = record.waterUnit ?? "fl oz"
+        if record.weighIn > 0 {
+            weighIns = [WeighIn(time: formattedCurrentTime(), weight: String(format: "%.1f", record.weighIn))]
+        }
+        print("DEBUG: Loaded past day - Date: \(formattedDate(selectedDate)), Entries: \(diaryEntries.count)")
+    }
+    
+    private func formattedCurrentTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        return formatter.string(from: Date())
+    }
+}
+
 struct PastDayRow: View {
     let record: DailyRecord
     let userProfile: UserProfile?
-    
-    private var dayTitle: String {
-        guard let date = record.date, let startDate = userProfile?.startDate else { return "Day X" }
-        let daysSinceStart = Calendar.current.dateComponents([.day], from: startDate, to: date).day! + 1
-        return "Day \(daysSinceStart)"
-    }
+    let dayNumber: Int
     
     private var formattedDate: String {
         guard let date = record.date else { return "Unknown Date" }
@@ -159,22 +611,14 @@ struct PastDayRow: View {
         return formatter.string(from: date)
     }
     
-    private var calorieGoal: Int32 {
-        userProfile?.dailyCalorieGoal ?? 2000 // Default fallback
-    }
-    
     private var weighIn: String {
-        // Ideally, weigh-ins would be stored per day in DailyRecord; using UserProfile's currentWeight as a placeholder
-        guard let date = record.date, let userProfile = userProfile else { return "N/A" }
-        let isToday = Calendar.current.isDate(date, inSameDayAs: Date())
-        return isToday && userProfile.currentWeight > 0 ? "\(userProfile.currentWeight) \(userProfile.useMetric ? "kg" : "lbs")" : "N/A"
+        return record.weighIn > 0 ? String(format: "%.1f %@", record.weighIn, userProfile?.useMetric ?? false ? "kg" : "lbs") : "N/A"
     }
     
     var body: some View {
         HStack(spacing: 15) {
-            // Day and Date
             VStack(alignment: .leading, spacing: 5) {
-                Text(dayTitle)
+                Text("Day \(dayNumber)")
                     .font(.headline)
                     .foregroundColor(Styles.primaryText)
                 Text(formattedDate)
@@ -183,9 +627,8 @@ struct PastDayRow: View {
             }
             .frame(width: 100, alignment: .leading)
             
-            // Details
             VStack(alignment: .leading, spacing: 5) {
-                Text("Calories: \(Int(record.calorieIntake))/\(calorieGoal)")
+                Text("Calories: \(Int(record.calorieIntake))/\(Int(record.calorieGoal))")
                     .font(.subheadline)
                     .foregroundColor(Styles.primaryText)
                 Text("Water: \(String(format: "%.1f", record.waterIntake)) \(record.waterUnit ?? "fl oz")")
@@ -198,8 +641,7 @@ struct PastDayRow: View {
             
             Spacer()
             
-            // Pass/Fail Indicator
-            Text(record.passFail ? "PASS" : "FAIL")
+            Text(record.passFail ? "UNDER" : "OVER")
                 .font(.headline)
                 .foregroundColor(record.passFail ? .green : .red)
                 .frame(width: 60, alignment: .trailing)

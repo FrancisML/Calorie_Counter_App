@@ -12,7 +12,11 @@
       },
       {
         "comment": "",
-        "key": "Pass Percentage: %@%%"
+        "key": "Calories per Day"
+      },
+      {
+        "comment": "",
+        "key": "Average"
       },
       {
         "comment": "",
@@ -24,19 +28,55 @@
       },
       {
         "comment": "",
+        "key": "Category"
+      },
+      {
+        "comment": "",
+        "key": "%lld"
+      },
+      {
+        "comment": "",
+        "key": "Intake"
+      },
+      {
+        "comment": "",
         "key": "Goal"
       },
       {
         "comment": "",
-        "key": "PASS"
+        "key": "Past Overview"
       },
       {
         "comment": "",
-        "key": "FAIL"
+        "key": "Under Rate %@%%"
       },
       {
         "comment": "",
-        "key": "Calories: %lld/%d"
+        "key": "UNDER"
+      },
+      {
+        "comment": "",
+        "key": "OVER"
+      },
+      {
+        "comment": "",
+        "key": "Day %lld"
+      },
+      {
+        "comment": "",
+        "key": "%lld/%lld"
+      },
+      {
+        "comment": "",
+        "key": "Daily Weigh-In:"
+      },
+      {
+        "comment": "",
+        "key": "%@ %@"
+      },
+      {
+        "comment": "",
+        "key": "Calories: %lld/%lld"
       },
       {
         "comment": "",

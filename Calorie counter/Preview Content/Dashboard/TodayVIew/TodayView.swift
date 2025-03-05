@@ -2,7 +2,7 @@
 //  TodayView.swift
 //  Calorie counter
 //
-//  Created by Frank LaSalvia on 2/9/25.
+//  Created by frank lasalvia on 2/12/25.
 //
 
 import SwiftUI
@@ -16,26 +16,16 @@ struct TodayView: View {
     @State private var highestStreak: Int32 = 1
     @State private var selectedDate: Date = Date()
     @State private var dailyCalorieGoal: Int = 2000
-    @State private var isWaterPickerPresented: Bool = false // ✅ Controls picker visibility
+    @State private var isWaterPickerPresented: Bool = false
     @State private var selectedUnit: String = "fl oz"
-    
-    @Binding var weighIns: [(time: String, weight: String)] // ✅ Accept weigh-ins as Binding
-
-
-
-   
-
-
-
+    @Binding var weighIns: [WeighIn]
     @Binding var diaryEntries: [DiaryEntry]
-     
-    
+    private var useMetric: Bool = false
 
-    @State private var calorieProgress: CGFloat = 0
-    @State private var calorieGoal: CGFloat = 100
-    @State private var waterProgress: CGFloat = 0
-    @State private var waterGoal: CGFloat = 100
-    @State private var useMetric: Bool = false
+    init(weighIns: Binding<[WeighIn]>, diaryEntries: Binding<[DiaryEntry]>) {
+        self._weighIns = weighIns
+        self._diaryEntries = diaryEntries
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
@@ -65,9 +55,52 @@ struct TodayView: View {
                         .fontWeight(.bold)
                         .foregroundColor(Styles.primaryText)
 
-                    Text(goalMessage)
-                        .font(.subheadline)
-                        .foregroundColor(Styles.secondaryText)
+                    HStack(spacing: 5) {
+                        Image(systemName: "target")
+                            .foregroundColor(Styles.secondaryText)
+                            .font(.subheadline)
+                        Text(goalMessage)
+                            .font(.subheadline)
+                            .foregroundColor(Styles.secondaryText)
+                    }
+
+                    HStack(spacing: 5) {
+                        Image(systemName: "flame.fill")
+                            .foregroundColor(.orange)
+                            .font(.subheadline)
+                        Text("Highest Streak: \(highestStreak)")
+                            .font(.subheadline)
+                            .foregroundColor(Styles.secondaryText)
+                    }
+
+                    HStack(spacing: 5) {
+                        Image(systemName: "scalemass.fill")
+                            .foregroundColor(Styles.secondaryText)
+                            .font(.subheadline)
+                        Text("Weight: \(formattedCurrentWeight())")
+                            .font(.subheadline)
+                            .foregroundColor(Styles.secondaryText)
+                        Spacer()
+                        if let (difference, weekGoal) = weightDifference() {
+                            let differenceColor: Color = {
+                                if weekGoal < 0 { // Lose weight
+                                    return difference < 0 ? .green : .red
+                                } else if weekGoal > 0 { // Gain weight
+                                    return difference > 0 ? .green : .red
+                                } else { // Maintain weight
+                                    return .red
+                                }
+                            }()
+                            HStack(spacing: 2) {
+                                Image(systemName: difference > 0 ? "arrow.up" : difference < 0 ? "arrow.down" : "minus")
+                                    .foregroundColor(differenceColor)
+                                    .font(.subheadline)
+                                Text("\(String(format: "%.1f", abs(difference)))")
+                                    .font(.subheadline)
+                                    .foregroundColor(differenceColor)
+                            }
+                        }
+                    }
                 }
             }
             .padding(.horizontal)
@@ -79,13 +112,8 @@ struct TodayView: View {
                 highestStreak: highestStreak,
                 calorieGoal: CGFloat(dailyCalorieGoal),
                 useMetric: useMetric,
-                weighIns: $weighIns // ✅ Pass weighIns as a binding
+                weighIns: $weighIns
             )
-
-            
-
-
-
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Styles.primaryBackground)
@@ -108,8 +136,7 @@ struct TodayView: View {
                 }
                 
                 self.goalMessage = generateGoalMessage(userProfile: userProfile)
-                self.highestStreak = 1
-                self.useMetric = userProfile.useMetric
+                self.highestStreak = userProfile.highStreak
                 self.dailyCalorieGoal = Int(userProfile.dailyCalorieGoal)
             }
         } catch {
@@ -117,9 +144,8 @@ struct TodayView: View {
         }
     }
 
-    // No change needed here since currentWeight is only used in generateGoalMessage
     private func generateGoalMessage(userProfile: UserProfile) -> String {
-        let weightDifference = abs(userProfile.goalWeight - userProfile.currentWeight) // Now a Double
+        let weightDifference = abs(userProfile.goalWeight - userProfile.currentWeight)
         let formattedDifference = userProfile.useMetric ? "\(weightDifference) kg" : "\(weightDifference) lbs"
         
         if userProfile.weekGoal == 0 {
@@ -144,10 +170,37 @@ struct TodayView: View {
         formatter.dateStyle = .medium
         return formatter.string(from: date)
     }
+
+    private func formattedCurrentWeight() -> String {
+        let fetchRequest: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
+        fetchRequest.fetchLimit = 1
+        do {
+            if let userProfile = try viewContext.fetch(fetchRequest).first {
+                return String(format: "%.1f %@", userProfile.currentWeight, useMetric ? "kg" : "lbs")
+            }
+        } catch {
+            print("❌ Error fetching current weight: \(error.localizedDescription)")
+        }
+        return "N/A"
+    }
+
+    private func weightDifference() -> (difference: Double, weekGoal: Double)? {
+        let fetchRequest: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
+        fetchRequest.fetchLimit = 1
+        do {
+            if let userProfile = try viewContext.fetch(fetchRequest).first {
+                let difference = userProfile.currentWeight - userProfile.startWeight
+                return (difference, userProfile.weekGoal)
+            }
+        } catch {
+            print("❌ Error fetching weight difference: \(error.localizedDescription)")
+        }
+        return nil
+    }
+
     private static func formattedCurrentDate() -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         return formatter.string(from: Date())
     }
 }
-
