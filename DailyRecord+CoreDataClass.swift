@@ -2,7 +2,7 @@
 //  DailyRecord+CoreDataClass.swift
 //  Calorie counter
 //
-//  Created by frank lasalvia on 3/2/25.
+//  Created by frank lasalvia on 3/5/25.
 //
 //
 

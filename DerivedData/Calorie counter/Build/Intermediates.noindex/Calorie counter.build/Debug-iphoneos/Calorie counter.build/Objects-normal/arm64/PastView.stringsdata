@@ -48,7 +48,7 @@
       },
       {
         "comment": "",
-        "key": "Under Rate %@%%"
+        "key": "Pass Rate %@%%"
       },
       {
         "comment": "",
@@ -76,11 +76,19 @@
       },
       {
         "comment": "",
+        "key": "PASS"
+      },
+      {
+        "comment": "",
+        "key": "FAIL"
+      },
+      {
+        "comment": "",
         "key": "Calories: %lld/%lld"
       },
       {
         "comment": "",
-        "key": "Water: %@ %@"
+        "key": "Water: %@"
       },
       {
         "comment": "",

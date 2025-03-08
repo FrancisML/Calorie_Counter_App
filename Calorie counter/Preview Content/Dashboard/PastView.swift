@@ -1,4 +1,3 @@
-//
 //  PastView.swift
 //  Calorie counter
 //
@@ -210,7 +209,7 @@ struct PastView: View {
                             .font(.headline)
                             .foregroundColor(Styles.primaryText)
                         Spacer()
-                        Text("Under Rate \(String(format: "%.1f", passPercentage))%")
+                        Text("Pass Rate \(String(format: "%.1f", passPercentage))%")
                             .font(.headline)
                             .foregroundColor(Styles.primaryText)
                     }
@@ -424,7 +423,6 @@ struct PastDailyDBView: View {
                             .foregroundColor(Styles.primaryText)
                     }
                     Spacer()
-                    // Changed PASS/FAIL to OVER/UNDER
                     Text(totalCalories <= Double(record.calorieGoal) ? "UNDER" : "OVER")
                         .font(.headline)
                         .foregroundColor(totalCalories <= Double(record.calorieGoal) ? .green : .red)
@@ -439,6 +437,8 @@ struct PastDailyDBView: View {
                     HStack(spacing: 10) {
                         Image("bolt")
                             .resizable()
+                            .renderingMode(.template)
+                            .foregroundColor(Styles.primaryText)
                             .scaledToFit()
                             .frame(width: 30, height: 40)
                             .padding(.trailing, 5)
@@ -501,6 +501,8 @@ struct PastDailyDBView: View {
                         HStack(spacing: 10) {
                             Image("CalW")
                                 .resizable()
+                                .renderingMode(.template)
+                                .foregroundColor(Styles.primaryText)
                                 .scaledToFit()
                                 .frame(width: 30, height: 40)
                                 .padding(.trailing, 5)
@@ -615,6 +617,20 @@ struct PastDayRow: View {
         return record.weighIn > 0 ? String(format: "%.1f %@", record.weighIn, userProfile?.useMetric ?? false ? "kg" : "lbs") : "N/A"
     }
     
+    private var waterText: String {
+        let intake = String(format: "%.1f", record.waterIntake)
+        let goal = String(format: "%.1f", record.waterGoal)
+        let unit = record.waterUnit ?? "fl oz"
+        return record.waterGoal > 0 ? "\(intake)/\(goal) \(unit)" : "\(intake) \(unit)"
+    }
+    
+    private var waterTextColor: Color {
+        if record.waterGoal > 0 {
+            return record.waterIntake >= record.waterGoal ? .green : .red
+        }
+        return Styles.primaryText
+    }
+    
     var body: some View {
         HStack(spacing: 15) {
             VStack(alignment: .leading, spacing: 5) {
@@ -631,9 +647,9 @@ struct PastDayRow: View {
                 Text("Calories: \(Int(record.calorieIntake))/\(Int(record.calorieGoal))")
                     .font(.subheadline)
                     .foregroundColor(Styles.primaryText)
-                Text("Water: \(String(format: "%.1f", record.waterIntake)) \(record.waterUnit ?? "fl oz")")
+                Text("Water: \(waterText)")
                     .font(.subheadline)
-                    .foregroundColor(Styles.primaryText)
+                    .foregroundColor(waterTextColor)
                 Text("Weigh-In: \(weighIn)")
                     .font(.subheadline)
                     .foregroundColor(Styles.primaryText)
@@ -641,7 +657,7 @@ struct PastDayRow: View {
             
             Spacer()
             
-            Text(record.passFail ? "UNDER" : "OVER")
+            Text(record.passFail ? "PASS" : "FAIL")
                 .font(.headline)
                 .foregroundColor(record.passFail ? .green : .red)
                 .frame(width: 60, alignment: .trailing)

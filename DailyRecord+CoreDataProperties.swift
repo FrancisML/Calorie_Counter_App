@@ -2,7 +2,7 @@
 //  DailyRecord+CoreDataProperties.swift
 //  Calorie counter
 //
-//  Created by frank lasalvia on 3/2/25.
+//  Created by frank lasalvia on 3/5/25.
 //
 //
 
@@ -16,6 +16,7 @@ extension DailyRecord {
         return NSFetchRequest<DailyRecord>(entityName: "DailyRecord")
     }
 
+    @NSManaged public var calorieGoal: Double
     @NSManaged public var calorieIntake: Double
     @NSManaged public var date: Date?
     @NSManaged public var passFail: Bool
@@ -23,8 +24,8 @@ extension DailyRecord {
     @NSManaged public var waterIntake: Double
     @NSManaged public var waterUnit: String?
     @NSManaged public var weighIn: Double
-    @NSManaged public var calorieGoal: Double
     @NSManaged public var diaryEntries: NSSet?
+    @NSManaged public var weighIns: NSSet?
 
 }
 
@@ -42,6 +43,23 @@ extension DailyRecord {
 
     @objc(removeDiaryEntries:)
     @NSManaged public func removeFromDiaryEntries(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for weighIns
+extension DailyRecord {
+
+    @objc(addWeighInsObject:)
+    @NSManaged public func addToWeighIns(_ value: WeighInEntry)
+
+    @objc(removeWeighInsObject:)
+    @NSManaged public func removeFromWeighIns(_ value: WeighInEntry)
+
+    @objc(addWeighIns:)
+    @NSManaged public func addToWeighIns(_ values: NSSet)
+
+    @objc(removeWeighIns:)
+    @NSManaged public func removeFromWeighIns(_ values: NSSet)
 
 }
 

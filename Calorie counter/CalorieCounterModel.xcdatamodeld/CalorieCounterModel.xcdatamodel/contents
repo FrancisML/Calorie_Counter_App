@@ -50,6 +50,7 @@
         <attribute name="waterUnit" optional="YES" attributeType="String"/>
         <attribute name="weighIn" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="diaryEntries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDiaryEntry" inverseName="dailyRecord" inverseEntity="CoreDiaryEntry"/>
+        <relationship name="weighIns" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WeighInEntry" inverseName="dailyRecord" inverseEntity="WeighInEntry"/>
     </entity>
     <entity name="ProgressPicture" representedClassName="ProgressPicture" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -71,6 +72,7 @@
         <attribute name="gender" attributeType="String"/>
         <attribute name="goalCalories" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="goalId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="goalText" optional="YES" attributeType="String"/>
         <attribute name="goalWeight" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="heightCm" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="heightFt" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -92,5 +94,10 @@
         <attribute name="weightDifference" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="bodyMeasurement" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BodyMeasurement" inverseName="userProfile" inverseEntity="BodyMeasurement"/>
         <relationship name="progressPicture" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProgressPicture" inverseName="userProfile" inverseEntity="ProgressPicture"/>
+    </entity>
+    <entity name="WeighInEntry" representedClassName="WeighInEntry" syncable="YES">
+        <attribute name="time" optional="YES" attributeType="String"/>
+        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="dailyRecord" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyRecord" inverseName="weighIns" inverseEntity="DailyRecord"/>
     </entity>
 </model>

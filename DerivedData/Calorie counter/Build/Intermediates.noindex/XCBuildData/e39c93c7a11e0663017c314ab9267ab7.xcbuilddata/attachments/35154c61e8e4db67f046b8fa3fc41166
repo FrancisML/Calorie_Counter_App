@@ -1,0 +1,528 @@
+{
+  "" : {
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Calorie counter-master.dia",
+    "emit-module-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Calorie counter-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Calorie counter-master-emit-module.dia",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Calorie counter-master.swiftdeps"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/ActivityModel+CoreDataClass.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityModel+CoreDataClass.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityModel+CoreDataClass.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityModel+CoreDataClass.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityModel+CoreDataClass.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityModel+CoreDataClass.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityModel+CoreDataClass.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityModel+CoreDataClass.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityModel+CoreDataClass~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/ActivityModel+CoreDataProperties.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityModel+CoreDataProperties.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityModel+CoreDataProperties.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityModel+CoreDataProperties.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityModel+CoreDataProperties.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityModel+CoreDataProperties.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityModel+CoreDataProperties.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityModel+CoreDataProperties.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityModel+CoreDataProperties~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/BodyMeasurement+CoreDataClass.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurement+CoreDataClass.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurement+CoreDataClass.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurement+CoreDataClass.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurement+CoreDataClass.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurement+CoreDataClass.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurement+CoreDataClass.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurement+CoreDataClass.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurement+CoreDataClass~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/BodyMeasurement+CoreDataProperties.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurement+CoreDataProperties.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurement+CoreDataProperties.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurement+CoreDataProperties.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurement+CoreDataProperties.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurement+CoreDataProperties.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurement+CoreDataProperties.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurement+CoreDataProperties.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurement+CoreDataProperties~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Calorie_counterApp.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Calorie_counterApp.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Calorie_counterApp.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Calorie_counterApp.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Calorie_counterApp.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Calorie_counterApp.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Calorie_counterApp.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Calorie_counterApp.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Calorie_counterApp~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/ChangeDateView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ChangeDateView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ChangeDateView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ChangeDateView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ChangeDateView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ChangeDateView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ChangeDateView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ChangeDateView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ChangeDateView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/DailyDataTracker.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyDataTracker.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyDataTracker.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyDataTracker.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyDataTracker.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyDataTracker.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyDataTracker.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyDataTracker.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyDataTracker~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/ImagePicker.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ImagePicker.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ImagePicker.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ImagePicker.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ImagePicker.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ImagePicker.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ImagePicker.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ImagePicker.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ImagePicker~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/KeyboardDismissModifier.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/KeyboardDismissModifier.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/KeyboardDismissModifier.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/KeyboardDismissModifier.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/KeyboardDismissModifier.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/KeyboardDismissModifier.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/KeyboardDismissModifier.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/KeyboardDismissModifier.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/KeyboardDismissModifier~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/PersistenceController.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersistenceController.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersistenceController.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersistenceController.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersistenceController.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersistenceController.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersistenceController.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersistenceController.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersistenceController~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/DashboardView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DashboardView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DashboardView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DashboardView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DashboardView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DashboardView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DashboardView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DashboardView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DashboardView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/New Group/ProgressView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/PastView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PastView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PastView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PastView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PastView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PastView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PastView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PastView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PastView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/ProgressView/BodyMeasurementView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurementView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurementView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurementView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurementView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurementView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurementView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurementView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/BodyMeasurementView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/SettingsView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SettingsView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SettingsView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SettingsView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SettingsView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SettingsView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SettingsView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SettingsView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SettingsView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/TodayVIew/AddingData/AddFood/AddFoodView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddFoodView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddFoodView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddFoodView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddFoodView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddFoodView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddFoodView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddFoodView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddFoodView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/TodayVIew/AddingData/AddFood/AdvancedFoodAddView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AdvancedFoodAddView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AdvancedFoodAddView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AdvancedFoodAddView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AdvancedFoodAddView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AdvancedFoodAddView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AdvancedFoodAddView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AdvancedFoodAddView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AdvancedFoodAddView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/TodayVIew/AddingData/AddFood/QuickFoodAddView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/QuickFoodAddView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/QuickFoodAddView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/QuickFoodAddView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/QuickFoodAddView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/QuickFoodAddView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/QuickFoodAddView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/QuickFoodAddView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/QuickFoodAddView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/TodayVIew/AddingData/AddWaterView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddWaterView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddWaterView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddWaterView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddWaterView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddWaterView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddWaterView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddWaterView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddWaterView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/TodayVIew/AddingData/AddWorkout/ActivityStatsView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityStatsView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityStatsView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityStatsView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityStatsView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityStatsView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityStatsView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityStatsView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ActivityStatsView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/TodayVIew/AddingData/AddWorkout/ADVWorkoutAdd.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ADVWorkoutAdd.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ADVWorkoutAdd.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ADVWorkoutAdd.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ADVWorkoutAdd.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ADVWorkoutAdd.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ADVWorkoutAdd.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ADVWorkoutAdd.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ADVWorkoutAdd~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/TodayVIew/AddingData/AddWorkout/QuickWKAdd.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/QuickWKAdd.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/QuickWKAdd.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/QuickWKAdd.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/QuickWKAdd.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/QuickWKAdd.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/QuickWKAdd.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/QuickWKAdd.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/QuickWKAdd~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/TodayVIew/AddingData/New Group/AddWorkoutView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddWorkoutView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddWorkoutView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddWorkoutView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddWorkoutView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddWorkoutView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddWorkoutView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddWorkoutView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/AddWorkoutView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/TodayVIew/AddingData/WeighInView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/TodayVIew/DailyDBView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyDBView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyDBView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyDBView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyDBView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyDBView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyDBView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyDBView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyDBView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/TodayVIew/DiaryEntryView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DiaryEntryView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DiaryEntryView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DiaryEntryView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DiaryEntryView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DiaryEntryView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DiaryEntryView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DiaryEntryView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DiaryEntryView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/TodayVIew/DiaryView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DiaryView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DiaryView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DiaryView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DiaryView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DiaryView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DiaryView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DiaryView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DiaryView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/TodayVIew/TodayView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/TodayView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/TodayView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/TodayView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/TodayView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/TodayView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/TodayView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/TodayView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/TodayView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/Dashboard/TodayVIew/WaterTrackerView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WaterTrackerView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WaterTrackerView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WaterTrackerView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WaterTrackerView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WaterTrackerView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WaterTrackerView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WaterTrackerView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WaterTrackerView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/UserSetup/PersonalDetailsView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalDetailsView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalDetailsView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalDetailsView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalDetailsView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalDetailsView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalDetailsView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalDetailsView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalDetailsView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/UserSetup/PersonalGoalView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalGoalView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalGoalView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalGoalView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalGoalView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalGoalView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalGoalView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalGoalView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalGoalView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/UserSetup/PersonalStatsView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalStatsView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalStatsView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalStatsView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalStatsView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalStatsView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalStatsView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalStatsView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/PersonalStatsView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/UserSetup/UserOverviewView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserOverviewView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserOverviewView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserOverviewView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserOverviewView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserOverviewView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserOverviewView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserOverviewView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserOverviewView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/UserSetup/UserSetupView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserSetupView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserSetupView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserSetupView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserSetupView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserSetupView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserSetupView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserSetupView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserSetupView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Preview Content/UserSetup/WelcomeSequenceView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WelcomeSequenceView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WelcomeSequenceView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WelcomeSequenceView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WelcomeSequenceView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WelcomeSequenceView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WelcomeSequenceView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WelcomeSequenceView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WelcomeSequenceView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/ProgressImage.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressImage.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressImage.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressImage.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressImage.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressImage.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressImage.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressImage.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressImage~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/ProgressPicsView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicsView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicsView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicsView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicsView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicsView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicsView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicsView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicsView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/ProgressPictureDetailView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPictureDetailView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPictureDetailView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPictureDetailView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPictureDetailView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPictureDetailView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPictureDetailView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPictureDetailView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPictureDetailView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/SharedComponents.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SharedComponents.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SharedComponents.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SharedComponents.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SharedComponents.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SharedComponents.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SharedComponents.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SharedComponents.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SharedComponents~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Styles.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Styles.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Styles.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Styles.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Styles.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Styles.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Styles.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Styles.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/Styles~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/SummaryView.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SummaryView.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SummaryView.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SummaryView.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SummaryView.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SummaryView.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SummaryView.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SummaryView.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/SummaryView~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/CoreDiaryEntry+CoreDataClass.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/CoreDiaryEntry+CoreDataClass.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/CoreDiaryEntry+CoreDataClass.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/CoreDiaryEntry+CoreDataClass.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/CoreDiaryEntry+CoreDataClass.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/CoreDiaryEntry+CoreDataClass.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/CoreDiaryEntry+CoreDataClass.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/CoreDiaryEntry+CoreDataClass.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/CoreDiaryEntry+CoreDataClass~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/CoreDiaryEntry+CoreDataProperties.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/CoreDiaryEntry+CoreDataProperties.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/CoreDiaryEntry+CoreDataProperties.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/CoreDiaryEntry+CoreDataProperties.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/CoreDiaryEntry+CoreDataProperties.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/CoreDiaryEntry+CoreDataProperties.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/CoreDiaryEntry+CoreDataProperties.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/CoreDiaryEntry+CoreDataProperties.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/CoreDiaryEntry+CoreDataProperties~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/DailyRecord+CoreDataClass.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyRecord+CoreDataClass.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyRecord+CoreDataClass.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyRecord+CoreDataClass.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyRecord+CoreDataClass.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyRecord+CoreDataClass.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyRecord+CoreDataClass.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyRecord+CoreDataClass.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyRecord+CoreDataClass~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/DailyRecord+CoreDataProperties.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyRecord+CoreDataProperties.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyRecord+CoreDataProperties.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyRecord+CoreDataProperties.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyRecord+CoreDataProperties.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyRecord+CoreDataProperties.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyRecord+CoreDataProperties.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyRecord+CoreDataProperties.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/DailyRecord+CoreDataProperties~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/ProgressPicture+CoreDataClass.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicture+CoreDataClass.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicture+CoreDataClass.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicture+CoreDataClass.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicture+CoreDataClass.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicture+CoreDataClass.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicture+CoreDataClass.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicture+CoreDataClass.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicture+CoreDataClass~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/ProgressPicture+CoreDataProperties.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicture+CoreDataProperties.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicture+CoreDataProperties.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicture+CoreDataProperties.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicture+CoreDataProperties.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicture+CoreDataProperties.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicture+CoreDataProperties.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicture+CoreDataProperties.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/ProgressPicture+CoreDataProperties~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/UserProfile+CoreDataClass.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserProfile+CoreDataClass.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserProfile+CoreDataClass.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserProfile+CoreDataClass.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserProfile+CoreDataClass.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserProfile+CoreDataClass.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserProfile+CoreDataClass.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserProfile+CoreDataClass.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserProfile+CoreDataClass~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/UserProfile+CoreDataProperties.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserProfile+CoreDataProperties.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserProfile+CoreDataProperties.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserProfile+CoreDataProperties.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserProfile+CoreDataProperties.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserProfile+CoreDataProperties.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserProfile+CoreDataProperties.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserProfile+CoreDataProperties.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/UserProfile+CoreDataProperties~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/WeighInEntry+CoreDataClass.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInEntry+CoreDataClass.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInEntry+CoreDataClass.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInEntry+CoreDataClass.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInEntry+CoreDataClass.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInEntry+CoreDataClass.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInEntry+CoreDataClass.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInEntry+CoreDataClass.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInEntry+CoreDataClass~partial.swiftmodule"
+  },
+  "/Users/frank/Desktop/Workspace/Calorie counter/WeighInEntry+CoreDataProperties.swift" : {
+    "const-values" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInEntry+CoreDataProperties.swiftconstvalues",
+    "dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInEntry+CoreDataProperties.d",
+    "diagnostics" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInEntry+CoreDataProperties.dia",
+    "index-unit-output-path" : "/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInEntry+CoreDataProperties.o",
+    "llvm-bc" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInEntry+CoreDataProperties.bc",
+    "object" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInEntry+CoreDataProperties.o",
+    "swift-dependencies" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInEntry+CoreDataProperties.swiftdeps",
+    "swiftmodule" : "/Users/frank/Desktop/Workspace/Calorie counter/DerivedData/Calorie counter/Build/Intermediates.noindex/Calorie counter.build/Debug-iphoneos/Calorie counter.build/Objects-normal/arm64/WeighInEntry+CoreDataProperties~partial.swiftmodule"
+  }
+}

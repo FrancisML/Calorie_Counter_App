@@ -1,4 +1,3 @@
-//
 //  TodayView.swift
 //  Calorie counter
 //
@@ -12,7 +11,7 @@ struct TodayView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State private var userName: String = "User"
     @State private var profilePicture: UIImage? = nil
-    @State private var goalMessage: String = "No Goal Set"
+    @State private var goalText: String = "No Goal Set" // Changed from goalMessage to goalText
     @State private var highestStreak: Int32 = 1
     @State private var selectedDate: Date = Date()
     @State private var dailyCalorieGoal: Int = 2000
@@ -59,7 +58,7 @@ struct TodayView: View {
                         Image(systemName: "target")
                             .foregroundColor(Styles.secondaryText)
                             .font(.subheadline)
-                        Text(goalMessage)
+                        Text(goalText) // Updated to use goalText
                             .font(.subheadline)
                             .foregroundColor(Styles.secondaryText)
                     }
@@ -135,40 +134,13 @@ struct TodayView: View {
                     self.profilePicture = uiImage
                 }
                 
-                self.goalMessage = generateGoalMessage(userProfile: userProfile)
+                self.goalText = userProfile.goalText ?? "No Goal Set" // Fetch static goalText
                 self.highestStreak = userProfile.highStreak
                 self.dailyCalorieGoal = Int(userProfile.dailyCalorieGoal)
             }
         } catch {
             print("⚠️ ERROR: Failed to fetch user profile: \(error.localizedDescription)")
         }
-    }
-
-    private func generateGoalMessage(userProfile: UserProfile) -> String {
-        let weightDifference = abs(userProfile.goalWeight - userProfile.currentWeight)
-        let formattedDifference = userProfile.useMetric ? "\(weightDifference) kg" : "\(weightDifference) lbs"
-        
-        if userProfile.weekGoal == 0 {
-            return "Maintain Current Weight"
-        } else if userProfile.goalWeight == 0 {
-            let action = userProfile.weekGoal < 0 ? "Lose" : "Gain"
-            return "\(action) \(abs(userProfile.weekGoal)) per week"
-        } else if userProfile.goalWeight > 0 && userProfile.targetDate == nil {
-            let action = userProfile.weekGoal < 0 ? "Lose" : "Gain"
-            return "\(action) \(formattedDifference) by \(action.lowercased())ing \(abs(userProfile.weekGoal)) per week"
-        } else if userProfile.goalWeight > 0 && userProfile.targetDate != nil {
-            let action = userProfile.weekGoal < 0 ? "Lose" : "Gain"
-            return "\(action) \(formattedDifference) by \(formattedGoalDate(userProfile.targetDate))"
-        } else {
-            return "No Goal Set"
-        }
-    }
-
-    private func formattedGoalDate(_ date: Date?) -> String {
-        guard let date = date else { return "Not Provided" }
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        return formatter.string(from: date)
     }
 
     private func formattedCurrentWeight() -> String {
@@ -204,3 +176,5 @@ struct TodayView: View {
         return formatter.string(from: Date())
     }
 }
+
+

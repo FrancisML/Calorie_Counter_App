@@ -1,9 +1,6 @@
-//
-//  ProgressView.swift
-//  Calorie counter
-//
-//  Created by frank lasalvia on 2/9/25.
-//
+// ProgressView.swift
+// Calorie counter
+// Created by frank lasalvia on 2/9/25.
 
 import SwiftUI
 import CoreData
@@ -14,43 +11,19 @@ struct ProgressView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var userProfile: UserProfile?
-    @State private var progressPictures: [ProgressPicture] = []
     @State private var dailyRecords: [DailyRecord] = []
     @State private var bodyMeasurements: [BodyMeasurement] = []
-    @State private var isPhotoPickerPresented = false
-    @State private var selectedPhoto: PhotosPickerItem? = nil
-    @State private var isExpanded = false
     @State private var showBodyMeasurementView = false
+    @State private var showDeleteConfirmation = false
+    @State private var pictureToDelete: ProgressPicture? = nil
+    @State private var showDeleteOptions = false
     
-    // Progress Picture Computed Properties
-    private var startPicture: UIImage? {
-        if let startData = userProfile?.startPicture, let image = UIImage(data: startData) {
-            return image
+    // Simulated Date Logic (mirroring PastView.swift)
+    private var simulatedCurrentDate: Date {
+        if let savedDate = UserDefaults.standard.object(forKey: "simulatedCurrentDate") as? Date {
+            return Calendar.current.startOfDay(for: savedDate)
         }
-        return userProfile?.gender == "Male" ? UIImage(named: "Empty man PP") : UIImage(named: "Empty woman PP")
-    }
-    
-    private var latestPicture: UIImage? {
-        if let latest = progressPictures.last, let imageData = latest.imageData, let image = UIImage(data: imageData) {
-            return image
-        }
-        return progressPictures.isEmpty ? (userProfile?.gender == "Male" ? UIImage(named: "Empty man PP") : UIImage(named: "Empty woman PP")) : startPicture
-    }
-    
-    private var startDateOverlay: String {
-        userProfile?.startDate != nil ? DateFormatter.mediumDate.string(from: userProfile!.startDate!) : "N/A"
-    }
-    
-    private var startWeightOverlay: String {
-        userProfile?.startWeight ?? 0 > 0 ? "\(userProfile!.startWeight) \(userProfile!.useMetric ? "kg" : "lbs")" : "N/A"
-    }
-    
-    private var latestDateOverlay: String {
-        progressPictures.last?.date != nil ? DateFormatter.mediumDate.string(from: progressPictures.last!.date!) : "N/A"
-    }
-    
-    private var latestWeightOverlay: String {
-        progressPictures.last?.weight ?? 0 > 0 ? "\(progressPictures.last!.weight) \(userProfile?.useMetric ?? false ? "kg" : "lbs")" : "N/A"
+        return Calendar.current.startOfDay(for: Date())
     }
     
     // Weight Section Computed Properties
@@ -91,30 +64,95 @@ struct ProgressView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 0) { // Sections touch with no spacing
-                headerView
-                progressPictureSection
-                weightSection
-                bodyMeasurementSection
-                exerciseOverviewSection
+        ZStack {
+            ScrollView {
+                VStack(spacing: 0) {
+                    headerView
+                    ProgressPictureView(
+                        userProfile: $userProfile,
+                        showDeleteOptions: $showDeleteOptions,
+                        onDeletePicture: { picture in
+                            pictureToDelete = picture
+                            showDeleteConfirmation = true
+                        }
+                    )
+                    .environment(\.managedObjectContext, viewContext)
+                    weightSection
+                    bodyMeasurementSection
+                    exerciseOverviewSection
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Styles.primaryBackground)
+            .ignoresSafeArea(edges: .top)
+            .onAppear {
+                fetchUserProfile()
+                fetchDailyRecords()
+                fetchBodyMeasurements()
+            }
+            
+            // Delete Confirmation Overlay
+            if showDeleteConfirmation {
+                Color.black.opacity(0.4)
+                    .edgesIgnoringSafeArea(.all)
+                    .onTapGesture {
+                        showDeleteConfirmation = false
+                        showDeleteOptions = false
+                    }
+                
+                VStack {
+                    Text("Confirm Deletion")
+                        .font(.headline)
+                        .foregroundColor(Styles.primaryText)
+                        .padding(.top)
+                    Text("Are you sure you want to delete this? This action cannot be undone.")
+                        .font(.subheadline)
+                        .foregroundColor(Styles.primaryText)
+                        .multilineTextAlignment(.center)
+                        .padding(.vertical)
+                    if let picture = pictureToDelete, let imageData = picture.imageData, let image = UIImage(data: imageData) {
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 300, height: 300)
+                            .clipped()
+                            .overlay(
+                                HStack {
+                                    Spacer()
+                                    Text("\(DateFormatter.mediumDate.string(from: picture.date ?? Date())) \(picture.weight > 0 ? "\(picture.weight) \(userProfile?.useMetric ?? false ? "kg" : "lbs")" : "")")
+                                        .font(.caption)
+                                        .foregroundColor(.white)
+                                        .padding(5)
+                                        .background(Color.black.opacity(0.6))
+                                }
+                                .padding(.bottom, 10)
+                                .frame(maxWidth: .infinity, alignment: .trailing),
+                                alignment: .bottom
+                            )
+                            .padding(.bottom, 20)
+                    }
+                    HStack(spacing: 40) {
+                        Button("Delete", role: .destructive) {
+                            deletePicture()
+                            showDeleteConfirmation = false
+                            showDeleteOptions = false
+                        }
+                        Button("Cancel") {
+                            showDeleteConfirmation = false
+                            showDeleteOptions = false
+                        }
+                    }
+                    .padding(.bottom)
+                }
+                .padding()
+                .background(Styles.secondaryBackground)
+                .cornerRadius(10)
+                .shadow(radius: 5)
+                .frame(maxWidth: 300)
+                .transition(.opacity)
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Styles.primaryBackground)
-        .ignoresSafeArea(edges: .top)
-        .photosPicker(isPresented: $isPhotoPickerPresented, selection: $selectedPhoto, matching: .images)
-        .onChange(of: selectedPhoto) { newPhoto in saveProgressPicture(from: newPhoto) }
-        .onAppear {
-            fetchUserProfile()
-            fetchDailyRecords()
-            fetchBodyMeasurements()
-        }
-        .sheet(isPresented: $showBodyMeasurementView) {
-            BodyMeasurementView(userProfile: userProfile)
-                .environment(\.managedObjectContext, viewContext)
-                .onDisappear { fetchBodyMeasurements() }
-        }
+        .animation(.easeInOut, value: showDeleteConfirmation)
     }
     
     private var headerView: some View {
@@ -125,113 +163,6 @@ struct ProgressView: View {
                 .fontWeight(.bold)
                 .foregroundColor(Styles.primaryText)
                 .frame(maxWidth: .infinity, alignment: .center)
-        }
-    }
-    
-    private var progressPictureSection: some View {
-        ZStack(alignment: .top) {
-            VStack(spacing: 0) {
-                HStack(spacing: 0) {
-                    Image(uiImage: startPicture ?? UIImage(named: "Empty man PP")!)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(maxWidth: .infinity, maxHeight: 200)
-                        .clipped()
-                        .overlay(
-                            VStack {
-                                Spacer()
-                                Text(startDateOverlay)
-                                    .font(.caption)
-                                    .foregroundColor(.white)
-                                    .padding(5)
-                                    .background(Color.black.opacity(0.6))
-                                Text(startWeightOverlay)
-                                    .font(.caption)
-                                    .foregroundColor(.white)
-                                    .padding(5)
-                                    .background(Color.black.opacity(0.6))
-                            }
-                            .padding(.bottom, 10),
-                            alignment: .bottom
-                        )
-                    Image(uiImage: latestPicture ?? UIImage(named: "Empty man PP")!)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(maxWidth: .infinity, maxHeight: 200)
-                        .clipped()
-                        .overlay(
-                            VStack {
-                                Spacer()
-                                Text(latestDateOverlay)
-                                    .font(.caption)
-                                    .foregroundColor(.white)
-                                    .padding(5)
-                                    .background(Color.black.opacity(0.6))
-                                Text(latestWeightOverlay)
-                                    .font(.caption)
-                                    .foregroundColor(.white)
-                                    .padding(5)
-                                    .background(Color.black.opacity(0.6))
-                            }
-                            .padding(.bottom, 10),
-                            alignment: .bottom
-                        )
-                }
-                .frame(height: 200)
-                .clipped()
-                .onTapGesture {
-                    if progressPictures.count > 2 {
-                        withAnimation { isExpanded.toggle() }
-                    }
-                }
-                
-                if isExpanded && progressPictures.count > 2 {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 10) {
-                            if let startImage = startPicture {
-                                ProgressPictureItem(
-                                    image: startImage,
-                                    date: userProfile?.startDate ?? Date(),
-                                    weight: userProfile?.startWeight ?? 0.0,
-                                    useMetric: userProfile?.useMetric ?? false
-                                )
-                            }
-                            ForEach(progressPictures, id: \.self) { picture in
-                                if let imageData = picture.imageData, let image = UIImage(data: imageData) {
-                                    ProgressPictureItem(
-                                        image: image,
-                                        date: picture.date ?? Date(),
-                                        weight: picture.weight,
-                                        useMetric: userProfile?.useMetric ?? false
-                                    )
-                                }
-                            }
-                        }
-                        .padding(.horizontal)
-                        .padding(.vertical, 10)
-                    }
-                    .background(Styles.secondaryBackground)
-                    .cornerRadius(8)
-                }
-            }
-            .padding(.top, 40)
-            
-            HStack {
-                Text("Progress Pics")
-                    .font(.headline)
-                    .foregroundColor(Styles.primaryText)
-                Spacer()
-                Button(action: { isPhotoPickerPresented = true }) {
-                    Image(systemName: "plus")
-                        .font(.title2)
-                        .foregroundColor(Styles.primaryText)
-                }
-            }
-            .padding(.vertical, 15)
-            .padding(.horizontal, 15)
-            .background(Styles.secondaryBackground)
-            .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 5)
-            .zIndex(1)
         }
     }
     
@@ -441,10 +372,10 @@ struct ProgressView: View {
                         .scaledToFit()
                         .frame(width: 100, height: 263)
                     VStack(alignment: .leading, spacing: 8) {
-                        ExerciseRow(label: "Highest Streak", value: highestStreak)
-                        ExerciseRow(label: "Current Streak", value: currentStreak)
-                        ExerciseRow(label: "Days Worked Out", value: daysWorkedOutPercentage, isPercentage: true)
-                        ExerciseRow(label: "Total Exercise Time", value: totalExerciseTime, isTime: true)
+                        MeasurementRow(label: "Highest Streak", value: Double(highestStreak), difference: nil, showDifference: false, useMetric: false)
+                        MeasurementRow(label: "Current Streak", value: Double(currentStreak), difference: nil, showDifference: false, useMetric: false)
+                        MeasurementRow(label: "Days Worked Out", value: daysWorkedOutPercentage, difference: nil, showDifference: false, useMetric: false)
+                        MeasurementRow(label: "Total Exercise Time", value: Double(totalExerciseTime), difference: nil, showDifference: false, useMetric: false)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer()
@@ -454,7 +385,6 @@ struct ProgressView: View {
                 .background(Styles.tertiaryBackground)
                 .cornerRadius(8)
                 
-                // Moved inside the main content VStack
                 if totalExerciseTime == 0 {
                     Text("No workouts recorded yet")
                         .font(.subheadline)
@@ -465,7 +395,7 @@ struct ProgressView: View {
                 Spacer()
             }
             .padding(.top, 40)
-            .background(Styles.secondaryBackground) // Applied to the entire VStack
+            .background(Styles.secondaryBackground)
             .cornerRadius(8)
             
             HStack {
@@ -538,55 +468,30 @@ struct ProgressView: View {
         }
     }
     
-    private func fetchBodyMeasurements() {
-        guard let userProfile = userProfile else {
-            print("❌ No user profile for fetching measurements")
-            return
-        }
-        print("DEBUG: Fetching for user: \(userProfile.name ?? "unknown"), ID: \(userProfile.objectID.uriRepresentation())")
-        let fetchRequest: NSFetchRequest<BodyMeasurement> = BodyMeasurement.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "userProfile == %@", userProfile)
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
-        do {
-            let measurements = try viewContext.fetch(fetchRequest)
-            print("DEBUG: Fetched \(measurements.count) body measurements")
-            for (index, measurement) in measurements.enumerated() {
-                print("DEBUG: Measurement \(index) - Chest: \(measurement.chest), Date: \(measurement.date?.description ?? "nil"), ObjectID: \(measurement.objectID.uriRepresentation())")
-            }
-            self.bodyMeasurements = measurements
-        } catch {
-            print("❌ Fetch error: \(error.localizedDescription)")
-            self.bodyMeasurements = []
-        }
-    }
-    
-    private func calculateDifference(earliest: Double?, latest: Double?) -> Double? {
-        guard let earliest = earliest, let latest = latest else { return nil }
-        return latest - earliest
-    }
-    
     private func fetchUserProfile() {
         let fetchRequest: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
         fetchRequest.fetchLimit = 1
         do {
-            userProfile = try viewContext.fetch(fetchRequest).first
-            print("DEBUG: Fetched UserProfile - Name: \(userProfile?.name ?? "nil"), ID: \(userProfile?.objectID.uriRepresentation().description ?? "nil")")
+            if let profile = try viewContext.fetch(fetchRequest).first {
+                userProfile = profile
+                print("✅ ProgressView fetched user profile: \(profile.name ?? "Unknown")")
+            } else {
+                print("⚠️ No UserProfile found in Core Data for ProgressView")
+                // Create a default profile if none exists
+                let newProfile = UserProfile(context: viewContext)
+                newProfile.name = "Default User"
+                newProfile.gender = "Male" // Default to Male; adjust as needed
+                newProfile.currentWeight = 0.0
+                newProfile.startWeight = 0.0
+                newProfile.goalWeight = 0.0
+                newProfile.useMetric = false
+                try viewContext.save()
+                userProfile = newProfile
+                print("✅ Created default user profile: \(newProfile.name ?? "Unknown")")
+            }
         } catch {
             print("❌ Error fetching user profile: \(error.localizedDescription)")
             userProfile = nil
-        }
-    }
-    
-    private func fetchProgressPictures() {
-        guard let userProfile = userProfile else { return }
-        let fetchRequest: NSFetchRequest<ProgressPicture> = ProgressPicture.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "userProfile == %@", userProfile)
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
-        do {
-            progressPictures = try viewContext.fetch(fetchRequest)
-        } catch {
-            print("❌ Error fetching progress pictures: \(error.localizedDescription)")
-            progressPictures = []
         }
     }
     
@@ -595,41 +500,33 @@ struct ProgressView: View {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         do {
             dailyRecords = try viewContext.fetch(fetchRequest)
+            print("✅ Fetched \(dailyRecords.count) daily records")
         } catch {
             print("❌ Error fetching daily records: \(error.localizedDescription)")
             dailyRecords = []
         }
     }
     
-    private func saveProgressPicture(from photoItem: PhotosPickerItem?) {
-        guard let photoItem = photoItem, let userProfile = userProfile else { return }
-        Task {
-            do {
-                if let data = try await photoItem.loadTransferable(type: Data.self),
-                   let uiImage = UIImage(data: data) {
-                    let currentDate = Date()
-                    let currentWeight = userProfile.currentWeight
-                    if progressPictures.isEmpty && userProfile.startPicture == nil {
-                        userProfile.startPicture = data
-                        userProfile.startDate = currentDate
-                        userProfile.startWeight = currentWeight
-                        print("DEBUG: Set first picture as startPicture")
-                    } else {
-                        let newPicture = ProgressPicture(context: viewContext)
-                        newPicture.imageData = data
-                        newPicture.date = currentDate
-                        newPicture.weight = currentWeight
-                        newPicture.userProfile = userProfile
-                        progressPictures.append(newPicture)
-                        print("DEBUG: Added new progress picture")
-                    }
-                    try viewContext.save()
-                    fetchProgressPictures()
-                }
-            } catch {
-                print("❌ Error saving progress picture: \(error.localizedDescription)")
-            }
+    private func fetchBodyMeasurements() {
+        guard let userProfile = userProfile else {
+            print("❌ No user profile for fetching measurements")
+            return
         }
+        let fetchRequest: NSFetchRequest<BodyMeasurement> = BodyMeasurement.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "userProfile == %@", userProfile)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        do {
+            bodyMeasurements = try viewContext.fetch(fetchRequest)
+            print("✅ Fetched \(bodyMeasurements.count) body measurements")
+        } catch {
+            print("❌ Fetch error: \(error.localizedDescription)")
+            bodyMeasurements = []
+        }
+    }
+    
+    private func calculateDifference(earliest: Double?, latest: Double?) -> Double? {
+        guard let earliest = earliest, let latest = latest else { return nil }
+        return latest - earliest
     }
     
     private func generateGoalMessage(userProfile: UserProfile) -> String {
@@ -653,9 +550,7 @@ struct ProgressView: View {
     
     private func formattedGoalDate(_ date: Date?) -> String {
         guard let date = date else { return "Not Provided" }
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        return formatter.string(from: date)
+        return DateFormatter.mediumDate.string(from: date)
     }
     
     // Exercise Calculations
@@ -731,42 +626,25 @@ struct ProgressView: View {
         }
         return totalMinutes
     }
-}
-
-struct ProgressPictureItem: View {
-    let image: UIImage
-    let date: Date
-    let weight: Double
-    let useMetric: Bool
     
-    private var formattedDate: String { DateFormatter.mediumDate.string(from: date) }
-    private var formattedWeight: String { weight > 0 ? "\(weight) \(useMetric ? "kg" : "lbs")" : "N/A" }
-    
-    var body: some View {
-        VStack(spacing: 5) {
-            Image(uiImage: image)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 100, height: 100)
-                .clipped()
-            Text(formattedDate)
-                .font(.caption)
-                .foregroundColor(Styles.primaryText)
-            Text(formattedWeight)
-                .font(.caption)
-                .foregroundColor(Styles.primaryText)
+    private func deletePicture() {
+        guard let picture = pictureToDelete else { return }
+        viewContext.delete(picture)
+        do {
+            try viewContext.save()
+            pictureToDelete = nil
+            fetchUserProfile() // Refresh userProfile
+            // Explicitly trigger a fetch in ProgressPictureView via onDeletePicture callback
+            print("✅ Deleted progress picture and refreshed user profile")
+        } catch {
+            print("❌ Error deleting progress picture: \(error.localizedDescription)")
         }
     }
 }
 
-extension DateFormatter {
-    static let mediumDate: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        return formatter
-    }()
-}
-
 struct ProgressView_Previews: PreviewProvider {
-    static var previews: some View { ProgressView() }
+    static var previews: some View {
+        ProgressView()
+            .environment(\.managedObjectContext, PersistenceController.shared.context)
+    }
 }

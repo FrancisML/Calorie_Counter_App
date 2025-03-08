@@ -5,7 +5,6 @@
 //  Created by frank lasalvia on 2/12/25.
 //
 
-
 import SwiftUI
 
 struct WaterTrackerView: View {
@@ -22,6 +21,8 @@ struct WaterTrackerView: View {
         HStack(spacing: 10) {
             Image("drop")
                 .resizable()
+                .renderingMode(.template) // Ensure it's a template image
+                .foregroundColor(Styles.primaryText) // Tint with primaryText
                 .scaledToFit()
                 .frame(width: 30, height: 40)
                 .padding(.trailing, 5)
@@ -33,13 +34,11 @@ struct WaterTrackerView: View {
                         .foregroundColor(Styles.primaryText)
                     Spacer()
 
-                    // ✅ Display text with shortened unit names
                     Text(displayWaterText())
                         .font(.subheadline)
                         .foregroundColor(Styles.secondaryText)
                 }
 
-                // ✅ Progress Bar
                 GeometryReader { geometry in
                     ZStack(alignment: .leading) {
                         Rectangle()
@@ -67,12 +66,10 @@ struct WaterTrackerView: View {
         }
     }
     
-    // ✅ Fix for progress bar being full at app launch
     private func shouldShowProgressBar() -> Bool {
         return waterGoal > 0 || totalDailyWater > 0
     }
 
-    // ✅ Convert total water intake to match the user’s selected unit
     private func totalWaterIntake() -> CGFloat {
         var totalIntake: CGFloat = 0
         for entry in diaryEntries where entry.type == "Water" {
@@ -83,7 +80,6 @@ struct WaterTrackerView: View {
         return totalIntake
     }
     
-    // ✅ Extract numeric value and unit from entry detail (Handles Fractions & fl oz)
     private func extractWaterAmountAndUnit(_ detail: String) -> (CGFloat, String) {
         let fractionMap: [String: CGFloat] = [
             "1/4": 0.25,
@@ -109,35 +105,31 @@ struct WaterTrackerView: View {
             }
         }
 
-        return (0, "ml") // Default to ml if extraction fails
+        return (0, "ml")
     }
 
-    // ✅ Format number display for water amounts
     private func formattedAmount(_ amount: CGFloat) -> String {
         return selectedUnit == "Gallons" ? String(format: "%.2f", amount) : "\(Int(amount))"
     }
 
-    // ✅ Convert unit names for display in the progress bar & diary entries
     private func shortenUnit(_ unit: String) -> String {
         switch unit {
         case "Gallons": return "gal"
         case "Liters": return "L"
         case "Milliliters": return "ml"
-        default: return unit // "fl oz" remains unchanged
+        default: return unit
         }
     }
 
-    // ✅ Display text logic for Water Progress Bar
     private func displayWaterText() -> String {
         if waterGoal == 0 && totalDailyWater == 0 {
-            return "0 \(shortenUnit(selectedUnit))" // ✅ Empty when there's no data
+            return "0 \(shortenUnit(selectedUnit))"
         }
         return waterGoal == 0
             ? "\(formattedAmount(totalDailyWater)) \(shortenUnit(selectedUnit))"
             : "\(formattedAmount(totalDailyWater)) / \(formattedAmount(waterGoal)) \(shortenUnit(selectedUnit))"
     }
 
-    // ✅ Convert between different water units
     private func convertWaterUnit(amount: CGFloat, from fromUnit: String, to toUnit: String) -> CGFloat {
         let mlPerFlOz: CGFloat = 29.5735
         let mlPerGallon: CGFloat = 3785.41

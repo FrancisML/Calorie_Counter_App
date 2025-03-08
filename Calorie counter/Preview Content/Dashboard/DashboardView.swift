@@ -56,7 +56,7 @@ struct DashboardView: View {
                         let buttonData: [(image: String, text: String, view: ActiveView)] = [
                             ("AddWater", "Water", .addWater),
                             ("AddFood", "Food", .addFood),
-                            ("SliderIcon", "Workout", .addWorkout),
+                            ("Running", "Workout", .addWorkout),
                             ("AddWeight", "Weigh In", .weighIn)
                         ]
 

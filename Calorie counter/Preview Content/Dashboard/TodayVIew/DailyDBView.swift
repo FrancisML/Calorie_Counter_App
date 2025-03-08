@@ -1,8 +1,7 @@
+// DailyDBView.swift
+// Calorie counter
 //
-//  DailyDBView.swift
-//  Calorie counter
-//
-//  Created by frank lasalvia on 2/12/25.
+// Created by frank lasalvia on 2/12/25.
 //
 
 import SwiftUI
@@ -13,7 +12,7 @@ struct DailyDBView: View {
     @Binding var selectedDate: Date
     @Binding var diaryEntries: [DiaryEntry]
     var highestStreak: Int32
-    var calorieGoal: CGFloat
+    var calorieGoal: CGFloat // Legacy, replaced by DailyRecord.calorieGoal
     var useMetric: Bool
     @Binding var weighIns: [WeighIn]
     @State private var isWaterPickerPresented: Bool = false
@@ -119,22 +118,18 @@ struct DailyDBView: View {
             if let userProfile = try viewContext.fetch(fetchRequest).first, let startDate = userProfile.startDate {
                 let startOfStartDate = Calendar.current.startOfDay(for: startDate)
                 let startOfSelectedDate = Calendar.current.startOfDay(for: selectedDate)
-                print("DEBUG: canGoBack - startDate: \(startOfStartDate), selectedDate: \(startOfSelectedDate), result: \(startOfSelectedDate > startOfStartDate)")
                 return startOfSelectedDate > startOfStartDate
-            } else {
-                print("DEBUG: No UserProfile or startDate found")
-                return false
             }
         } catch {
             print("❌ Error fetching startDate: \(error.localizedDescription)")
             return false
         }
+        return false
     }
 
     private var canGoForward: Bool {
         let startOfSimulatedCurrent = Calendar.current.startOfDay(for: simulatedCurrentDate)
         let startOfSelectedDate = Calendar.current.startOfDay(for: selectedDate)
-        print("DEBUG: canGoForward - simulatedCurrent: \(startOfSimulatedCurrent), selectedDate: \(startOfSelectedDate), result: \(startOfSelectedDate < startOfSimulatedCurrent)")
         return startOfSelectedDate < startOfSimulatedCurrent
     }
 
@@ -144,6 +139,7 @@ struct DailyDBView: View {
         fetchRequest.fetchLimit = 1
         
         let dailyRecord: DailyRecord
+        var isNewRecord = false
         do {
             if let existingRecord = try viewContext.fetch(fetchRequest).first {
                 dailyRecord = existingRecord
@@ -151,27 +147,120 @@ struct DailyDBView: View {
             } else {
                 dailyRecord = DailyRecord(context: viewContext)
                 dailyRecord.date = Calendar.current.startOfDay(for: selectedDate)
-                print("DEBUG: Created new DailyRecord for \(formattedDate(selectedDate))")
+                dailyRecord.weighIn = 0
+                isNewRecord = true
+                // Set waterGoal from previous day for new records
+                if isCurrentDay, let previousWaterGoal = fetchPreviousDayWaterGoal() {
+                    dailyRecord.waterGoal = Double(previousWaterGoal)
+                    waterGoal = previousWaterGoal // Update state for UI
+                    print("DEBUG: Set waterGoal to \(previousWaterGoal) from previous day for new record")
+                }
+                print("DEBUG: Created new DailyRecord for \(formattedDate(selectedDate)) with weighIn = 0")
             }
         } catch {
             print("❌ Error fetching DailyRecord: \(error.localizedDescription)")
             return
         }
 
+        // Fetch UserProfile
+        let userFetch: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
+        userFetch.fetchLimit = 1
+        guard let userProfile = try? viewContext.fetch(userFetch).first else {
+            print("❌ Error: No UserProfile found")
+            return
+        }
+
+        // Only calculate calorie goal for new records on the current day
+        if isCurrentDay && isNewRecord {
+            // Check if it's the user's birthday and update age
+            if let birthdate = userProfile.birthdate {
+                let calendar = Calendar.current
+                let todayComponents = calendar.dateComponents([.month, .day], from: selectedDate)
+                let birthComponents = calendar.dateComponents([.month, .day], from: birthdate)
+                if todayComponents.month == birthComponents.month && todayComponents.day == birthComponents.day {
+                    let ageComponents = calendar.dateComponents([.year], from: birthdate, to: selectedDate)
+                    let newAge = Int32(ageComponents.year ?? 0)
+                    if newAge != userProfile.age {
+                        userProfile.age = newAge
+                        print("DEBUG: Updated user age to \(newAge) on birthday")
+                    }
+                }
+            }
+
+            // Use previous day's weigh-in to set currentWeight for BMR calculation
+            let previousDay = Calendar.current.date(byAdding: .day, value: -1, to: selectedDate)!
+            let prevFetch: NSFetchRequest<DailyRecord> = DailyRecord.fetchRequest()
+            prevFetch.predicate = NSPredicate(format: "date == %@", Calendar.current.startOfDay(for: previousDay) as NSDate)
+            prevFetch.fetchLimit = 1
+            if let prevRecord = try? viewContext.fetch(prevFetch).first, prevRecord.weighIn > 0 {
+                if prevRecord.weighIn != userProfile.currentWeight {
+                    userProfile.currentWeight = prevRecord.weighIn
+                    print("DEBUG: Set UserProfile.currentWeight to \(prevRecord.weighIn) from previous day's weigh-in for new day")
+                }
+            }
+
+            // Recalculate BMR with updated weight and age
+            let newBMR = calculateBMR(
+                weight: userProfile.currentWeight,
+                heightCm: userProfile.heightCm,
+                heightFt: userProfile.heightFt,
+                heightIn: userProfile.heightIn,
+                age: userProfile.age,
+                gender: userProfile.gender ?? "",
+                activityInt: userProfile.activityInt,
+                useMetric: userProfile.useMetric
+            )
+            if newBMR != userProfile.userBMR {
+                userProfile.userBMR = newBMR
+                print("DEBUG: Recalculated BMR to \(newBMR) for new day")
+            }
+
+            // Update weightDifference based on currentWeight and goalWeight
+            if userProfile.goalWeight > 0 {
+                userProfile.weightDifference = abs(userProfile.currentWeight - userProfile.goalWeight)
+                print("DEBUG: Updated weightDifference to \(userProfile.weightDifference) for new day")
+            }
+
+            // Set calorie goal for the new day
+            updateDailyCalorieGoal(userProfile: userProfile)
+            dailyRecord.calorieGoal = Double(userProfile.dailyCalorieGoal)
+            print("DEBUG: Locked in DailyRecord.calorieGoal to \(dailyRecord.calorieGoal) for new day")
+        }
+
+        // Update weighIns for current day
+        if isCurrentDay {
+            // Clear existing weighIns to avoid duplicates
+            if let existingWeighIns = dailyRecord.weighIns as? Set<WeighInEntry> {
+                existingWeighIns.forEach { viewContext.delete($0) }
+            }
+            
+            // Save new weighIns
+            for weighIn in weighIns {
+                let weighInEntry = WeighInEntry(context: viewContext)
+                weighInEntry.time = weighIn.time
+                weighInEntry.weight = Double(weighIn.weight) ?? 0.0
+                weighInEntry.dailyRecord = dailyRecord
+                dailyRecord.addToWeighIns(weighInEntry)
+                print("DEBUG: Saved WeighInEntry - Time: \(weighIn.time), Weight: \(weighIn.weight)")
+            }
+
+            // Update average weighIn and currentWeight
+            if !weighIns.isEmpty {
+                let avgWeightString = averageWeight()
+                if let avgWeight = Double(avgWeightString) {
+                    dailyRecord.weighIn = avgWeight
+                    userProfile.currentWeight = avgWeight // Update currentWeight, affects next day
+                    print("DEBUG: Updated weighIn to \(avgWeight) and UserProfile.currentWeight to \(avgWeight) for current day (calorie goal unchanged)")
+                }
+            }
+        }
+
+        // Update other DailyRecord fields
         dailyRecord.calorieIntake = totalCalories
         dailyRecord.waterIntake = Double(totalDailyWater)
         dailyRecord.waterUnit = selectedUnit
-        dailyRecord.passFail = totalCalories <= Double(calorieGoal)
-        dailyRecord.waterGoal = Double(waterGoal)
-        dailyRecord.calorieGoal = Double(calorieGoal)
-
-        let avgWeightString = averageWeight()
-        if let avgWeight = Double(avgWeightString) {
-            dailyRecord.weighIn = avgWeight
-        } else {
-            dailyRecord.weighIn = 0.0
-            print("DEBUG: Failed to convert averageWeight '\(avgWeightString)' to Double")
-        }
+        dailyRecord.waterGoal = Double(waterGoal) // Persist waterGoal
+        dailyRecord.passFail = totalCalories <= dailyRecord.calorieGoal
 
         for entry in diaryEntries {
             let entryFetch: NSFetchRequest<CoreDiaryEntry> = CoreDiaryEntry.fetchRequest()
@@ -184,7 +273,6 @@ struct DailyDBView: View {
                 existingEntry.fats = entry.fats
                 existingEntry.carbs = entry.carbs
                 existingEntry.protein = entry.protein
-                print("DEBUG: Updated entry - Description: \(entry.description), Calories: \(entry.calories)")
             } else {
                 let diaryEntity = CoreDiaryEntry(context: viewContext)
                 diaryEntity.time = entry.time
@@ -200,29 +288,20 @@ struct DailyDBView: View {
                 diaryEntity.protein = entry.protein
                 diaryEntity.dailyRecord = dailyRecord
                 dailyRecord.addToDiaryEntries(diaryEntity)
-                print("DEBUG: Saving entry - Description: \(entry.description), Calories: \(entry.calories)")
             }
         }
 
         if isCurrentDay {
             let currentStreak = Int32(calculateStreak())
-            let userFetch: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
-            userFetch.fetchLimit = 1
-            do {
-                if let userProfile = try viewContext.fetch(userFetch).first {
-                    if currentStreak > userProfile.highStreak {
-                        userProfile.highStreak = currentStreak
-                        print("DEBUG: Updated highStreak to \(currentStreak)")
-                    }
-                }
-            } catch {
-                print("❌ Error updating highStreak: \(error.localizedDescription)")
+            if currentStreak > userProfile.highStreak {
+                userProfile.highStreak = currentStreak
+                print("DEBUG: Updated highStreak to \(currentStreak)")
             }
         }
 
         do {
             try viewContext.save()
-            print("✅ Saved/Updated DailyRecord for \(formattedDate(selectedDate)) with \(diaryEntries.count) entries")
+            print("✅ Saved/Updated DailyRecord for \(formattedDate(selectedDate)) with waterGoal: \(dailyRecord.waterGoal)")
         } catch {
             print("❌ Error saving DailyRecord: \(error.localizedDescription)")
         }
@@ -232,12 +311,12 @@ struct DailyDBView: View {
         let fetchRequest: NSFetchRequest<DailyRecord> = DailyRecord.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "date == %@", Calendar.current.startOfDay(for: date) as NSDate)
         fetchRequest.returnsObjectsAsFaults = false
-        fetchRequest.relationshipKeyPathsForPrefetching = ["diaryEntries"]
+        fetchRequest.relationshipKeyPathsForPrefetching = ["diaryEntries", "weighIns"]
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         
         do {
             let records = try viewContext.fetch(fetchRequest)
-            if let record = records.first(where: { (($0.diaryEntries as? Set<CoreDiaryEntry>)?.count ?? 0) > 0 }) ?? records.first {
+            if let record = records.first(where: { (($0.diaryEntries as? Set<CoreDiaryEntry>)?.count ?? 0) > 0 || (($0.weighIns as? Set<WeighInEntry>)?.count ?? 0) > 0 }) ?? records.first {
                 let loadedEntries = (record.diaryEntries as? Set<CoreDiaryEntry>)?.map { entity in
                     DiaryEntry(
                         time: entity.time ?? "",
@@ -254,34 +333,29 @@ struct DailyDBView: View {
                     )
                 } ?? []
                 diaryEntries = loadedEntries
-                waterGoal = CGFloat(record.waterGoal)
-                if Calendar.current.isDate(date, inSameDayAs: simulatedCurrentDate) {
-                    let userFetch: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
-                    userFetch.fetchLimit = 1
-                    if let userProfile = try viewContext.fetch(userFetch).first {
-                        if weighIns.isEmpty && userProfile.currentWeight > 0 {
-                            weighIns = [WeighIn(time: formattedCurrentTime(), weight: "\(userProfile.currentWeight)")]
-                        }
-                        waterGoal = CGFloat(userProfile.waterGoal)
-                    }
+                
+                // Load weighIns for current day only
+                if isCurrentDay {
+                    let loadedWeighIns = (record.weighIns as? Set<WeighInEntry>)?.map { entity in
+                        WeighIn(time: entity.time ?? formattedCurrentTime(), weight: String(entity.weight))
+                    } ?? []
+                    weighIns = loadedWeighIns
+                    print("DEBUG: Loaded \(loadedWeighIns.count) weighIns for current day")
                 } else {
                     weighIns = []
                 }
-                print("DEBUG: Loaded data for \(formattedDate(date)) - Entries: \(diaryEntries.count), Calorie Goal: \(record.calorieGoal)")
-                let rawCount = (record.diaryEntries as? Set<CoreDiaryEntry>)?.count ?? 0
-                print("DEBUG: Raw Core Data diaryEntries count: \(rawCount)")
-                if rawCount > 0 {
-                    (record.diaryEntries as? Set<CoreDiaryEntry>)?.forEach { entry in
-                        print("DEBUG: Loaded CoreDiaryEntry - Description: \(entry.entryDescription ?? "nil"), Calories: \(entry.calories)")
-                    }
-                }
-                if records.count > 1 {
-                    print("WARNING: Multiple DailyRecords found for \(formattedDate(date)): \(records.count)")
-                }
+                
+                waterGoal = CGFloat(record.waterGoal)
+                selectedUnit = record.waterUnit ?? "fl oz"
+                print("DEBUG: Loaded waterGoal: \(waterGoal) and unit: \(selectedUnit) for \(formattedDate(date))")
             } else {
                 resetDailyData()
                 if isCurrentDay {
-                    saveOrUpdateDailyRecord()
+                    if let previousWaterGoal = fetchPreviousDayWaterGoal() {
+                        waterGoal = previousWaterGoal
+                        print("DEBUG: No record found, set waterGoal to \(waterGoal) from previous day")
+                    }
+                    saveOrUpdateDailyRecord() // Save with previous day's waterGoal
                 }
                 print("DEBUG: No record found for \(formattedDate(date)), resetting")
             }
@@ -294,29 +368,44 @@ struct DailyDBView: View {
     private func resetDailyData() {
         weighIns = []
         diaryEntries = []
-        if Calendar.current.isDate(selectedDate, inSameDayAs: simulatedCurrentDate) {
-            let fetchRequest: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
-            fetchRequest.fetchLimit = 1
-            do {
-                if let userProfile = try viewContext.fetch(fetchRequest).first {
-                    waterGoal = CGFloat(userProfile.waterGoal)
-                }
-            } catch {
-                print("❌ Error fetching UserProfile: \(error.localizedDescription)")
+        if isCurrentDay {
+            if let previousWaterGoal = fetchPreviousDayWaterGoal() {
+                waterGoal = previousWaterGoal
+            } else {
+                waterGoal = 0
             }
         } else {
             waterGoal = 0
         }
+        print("DEBUG: Reset waterGoal to \(waterGoal) for \(formattedDate(selectedDate))")
     }
 
     private func simulateDayPassing() {
-        saveOrUpdateDailyRecord()
+        saveOrUpdateDailyRecord() // Save current day's data
         simulatedCurrentDate = Calendar.current.date(byAdding: .day, value: 1, to: simulatedCurrentDate) ?? simulatedCurrentDate
         UserDefaults.standard.set(simulatedCurrentDate, forKey: "simulatedCurrentDate")
         selectedDate = simulatedCurrentDate
         resetDailyData()
+        saveOrUpdateDailyRecord() // Create new day with persisted waterGoal
+        loadDailyRecord(for: selectedDate) // Reload with persisted waterGoal
         simulateDayTrigger.toggle()
         print("DEBUG: Simulated day - New current: \(formattedDate(simulatedCurrentDate))")
+    }
+
+    // New helper to fetch previous day's water goal
+    private func fetchPreviousDayWaterGoal() -> CGFloat? {
+        let previousDay = Calendar.current.date(byAdding: .day, value: -1, to: selectedDate)!
+        let fetchRequest: NSFetchRequest<DailyRecord> = DailyRecord.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "date == %@", Calendar.current.startOfDay(for: previousDay) as NSDate)
+        fetchRequest.fetchLimit = 1
+        do {
+            if let previousRecord = try viewContext.fetch(fetchRequest).first, previousRecord.waterGoal > 0 {
+                return CGFloat(previousRecord.waterGoal)
+            }
+        } catch {
+            print("❌ Error fetching previous day's water goal: \(error.localizedDescription)")
+        }
+        return nil
     }
 
     private func dayTitle() -> String {
@@ -388,9 +477,98 @@ struct DailyDBView: View {
     }
 
     private func averageWeight() -> String {
-        guard !weighIns.isEmpty else { return isCurrentDay ? "0" : "none" }
-        let totalWeight = weighIns.compactMap { Double($0.weight) }.reduce(0, +)
-        return String(format: "%.1f", totalWeight / Double(weighIns.count))
+        if isCurrentDay {
+            guard !weighIns.isEmpty else { return "0" }
+            let totalWeight = weighIns.compactMap { Double($0.weight) }.reduce(0, +)
+            return String(format: "%.1f", totalWeight / Double(weighIns.count))
+        } else {
+            let fetchRequest: NSFetchRequest<DailyRecord> = DailyRecord.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "date == %@", Calendar.current.startOfDay(for: selectedDate) as NSDate)
+            fetchRequest.fetchLimit = 1
+            do {
+                if let record = try viewContext.fetch(fetchRequest).first {
+                    return record.weighIn > 0 ? String(format: "%.1f", record.weighIn) : "none"
+                }
+            } catch {
+                print("❌ Error fetching weighIn: \(error.localizedDescription)")
+            }
+            return "none"
+        }
+    }
+
+    // MARK: - Helper Functions
+
+    private func calculateBMR(weight: Double, heightCm: Int32, heightFt: Int32, heightIn: Int32, age: Int32, gender: String, activityInt: Int32, useMetric: Bool) -> Int32 {
+        var bmr: Double = 0.0
+        
+        let weightKg = useMetric ? weight : weight * 0.453592
+        let heightCmDouble: Double
+        if useMetric {
+            heightCmDouble = Double(heightCm)
+        } else {
+            heightCmDouble = Double(heightFt * 12 + heightIn) * 2.54
+        }
+        
+        if gender.lowercased() == "man" {
+            bmr = 88.362 + (13.397 * weightKg) + (4.799 * heightCmDouble) - (5.677 * Double(age))
+        } else if gender.lowercased() == "woman" {
+            bmr = 447.593 + (9.247 * weightKg) + (3.098 * heightCmDouble) - (4.330 * Double(age))
+        } else {
+            bmr = (88.362 + (13.397 * weightKg) + (4.799 * heightCmDouble) - (5.677 * Double(age)) + 447.593 + (9.247 * weightKg) + (3.098 * heightCmDouble) - (4.330 * Double(age))) / 2
+        }
+        
+        let activityMultipliers: [Double] = [1.2, 1.375, 1.55, 1.725, 1.9]
+        let activityIndex = min(max(Int(activityInt), 0), activityMultipliers.count - 1)
+        bmr *= activityMultipliers[activityIndex]
+        
+        return Int32(bmr.rounded())
+    }
+
+    private func updateDailyCalorieGoal(userProfile: UserProfile) {
+        let calorieFactor: Double = useMetric ? 7000.0 : 3500.0
+        userProfile.dailyCalorieDif = Int32((calorieFactor * userProfile.weekGoal) / 7)
+        
+        var newCalorieGoal: Int32 = userProfile.userBMR
+        switch userProfile.goalId {
+        case 1:
+            let absCalorieDif = abs(userProfile.dailyCalorieDif)
+            newCalorieGoal = userProfile.weekGoal < 0 ? userProfile.userBMR - absCalorieDif : userProfile.userBMR + absCalorieDif
+            
+        case 2:
+            if userProfile.goalWeight > 0 {
+                let absCalorieDif = abs(userProfile.dailyCalorieDif)
+                newCalorieGoal = userProfile.weekGoal < 0 ? userProfile.userBMR - absCalorieDif : userProfile.userBMR + absCalorieDif
+            } else {
+                newCalorieGoal = userProfile.userBMR
+            }
+            
+        case 3:
+            if let targetDate = userProfile.targetDate, userProfile.goalWeight > 0 {
+                let daysUntilTarget = Calendar.current.dateComponents([.day], from: selectedDate, to: targetDate).day ?? 0
+                if daysUntilTarget > 0 {
+                    let totalCalorieAdjustment = (userProfile.weightDifference * calorieFactor) / Double(daysUntilTarget)
+                    newCalorieGoal = userProfile.weekGoal < 0 ? userProfile.userBMR - Int32(totalCalorieAdjustment) : userProfile.userBMR + Int32(totalCalorieAdjustment)
+                } else {
+                    newCalorieGoal = userProfile.userBMR
+                }
+            } else {
+                newCalorieGoal = userProfile.userBMR
+            }
+            
+        case 4:
+            newCalorieGoal = userProfile.userBMR
+            
+        case 5:
+            newCalorieGoal = userProfile.customCals
+            
+        default:
+            newCalorieGoal = userProfile.userBMR
+        }
+        
+        if newCalorieGoal != userProfile.dailyCalorieGoal {
+            userProfile.dailyCalorieGoal = newCalorieGoal
+            print("DEBUG: Updated UserProfile.dailyCalorieGoal to \(newCalorieGoal) for new day")
+        }
     }
 
     // MARK: - Refactored Body Components
@@ -455,6 +633,8 @@ struct DailyDBView: View {
             HStack(spacing: 10) {
                 Image("bolt")
                     .resizable()
+                    .renderingMode(.template)
+                    .foregroundColor(Styles.primaryText)
                     .scaledToFit()
                     .frame(width: 30, height: 40)
                     .padding(.trailing, 5)
@@ -463,11 +643,11 @@ struct DailyDBView: View {
                     HStack {
                         Text("Calories")
                             .font(.headline)
-                            .foregroundColor(totalCalories > Double(calorieGoal) ? .red : Styles.primaryText)
+                            .foregroundColor(totalCalories > getCalorieGoalForSelectedDate() ? .red : Styles.primaryText)
                         Spacer()
-                        Text("\(Int(totalCalories))/\(Int(calorieGoal))")
+                        Text("\(Int(totalCalories))/\(Int(getCalorieGoalForSelectedDate()))")
                             .font(.subheadline)
-                            .foregroundColor(totalCalories > Double(calorieGoal) ? .red : Styles.secondaryText)
+                            .foregroundColor(totalCalories > getCalorieGoalForSelectedDate() ? .red : Styles.secondaryText)
                     }
                     
                     GeometryReader { geometry in
@@ -478,7 +658,7 @@ struct DailyDBView: View {
                             
                             HStack(spacing: 0) {
                                 if totalCalories > 0 {
-                                    let progressWidth = min(CGFloat(totalCalories / Double(calorieGoal)) * geometry.size.width, geometry.size.width)
+                                    let progressWidth = min(CGFloat(totalCalories / getCalorieGoalForSelectedDate()) * geometry.size.width, geometry.size.width)
                                     if quickAddCalories > 0 {
                                         Rectangle()
                                             .fill(Styles.primaryText)
@@ -524,13 +704,15 @@ struct DailyDBView: View {
                 HStack(spacing: 10) {
                     Image("CalW")
                         .resizable()
+                        .renderingMode(.template)
+                        .foregroundColor(Styles.primaryText)
                         .scaledToFit()
                         .frame(width: 30, height: 40)
                         .padding(.trailing, 5)
                     
                     VStack(alignment: .leading) {
                         HStack {
-                            Text("Daily Weigh-In:")
+                            Text(isCurrentDay ? "Daily Weigh-In:" : "Daily Weight:")
                                 .font(.headline)
                                 .foregroundColor(Styles.primaryText)
                             
@@ -641,6 +823,27 @@ struct DailyDBView: View {
         }
     }
 
+    private func getCalorieGoalForSelectedDate() -> Double {
+        let fetchRequest: NSFetchRequest<DailyRecord> = DailyRecord.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "date == %@", Calendar.current.startOfDay(for: selectedDate) as NSDate)
+        fetchRequest.fetchLimit = 1
+        do {
+            if let record = try viewContext.fetch(fetchRequest).first {
+                return record.calorieGoal
+            }
+        } catch {
+            print("❌ Error fetching calorieGoal for \(formattedDate(selectedDate)): \(error.localizedDescription)")
+        }
+        if isCurrentDay {
+            let userFetch: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
+            userFetch.fetchLimit = 1
+            if let userProfile = try? viewContext.fetch(userFetch).first {
+                return Double(userProfile.dailyCalorieGoal)
+            }
+        }
+        return Double(calorieGoal)
+    }
+
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
@@ -674,21 +877,6 @@ struct DailyDBView: View {
         .onChange(of: weighIns) { _ in
             if isCurrentDay {
                 saveOrUpdateDailyRecord()
-                // Update UserProfile.currentWeight with averageWeight
-                let avgWeightString = averageWeight()
-                if let avgWeight = Double(avgWeightString), !weighIns.isEmpty {
-                    let userFetch: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
-                    userFetch.fetchLimit = 1
-                    do {
-                        if let userProfile = try viewContext.fetch(userFetch).first {
-                            userProfile.currentWeight = avgWeight
-                            try viewContext.save()
-                            print("DEBUG: Updated UserProfile.currentWeight to \(avgWeight)")
-                        }
-                    } catch {
-                        print("❌ Error updating currentWeight: \(error.localizedDescription)")
-                    }
-                }
             }
         }
         .onChange(of: totalDailyWater) { _ in
@@ -722,20 +910,30 @@ struct DailyDBView: View {
     private func debugDumpCoreData() {
         let dailyFetch: NSFetchRequest<DailyRecord> = DailyRecord.fetchRequest()
         let diaryFetch: NSFetchRequest<CoreDiaryEntry> = CoreDiaryEntry.fetchRequest()
+        let weighInFetch: NSFetchRequest<WeighInEntry> = WeighInEntry.fetchRequest()
         do {
             let dailyRecords = try viewContext.fetch(dailyFetch)
             print("DEBUG: Total DailyRecords: \(dailyRecords.count)")
             dailyRecords.forEach { record in
                 let entryCount = (record.diaryEntries as? Set<CoreDiaryEntry>)?.count ?? 0
-                print("DailyRecord - Date: \(record.date ?? Date()), Entries: \(entryCount), Calorie Goal: \(record.calorieGoal)")
+                let weighInCount = (record.weighIns as? Set<WeighInEntry>)?.count ?? 0
+                print("DailyRecord - Date: \(record.date ?? Date()), Entries: \(entryCount), WeighIns: \(weighInCount), Calorie Goal: \(record.calorieGoal), WeighIn: \(record.weighIn)")
             }
             let diaryEntries = try viewContext.fetch(diaryFetch)
             print("DEBUG: Total CoreDiaryEntries: \(diaryEntries.count)")
             diaryEntries.forEach { entry in
                 print("CoreDiaryEntry - Description: \(entry.entryDescription ?? "nil"), DailyRecord: \(entry.dailyRecord?.date ?? Date())")
             }
+            let weighIns = try viewContext.fetch(weighInFetch)
+            print("DEBUG: Total WeighInEntries: \(weighIns.count)")
+            weighIns.forEach { weighIn in
+                print("WeighInEntry - Time: \(weighIn.time ?? "nil"), Weight: \(weighIn.weight), DailyRecord: \(weighIn.dailyRecord?.date ?? Date())")
+            }
         } catch {
             print("❌ Error dumping Core Data: \(error)")
         }
     }
 }
+
+// Preview (optional, for development)
+

@@ -1,4 +1,3 @@
-//
 //  UserOverviewView.swift
 //  Calorie counter
 //
@@ -6,6 +5,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct UserOverviewView: View {
     var name: String
@@ -19,12 +19,14 @@ struct UserOverviewView: View {
     var useMetric: Bool
     var activityLevel: Int
 
-    // PersonalGoalsView variables
+    // PersonalGoalsView variables (passed but not used for goal text)
     var customCals: String
     var goalWeight: String
     var goalDate: Date?
     var weekGoal: Double
+    
     @EnvironmentObject var themeManager: ThemeManager
+    @Environment(\.managedObjectContext) private var viewContext
     private let activityNames = ["None", "Sedentary", "Lightly Active", "Moderately Active", "Very Active", "Extra Active"]
 
     var body: some View {
@@ -108,7 +110,7 @@ struct UserOverviewView: View {
                             .font(.headline)
                             .foregroundColor(Styles.secondaryText)
                         
-                        Text(goalMessage)
+                        Text(fetchGoalText())
                             .font(.body)
                             .foregroundColor(Styles.primaryText)
                             .multilineTextAlignment(.leading)
@@ -158,40 +160,20 @@ struct UserOverviewView: View {
         }
     }
 
-    // MARK: - Goal Message Logic
-    private var goalMessage: String {
-        if !customCals.isEmpty {
-            return "Keep daily calories to \(customCals)"
+    // MARK: - Fetch Static Goal Text
+    private func fetchGoalText() -> String {
+        let fetchRequest: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
+        fetchRequest.fetchLimit = 1
+        do {
+            if let userProfile = try viewContext.fetch(fetchRequest).first {
+                return userProfile.goalText ?? "No Goal Set"
+            }
+        } catch {
+            print("❌ Error fetching goal text: \(error.localizedDescription)")
         }
-
-        let currentWeight = Double(weight) ?? 0
-        let targetWeight = Double(goalWeight) ?? 0
-        let weightDifference = abs(targetWeight - currentWeight)
-        let formattedDifference = useMetric ? "\(String(format: "%.1f", weightDifference)) kg" : "\(String(format: "%.1f", weightDifference)) lbs"
-
-        if weekGoal == 0 {
-            return "Maintain Current Weight"
-        } else if goalWeight.isEmpty {
-            let action = weekGoal < 0 ? "Lose" : "Gain"
-            let formattedGoal = useMetric ? "\(abs(weekGoal)) kg" : "\(abs(weekGoal)) lbs"
-            return "\(action) \(formattedGoal) per week"
-        } else if !goalWeight.isEmpty && goalDate == nil {
-            let action = weekGoal < 0 ? "Lose" : "Gain"
-            let formattedGoal = useMetric ? "\(abs(weekGoal)) kg" : "\(abs(weekGoal)) lbs"
-            return "\(action) \(formattedDifference) by \(action.lowercased())ing \(formattedGoal) per week"
-        } else if !goalWeight.isEmpty && goalDate != nil {
-            let action = weekGoal < 0 ? "Lose" : "Gain"
-            let formattedDate = formattedGoalDate
-            return "\(action) \(formattedDifference) by \(formattedDate)"
-        } else {
-            return "No Goal Set"
-        }
-    }
-
-    private var formattedGoalDate: String {
-        guard let goalDate = goalDate else { return "Not Provided" }
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        return formatter.string(from: goalDate)
+        return "No Goal Set" // Fallback if no profile exists
     }
 }
+
+// Preview (optional, for development)
+

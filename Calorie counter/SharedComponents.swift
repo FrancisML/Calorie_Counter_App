@@ -768,3 +768,11 @@ struct HorizontalTapeMeasurePicker: View {
         return min(max(value, 0), totalInches)
     }
 }
+extension DateFormatter {
+    static let mediumDate: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter
+    }()
+    
+}

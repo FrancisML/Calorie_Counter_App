@@ -307,7 +307,7 @@ struct UserSetupView: View {
             heightFt: userProfile.heightFt,
             heightIn: userProfile.heightIn,
             age: userProfile.age,
-            gender: userProfile.gender ?? "", // Safely unwrap
+            gender: userProfile.gender ?? "",
             activityInt: userProfile.activityInt,
             useMetric: userProfile.useMetric
         )
@@ -315,14 +315,12 @@ struct UserSetupView: View {
         let calorieFactor: Double = useMetric ? 7000.0 : 3500.0
         userProfile.dailyCalorieDif = Int32((calorieFactor * weekGoal) / 7)
         
-        // Calculate weight difference if goal weight is set
         if userProfile.goalWeight > 0 {
             userProfile.weightDifference = abs(userProfile.currentWeight - userProfile.goalWeight)
         } else {
             userProfile.weightDifference = 0.0
         }
         
-        // Set goalId based on user input
         if isWeightTargetDateGoalSelected {
             if weekGoal != 0 && (goalWeight.isEmpty || goalWeight == "0") {
                 userProfile.goalId = 1
@@ -339,6 +337,16 @@ struct UserSetupView: View {
         
         userProfile.lastSavedDate = Date()
         
+        // Set static goal text
+        userProfile.goalText = generateGoalText(
+            currentWeight: userProfile.currentWeight,
+            goalWeight: userProfile.goalWeight,
+            weekGoal: userProfile.weekGoal,
+            goalDate: userProfile.targetDate,
+            customCals: userProfile.customCals,
+            useMetric: userProfile.useMetric
+        )
+        
         print("---- SAVING TO CORE DATA ----")
         print("Week Goal: \(weekGoal)")
         print("User BMR: \(userProfile.userBMR)")
@@ -346,6 +354,7 @@ struct UserSetupView: View {
         print("Use Metric: \(useMetric)")
         print("Daily Calorie Difference: \(userProfile.dailyCalorieDif)")
         print("Weight Difference: \(userProfile.weightDifference)")
+        print("Goal Text: \(userProfile.goalText)")
         print("-----------------------------")
         
         do {
@@ -353,6 +362,34 @@ struct UserSetupView: View {
             print("✅ User Profile Saved Successfully!")
         } catch {
             print("❌ ERROR: Failed to save user profile: \(error.localizedDescription)")
+        }
+    }
+
+    // Helper function to generate static goal text
+    private func generateGoalText(currentWeight: Double, goalWeight: Double, weekGoal: Double, goalDate: Date?, customCals: Int32, useMetric: Bool) -> String {
+        if customCals > 0 {
+            return "Keep daily calories to \(customCals)"
+        }
+        
+        let weightDifference = abs(goalWeight - currentWeight)
+        let formattedDifference = useMetric ? "\(String(format: "%.1f", weightDifference)) kg" : "\(String(format: "%.1f", weightDifference)) lbs"
+        
+        if weekGoal == 0 {
+            return "Maintain Current Weight"
+        } else if goalWeight > 0 && goalDate == nil {
+            let action = weekGoal < 0 ? "Lose" : "Gain"
+            let formattedGoal = useMetric ? "\(abs(weekGoal)) kg" : "\(abs(weekGoal)) lbs"
+            return "\(action) \(formattedDifference) by \(action.lowercased())ing \(formattedGoal) per week"
+        } else if goalWeight > 0 && goalDate != nil {
+            let action = weekGoal < 0 ? "Lose" : "Gain"
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            let formattedDate = formatter.string(from: goalDate!)
+            return "\(action) \(formattedDifference) by \(formattedDate)"
+        } else {
+            let action = weekGoal < 0 ? "Lose" : "Gain"
+            let formattedGoal = useMetric ? "\(abs(weekGoal)) kg" : "\(abs(weekGoal)) lbs"
+            return "\(action) \(formattedGoal) per week"
         }
     }
     
