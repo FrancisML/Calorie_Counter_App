@@ -4,11 +4,75 @@
     "Localizable": [
       {
         "comment": "",
+        "key": "Search workouts..."
+      },
+      {
+        "comment": "",
+        "key": "Toggle favorite workouts"
+      },
+      {
+        "comment": "",
+        "key": "No favorite workouts"
+      },
+      {
+        "comment": "",
+        "key": "No workouts available"
+      },
+      {
+        "comment": "",
         "key": "Recents"
       },
       {
         "comment": "",
+        "key": "No recent workouts"
+      },
+      {
+        "comment": "",
+        "key": "Workout: %@"
+      },
+      {
+        "comment": "",
         "key": "Favorites"
+      },
+      {
+        "comment": "",
+        "key": "Add Custom Activity"
+      },
+      {
+        "comment": "",
+        "key": "Back"
+      },
+      {
+        "comment": "",
+        "key": "Select %@ image"
+      },
+      {
+        "comment": "",
+        "key": "Select activity image"
+      },
+      {
+        "comment": "",
+        "key": "Activity Name"
+      },
+      {
+        "comment": "",
+        "key": ""
+      },
+      {
+        "comment": "",
+        "key": "MET Value"
+      },
+      {
+        "comment": "",
+        "key": "Metabolic Equivalent of Task (MET) measures energy cost. 1 MET is resting; higher values mean more effort."
+      },
+      {
+        "comment": "",
+        "key": "Cancel"
+      },
+      {
+        "comment": "",
+        "key": "Save"
       }
     ]
   },

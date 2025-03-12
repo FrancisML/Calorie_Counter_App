@@ -90,6 +90,16 @@
 			<key>catalogPath</key>
 			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameAddCustom</string>
+			<key>relativePath</key>
+			<string>./AddCustom.imageset</string>
+			<key>swiftSymbol</key>
+			<string>addCustom</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameAddFood</string>
 			<key>relativePath</key>
 			<string>./AddFood.imageset</string>
@@ -265,6 +275,16 @@
 			<string>./CalW.imageset</string>
 			<key>swiftSymbol</key>
 			<string>calW</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/frank/Desktop/Workspace/Calorie counter/Calorie counter/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameCustomActivity</string>
+			<key>relativePath</key>
+			<string>./WorkoutImages/CustomActivity.imageset</string>
+			<key>swiftSymbol</key>
+			<string>customActivity</string>
 		</dict>
 		<dict>
 			<key>catalogPath</key>

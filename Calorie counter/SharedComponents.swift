@@ -675,7 +675,7 @@ struct HorizontalTapeMeasurePicker: View {
     
     @State private var dragOffset: CGFloat = 0
     @State private var liveValue: Double = 0
-    @State private var initialOffset: CGFloat = 0
+    @GestureState private var dragStartOffset: CGFloat = 0 // Reset per drag
     
     var body: some View {
         GeometryReader { geometry in
@@ -730,10 +730,14 @@ struct HorizontalTapeMeasurePicker: View {
             .clipped()
             .contentShape(Rectangle())
             .gesture(
-                DragGesture()
+                DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                    .updating($dragStartOffset) { value, state, _ in
+                        // Capture the starting offset only once per drag
+                        if state == 0 { state = dragOffset }
+                    }
                     .onChanged { gesture in
                         let maxOffset = CGFloat(totalTicks - 1) * tickSpacing / 2
-                        let newOffset = min(max(gesture.translation.width + initialOffset, -maxOffset), maxOffset)
+                        let newOffset = min(max(dragStartOffset + gesture.translation.width, -maxOffset), maxOffset)
                         dragOffset = newOffset
                         liveValue = closestValue(for: dragOffset)
                         selectedValue = liveValue
@@ -742,7 +746,6 @@ struct HorizontalTapeMeasurePicker: View {
                         let newValue = closestValue(for: dragOffset)
                         selectedValue = newValue
                         dragOffset = positionForValue(newValue)
-                        initialOffset = dragOffset
                     }
             )
         }
@@ -751,6 +754,10 @@ struct HorizontalTapeMeasurePicker: View {
         .onAppear {
             dragOffset = positionForValue(selectedValue)
             liveValue = selectedValue
+        }
+        .onChange(of: selectedValue) { newValue in
+            dragOffset = positionForValue(newValue)
+            liveValue = newValue
         }
     }
     

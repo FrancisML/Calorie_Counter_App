@@ -30,6 +30,9 @@ static NSString * const ACImageName_AL_5 AC_SWIFT_PRIVATE = @"AL-5";
 /// The "AL-6" asset catalog image resource.
 static NSString * const ACImageName_AL_6 AC_SWIFT_PRIVATE = @"AL-6";
 
+/// The "AddCustom" asset catalog image resource.
+static NSString * const ACImageNameAddCustom AC_SWIFT_PRIVATE = @"AddCustom";
+
 /// The "AddFood" asset catalog image resource.
 static NSString * const ACImageNameAddFood AC_SWIFT_PRIVATE = @"AddFood";
 
@@ -83,6 +86,9 @@ static NSString * const ACImageNameBoxing AC_SWIFT_PRIVATE = @"Boxing";
 
 /// The "CalW" asset catalog image resource.
 static NSString * const ACImageNameCalW AC_SWIFT_PRIVATE = @"CalW";
+
+/// The "CustomActivity" asset catalog image resource.
+static NSString * const ACImageNameCustomActivity AC_SWIFT_PRIVATE = @"CustomActivity";
 
 /// The "DefaultFood" asset catalog image resource.
 static NSString * const ACImageNameDefaultFood AC_SWIFT_PRIVATE = @"DefaultFood";

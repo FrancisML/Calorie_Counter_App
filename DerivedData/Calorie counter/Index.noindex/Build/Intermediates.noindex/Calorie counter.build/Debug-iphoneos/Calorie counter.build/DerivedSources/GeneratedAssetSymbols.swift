@@ -55,6 +55,9 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "AL-6" asset catalog image resource.
     static let AL_6 = DeveloperToolsSupport.ImageResource(name: "AL-6", bundle: resourceBundle)
 
+    /// The "AddCustom" asset catalog image resource.
+    static let addCustom = DeveloperToolsSupport.ImageResource(name: "AddCustom", bundle: resourceBundle)
+
     /// The "AddFood" asset catalog image resource.
     static let addFood = DeveloperToolsSupport.ImageResource(name: "AddFood", bundle: resourceBundle)
 
@@ -108,6 +111,9 @@ extension DeveloperToolsSupport.ImageResource {
 
     /// The "CalW" asset catalog image resource.
     static let calW = DeveloperToolsSupport.ImageResource(name: "CalW", bundle: resourceBundle)
+
+    /// The "CustomActivity" asset catalog image resource.
+    static let customActivity = DeveloperToolsSupport.ImageResource(name: "CustomActivity", bundle: resourceBundle)
 
     /// The "DefaultFood" asset catalog image resource.
     static let defaultFood = DeveloperToolsSupport.ImageResource(name: "DefaultFood", bundle: resourceBundle)
@@ -385,6 +391,15 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "AddCustom" asset catalog image.
+    static var addCustom: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .addCustom)
+#else
+        .init()
+#endif
+    }
+
     /// The "AddFood" asset catalog image.
     static var addFood: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
@@ -542,6 +557,15 @@ extension AppKit.NSImage {
     static var calW: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .calW)
+#else
+        .init()
+#endif
+    }
+
+    /// The "CustomActivity" asset catalog image.
+    static var customActivity: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .customActivity)
 #else
         .init()
 #endif
@@ -1122,6 +1146,15 @@ extension UIKit.UIImage {
 #endif
     }
 
+    /// The "AddCustom" asset catalog image.
+    static var addCustom: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .addCustom)
+#else
+        .init()
+#endif
+    }
+
     /// The "AddFood" asset catalog image.
     static var addFood: UIKit.UIImage {
 #if !os(watchOS)
@@ -1279,6 +1312,15 @@ extension UIKit.UIImage {
     static var calW: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .calW)
+#else
+        .init()
+#endif
+    }
+
+    /// The "CustomActivity" asset catalog image.
+    static var customActivity: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .customActivity)
 #else
         .init()
 #endif

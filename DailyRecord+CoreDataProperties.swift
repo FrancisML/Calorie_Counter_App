@@ -2,7 +2,7 @@
 //  DailyRecord+CoreDataProperties.swift
 //  Calorie counter
 //
-//  Created by frank lasalvia on 3/5/25.
+//  Created by frank lasalvia on 3/11/25.
 //
 //
 
@@ -26,6 +26,7 @@ extension DailyRecord {
     @NSManaged public var weighIn: Double
     @NSManaged public var diaryEntries: NSSet?
     @NSManaged public var weighIns: NSSet?
+    @NSManaged public var workoutEntries: NSSet?
 
 }
 
@@ -60,6 +61,23 @@ extension DailyRecord {
 
     @objc(removeWeighIns:)
     @NSManaged public func removeFromWeighIns(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for workoutEntries
+extension DailyRecord {
+
+    @objc(addWorkoutEntriesObject:)
+    @NSManaged public func addToWorkoutEntries(_ value: WorkoutEntry)
+
+    @objc(removeWorkoutEntriesObject:)
+    @NSManaged public func removeFromWorkoutEntries(_ value: WorkoutEntry)
+
+    @objc(addWorkoutEntries:)
+    @NSManaged public func addToWorkoutEntries(_ values: NSSet)
+
+    @objc(removeWorkoutEntries:)
+    @NSManaged public func removeFromWorkoutEntries(_ values: NSSet)
 
 }
 

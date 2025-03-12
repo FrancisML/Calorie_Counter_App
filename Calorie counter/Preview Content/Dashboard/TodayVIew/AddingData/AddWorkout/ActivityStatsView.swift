@@ -1,16 +1,3 @@
-//
-//  ActivityStatsView.swift
-//  Calorie Counter
-//
-//  Created by Frank LaSalvia on 2/20/25.
-//
-
-//
-//  ActivityStatsView.swift
-//  Calorie Counter
-//
-//  Created by Frank LaSalvia on 2/20/25.
-//
 
 //
 //  ActivityStatsView.swift
@@ -30,17 +17,17 @@ struct ActivityStatsView: View {
     var closeAction: () -> Void
     @Binding var diaryEntries: [DiaryEntry]
 
-    @State private var duration: String = "20" // ✅ Default to 20 mins
-    @State private var userWeight: Double = 70.0 // ✅ Default to 70kg, fetched later
+    @State private var duration: String = "20"
+    @State private var userWeight: Double = 70.0
     @State private var isFavorite: Bool = false
-    @State private var useMetric: Bool = false // ✅ Tracks if user weight is in kg or lbs
+    @State private var useMetric: Bool = false
+    @State private var isCustom: Bool = false // New state to track if custom
 
     @State private var selectedHour: Int = Calendar.current.component(.hour, from: Date()) % 12
     @State private var selectedMinute: Int = Calendar.current.component(.minute, from: Date())
     @State private var selectedPeriod: String = Calendar.current.component(.hour, from: Date()) >= 12 ? "PM" : "AM"
     @State private var showTimePicker: Bool = false
 
-    // ✅ MET Intensity Selection
     @State private var selectedIntensity: IntensityLevel = .moderate
 
     enum IntensityLevel: String {
@@ -77,20 +64,17 @@ struct ActivityStatsView: View {
         }
     }
 
-    // ✅ COMPUTED PROPERTY: CALCULATE CALORIES BURNED
     private var caloriesBurned: Int {
-        let metValue = fetchMETValue(for: activityName) // ✅ Get MET from activity
-        let weightInKg = useMetric ? userWeight : userWeight * 0.453592 // ✅ Convert if needed
-        let durationHours = (Double(duration) ?? 0) / 60.0 // ✅ Convert minutes to hours
-        let multiplier = selectedIntensity.metMultiplier // ✅ Intensity multiplier
-
+        let metValue = fetchMETValue(for: activityName)
+        let weightInKg = useMetric ? userWeight : userWeight * 0.453592
+        let durationHours = (Double(duration) ?? 0) / 60.0
+        let multiplier = selectedIntensity.metMultiplier
         let calories = metValue * weightInKg * durationHours * multiplier
-        return max(0, Int(calories)) // ✅ Ensure no negative values
+        return max(0, Int(calories))
     }
 
     var body: some View {
         VStack(spacing: 20) {
-            // ✅ TOP HSTACK: IMAGE + ACTIVITY NAME + FAVORITE BUTTON
             HStack(spacing: 15) {
                 Image(activityImage)
                     .resizable()
@@ -109,7 +93,6 @@ struct ActivityStatsView: View {
                         HStack {
                             Image(systemName: isFavorite ? "heart.fill" : "heart")
                                 .foregroundColor(isFavorite ? .red : .gray)
-
                             Text("Favorite")
                                 .foregroundColor(Styles.primaryText)
                         }
@@ -119,6 +102,22 @@ struct ActivityStatsView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         .shadow(radius: 2)
                     }
+                    
+                    if isCustom {
+                        Button(action: deleteCustomActivity) {
+                            HStack {
+                                Image(systemName: "trash")
+                                    .foregroundColor(.red)
+                                Text("Delete")
+                                    .foregroundColor(.red)
+                            }
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 6)
+                            .background(Styles.tertiaryBackground)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .shadow(radius: 2)
+                        }
+                    }
                 }
             }
             .padding(.horizontal)
@@ -126,13 +125,10 @@ struct ActivityStatsView: View {
 
             Divider()
 
-            // ✅ INTENSITY SELECTION BAR
             VStack {
                 HStack(spacing: 0) {
                     ForEach([IntensityLevel.easy, .moderate, .hard, .veryHard], id: \.self) { level in
-                        Button(action: {
-                            selectedIntensity = level
-                        }) {
+                        Button(action: { selectedIntensity = level }) {
                             Text(level.rawValue)
                                 .font(.caption)
                                 .frame(maxWidth: .infinity)
@@ -152,7 +148,6 @@ struct ActivityStatsView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .shadow(radius: 2)
 
-                // ✅ INTENSITY DESCRIPTION
                 Text(selectedIntensity.description)
                     .font(.footnote)
                     .foregroundColor(Styles.primaryText.opacity(0.8))
@@ -162,14 +157,11 @@ struct ActivityStatsView: View {
 
             Divider()
 
-            // ✅ CALORIES BURNED DISPLAY
             HStack {
                 Text("Calories Burned")
                     .font(.headline)
                     .foregroundColor(Styles.primaryText)
-
                 Spacer()
-
                 Text("\(caloriesBurned)")
                     .font(.headline)
                     .foregroundColor(Styles.primaryText)
@@ -178,14 +170,11 @@ struct ActivityStatsView: View {
 
             Divider()
 
-            // ✅ DURATION INPUT
             HStack {
                 Text("Duration")
                     .font(.headline)
                     .foregroundColor(Styles.primaryText)
-
                 Spacer()
-
                 TextField("", text: $duration)
                     .frame(width: 50)
                     .padding(5)
@@ -193,7 +182,6 @@ struct ActivityStatsView: View {
                     .cornerRadius(5)
                     .keyboardType(.numberPad)
                     .multilineTextAlignment(.center)
-
                 Text("min")
                     .foregroundColor(Styles.primaryText)
             }
@@ -201,7 +189,6 @@ struct ActivityStatsView: View {
 
             Divider()
 
-            // ✅ BASED ON YOUR WEIGHT TEXT
             Text("Based on your weight of \(Int(userWeight)) \(useMetric ? "kg" : "lbs")")
                 .font(.footnote)
                 .foregroundColor(Styles.primaryText.opacity(0.8))
@@ -214,45 +201,70 @@ struct ActivityStatsView: View {
         .background(Styles.secondaryBackground)
         .onAppear {
             fetchUserWeight()
+            fetchFavoriteStatus()
+            fetchCustomStatus() // New fetch for isCustom
         }
+        .overlay(
+            Group {
+                if showTimePicker {
+                    timePickerOverlay
+                }
+            }
+        )
     }
-    
 
-    // ✅ FETCH USER WEIGHT & UNIT
     private func fetchUserWeight() {
         let fetchRequest: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
-
         do {
             if let userProfile = try viewContext.fetch(fetchRequest).first {
                 userWeight = Double(userProfile.currentWeight)
-                useMetric = userProfile.useMetric // ✅ Determine if weight is in kg or lbs
+                useMetric = userProfile.useMetric
             }
         } catch {
             print("⚠️ ERROR: Failed to fetch user weight: \(error.localizedDescription)")
         }
     }
 
-    // ✅ FETCH MET VALUE FOR ACTIVITY
     private func fetchMETValue(for activity: String) -> Double {
         let fetchRequest: NSFetchRequest<ActivityModel> = ActivityModel.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "name == %@", activity)
-
         do {
             let activities = try viewContext.fetch(fetchRequest)
-            return activities.first?.metValue ?? 1.0 // ✅ Default to 1 MET if not found
+            return activities.first?.metValue ?? 1.0
         } catch {
             print("⚠️ ERROR: Failed to fetch MET value: \(error.localizedDescription)")
             return 1.0
         }
     }
 
+    private func fetchFavoriteStatus() {
+        let fetchRequest: NSFetchRequest<ActivityModel> = ActivityModel.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name == %@", activityName)
+        do {
+            if let activity = try viewContext.fetch(fetchRequest).first {
+                isFavorite = activity.isFavorite
+            }
+        } catch {
+            print("⚠️ ERROR: Failed to fetch favorite status: \(error.localizedDescription)")
+        }
+    }
+    
+    private func fetchCustomStatus() {
+        let fetchRequest: NSFetchRequest<ActivityModel> = ActivityModel.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name == %@", activityName)
+        do {
+            if let activity = try viewContext.fetch(fetchRequest).first {
+                isCustom = activity.isCustom
+            }
+        } catch {
+            print("⚠️ ERROR: Failed to fetch custom status: \(error.localizedDescription)")
+        }
+    }
 
-    // ✅ FORMATTED TIME
     private var formattedTime: String {
         return "\(selectedHour):\(String(format: "%02d", selectedMinute)) \(selectedPeriod)"
     }
 
-    // ✅ BOTTOM NAVIGATION BAR (Directly Closes WorkoutView)
     private func bottomNavBar() -> some View {
         ZStack {
             Rectangle()
@@ -261,13 +273,11 @@ struct ActivityStatsView: View {
                 .shadow(radius: 5)
 
             HStack {
-                // 🔴 X Button (Closes WorkoutView Directly)
                 ZStack {
                     Circle()
                         .fill(Color.red)
                         .frame(width: 80, height: 80)
                         .shadow(radius: 5)
-
                     Image(systemName: "xmark")
                         .font(.largeTitle)
                         .foregroundColor(.white)
@@ -278,13 +288,11 @@ struct ActivityStatsView: View {
 
                 Spacer().frame(width: 100)
 
-                // ➕ "+" Button (Saves & Closes WorkoutView)
                 ZStack {
                     Circle()
                         .fill(Styles.primaryText)
                         .frame(width: 80, height: 80)
                         .shadow(radius: 5)
-
                     Image(systemName: "plus")
                         .font(.largeTitle)
                         .foregroundColor(Styles.secondaryBackground)
@@ -299,18 +307,15 @@ struct ActivityStatsView: View {
         }
         .frame(height: 96)
     }
-    private func toggleFavorite() {
-        isFavorite.toggle() // ✅ Toggle the state locally
 
-        // ✅ Fetch and update Core Data
+    private func toggleFavorite() {
+        isFavorite.toggle()
         let fetchRequest: NSFetchRequest<ActivityModel> = ActivityModel.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "name == %@", activityName)
-
         do {
             if let activity = try viewContext.fetch(fetchRequest).first {
-                activity.isFavorite = isFavorite // ✅ Update Core Data property
-                
-                try viewContext.save() // ✅ Save immediately
+                activity.isFavorite = isFavorite
+                try viewContext.save()
                 print("✅ Favorite status updated for \(activityName): \(isFavorite)")
             }
         } catch {
@@ -318,58 +323,112 @@ struct ActivityStatsView: View {
         }
     }
 
+    private func deleteCustomActivity() {
+        let fetchRequest: NSFetchRequest<ActivityModel> = ActivityModel.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name == %@", activityName)
+        do {
+            if let activity = try viewContext.fetch(fetchRequest).first, activity.isCustom {
+                viewContext.delete(activity)
+                try viewContext.save()
+                print("✅ Deleted custom activity: \(activityName)")
+                closeAction() // Close view after deletion
+            }
+        } catch {
+            print("❌ ERROR: Failed to delete custom activity: \(error.localizedDescription)")
+        }
+    }
 
-    // ✅ SAVE ACTIVITY TO DIARY
     private func saveActivityToDiary() {
-        guard let durationValue = Int(duration), durationValue > 0 else {
+        guard let durationValue = Double(duration), durationValue > 0 else {
             print("⚠️ ERROR: Invalid duration entered")
             return
         }
 
-        let caloriesValue = caloriesBurned // ✅ Uses computed property
-
+        let caloriesValue = caloriesBurned
         guard caloriesValue > 0 else {
             print("⚠️ ERROR: Calories burned calculation failed")
             return
         }
 
-        let durationText = "\(durationValue) min"
+        let workoutEntry = WorkoutEntry(context: viewContext)
+        workoutEntry.name = activityName
+        workoutEntry.duration = durationValue
+        workoutEntry.caloriesBurned = Double(caloriesValue)
+        workoutEntry.time = formattedTime
+        workoutEntry.imageName = activityImage
 
-        let newEntry = DiaryEntry(
-            time: formattedTime,
-            iconName: activityImage,
-            description: activityName,
-            detail: durationText,
-            calories: -caloriesValue, // ✅ Calories are always negative for workouts
-            type: "Workout",
-            imageName: activityImage,
-            imageData: nil
-        )
+        let diaryEntry = CoreDiaryEntry(context: viewContext)
+        diaryEntry.type = "Workout"
+        diaryEntry.detail = activityName
+        diaryEntry.entryDescription = formatDuration(durationValue)
+        diaryEntry.calories = Int32(caloriesValue)
+        diaryEntry.time = formattedTime
+        diaryEntry.iconName = activityImage
 
-        DispatchQueue.main.async {
-            diaryEntries.append(newEntry)
-        }
-
-        // ✅ Update `lastUsed` for this activity in Core Data
-        let fetchRequest: NSFetchRequest<ActivityModel> = ActivityModel.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "name == %@", activityName)
+        let fetchRequest: NSFetchRequest<DailyRecord> = DailyRecord.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "date == %@", Calendar.current.startOfDay(for: Date()) as NSDate)
+        fetchRequest.fetchLimit = 1
 
         do {
-            if let activity = try viewContext.fetch(fetchRequest).first {
-                activity.lastUsed = Date() // ✅ Updates last used timestamp
-
-                try viewContext.save()
-                print("✅ Activity saved & lastUsed updated: \(activityName)")
+            if let dailyRecord = try viewContext.fetch(fetchRequest).first {
+                dailyRecord.addToWorkoutEntries(workoutEntry)
+                dailyRecord.addToDiaryEntries(diaryEntry)
+            } else {
+                let newDailyRecord = DailyRecord(context: viewContext)
+                newDailyRecord.date = Calendar.current.startOfDay(for: Date())
+                newDailyRecord.calorieGoal = 2000
+                newDailyRecord.calorieIntake = 0
+                newDailyRecord.waterGoal = 8
+                newDailyRecord.waterIntake = 0
+                newDailyRecord.waterUnit = "cups"
+                newDailyRecord.passFail = false
+                newDailyRecord.weighIn = 0
+                newDailyRecord.addToWorkoutEntries(workoutEntry)
+                newDailyRecord.addToDiaryEntries(diaryEntry)
             }
+            try viewContext.save()
+
+            let activityFetch: NSFetchRequest<ActivityModel> = ActivityModel.fetchRequest()
+            activityFetch.predicate = NSPredicate(format: "name == %@", activityName)
+            if let activity = try viewContext.fetch(activityFetch).first {
+                activity.lastUsed = Date()
+                try viewContext.save()
+            }
+            print("✅ Workout saved to Core Data successfully")
+
+            let newDiaryEntry = DiaryEntry(
+                time: formattedTime,
+                iconName: activityImage,
+                description: activityName,
+                detail: formatDuration(durationValue),
+                calories: caloriesValue,
+                type: "Workout",
+                imageName: activityImage,
+                imageData: nil,
+                fats: 0,
+                carbs: 0,
+                protein: 0
+            )
+            diaryEntries.append(newDiaryEntry)
+            print("✅ Added workout to diaryEntries")
         } catch {
-            print("❌ ERROR: Failed to update lastUsed date: \(error.localizedDescription)")
+            print("❌ ERROR: Failed to save workout: \(error.localizedDescription)")
+            return
         }
 
-        closeAction() // ✅ Closes view after saving
+        closeAction()
     }
 
+    private func formatDuration(_ duration: Double) -> String {
+        let minutes = Int(duration)
+        if minutes >= 60 {
+            let hours = minutes / 60
+            let remainingMinutes = minutes % 60
+            return remainingMinutes == 0 ? "\(hours) hr" : "\(hours) hr \(remainingMinutes) min"
+        }
+        return "\(minutes) min"
+    }
 
-    // ✅ TIME PICKER OVERLAY
     private var timePickerOverlay: some View {
         ZStack {
             Color.black.opacity(0.3)
@@ -404,7 +463,6 @@ struct ActivityStatsView: View {
         }
     }
 
-    // ✅ TIME PICKER
     private var timePicker: some View {
         HStack {
             Picker("Hour", selection: $selectedHour) {

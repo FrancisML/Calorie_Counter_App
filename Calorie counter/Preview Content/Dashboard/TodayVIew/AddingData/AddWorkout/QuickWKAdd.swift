@@ -1,25 +1,12 @@
-//
-//  QuickWKAdd.swift
-//  Calorie counter
-//
-//  Created by frank lasalvia on 2/18/25.
-//
-
-
-//
-//  QuickWKAdd.swift
-//  Calorie Counter
-//
-//  Created by Frank LaSalvia on 2/18/25.
-//
-
 import SwiftUI
+import CoreData
 
 struct QuickWKAddView: View {
-    @Binding var diaryEntries: [DiaryEntry] // ✅ Binding to update the diary
-    var closeAction: () -> Void // ✅ Function to close the view
+    @Binding var diaryEntries: [DiaryEntry]
+    var closeAction: () -> Void
+    @Environment(\.managedObjectContext) private var viewContext
 
-    @State private var workoutImage: UIImage? = UIImage(named: "DefaultWorkout") // ✅ Default image
+    @State private var workoutImage: UIImage? = UIImage(named: "DefaultWorkout")
     @State private var workoutName: String = ""
     @State private var duration: String = ""
     @State private var calories: String = ""
@@ -27,7 +14,7 @@ struct QuickWKAddView: View {
     @State private var selectedHour: Int = Calendar.current.component(.hour, from: Date()) % 12
     @State private var selectedMinute: Int = Calendar.current.component(.minute, from: Date())
     @State private var selectedPeriod: String = Calendar.current.component(.hour, from: Date()) >= 12 ? "PM" : "AM"
-    @State private var showTimePicker: Bool = false // ✅ Toggles time picker visibility
+    @State private var showTimePicker: Bool = false
 
     @State private var showImagePicker: Bool = false
     @State private var imagePickerSourceType: UIImagePickerController.SourceType = .photoLibrary
@@ -35,9 +22,7 @@ struct QuickWKAddView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            // ✅ Top Row: Image + Name Input
             HStack(spacing: 20) {
-                // ✅ Picture Input (Top Left)
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(workoutImage != UIImage(named: "DefaultWorkout") ? Color.green : Styles.primaryText, lineWidth: 3)
@@ -53,9 +38,7 @@ struct QuickWKAddView: View {
                         .fill(Color.black.opacity(0.1))
                         .frame(width: 100, height: 100)
 
-                    Button(action: {
-                        showActionSheet = true
-                    }) {
+                    Button(action: { showActionSheet = true }) {
                         Text("Add")
                             .font(.headline)
                             .foregroundColor(.white)
@@ -79,7 +62,7 @@ struct QuickWKAddView: View {
                                     }
                                 },
                                 .destructive(Text("Remove Image")) {
-                                    workoutImage = UIImage(named: "DefaultWorkout") // ✅ Reset to default
+                                    workoutImage = UIImage(named: "DefaultWorkout")
                                 },
                                 .cancel()
                             ]
@@ -90,13 +73,11 @@ struct QuickWKAddView: View {
                     }
                 }
 
-                // ✅ Name Input (Right Side)
                 FloatingTextField(placeholder: " Workout Name ", text: $workoutName)
             }
             .padding(.horizontal)
             .padding(.top, 20)
 
-            // ✅ Other Inputs (Below Image & Name)
             VStack(spacing: 15) {
                 FloatingTextField(placeholder: " Duration (mins) ", text: $duration)
                     .keyboardType(.numberPad)
@@ -120,7 +101,6 @@ struct QuickWKAddView: View {
 
             Spacer()
 
-            // ✅ Bottom Navigation Bar
             bottomNavBar()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -137,7 +117,6 @@ struct QuickWKAddView: View {
         )
     }
 
-    // ✅ Automatically sets the current time
     private func setCurrentTime() {
         let currentHour = Calendar.current.component(.hour, from: Date())
         selectedHour = currentHour % 12 == 0 ? 12 : currentHour % 12
@@ -145,12 +124,10 @@ struct QuickWKAddView: View {
         selectedPeriod = currentHour >= 12 ? "PM" : "AM"
     }
 
-    // ✅ Time Formatting for Display
     private var formattedTime: String {
         return "\(selectedHour):\(String(format: "%02d", selectedMinute)) \(selectedPeriod)"
     }
 
-    // ✅ Save Workout to Diary
     private func saveWorkoutToDiary() {
         let trimmedName = workoutName.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedDuration = duration.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -161,22 +138,66 @@ struct QuickWKAddView: View {
             return
         }
 
-        let durationText = formatDuration(trimmedDuration)
+        let durationValue = Double(trimmedDuration) ?? 0
         let caloriesValue = Int(trimmedCalories) ?? 0
 
-        let newEntry = DiaryEntry(
-            time: formattedTime,
-            iconName: "CustomWorkout",
-            description: trimmedName,
-            detail: durationText,
-            calories: -caloriesValue,
-            type: "Workout",
-            imageName: nil, // ✅ No filename since it's a user-selected image
-            imageData: workoutImage?.jpegData(compressionQuality: 0.8) // ✅ Store user-selected image
-        )
+        let workoutEntry = WorkoutEntry(context: viewContext)
+        workoutEntry.name = trimmedName
+        workoutEntry.duration = durationValue
+        workoutEntry.caloriesBurned = Double(caloriesValue)
+        workoutEntry.time = formattedTime
+        workoutEntry.imageData = workoutImage?.jpegData(compressionQuality: 0.8)
 
-        DispatchQueue.main.async {
-            diaryEntries.append(newEntry)
+        let diaryEntry = CoreDiaryEntry(context: viewContext)
+        diaryEntry.type = "Workout"
+        diaryEntry.detail = trimmedName // Activity name
+        diaryEntry.entryDescription = formatDuration(trimmedDuration) // Duration string
+        diaryEntry.calories = Int32(caloriesValue)
+        diaryEntry.time = formattedTime
+        diaryEntry.imageData = workoutImage?.jpegData(compressionQuality: 0.8)
+
+        let fetchRequest: NSFetchRequest<DailyRecord> = DailyRecord.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "date == %@", Calendar.current.startOfDay(for: Date()) as NSDate)
+        fetchRequest.fetchLimit = 1
+
+        do {
+            if let dailyRecord = try viewContext.fetch(fetchRequest).first {
+                dailyRecord.addToWorkoutEntries(workoutEntry)
+                dailyRecord.addToDiaryEntries(diaryEntry)
+            } else {
+                let newDailyRecord = DailyRecord(context: viewContext)
+                newDailyRecord.date = Calendar.current.startOfDay(for: Date())
+                newDailyRecord.calorieGoal = 2000
+                newDailyRecord.calorieIntake = 0
+                newDailyRecord.waterGoal = 8
+                newDailyRecord.waterIntake = 0
+                newDailyRecord.waterUnit = "cups"
+                newDailyRecord.passFail = false
+                newDailyRecord.weighIn = 0
+                newDailyRecord.addToWorkoutEntries(workoutEntry)
+                newDailyRecord.addToDiaryEntries(diaryEntry)
+            }
+            try viewContext.save()
+            print("✅ Workout saved to Core Data (both workoutEntries and diaryEntries)")
+
+            let newDiaryEntry = DiaryEntry(
+                time: formattedTime,
+                iconName: "DefaultWorkout",
+                description: trimmedName,
+                detail: formatDuration(trimmedDuration),
+                calories: caloriesValue,
+                type: "Workout",
+                imageName: nil,
+                imageData: workoutImage?.jpegData(compressionQuality: 0.8),
+                fats: 0,
+                carbs: 0,
+                protein: 0
+            )
+            diaryEntries.append(newDiaryEntry)
+            print("✅ Added workout to diaryEntries array")
+        } catch {
+            print("❌ Error saving workout to Core Data: \(error.localizedDescription)")
+            return
         }
 
         closeAction()
@@ -191,7 +212,6 @@ struct QuickWKAddView: View {
         return "\(duration) min"
     }
 
-    // ✅ Time Picker Overlay
     private var timePickerOverlay: some View {
         ZStack {
             Color.black.opacity(0.3)
@@ -223,7 +243,6 @@ struct QuickWKAddView: View {
         }
     }
 
-    // ✅ Bottom Navigation Bar
     private func bottomNavBar() -> some View {
         ZStack {
             Rectangle()
@@ -237,7 +256,6 @@ struct QuickWKAddView: View {
                         .fill(Color.red)
                         .frame(width: 80, height: 80)
                         .shadow(radius: 5)
-
                     Image(systemName: "xmark")
                         .font(.largeTitle)
                         .foregroundColor(.white)
@@ -253,7 +271,6 @@ struct QuickWKAddView: View {
                         .fill(Styles.primaryText)
                         .frame(width: 80, height: 80)
                         .shadow(radius: 5)
-
                     Image(systemName: "plus")
                         .font(.largeTitle)
                         .foregroundColor(Styles.secondaryBackground)
@@ -267,5 +284,12 @@ struct QuickWKAddView: View {
             .offset(y: -36)
         }
         .frame(height: 96)
+    }
+}
+
+struct QuickWKAddView_Previews: PreviewProvider {
+    static var previews: some View {
+        QuickWKAddView(diaryEntries: .constant([]), closeAction: {})
+            .environment(\.managedObjectContext, PersistenceController.shared.context)
     }
 }

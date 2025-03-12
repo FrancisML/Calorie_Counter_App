@@ -381,15 +381,57 @@ struct DailyDBView: View {
     }
 
     private func simulateDayPassing() {
-        saveOrUpdateDailyRecord() // Save current day's data
+        saveOrUpdateDailyRecord()
         simulatedCurrentDate = Calendar.current.date(byAdding: .day, value: 1, to: simulatedCurrentDate) ?? simulatedCurrentDate
         UserDefaults.standard.set(simulatedCurrentDate, forKey: "simulatedCurrentDate")
         selectedDate = simulatedCurrentDate
         resetDailyData()
-        saveOrUpdateDailyRecord() // Create new day with persisted waterGoal
-        loadDailyRecord(for: selectedDate) // Reload with persisted waterGoal
+        saveOrUpdateDailyRecord()
+        loadDailyRecord(for: selectedDate)
+        updateActivityStreaks() // Add this
         simulateDayTrigger.toggle()
-        print("DEBUG: Simulated day - New current: \(formattedDate(simulatedCurrentDate))")
+    }
+
+    private func updateActivityStreaks() {
+        let currentStreak = calculateActivityStreak()
+        let fetchRequest: NSFetchRequest<UserProfile> = UserProfile.fetchRequest()
+        fetchRequest.fetchLimit = 1
+        do {
+            if let userProfile = try viewContext.fetch(fetchRequest).first {
+                if currentStreak > userProfile.highestActivityStreak {
+                    userProfile.highestActivityStreak = Int32(currentStreak)
+                    try viewContext.save()
+                    print("✅ Updated highestActivityStreak to \(currentStreak)")
+                }
+            }
+        } catch {
+            print("❌ Error updating streaks: \(error)")
+        }
+    }
+
+    private func calculateActivityStreak() -> Int {
+        var streak = 0
+        var currentDate = Calendar.current.startOfDay(for: simulatedCurrentDate)
+        
+        while true {
+            let fetchRequest: NSFetchRequest<DailyRecord> = DailyRecord.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "date == %@", currentDate as NSDate)
+            fetchRequest.fetchLimit = 1
+            do {
+                if let record = try viewContext.fetch(fetchRequest).first,
+                   let workouts = record.workoutEntries as? Set<WorkoutEntry>,
+                   !workouts.isEmpty {
+                    streak += 1
+                    currentDate = Calendar.current.date(byAdding: .day, value: -1, to: currentDate)!
+                } else {
+                    break
+                }
+            } catch {
+                print("❌ Error calculating streak: \(error)")
+                break
+            }
+        }
+        return streak
     }
 
     // New helper to fetch previous day's water goal

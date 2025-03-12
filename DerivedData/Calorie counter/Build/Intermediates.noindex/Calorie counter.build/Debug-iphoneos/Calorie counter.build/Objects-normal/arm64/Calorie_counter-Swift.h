@@ -391,6 +391,15 @@ SWIFT_CLASS_NAMED("DailyRecord")
 - (void)removeWeighIns:(NSSet * _Nonnull)values;
 @end
 
+@class WorkoutEntry;
+
+@interface DailyRecord (SWIFT_EXTENSION(Calorie_counter))
+- (void)addWorkoutEntriesObject:(WorkoutEntry * _Nonnull)value;
+- (void)removeWorkoutEntriesObject:(WorkoutEntry * _Nonnull)value;
+- (void)addWorkoutEntries:(NSSet * _Nonnull)values;
+- (void)removeWorkoutEntries:(NSSet * _Nonnull)values;
+@end
+
 
 @interface DailyRecord (SWIFT_EXTENSION(Calorie_counter))
 @property (nonatomic) double calorieGoal;
@@ -403,6 +412,7 @@ SWIFT_CLASS_NAMED("DailyRecord")
 @property (nonatomic) double weighIn;
 @property (nonatomic, strong) NSSet * _Nullable diaryEntries;
 @property (nonatomic, strong) NSSet * _Nullable weighIns;
+@property (nonatomic, strong) NSSet * _Nullable workoutEntries;
 @end
 
 
@@ -463,6 +473,7 @@ SWIFT_CLASS("_TtC15Calorie_counter11UserProfile")
 @property (nonatomic, copy) NSString * _Nullable gender;
 @property (nonatomic) int32_t goalCalories;
 @property (nonatomic) int32_t goalId;
+@property (nonatomic, copy) NSString * _Nullable goalText;
 @property (nonatomic) double goalWeight;
 @property (nonatomic) int32_t heightCm;
 @property (nonatomic) int32_t heightFt;
@@ -482,7 +493,8 @@ SWIFT_CLASS("_TtC15Calorie_counter11UserProfile")
 @property (nonatomic, copy) NSString * _Nullable waterUnit;
 @property (nonatomic) double weekGoal;
 @property (nonatomic) double weightDifference;
-@property (nonatomic, copy) NSString * _Nullable goalText;
+@property (nonatomic) int32_t highestActivityStreak;
+@property (nonatomic) int32_t daysWorkedOut;
 @property (nonatomic, strong) NSSet * _Nullable bodyMeasurement;
 @property (nonatomic, strong) NSSet * _Nullable progressPicture;
 @end
@@ -498,6 +510,24 @@ SWIFT_CLASS_NAMED("WeighInEntry")
 @interface WeighInEntry (SWIFT_EXTENSION(Calorie_counter))
 @property (nonatomic, copy) NSString * _Nullable time;
 @property (nonatomic) double weight;
+@property (nonatomic, strong) DailyRecord * _Nullable dailyRecord;
+@end
+
+
+SWIFT_CLASS_NAMED("WorkoutEntry")
+@interface WorkoutEntry : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface WorkoutEntry (SWIFT_EXTENSION(Calorie_counter))
+@property (nonatomic, copy) NSString * _Nullable name;
+@property (nonatomic) double duration;
+@property (nonatomic) double caloriesBurned;
+@property (nonatomic, copy) NSString * _Nullable time;
+@property (nonatomic, copy) NSString * _Nullable imageName;
+@property (nonatomic, copy) NSData * _Nullable imageData;
 @property (nonatomic, strong) DailyRecord * _Nullable dailyRecord;
 @end
 
