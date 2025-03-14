@@ -112,6 +112,18 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "CalW" asset catalog image resource.
     static let calW = DeveloperToolsSupport.ImageResource(name: "CalW", bundle: resourceBundle)
 
+    /// The "Carpentery" asset catalog image resource.
+    static let carpentery = DeveloperToolsSupport.ImageResource(name: "Carpentery", bundle: resourceBundle)
+
+    /// The "Child" asset catalog image resource.
+    static let child = DeveloperToolsSupport.ImageResource(name: "Child", bundle: resourceBundle)
+
+    /// The "Cleaningwindows" asset catalog image resource.
+    static let cleaningwindows = DeveloperToolsSupport.ImageResource(name: "Cleaningwindows", bundle: resourceBundle)
+
+    /// The "Const" asset catalog image resource.
+    static let const = DeveloperToolsSupport.ImageResource(name: "Const", bundle: resourceBundle)
+
     /// The "CustomActivity" asset catalog image resource.
     static let customActivity = DeveloperToolsSupport.ImageResource(name: "CustomActivity", bundle: resourceBundle)
 
@@ -130,6 +142,12 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "Empty woman PP" asset catalog image resource.
     static let emptyWomanPP = DeveloperToolsSupport.ImageResource(name: "Empty woman PP", bundle: resourceBundle)
 
+    /// The "Fish" asset catalog image resource.
+    static let fish = DeveloperToolsSupport.ImageResource(name: "Fish", bundle: resourceBundle)
+
+    /// The "Garden" asset catalog image resource.
+    static let garden = DeveloperToolsSupport.ImageResource(name: "Garden", bundle: resourceBundle)
+
     /// The "Golf" asset catalog image resource.
     static let golf = DeveloperToolsSupport.ImageResource(name: "Golf", bundle: resourceBundle)
 
@@ -139,20 +157,41 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "Hockey" asset catalog image resource.
     static let hockey = DeveloperToolsSupport.ImageResource(name: "Hockey", bundle: resourceBundle)
 
+    /// The "Horse" asset catalog image resource.
+    static let horse = DeveloperToolsSupport.ImageResource(name: "Horse", bundle: resourceBundle)
+
+    /// The "IceSkateing" asset catalog image resource.
+    static let iceSkateing = DeveloperToolsSupport.ImageResource(name: "IceSkateing", bundle: resourceBundle)
+
+    /// The "Kayak" asset catalog image resource.
+    static let kayak = DeveloperToolsSupport.ImageResource(name: "Kayak", bundle: resourceBundle)
+
     /// The "LeftFoot" asset catalog image resource.
     static let leftFoot = DeveloperToolsSupport.ImageResource(name: "LeftFoot", bundle: resourceBundle)
+
+    /// The "MartialArts" asset catalog image resource.
+    static let martialArts = DeveloperToolsSupport.ImageResource(name: "MartialArts", bundle: resourceBundle)
 
     /// The "MountainBike" asset catalog image resource.
     static let mountainBike = DeveloperToolsSupport.ImageResource(name: "MountainBike", bundle: resourceBundle)
 
+    /// The "Moving" asset catalog image resource.
+    static let moving = DeveloperToolsSupport.ImageResource(name: "Moving", bundle: resourceBundle)
+
     /// The "Paddle" asset catalog image resource.
     static let paddle = DeveloperToolsSupport.ImageResource(name: "Paddle", bundle: resourceBundle)
+
+    /// The "Paint" asset catalog image resource.
+    static let paint = DeveloperToolsSupport.ImageResource(name: "Paint", bundle: resourceBundle)
 
     /// The "Pickle" asset catalog image resource.
     static let pickle = DeveloperToolsSupport.ImageResource(name: "Pickle", bundle: resourceBundle)
 
     /// The "Pilates" asset catalog image resource.
     static let pilates = DeveloperToolsSupport.ImageResource(name: "Pilates", bundle: resourceBundle)
+
+    /// The "PingPong" asset catalog image resource.
+    static let pingPong = DeveloperToolsSupport.ImageResource(name: "PingPong", bundle: resourceBundle)
 
     /// The "RightFoot" asset catalog image resource.
     static let rightFoot = DeveloperToolsSupport.ImageResource(name: "RightFoot", bundle: resourceBundle)
@@ -163,11 +202,20 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "Rowing" asset catalog image resource.
     static let rowing = DeveloperToolsSupport.ImageResource(name: "Rowing", bundle: resourceBundle)
 
+    /// The "Rucking" asset catalog image resource.
+    static let rucking = DeveloperToolsSupport.ImageResource(name: "Rucking", bundle: resourceBundle)
+
     /// The "Running" asset catalog image resource.
     static let running = DeveloperToolsSupport.ImageResource(name: "Running", bundle: resourceBundle)
 
+    /// The "Shop" asset catalog image resource.
+    static let shop = DeveloperToolsSupport.ImageResource(name: "Shop", bundle: resourceBundle)
+
     /// The "ShuttleCock" asset catalog image resource.
     static let shuttleCock = DeveloperToolsSupport.ImageResource(name: "ShuttleCock", bundle: resourceBundle)
+
+    /// The "Skateing" asset catalog image resource.
+    static let skateing = DeveloperToolsSupport.ImageResource(name: "Skateing", bundle: resourceBundle)
 
     /// The "Skiing" asset catalog image resource.
     static let skiing = DeveloperToolsSupport.ImageResource(name: "Skiing", bundle: resourceBundle)
@@ -187,8 +235,17 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "Spining" asset catalog image resource.
     static let spining = DeveloperToolsSupport.ImageResource(name: "Spining", bundle: resourceBundle)
 
+    /// The "Sprinting" asset catalog image resource.
+    static let sprinting = DeveloperToolsSupport.ImageResource(name: "Sprinting", bundle: resourceBundle)
+
+    /// The "Stretch" asset catalog image resource.
+    static let stretch = DeveloperToolsSupport.ImageResource(name: "Stretch", bundle: resourceBundle)
+
     /// The "Swiming" asset catalog image resource.
     static let swiming = DeveloperToolsSupport.ImageResource(name: "Swiming", bundle: resourceBundle)
+
+    /// The "Teach" asset catalog image resource.
+    static let teach = DeveloperToolsSupport.ImageResource(name: "Teach", bundle: resourceBundle)
 
     /// The "Walking" asset catalog image resource.
     static let walking = DeveloperToolsSupport.ImageResource(name: "Walking", bundle: resourceBundle)
@@ -223,6 +280,9 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "calisthenics" asset catalog image resource.
     static let calisthenics = DeveloperToolsSupport.ImageResource(name: "calisthenics", bundle: resourceBundle)
 
+    /// The "cleaning" asset catalog image resource.
+    static let cleaning = DeveloperToolsSupport.ImageResource(name: "cleaning", bundle: resourceBundle)
+
     /// The "drop" asset catalog image resource.
     static let drop = DeveloperToolsSupport.ImageResource(name: "drop", bundle: resourceBundle)
 
@@ -238,11 +298,20 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "hungry" asset catalog image resource.
     static let hungry = DeveloperToolsSupport.ImageResource(name: "hungry", bundle: resourceBundle)
 
+    /// The "jumpRope" asset catalog image resource.
+    static let jumpRope = DeveloperToolsSupport.ImageResource(name: "jumpRope", bundle: resourceBundle)
+
     /// The "logo" asset catalog image resource.
     static let logo = DeveloperToolsSupport.ImageResource(name: "logo", bundle: resourceBundle)
 
     /// The "manorwoman" asset catalog image resource.
     static let manorwoman = DeveloperToolsSupport.ImageResource(name: "manorwoman", bundle: resourceBundle)
+
+    /// The "mowing" asset catalog image resource.
+    static let mowing = DeveloperToolsSupport.ImageResource(name: "mowing", bundle: resourceBundle)
+
+    /// The "nurse" asset catalog image resource.
+    static let nurse = DeveloperToolsSupport.ImageResource(name: "nurse", bundle: resourceBundle)
 
     /// The "racquetball" asset catalog image resource.
     static let racquetball = DeveloperToolsSupport.ImageResource(name: "racquetball", bundle: resourceBundle)
@@ -255,6 +324,9 @@ extension DeveloperToolsSupport.ImageResource {
 
     /// The "scuba" asset catalog image resource.
     static let scuba = DeveloperToolsSupport.ImageResource(name: "scuba", bundle: resourceBundle)
+
+    /// The "snow" asset catalog image resource.
+    static let snow = DeveloperToolsSupport.ImageResource(name: "snow", bundle: resourceBundle)
 
     /// The "stats" asset catalog image resource.
     static let stats = DeveloperToolsSupport.ImageResource(name: "stats", bundle: resourceBundle)
@@ -270,6 +342,9 @@ extension DeveloperToolsSupport.ImageResource {
 
     /// The "trophy" asset catalog image resource.
     static let trophy = DeveloperToolsSupport.ImageResource(name: "trophy", bundle: resourceBundle)
+
+    /// The "vgame" asset catalog image resource.
+    static let vgame = DeveloperToolsSupport.ImageResource(name: "vgame", bundle: resourceBundle)
 
     /// The "volley" asset catalog image resource.
     static let volley = DeveloperToolsSupport.ImageResource(name: "volley", bundle: resourceBundle)
@@ -562,6 +637,42 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "Carpentery" asset catalog image.
+    static var carpentery: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .carpentery)
+#else
+        .init()
+#endif
+    }
+
+    /// The "Child" asset catalog image.
+    static var child: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .child)
+#else
+        .init()
+#endif
+    }
+
+    /// The "Cleaningwindows" asset catalog image.
+    static var cleaningwindows: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .cleaningwindows)
+#else
+        .init()
+#endif
+    }
+
+    /// The "Const" asset catalog image.
+    static var const: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .const)
+#else
+        .init()
+#endif
+    }
+
     /// The "CustomActivity" asset catalog image.
     static var customActivity: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
@@ -616,6 +727,24 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "Fish" asset catalog image.
+    static var fish: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .fish)
+#else
+        .init()
+#endif
+    }
+
+    /// The "Garden" asset catalog image.
+    static var garden: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .garden)
+#else
+        .init()
+#endif
+    }
+
     /// The "Golf" asset catalog image.
     static var golf: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
@@ -643,10 +772,46 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "Horse" asset catalog image.
+    static var horse: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .horse)
+#else
+        .init()
+#endif
+    }
+
+    /// The "IceSkateing" asset catalog image.
+    static var iceSkateing: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .iceSkateing)
+#else
+        .init()
+#endif
+    }
+
+    /// The "Kayak" asset catalog image.
+    static var kayak: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .kayak)
+#else
+        .init()
+#endif
+    }
+
     /// The "LeftFoot" asset catalog image.
     static var leftFoot: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .leftFoot)
+#else
+        .init()
+#endif
+    }
+
+    /// The "MartialArts" asset catalog image.
+    static var martialArts: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .martialArts)
 #else
         .init()
 #endif
@@ -661,10 +826,28 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "Moving" asset catalog image.
+    static var moving: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .moving)
+#else
+        .init()
+#endif
+    }
+
     /// The "Paddle" asset catalog image.
     static var paddle: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .paddle)
+#else
+        .init()
+#endif
+    }
+
+    /// The "Paint" asset catalog image.
+    static var paint: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .paint)
 #else
         .init()
 #endif
@@ -683,6 +866,15 @@ extension AppKit.NSImage {
     static var pilates: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .pilates)
+#else
+        .init()
+#endif
+    }
+
+    /// The "PingPong" asset catalog image.
+    static var pingPong: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .pingPong)
 #else
         .init()
 #endif
@@ -715,6 +907,15 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "Rucking" asset catalog image.
+    static var rucking: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .rucking)
+#else
+        .init()
+#endif
+    }
+
     /// The "Running" asset catalog image.
     static var running: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
@@ -724,10 +925,28 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "Shop" asset catalog image.
+    static var shop: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .shop)
+#else
+        .init()
+#endif
+    }
+
     /// The "ShuttleCock" asset catalog image.
     static var shuttleCock: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .shuttleCock)
+#else
+        .init()
+#endif
+    }
+
+    /// The "Skateing" asset catalog image.
+    static var skateing: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .skateing)
 #else
         .init()
 #endif
@@ -787,10 +1006,37 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "Sprinting" asset catalog image.
+    static var sprinting: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .sprinting)
+#else
+        .init()
+#endif
+    }
+
+    /// The "Stretch" asset catalog image.
+    static var stretch: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .stretch)
+#else
+        .init()
+#endif
+    }
+
     /// The "Swiming" asset catalog image.
     static var swiming: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .swiming)
+#else
+        .init()
+#endif
+    }
+
+    /// The "Teach" asset catalog image.
+    static var teach: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .teach)
 #else
         .init()
 #endif
@@ -895,6 +1141,15 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "cleaning" asset catalog image.
+    static var cleaning: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .cleaning)
+#else
+        .init()
+#endif
+    }
+
     /// The "drop" asset catalog image.
     static var drop: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
@@ -940,6 +1195,15 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "jumpRope" asset catalog image.
+    static var jumpRope: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .jumpRope)
+#else
+        .init()
+#endif
+    }
+
     /// The "logo" asset catalog image.
     static var logo: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
@@ -953,6 +1217,24 @@ extension AppKit.NSImage {
     static var manorwoman: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .manorwoman)
+#else
+        .init()
+#endif
+    }
+
+    /// The "mowing" asset catalog image.
+    static var mowing: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .mowing)
+#else
+        .init()
+#endif
+    }
+
+    /// The "nurse" asset catalog image.
+    static var nurse: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .nurse)
 #else
         .init()
 #endif
@@ -989,6 +1271,15 @@ extension AppKit.NSImage {
     static var scuba: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .scuba)
+#else
+        .init()
+#endif
+    }
+
+    /// The "snow" asset catalog image.
+    static var snow: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .snow)
 #else
         .init()
 #endif
@@ -1034,6 +1325,15 @@ extension AppKit.NSImage {
     static var trophy: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .trophy)
+#else
+        .init()
+#endif
+    }
+
+    /// The "vgame" asset catalog image.
+    static var vgame: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .vgame)
 #else
         .init()
 #endif
@@ -1317,6 +1617,42 @@ extension UIKit.UIImage {
 #endif
     }
 
+    /// The "Carpentery" asset catalog image.
+    static var carpentery: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .carpentery)
+#else
+        .init()
+#endif
+    }
+
+    /// The "Child" asset catalog image.
+    static var child: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .child)
+#else
+        .init()
+#endif
+    }
+
+    /// The "Cleaningwindows" asset catalog image.
+    static var cleaningwindows: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .cleaningwindows)
+#else
+        .init()
+#endif
+    }
+
+    /// The "Const" asset catalog image.
+    static var const: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .const)
+#else
+        .init()
+#endif
+    }
+
     /// The "CustomActivity" asset catalog image.
     static var customActivity: UIKit.UIImage {
 #if !os(watchOS)
@@ -1371,6 +1707,24 @@ extension UIKit.UIImage {
 #endif
     }
 
+    /// The "Fish" asset catalog image.
+    static var fish: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .fish)
+#else
+        .init()
+#endif
+    }
+
+    /// The "Garden" asset catalog image.
+    static var garden: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .garden)
+#else
+        .init()
+#endif
+    }
+
     /// The "Golf" asset catalog image.
     static var golf: UIKit.UIImage {
 #if !os(watchOS)
@@ -1398,10 +1752,46 @@ extension UIKit.UIImage {
 #endif
     }
 
+    /// The "Horse" asset catalog image.
+    static var horse: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .horse)
+#else
+        .init()
+#endif
+    }
+
+    /// The "IceSkateing" asset catalog image.
+    static var iceSkateing: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .iceSkateing)
+#else
+        .init()
+#endif
+    }
+
+    /// The "Kayak" asset catalog image.
+    static var kayak: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .kayak)
+#else
+        .init()
+#endif
+    }
+
     /// The "LeftFoot" asset catalog image.
     static var leftFoot: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .leftFoot)
+#else
+        .init()
+#endif
+    }
+
+    /// The "MartialArts" asset catalog image.
+    static var martialArts: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .martialArts)
 #else
         .init()
 #endif
@@ -1416,10 +1806,28 @@ extension UIKit.UIImage {
 #endif
     }
 
+    /// The "Moving" asset catalog image.
+    static var moving: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .moving)
+#else
+        .init()
+#endif
+    }
+
     /// The "Paddle" asset catalog image.
     static var paddle: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .paddle)
+#else
+        .init()
+#endif
+    }
+
+    /// The "Paint" asset catalog image.
+    static var paint: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .paint)
 #else
         .init()
 #endif
@@ -1438,6 +1846,15 @@ extension UIKit.UIImage {
     static var pilates: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .pilates)
+#else
+        .init()
+#endif
+    }
+
+    /// The "PingPong" asset catalog image.
+    static var pingPong: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .pingPong)
 #else
         .init()
 #endif
@@ -1470,6 +1887,15 @@ extension UIKit.UIImage {
 #endif
     }
 
+    /// The "Rucking" asset catalog image.
+    static var rucking: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .rucking)
+#else
+        .init()
+#endif
+    }
+
     /// The "Running" asset catalog image.
     static var running: UIKit.UIImage {
 #if !os(watchOS)
@@ -1479,10 +1905,28 @@ extension UIKit.UIImage {
 #endif
     }
 
+    /// The "Shop" asset catalog image.
+    static var shop: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .shop)
+#else
+        .init()
+#endif
+    }
+
     /// The "ShuttleCock" asset catalog image.
     static var shuttleCock: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .shuttleCock)
+#else
+        .init()
+#endif
+    }
+
+    /// The "Skateing" asset catalog image.
+    static var skateing: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .skateing)
 #else
         .init()
 #endif
@@ -1542,10 +1986,37 @@ extension UIKit.UIImage {
 #endif
     }
 
+    /// The "Sprinting" asset catalog image.
+    static var sprinting: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .sprinting)
+#else
+        .init()
+#endif
+    }
+
+    /// The "Stretch" asset catalog image.
+    static var stretch: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .stretch)
+#else
+        .init()
+#endif
+    }
+
     /// The "Swiming" asset catalog image.
     static var swiming: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .swiming)
+#else
+        .init()
+#endif
+    }
+
+    /// The "Teach" asset catalog image.
+    static var teach: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .teach)
 #else
         .init()
 #endif
@@ -1650,6 +2121,15 @@ extension UIKit.UIImage {
 #endif
     }
 
+    /// The "cleaning" asset catalog image.
+    static var cleaning: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .cleaning)
+#else
+        .init()
+#endif
+    }
+
     /// The "drop" asset catalog image.
     static var drop: UIKit.UIImage {
 #if !os(watchOS)
@@ -1695,6 +2175,15 @@ extension UIKit.UIImage {
 #endif
     }
 
+    /// The "jumpRope" asset catalog image.
+    static var jumpRope: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .jumpRope)
+#else
+        .init()
+#endif
+    }
+
     /// The "logo" asset catalog image.
     static var logo: UIKit.UIImage {
 #if !os(watchOS)
@@ -1708,6 +2197,24 @@ extension UIKit.UIImage {
     static var manorwoman: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .manorwoman)
+#else
+        .init()
+#endif
+    }
+
+    /// The "mowing" asset catalog image.
+    static var mowing: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .mowing)
+#else
+        .init()
+#endif
+    }
+
+    /// The "nurse" asset catalog image.
+    static var nurse: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .nurse)
 #else
         .init()
 #endif
@@ -1744,6 +2251,15 @@ extension UIKit.UIImage {
     static var scuba: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .scuba)
+#else
+        .init()
+#endif
+    }
+
+    /// The "snow" asset catalog image.
+    static var snow: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .snow)
 #else
         .init()
 #endif
@@ -1789,6 +2305,15 @@ extension UIKit.UIImage {
     static var trophy: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .trophy)
+#else
+        .init()
+#endif
+    }
+
+    /// The "vgame" asset catalog image.
+    static var vgame: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .vgame)
 #else
         .init()
 #endif

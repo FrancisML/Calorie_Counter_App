@@ -1,11 +1,3 @@
-
-//
-//  ActivityStatsView.swift
-//  Calorie Counter
-//
-//  Created by Frank LaSalvia on 2/20/25.
-//
-
 import SwiftUI
 import CoreData
 
@@ -15,20 +7,25 @@ struct ActivityStatsView: View {
     var activityName: String
     var activityImage: String
     var closeAction: () -> Void
+    var fullCloseAction: () -> Void
     @Binding var diaryEntries: [DiaryEntry]
 
     @State private var duration: String = "20"
     @State private var userWeight: Double = 70.0
     @State private var isFavorite: Bool = false
     @State private var useMetric: Bool = false
-    @State private var isCustom: Bool = false // New state to track if custom
+    @State private var isCustom: Bool = false
 
-    @State private var selectedHour: Int = Calendar.current.component(.hour, from: Date()) % 12
+    @State private var selectedHour: Int = Calendar.current.component(.hour, from: Date()) % 12 == 0 ? 12 : Calendar.current.component(.hour, from: Date()) % 12
     @State private var selectedMinute: Int = Calendar.current.component(.minute, from: Date())
     @State private var selectedPeriod: String = Calendar.current.component(.hour, from: Date()) >= 12 ? "PM" : "AM"
     @State private var showTimePicker: Bool = false
 
     @State private var selectedIntensity: IntensityLevel = .moderate
+    @FocusState private var isDurationFocused: Bool
+    @State private var keyboardHeight: CGFloat = 0
+    @State private var customCalories: String = ""
+    @State private var isCaloriesCustom: Bool = false
 
     enum IntensityLevel: String {
         case easy = "Easy"
@@ -64,7 +61,7 @@ struct ActivityStatsView: View {
         }
     }
 
-    private var caloriesBurned: Int {
+    private var calculatedCalories: Int {
         let metValue = fetchMETValue(for: activityName)
         let weightInKg = useMetric ? userWeight : userWeight * 0.453592
         let durationHours = (Double(duration) ?? 0) / 60.0
@@ -73,144 +70,241 @@ struct ActivityStatsView: View {
         return max(0, Int(calories))
     }
 
+    private var caloriesBurned: Int {
+        if isCaloriesCustom, let customValue = Int(customCalories) {
+            return customValue
+        }
+        return calculatedCalories
+    }
+
+    private var formattedTime: String {
+        return "\(selectedHour):\(String(format: "%02d", selectedMinute)) \(selectedPeriod)"
+    }
+
     var body: some View {
-        VStack(spacing: 20) {
-            HStack(spacing: 15) {
-                Image(activityImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 160, height: 160)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .shadow(radius: 3)
+        GeometryReader { geometry in
+            ZStack(alignment: .bottom) {
+                ScrollView {
+                    ScrollViewReader { proxy in
+                        VStack(spacing: 20) {
+                            HStack(spacing: 15) {
+                                Image(activityImage)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 140, height: 140)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .shadow(radius: 3)
 
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(activityName)
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(Styles.primaryText)
+                                VStack(alignment: .leading, spacing: 5) {
+                                    Text(activityName)
+                                        .font(.title2)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(Styles.primaryText)
 
-                    Button(action: toggleFavorite) {
-                        HStack {
-                            Image(systemName: isFavorite ? "heart.fill" : "heart")
-                                .foregroundColor(isFavorite ? .red : .gray)
-                            Text("Favorite")
-                                .foregroundColor(Styles.primaryText)
-                        }
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 6)
-                        .background(Styles.tertiaryBackground)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                        .shadow(radius: 2)
-                    }
-                    
-                    if isCustom {
-                        Button(action: deleteCustomActivity) {
-                            HStack {
-                                Image(systemName: "trash")
-                                    .foregroundColor(.red)
-                                Text("Delete")
-                                    .foregroundColor(.red)
+                                    Button(action: toggleFavorite) {
+                                        HStack {
+                                            Image(systemName: isFavorite ? "heart.fill" : "heart")
+                                                .foregroundColor(isFavorite ? .red : .gray)
+                                            Text("Favorite")
+                                                .foregroundColor(Styles.primaryText)
+                                        }
+                                        .padding(.horizontal, 12)
+                                        .padding(.vertical, 6)
+                                        .background(Styles.tertiaryBackground)
+                                        // Removed .clipShape for sharp corners
+                                        .shadow(radius: 2)
+                                    }
+                                    
+                                    if isCustom {
+                                        Button(action: deleteCustomActivity) {
+                                            HStack {
+                                                Image(systemName: "trash")
+                                                    .foregroundColor(.red)
+                                                Text("Delete")
+                                                    .foregroundColor(.red)
+                                            }
+                                            .padding(.horizontal, 12)
+                                            .padding(.vertical, 6)
+                                            .background(Styles.tertiaryBackground)
+                                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                                            .shadow(radius: 2)
+                                        }
+                                    }
+                                }
                             }
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 6)
-                            .background(Styles.tertiaryBackground)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                            .shadow(radius: 2)
-                        }
-                    }
-                }
-            }
-            .padding(.horizontal)
-            .padding(.top, 10)
+                            .padding(.horizontal)
+                            .padding(.top, 10)
 
-            Divider()
+                            Divider()
 
-            VStack {
-                HStack(spacing: 0) {
-                    ForEach([IntensityLevel.easy, .moderate, .hard, .veryHard], id: \.self) { level in
-                        Button(action: { selectedIntensity = level }) {
-                            Text(level.rawValue)
-                                .font(.caption)
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 10)
-                                .background(selectedIntensity == level ? level.color : Styles.tertiaryBackground)
-                                .foregroundColor(selectedIntensity == level ? .white : Styles.primaryText)
+                            VStack {
+                                HStack(spacing: 0) {
+                                    ForEach([IntensityLevel.easy, .moderate, .hard, .veryHard], id: \.self) { level in
+                                        Button(action: {
+                                            selectedIntensity = level
+                                            isCaloriesCustom = false
+                                            customCalories = String(calculatedCalories)
+                                        }) {
+                                            Text(level.rawValue)
+                                                .font(.caption)
+                                                .frame(maxWidth: .infinity)
+                                                .padding(.vertical, 10)
+                                                .background(selectedIntensity == level ? level.color : Styles.tertiaryBackground)
+                                                .foregroundColor(selectedIntensity == level ? .white : Styles.primaryText)
+                                        }
+                                        .frame(maxWidth: .infinity)
+                                        .overlay(
+                                            Rectangle()
+                                                .frame(width: 1)
+                                                .foregroundColor(.gray.opacity(0.3)),
+                                            alignment: .trailing
+                                        )
+                                    }
+                                }
+                                // Removed .clipShape for sharp corners
+                                .shadow(radius: 2)
+
+                                Text(selectedIntensity.description)
+                                    .font(.footnote)
+                                    .foregroundColor(Styles.primaryText.opacity(0.8))
+                                    .padding(.top, 5)
+                            }
+                            .padding(.horizontal)
+
+                            Divider()
+
+                            // Duration
+                            HStack(alignment: .center, spacing: 10) {
+                                Text("Duration")
+                                    .font(.headline)
+                                    .foregroundColor(Styles.primaryText)
+                                Spacer()
+                                TextField("", text: $duration)
+                                    .frame(width: 50, height: 24)
+                                    .padding(.horizontal, 4)
+                                    .padding(.vertical, 0)
+                                    .background(Styles.tertiaryBackground)
+                                    .cornerRadius(5)
+                                    .keyboardType(.numberPad)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(Styles.primaryText)
+                                    .focused($isDurationFocused)
+                                    .onTapGesture {
+                                        duration = ""
+                                    }
+                                Text("min")
+                                    .font(.headline)
+                                    .foregroundColor(Styles.primaryText)
+                            }
+                            .padding(.horizontal)
+                            .id("durationField")
+
+                            Divider()
+
+                            // Calories Burned
+                            HStack(alignment: .center, spacing: 10) {
+                                Text("Calories Burned")
+                                    .font(.headline)
+                                    .foregroundColor(Styles.primaryText)
+                                Spacer()
+                                TextField("", text: $customCalories, onEditingChanged: { isEditing in
+                                    if !isEditing && !customCalories.isEmpty {
+                                        isCaloriesCustom = true
+                                    }
+                                })
+                                    .frame(width: 50, height: 24)
+                                    .padding(.horizontal, 4)
+                                    .padding(.vertical, 0)
+                                    .background(Styles.tertiaryBackground)
+                                    .cornerRadius(5)
+                                    .keyboardType(.numberPad)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(Styles.primaryText)
+                                    .onTapGesture {
+                                        customCalories = "" // Clear input on tap
+                                    }
+                                Text("cal")
+                                    .font(.headline)
+                                    .foregroundColor(Styles.primaryText)
+                            }
+                            .padding(.horizontal)
+
+                            Divider()
+
+                            // Time
+                            HStack(alignment: .center, spacing: 10) {
+                                Text("Time")
+                                    .font(.headline)
+                                    .foregroundColor(Styles.primaryText)
+                                Spacer()
+                                Button(action: { showTimePicker = true }) {
+                                    Text(formattedTime)
+                                        .foregroundColor(Styles.primaryText)
+                                        .frame(width: 100, height: 24)
+                                        .padding(.horizontal, 4)
+                                        .padding(.vertical, 0)
+                                        .background(Styles.tertiaryBackground)
+                                        .cornerRadius(5)
+                                }
+                            }
+                            .padding(.horizontal)
+
+                            Divider()
+
+                            Text("Based on your weight of \(Int(userWeight)) \(useMetric ? "kg" : "lbs")")
+                                .font(.footnote)
+                                .foregroundColor(Styles.primaryText.opacity(0.8))
+                                .padding(.top, 5)
+
+                            Spacer(minLength: keyboardHeight)
+                                .id("bottomSpacer")
                         }
                         .frame(maxWidth: .infinity)
-                        .overlay(
-                            Rectangle()
-                                .frame(width: 1)
-                                .foregroundColor(.gray.opacity(0.3)),
-                            alignment: .trailing
-                        )
                     }
                 }
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .shadow(radius: 2)
+                .frame(maxHeight: geometry.size.height)
 
-                Text(selectedIntensity.description)
-                    .font(.footnote)
-                    .foregroundColor(Styles.primaryText.opacity(0.8))
-                    .padding(.top, 5)
+                bottomNavBar()
+                    .frame(maxWidth: .infinity, alignment: .bottom)
             }
-            .padding(.horizontal)
-
-            Divider()
-
-            HStack {
-                Text("Calories Burned")
-                    .font(.headline)
-                    .foregroundColor(Styles.primaryText)
-                Spacer()
-                Text("\(caloriesBurned)")
-                    .font(.headline)
-                    .foregroundColor(Styles.primaryText)
-            }
-            .padding(.horizontal)
-
-            Divider()
-
-            HStack {
-                Text("Duration")
-                    .font(.headline)
-                    .foregroundColor(Styles.primaryText)
-                Spacer()
-                TextField("", text: $duration)
-                    .frame(width: 50)
-                    .padding(5)
-                    .background(Styles.tertiaryBackground)
-                    .cornerRadius(5)
-                    .keyboardType(.numberPad)
-                    .multilineTextAlignment(.center)
-                Text("min")
-                    .foregroundColor(Styles.primaryText)
-            }
-            .padding(.horizontal)
-
-            Divider()
-
-            Text("Based on your weight of \(Int(userWeight)) \(useMetric ? "kg" : "lbs")")
-                .font(.footnote)
-                .foregroundColor(Styles.primaryText.opacity(0.8))
-                .padding(.top, 5)
-
-            Spacer()
-            bottomNavBar()
         }
-        .frame(maxWidth: .infinity)
-        .background(Styles.secondaryBackground)
+        .background(Styles.primaryBackground)
         .onAppear {
             fetchUserWeight()
             fetchFavoriteStatus()
-            fetchCustomStatus() // New fetch for isCustom
+            fetchCustomStatus()
+            setupKeyboardObserver()
+            customCalories = String(calculatedCalories)
         }
         .overlay(
             Group {
                 if showTimePicker {
-                    timePickerOverlay
+                    TimePicker(
+                        selectedHour: $selectedHour,
+                        selectedMinute: $selectedMinute,
+                        selectedPeriod: $selectedPeriod,
+                        isPresented: $showTimePicker
+                    )
                 }
             }
         )
+    }
+
+    private func setupKeyboardObserver() {
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
+            if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+                withAnimation {
+                    keyboardHeight = keyboardFrame.height
+                }
+                print("Keyboard shown, height: \(keyboardFrame.height)")
+            }
+        }
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+            withAnimation {
+                keyboardHeight = 0
+            }
+            print("Keyboard hidden")
+        }
     }
 
     private func fetchUserWeight() {
@@ -259,10 +353,6 @@ struct ActivityStatsView: View {
         } catch {
             print("⚠️ ERROR: Failed to fetch custom status: \(error.localizedDescription)")
         }
-    }
-
-    private var formattedTime: String {
-        return "\(selectedHour):\(String(format: "%02d", selectedMinute)) \(selectedPeriod)"
     }
 
     private func bottomNavBar() -> some View {
@@ -331,7 +421,7 @@ struct ActivityStatsView: View {
                 viewContext.delete(activity)
                 try viewContext.save()
                 print("✅ Deleted custom activity: \(activityName)")
-                closeAction() // Close view after deletion
+                closeAction()
             }
         } catch {
             print("❌ ERROR: Failed to delete custom activity: \(error.localizedDescription)")
@@ -411,12 +501,12 @@ struct ActivityStatsView: View {
             )
             diaryEntries.append(newDiaryEntry)
             print("✅ Added workout to diaryEntries")
+
+            fullCloseAction()
         } catch {
             print("❌ ERROR: Failed to save workout: \(error.localizedDescription)")
             return
         }
-
-        closeAction()
     }
 
     private func formatDuration(_ duration: Double) -> String {
@@ -427,62 +517,5 @@ struct ActivityStatsView: View {
             return remainingMinutes == 0 ? "\(hours) hr" : "\(hours) hr \(remainingMinutes) min"
         }
         return "\(minutes) min"
-    }
-
-    private var timePickerOverlay: some View {
-        ZStack {
-            Color.black.opacity(0.3)
-                .ignoresSafeArea()
-
-            VStack(spacing: 20) {
-                Text("Select Time")
-                    .font(.headline)
-                    .foregroundColor(Styles.primaryText)
-
-                timePicker
-                    .padding(.horizontal)
-
-                HStack {
-                    Button("Cancel") {
-                        showTimePicker = false
-                    }
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(Styles.primaryText)
-
-                    Button("Save") {
-                        showTimePicker = false
-                    }
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.blue)
-                }
-                .padding(.horizontal)
-            }
-            .padding(20)
-            .background(Styles.secondaryBackground)
-            .shadow(radius: 10)
-        }
-    }
-
-    private var timePicker: some View {
-        HStack {
-            Picker("Hour", selection: $selectedHour) {
-                ForEach(1...12, id: \.self) { hour in
-                    Text("\(hour)").tag(hour)
-                        .foregroundColor(Styles.primaryText)
-                }
-            }
-
-            Picker("Minutes", selection: $selectedMinute) {
-                ForEach(0..<60, id: \.self) { minute in
-                    Text("\(String(format: "%02d", minute))").tag(minute)
-                        .foregroundColor(Styles.primaryText)
-                }
-            }
-
-            Picker("AM/PM", selection: $selectedPeriod) {
-                Text("AM").tag("AM").foregroundColor(Styles.primaryText)
-                Text("PM").tag("PM").foregroundColor(Styles.primaryText)
-            }
-        }
     }
 }

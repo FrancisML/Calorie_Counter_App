@@ -6,96 +6,127 @@ struct QuickWKAddView: View {
     var closeAction: () -> Void
     @Environment(\.managedObjectContext) private var viewContext
 
-    @State private var workoutImage: UIImage? = UIImage(named: "DefaultWorkout")
-    @State private var workoutName: String = ""
+    @State private var workoutImageName: String = "DefaultWorkout"
+    @State private var workoutName: String = "" // Variable name remains the same for consistency
     @State private var duration: String = ""
     @State private var calories: String = ""
 
-    @State private var selectedHour: Int = Calendar.current.component(.hour, from: Date()) % 12
+    @State private var selectedHour: Int = Calendar.current.component(.hour, from: Date()) % 12 == 0 ? 12 : Calendar.current.component(.hour, from: Date()) % 12
     @State private var selectedMinute: Int = Calendar.current.component(.minute, from: Date())
     @State private var selectedPeriod: String = Calendar.current.component(.hour, from: Date()) >= 12 ? "PM" : "AM"
     @State private var showTimePicker: Bool = false
 
-    @State private var showImagePicker: Bool = false
-    @State private var imagePickerSourceType: UIImagePickerController.SourceType = .photoLibrary
-    @State private var showActionSheet: Bool = false
+    @State private var showImagePickerPopup: Bool = false
+
+    @FetchRequest(
+        entity: ActivityModel.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \ActivityModel.name, ascending: true)]
+    ) private var activities: FetchedResults<ActivityModel>
 
     var body: some View {
         VStack(spacing: 20) {
-            HStack(spacing: 20) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(workoutImage != UIImage(named: "DefaultWorkout") ? Color.green : Styles.primaryText, lineWidth: 3)
-                        .frame(width: 100, height: 100)
-
-                    Image(uiImage: workoutImage ?? UIImage(named: "DefaultWorkout")!)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 100, height: 100)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.black.opacity(0.1))
-                        .frame(width: 100, height: 100)
-
-                    Button(action: { showActionSheet = true }) {
-                        Text("Add")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 100, height: 100)
+            HStack(spacing: 15) {
+                Image(workoutImageName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .shadow(radius: 3)
+                    .onTapGesture {
+                        showImagePickerPopup = true
                     }
-                    .actionSheet(isPresented: $showActionSheet) {
-                        ActionSheet(
-                            title: Text("Select Image"),
-                            buttons: [
-                                .default(Text("Take a Photo")) {
-                                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                                        imagePickerSourceType = .camera
-                                        showImagePicker = true
-                                    }
-                                },
-                                .default(Text("Choose from Library")) {
-                                    if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-                                        imagePickerSourceType = .photoLibrary
-                                        showImagePicker = true
-                                    }
-                                },
-                                .destructive(Text("Remove Image")) {
-                                    workoutImage = UIImage(named: "DefaultWorkout")
-                                },
-                                .cancel()
-                            ]
-                        )
-                    }
-                    .sheet(isPresented: $showImagePicker) {
-                        ImagePicker(selectedImage: $workoutImage, sourceType: imagePickerSourceType)
-                    }
+
+                // Activity Name (changed from Workout Name)
+                HStack(alignment: .center, spacing: 10) {
+                    Text("Activity Name") // Updated label
+                        .font(.headline)
+                        .foregroundColor(Styles.primaryText)
+                    Spacer()
+                    TextField("", text: $workoutName)
+                        .frame(width: 100, height: 24)
+                        .padding(.horizontal, 4)
+                        .padding(.vertical, 0)
+                        .background(Styles.tertiaryBackground)
+                        .cornerRadius(5)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Styles.primaryText)
+                        .onTapGesture {
+                            workoutName = ""
+                        }
                 }
-
-                FloatingTextField(placeholder: " Workout Name ", text: $workoutName)
             }
             .padding(.horizontal)
-            .padding(.top, 20)
+            .padding(.top, 20) // Increased padding to add space above the image
 
-            VStack(spacing: 15) {
-                FloatingTextField(placeholder: " Duration (mins) ", text: $duration)
-                    .keyboardType(.numberPad)
+            Divider()
 
-                FloatingTextField(placeholder: " Calories Burned ", text: $calories)
+            // Duration
+            HStack(alignment: .center, spacing: 10) {
+                Text("Duration")
+                    .font(.headline)
+                    .foregroundColor(Styles.primaryText)
+                Spacer()
+                TextField("", text: $duration)
+                    .frame(width: 50, height: 24)
+                    .padding(.horizontal, 4)
+                    .padding(.vertical, 0)
+                    .background(Styles.tertiaryBackground)
+                    .cornerRadius(5)
                     .keyboardType(.numberPad)
-                    .onReceive(calories.publisher.collect()) { newValue in
-                        let filtered = newValue.filter { $0.isNumber }
-                        let trimmed = String(filtered.prefix(4))
-                        if calories != trimmed { calories = trimmed }
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(Styles.primaryText)
+                    .onTapGesture {
+                        duration = ""
                     }
+                Text("min")
+                    .font(.headline)
+                    .foregroundColor(Styles.primaryText)
+            }
+            .padding(.horizontal)
 
-                FloatingInputWithAction(
-                    placeholder: " Time ",
-                    displayedText: formattedTime,
-                    action: { showTimePicker = true },
-                    hasPickedValue: .constant(true)
-                )
+            Divider()
+
+            // Calories Burned
+            HStack(alignment: .center, spacing: 10) {
+                Text("Calories Burned")
+                    .font(.headline)
+                    .foregroundColor(Styles.primaryText)
+                Spacer()
+                TextField("", text: $calories)
+                    .frame(width: 50, height: 24)
+                    .padding(.horizontal, 4)
+                    .padding(.vertical, 0)
+                    .background(Styles.tertiaryBackground)
+                    .cornerRadius(5)
+                    .keyboardType(.numberPad)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(Styles.primaryText)
+                    .onTapGesture {
+                        calories = ""
+                    }
+                Text("cal")
+                    .font(.headline)
+                    .foregroundColor(Styles.primaryText)
+            }
+            .padding(.horizontal)
+
+            Divider()
+
+            // Time
+            HStack(alignment: .center, spacing: 10) {
+                Text("Time")
+                    .font(.headline)
+                    .foregroundColor(Styles.primaryText)
+                Spacer()
+                Button(action: { showTimePicker = true }) {
+                    Text(formattedTime)
+                        .foregroundColor(Styles.primaryText)
+                        .frame(width: 100, height: 24)
+                        .padding(.horizontal, 4)
+                        .padding(.vertical, 0)
+                        .background(Styles.tertiaryBackground)
+                        .cornerRadius(5)
+                }
             }
             .padding(.horizontal)
 
@@ -104,14 +135,22 @@ struct QuickWKAddView: View {
             bottomNavBar()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Styles.secondaryBackground)
+        .background(Styles.primaryBackground)
         .onAppear {
             setCurrentTime()
         }
         .overlay(
             Group {
                 if showTimePicker {
-                    timePickerOverlay
+                    TimePicker(
+                        selectedHour: $selectedHour,
+                        selectedMinute: $selectedMinute,
+                        selectedPeriod: $selectedPeriod,
+                        isPresented: $showTimePicker
+                    )
+                }
+                if showImagePickerPopup {
+                    imagePickerPopup()
                 }
             }
         )
@@ -126,6 +165,58 @@ struct QuickWKAddView: View {
 
     private var formattedTime: String {
         return "\(selectedHour):\(String(format: "%02d", selectedMinute)) \(selectedPeriod)"
+    }
+
+    private func imagePickerPopup() -> some View {
+        GeometryReader { geometry in
+            ZStack {
+                Color.black.opacity(0.4)
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        showImagePickerPopup = false
+                    }
+                
+                VStack(spacing: 25) {
+                    Text("Choose Workout Image")
+                        .font(.headline)
+                        .foregroundColor(Styles.primaryText)
+                        .padding(.bottom, 5)
+                    
+                    ScrollView {
+                        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 15), count: 4), spacing: 15) {
+                            ForEach(activities.filter { !$0.isCustom }, id: \.id) { activity in
+                                Image(activity.imageName ?? "DefaultWorkout")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50, height: 50)
+                                    .padding(8)
+                                    .background(Styles.primaryBackground)
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                                    .shadow(radius: 2)
+                                    .onTapGesture {
+                                        workoutImageName = activity.imageName ?? "DefaultWorkout"
+                                        showImagePickerPopup = false
+                                    }
+                                    .accessibilityLabel("Select \(activity.name ?? "unknown") image")
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
+                    .frame(maxHeight: 200)
+                    
+                    Button("Cancel") {
+                        showImagePickerPopup = false
+                    }
+                    .foregroundColor(.red)
+                    .padding()
+                }
+                .padding()
+                .background(Styles.primaryBackground)
+                .shadow(radius: 5)
+                .frame(maxWidth: 350)
+                .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
+            }
+        }
     }
 
     private func saveWorkoutToDiary() {
@@ -146,15 +237,15 @@ struct QuickWKAddView: View {
         workoutEntry.duration = durationValue
         workoutEntry.caloriesBurned = Double(caloriesValue)
         workoutEntry.time = formattedTime
-        workoutEntry.imageData = workoutImage?.jpegData(compressionQuality: 0.8)
+        workoutEntry.imageName = workoutImageName
 
         let diaryEntry = CoreDiaryEntry(context: viewContext)
         diaryEntry.type = "Workout"
-        diaryEntry.detail = trimmedName // Activity name
-        diaryEntry.entryDescription = formatDuration(trimmedDuration) // Duration string
+        diaryEntry.detail = trimmedName
+        diaryEntry.entryDescription = formatDuration(trimmedDuration)
         diaryEntry.calories = Int32(caloriesValue)
         diaryEntry.time = formattedTime
-        diaryEntry.imageData = workoutImage?.jpegData(compressionQuality: 0.8)
+        diaryEntry.iconName = workoutImageName
 
         let fetchRequest: NSFetchRequest<DailyRecord> = DailyRecord.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "date == %@", Calendar.current.startOfDay(for: Date()) as NSDate)
@@ -182,13 +273,13 @@ struct QuickWKAddView: View {
 
             let newDiaryEntry = DiaryEntry(
                 time: formattedTime,
-                iconName: "DefaultWorkout",
+                iconName: workoutImageName,
                 description: trimmedName,
                 detail: formatDuration(trimmedDuration),
                 calories: caloriesValue,
                 type: "Workout",
-                imageName: nil,
-                imageData: workoutImage?.jpegData(compressionQuality: 0.8),
+                imageName: workoutImageName,
+                imageData: nil,
                 fats: 0,
                 carbs: 0,
                 protein: 0
@@ -210,37 +301,6 @@ struct QuickWKAddView: View {
             return remainingMinutes == 0 ? "\(hours) hr" : "\(hours) hr \(remainingMinutes) min"
         }
         return "\(duration) min"
-    }
-
-    private var timePickerOverlay: some View {
-        ZStack {
-            Color.black.opacity(0.3)
-                .ignoresSafeArea()
-
-            VStack(spacing: 20) {
-                Text("Select Time")
-                    .font(.headline)
-                    .foregroundColor(Styles.primaryText)
-
-                FloatingInputWithAction(
-                    placeholder: " Time ",
-                    displayedText: formattedTime,
-                    action: { showTimePicker = true },
-                    hasPickedValue: .constant(true)
-                )
-                .padding()
-
-                Button("Close") {
-                    showTimePicker = false
-                }
-                .padding()
-                .foregroundColor(.blue)
-            }
-            .padding()
-            .background(Styles.secondaryBackground)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
-            .shadow(radius: 5)
-        }
     }
 
     private func bottomNavBar() -> some View {

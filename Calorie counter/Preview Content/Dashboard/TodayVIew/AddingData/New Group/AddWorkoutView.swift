@@ -5,25 +5,32 @@
 //  Created by frank lasalvia on 2/13/25.
 //
 import SwiftUI
+import CoreData
 
 struct WorkoutView: View {
-    var closeAction: () -> Void // ✅ Function to close the entire WorkoutView
-    @State private var searchText: String = "" // ✅ Search text state
-    @State private var selectedTab: WorkoutTab = .quickAdd // ✅ Default to Quick Add
-    @Binding var diaryEntries: [DiaryEntry] // ✅ Ensure this is a binding to update diary
-
-    @State private var isClosing: Bool = false // ✅ Tracks fade-out animation state
+    var closeAction: () -> Void
+    @State private var searchText: String = ""
+    @State private var selectedTab: WorkoutTab = .quickAdd
+    @Binding var diaryEntries: [DiaryEntry]
+    @State private var isClosing: Bool = false
+    @State private var selectedActivity: ActivityModel? = nil
+    @FocusState private var isSearchFocused: Bool
 
     enum WorkoutTab {
         case quickAdd, advancedAdd
     }
+
+    @FetchRequest(
+        entity: ActivityModel.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \ActivityModel.name, ascending: true)]
+    ) private var activities: FetchedResults<ActivityModel>
 
     var body: some View {
         GeometryReader { geometry in
             let safeAreaTopInset = geometry.safeAreaInsets.top
             
             VStack(spacing: 0) {
-                // ✅ Title Bar
+                // Title Bar
                 ZStack {
                     Rectangle()
                         .fill(Styles.secondaryBackground)
@@ -38,24 +45,62 @@ struct WorkoutView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.top, safeAreaTopInset)
                 
-                // ✅ Search Bar
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(Styles.secondaryText)
+                // Search Bar Section
+                VStack(spacing: 0) {
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(Styles.secondaryText)
+                        
+                        TextField("", text: $searchText, prompt: Text("Search workouts...").foregroundColor(Styles.secondaryText))
+                            .textFieldStyle(PlainTextFieldStyle())
+                            .foregroundColor(Styles.primaryText)
+                            .submitLabel(.search)
+                            .focused($isSearchFocused)
+                            .onChange(of: isSearchFocused) { focused in
+                                if !focused {
+                                    searchText = ""
+                                }
+                            }
+                    }
+                    .padding(14)
+                    .frame(maxWidth: .infinity)
+                    .background(Styles.secondaryBackground)
+                    .clipShape(Capsule())
+                    .padding(.horizontal, 20)
+                    .padding(.top, 16)
+                    .padding(.bottom, 16)
                     
-                    TextField("Search workouts...", text: $searchText)
-                        .textFieldStyle(PlainTextFieldStyle())
-                        .foregroundColor(Styles.primaryText)
+                    // Search Results
+                    if !searchText.isEmpty {
+                        VStack(alignment: .leading) {
+                            Text("Search Results")
+                                .font(.headline)
+                                .foregroundColor(Styles.primaryText)
+                                .padding(.leading, 20)
+                                .padding(.top, 10)
+                            
+                            let filteredActivities = filteredActivities()
+                            if filteredActivities.isEmpty {
+                                Text("No matching workouts")
+                                    .font(.subheadline)
+                                    .foregroundColor(Styles.secondaryText)
+                                    .padding(.leading, 20)
+                                    .padding(.bottom, 10)
+                            } else {
+                                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 15), count: 4), spacing: 15) {
+                                    ForEach(filteredActivities.prefix(4), id: \.id) { activity in
+                                        workoutButton(activity: activity)
+                                    }
+                                }
+                                .padding(.horizontal, 20)
+                                .padding(.bottom, 10)
+                            }
+                        }
+                    }
                 }
-                .padding(14)
-                .frame(maxWidth: .infinity)
-                .background(Styles.primaryBackground.opacity(0.3))
-                .clipShape(Capsule())
-                .padding(.horizontal, 20)
-                .padding(.top, 16)
-                .padding(.bottom, 16)
+                .background(Styles.primaryBackground)
                 
-                // ✅ Tabs Section
+                // Tabs Section
                 ZStack {
                     Rectangle()
                         .fill(Styles.secondaryBackground)
@@ -64,26 +109,42 @@ struct WorkoutView: View {
                     
                     HStack(spacing: 0) {
                         tabButton(title: "Quick Add", selected: selectedTab == .quickAdd) {
-                            selectedTab = .quickAdd
+                            selectedTab = .quickAdd // Instant update
+                            withAnimation {
+                                selectedActivity = nil
+                                searchText = ""
+                            }
                         }
                         tabButton(title: "Advanced Add", selected: selectedTab == .advancedAdd) {
-                            selectedTab = .advancedAdd
+                            selectedTab = .advancedAdd // Instant update
+                            withAnimation {
+                                selectedActivity = nil
+                                searchText = ""
+                            }
                         }
                     }
                     .frame(width: geometry.size.width, height: 50)
                 }
 
-                // ✅ Content Area
+                // Content Area
                 VStack {
-                    if selectedTab == .quickAdd {
+                    if let activity = selectedActivity {
+                        ActivityStatsView(
+                            activityName: activity.name ?? "Unknown",
+                            activityImage: activity.imageName ?? "default_image",
+                            closeAction: { selectedActivity = nil },
+                            fullCloseAction: triggerClose,
+                            diaryEntries: $diaryEntries
+                        )
+                    } else if selectedTab == .quickAdd {
                         QuickWKAddView(
                             diaryEntries: $diaryEntries,
-                            closeAction: triggerClose // ✅ Triggers fade-out before closing
+                            closeAction: triggerClose
                         )
                     } else {
                         ADVWorkoutAddView(
                             diaryEntries: $diaryEntries,
-                            closeAction: triggerClose // ✅ Triggers fade-out before closing
+                            closeAction: triggerClose
                         )
                     }
                 }
@@ -92,27 +153,66 @@ struct WorkoutView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Styles.secondaryBackground)
             .edgesIgnoringSafeArea(.all)
-            .opacity(isClosing ? 0 : 1) // ✅ Smooth fade-out effect
-            .animation(.easeOut(duration: 0.25), value: isClosing) // ✅ Faster fade transition
+            .opacity(isClosing ? 0 : 1)
+            .animation(.easeOut(duration: 0.25), value: isClosing)
+            .onTapGesture {
+                isSearchFocused = false
+            }
         }
     }
 
-    // ✅ Tab Button Component
     private func tabButton(title: String, selected: Bool, action: @escaping () -> Void) -> some View {
         Text(title)
             .font(.headline)
-            .foregroundColor(selected ? .orange : Styles.primaryText)
+            .fontWeight(selected ? .bold : .regular)
+            .foregroundColor(selected ? Styles.primaryText : Styles.secondaryText)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(selected ? Color.clear : Styles.primaryBackground.opacity(0.3))
+            .background(selected ? Styles.primaryBackground : Styles.secondaryBackground)
             .onTapGesture {
-                withAnimation {
-                    action()
-                }
+                action()
             }
     }
 
-   
-    // ✅ Helper Function to Format Duration Correctly
+    private func workoutButton(activity: ActivityModel) -> some View {
+        VStack {
+            Image(activity.imageName ?? "default_image")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50, height: 50)
+            Text(activity.name ?? "Unknown")
+                .font(.caption)
+                .foregroundColor(Styles.primaryText)
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+        }
+        .frame(width: 90, height: 120)
+        .background(Styles.secondaryBackground)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .shadow(radius: 2)
+        .overlay(
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Color.gray.opacity(0.5), lineWidth: 2)
+        )
+        .onTapGesture {
+            withAnimation {
+                selectedActivity = activity
+                searchText = ""
+                isSearchFocused = false
+            }
+        }
+        .accessibilityLabel("Workout: \(activity.name ?? "Unknown")")
+    }
+
+    private func filteredActivities() -> [ActivityModel] {
+        if searchText.isEmpty {
+            return []
+        } else {
+            return activities.filter { activity in
+                activity.name?.lowercased().contains(searchText.lowercased()) ?? false
+            }
+        }
+    }
+
     private func formatDuration(_ duration: String) -> String {
         if let minutes = Int(duration), minutes >= 60 {
             let hours = minutes / 60
@@ -122,13 +222,19 @@ struct WorkoutView: View {
         return "\(duration) min"
     }
 
-    // ✅ Triggers a **Fast & Continuous Fade-Out** Before Closing
     private func triggerClose() {
         withAnimation {
             isClosing = true
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { // ✅ Matches fade duration
-            closeAction() // ✅ Instantly disappears after fade
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            closeAction()
         }
+    }
+}
+
+struct WorkoutView_Previews: PreviewProvider {
+    static var previews: some View {
+        WorkoutView(closeAction: {}, diaryEntries: .constant([]))
+            .environment(\.managedObjectContext, PersistenceController.shared.context)
     }
 }

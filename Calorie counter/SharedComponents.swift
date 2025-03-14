@@ -783,3 +783,81 @@ extension DateFormatter {
     }()
     
 }
+// MARK: - Time Picker
+struct TimePicker: View {
+    @Binding var selectedHour: Int
+    @Binding var selectedMinute: Int
+    @Binding var selectedPeriod: String
+    @Binding var isPresented: Bool
+
+    var body: some View {
+        ZStack {
+            Color.black.opacity(0.3)
+                .ignoresSafeArea()
+                .onTapGesture {
+                    isPresented = false
+                }
+
+            VStack(spacing: 20) {
+                Text("Select Time")
+                    .font(.headline)
+                    .foregroundColor(Styles.primaryText)
+
+                HStack {
+                    Picker("Hour", selection: $selectedHour) {
+                        ForEach(1...12, id: \.self) { hour in
+                            Text("\(hour)")
+                                .foregroundColor(Styles.primaryText)
+                                .tag(hour)
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                    .frame(maxWidth: UIScreen.main.bounds.width * 0.3)
+                    .clipped()
+
+                    Picker("Minute", selection: $selectedMinute) {
+                        ForEach(0..<60, id: \.self) { minute in
+                            Text(String(format: "%02d", minute))
+                                .foregroundColor(Styles.primaryText)
+                                .tag(minute)
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                    .frame(maxWidth: UIScreen.main.bounds.width * 0.3)
+                    .clipped()
+
+                    Picker("Period", selection: $selectedPeriod) {
+                        Text("AM")
+                            .foregroundColor(Styles.primaryText)
+                            .tag("AM")
+                        Text("PM")
+                            .foregroundColor(Styles.primaryText)
+                            .tag("PM")
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                    .frame(maxWidth: UIScreen.main.bounds.width * 0.3)
+                    .clipped()
+                }
+
+                HStack {
+                    Button("Cancel") {
+                        isPresented = false
+                    }
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(Styles.primaryText)
+
+                    Button("Save") {
+                        isPresented = false
+                    }
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.blue)
+                }
+                .padding(.horizontal)
+            }
+            .padding(20)
+            .background(Styles.secondaryBackground)
+            .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
+            .frame(width: UIScreen.main.bounds.width * 0.9)
+        }
+    }
+}
